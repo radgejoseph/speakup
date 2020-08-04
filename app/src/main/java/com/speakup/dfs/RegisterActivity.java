@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public class RegisterActivity extends AppCompatActivity {
     private View decorView;
@@ -26,11 +24,19 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         
-        android.widget.ImageView backBut = (ImageView) findViewById(R.id.imagebackButton);
+        android.widget.ImageView backBut = findViewById(R.id.imagebackButton);
         backBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openMainActivity();
+            }
+        });
+
+        Button button = findViewById(R.id.register_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegisterComplete();
             }
         });
     }
@@ -52,6 +58,10 @@ public class RegisterActivity extends AppCompatActivity {
     
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void openRegisterComplete() {
+        Intent intent = new Intent(this, RegisterComplete.class);
         startActivity(intent);
     }
 }
