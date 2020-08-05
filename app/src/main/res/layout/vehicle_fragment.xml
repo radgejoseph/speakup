@@ -4,53 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/taxi_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="148dp"
+        android:background="@drawable/taxi"
+        android:clickable="true"
+        android:contentDescription="@string/todo"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tricycle_icon"
-        app:srcCompat="@drawable/taxi"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="@+id/tricycle_icon" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/tricycle_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="244dp"
+        android:background="@drawable/tricycle"
+        android:clickable="true"
+        android:contentDescription="@string/todo"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_profile"
-        app:srcCompat="@drawable/tricycle"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toBottomOf="@+id/header_profile" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/taxicle_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/taxicle"
+        android:clickable="true"
+        android:contentDescription="@string/todo"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_profile"
-        app:srcCompat="@drawable/taxicle"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toBottomOf="@+id/header_profile" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/jeepney_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="364dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="432dp"
+        android:background="@drawable/jeepney"
+        android:clickable="true"
+        android:contentDescription="@string/todo"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/jeepney"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/header_profile"
