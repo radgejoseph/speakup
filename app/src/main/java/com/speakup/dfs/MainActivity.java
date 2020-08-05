@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
+    private Button l_button;
     private View decorView;
 
     @Override
@@ -32,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 openRegisterActivity();
             }
         });
+
+        l_button = (Button) findViewById(R.id.login_button);
+        l_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHomeActivity();
+            }
+        });
     }
 
     @Override
@@ -52,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openRegisterActivity() {
         Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void openHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 }

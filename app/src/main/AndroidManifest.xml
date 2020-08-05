@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".HomeActivity"/>
         <activity android:name=".RegisterComplete" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">

@@ -13,4 +13,12 @@
     <string name="password">Password</string>
     <string name="todo">TODO</string>
     <string name="register">REGISTER</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="vehicle_list_fragment">VEHICLE LIST FRAGMENT</string>
+    <string name="profile_fragment">PROFILE FRAGMENT</string>
+    <string name="drawer_header">Drawer Header</string>
+    <string name="menu">MENU</string>
+    <string name="vehicles">VEHICLES</string>
+    <string name="profile">PROFILE</string>
 </resources>
