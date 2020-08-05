@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.add(R.id.container_fragment, new VehicleFragment());
         fragmentTransaction.commit();
 
+
     }
 
     @Override
@@ -88,6 +90,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, new ProfileFragment());
             fragmentTransaction.commit();
+        }
+        if (item.getItemId() == R.id.notifications_menu) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new NotificationFragment());
+            fragmentTransaction.commit();
+        }
+        if (item.getItemId() == R.id.ratings_menu) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new RatingsFragment());
+            fragmentTransaction.commit();
+        }
+        else if (item.getItemId() == R.id.logout_menu) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
         return true;
     }

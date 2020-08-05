@@ -21,4 +21,9 @@
     <string name="menu">MENU</string>
     <string name="vehicles">VEHICLES</string>
     <string name="profile">PROFILE</string>
+    <string name="ratings">RATINGS</string>
+    <string name="ratings_fragment">RATINGS FRAGMENT</string>
+    <string name="blank_space">" "</string>
+    <string name="logout">LOGOUT</string>
+    <string name="notifications">NOTIFICATIONS</string>
 </resources>

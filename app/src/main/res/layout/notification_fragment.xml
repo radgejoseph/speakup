@@ -13,6 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/header_profile"
+        app:srcCompat="@drawable/header_notifications"
         android:contentDescription="@string/todo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
