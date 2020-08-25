@@ -26,4 +26,8 @@
     <string name="blank_space">" "</string>
     <string name="logout">LOGOUT</string>
     <string name="notifications">NOTIFICATIONS</string>
+    <string name="home">HOME</string>
+    <string name="you_have_no_notification">You Have No Notification</string>
+    <string name="you_have_no_ratings_at_the_moment">You Have No Ratings At The Moment</string>
+    <string name="edit">Edit</string>
 </resources>

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button = (Button) findViewById(R.id.to_register_button);
+        Button button = findViewById(R.id.to_register_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,14 +32,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button l_button = (Button) findViewById(R.id.login_button);
+        Button l_button = findViewById(R.id.login_button);
         l_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openHomeActivity();
             }
         });
-
     }
 
     @Override
