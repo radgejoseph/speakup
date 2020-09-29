@@ -5,19 +5,27 @@
             <item
                 android:id="@+id/vehicles_menu"
                 android:icon="@drawable/ic_baseline_home_24"
-                android:title="@string/home" />
+                android:title="@string/home"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
             <item
                 android:id="@+id/profile_menu"
                 android:icon="@drawable/ic_profile"
-                android:title="@string/profile" />
+                android:title="@string/profile"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
             <item
                 android:id="@+id/notifications_menu"
                 android:icon="@drawable/ic_notifications"
-                android:title="@string/notifications" />
+                android:title="@string/notifications"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
             <item
                 android:id="@+id/ratings_menu"
                 android:icon="@drawable/ic_ratings"
-                android:title="@string/ratings" />
+                android:title="@string/ratings"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
                 android:title="@string/blank_space" />
@@ -33,7 +41,9 @@
             <item
                 android:id="@+id/logout_menu"
                 android:icon="@drawable/ic_logout"
-                android:title="@string/logout" />
+                android:title="@string/logout"
+                android:textStyle="bold"
+                android:textColor="#FF0000"/>
         </menu>
     </item>
 </menu>

@@ -11,7 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".ReportTaxiActivity"/>
+        <activity android:name=".TabbedActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RateMeActivity"/>
+        <activity android:name=".ReportTaxiActivity" />
         <activity android:name=".ReportTricycleActivity" />
         <activity android:name=".ReportTaxicleActivity" />
         <activity android:name=".ReportJeepActivity" />

@@ -30,5 +30,7 @@
     <string name="you_have_no_notification">You Have No Notification</string>
     <string name="you_have_no_ratings_at_the_moment">You Have No Ratings At The Moment</string>
     <string name="edit">Edit</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="complaint">COMPLAINT</string>
+    <string name="commendation">COMMENDATION</string>
+    <string name="SUBMIT">SUBMIT</string>
 </resources>

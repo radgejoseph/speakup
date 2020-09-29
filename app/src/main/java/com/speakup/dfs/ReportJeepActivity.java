@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class ReportJeepActivity extends AppCompatActivity {
     private View decorView;
@@ -30,6 +31,14 @@ public class ReportJeepActivity extends AppCompatActivity {
             }
         });
 
+        Button button = findViewById(R.id.buttontest);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRateMeActivity();
+            }
+        });
+
     }
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -42,6 +51,11 @@ public class ReportJeepActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
+    public void openRateMeActivity() {
+        Intent intent = new Intent(this, RateMeActivity.class);
+        startActivity(intent);
+    }
+
     private int hideSystemBars(){
         return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY

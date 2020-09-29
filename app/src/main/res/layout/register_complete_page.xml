@@ -25,6 +25,8 @@
         android:layout_marginTop="60dp"
         android:background="@drawable/custom_button_green"
         android:text="@string/ok"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
