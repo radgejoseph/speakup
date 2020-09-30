@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,7 +30,15 @@ public class TabbedActivity extends AppCompatActivity {
             }
         });
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        android.widget.ImageView back_to = findViewById(R.id.back_to);
+        back_to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRateMeActivity();
+            }
+        });
+
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
         findViewById(R.id.tab_complaint);
         findViewById(R.id.tab_commendation);
         viewPager = findViewById(R.id.viewpager);
@@ -64,6 +73,10 @@ public class TabbedActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
+    public void openRateMeActivity() {
+        Intent intent = new Intent(this, RateMeActivity.class);
+        startActivity(intent);
+    }
 
     private int hideSystemBars(){
         return View.SYSTEM_UI_FLAG_LAYOUT_STABLE

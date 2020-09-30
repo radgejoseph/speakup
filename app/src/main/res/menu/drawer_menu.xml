@@ -1,49 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/menu">
         <menu>
             <item
                 android:id="@+id/vehicles_menu"
                 android:icon="@drawable/ic_baseline_home_24"
-                android:title="@string/home"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"/>
+                android:title="@string/home" />
             <item
                 android:id="@+id/profile_menu"
                 android:icon="@drawable/ic_profile"
-                android:title="@string/profile"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"/>
+                android:title="@string/profile" />
             <item
                 android:id="@+id/notifications_menu"
                 android:icon="@drawable/ic_notifications"
-                android:title="@string/notifications"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"/>
+                android:title="@string/notifications" />
             <item
                 android:id="@+id/ratings_menu"
                 android:icon="@drawable/ic_ratings"
-                android:title="@string/ratings"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"/>
+                android:title="@string/ratings" />
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space" />
+                android:title="@string/blank_space"
+                android:enabled="false"/>
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space" />
+                android:title="@string/blank_space"
+                android:enabled="false"/>
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space" />
+                android:title="@string/blank_space"
+                android:enabled="false"/>
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space" />
+                android:title="@string/blank_space"
+                android:enabled="false"/>
             <item
                 android:id="@+id/logout_menu"
                 android:icon="@drawable/ic_logout"
-                android:title="@string/logout"
-                android:textStyle="bold"
-                android:textColor="#FF0000"/>
+                android:title="@string/logout" />
         </menu>
     </item>
 </menu>

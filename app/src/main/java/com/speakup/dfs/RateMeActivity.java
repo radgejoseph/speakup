@@ -23,6 +23,14 @@ public class RateMeActivity extends AppCompatActivity {
             }
         });
 
+        android.widget.ImageView back_to = findViewById(R.id.back_to);
+        back_to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openReportJeepActivity();
+            }
+        });
+
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
@@ -34,6 +42,11 @@ public class RateMeActivity extends AppCompatActivity {
     }
     public void openTabbedActivity() {
         Intent intent = new Intent(this, TabbedActivity.class);
+        startActivity(intent);
+    }
+
+    public void openReportJeepActivity() {
+        Intent intent = new Intent(this, ReportJeepActivity.class);
         startActivity(intent);
     }
 
