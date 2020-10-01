@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 public class RateMeActivity extends AppCompatActivity {
-
     private View decorView;
 
     @Override
@@ -40,6 +39,14 @@ public class RateMeActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            decorView.setSystemUiVisibility(hideSystemBars());
+        }
+    }
+
     public void openTabbedActivity() {
         Intent intent = new Intent(this, TabbedActivity.class);
         startActivity(intent);
