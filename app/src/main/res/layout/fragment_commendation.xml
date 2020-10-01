@@ -63,7 +63,7 @@
         android:id="@+id/date_picker"
         android:layout_width="135dp"
         android:layout_height="40dp"
-        android:background="@android:drawable/editbox_background"
+        android:background="@drawable/text_box_layout"
         android:gravity="center"
         android:hint="Date"
         android:textSize="20sp"
@@ -78,7 +78,7 @@
         android:id="@+id/time_picker"
         android:layout_width="135dp"
         android:layout_height="40dp"
-        android:background="@android:drawable/editbox_background"
+        android:background="@drawable/text_box_layout"
         android:gravity="center"
         android:hint="Time"
         android:textSize="20sp"
@@ -104,5 +104,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.928"
         tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/commendation_text"
+        android:layout_width="330dp"
+        android:layout_height="126dp"
+        android:background="@drawable/text_box_layout"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Your Commendation"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
