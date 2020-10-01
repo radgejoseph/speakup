@@ -2,6 +2,7 @@ package com.speakup.dfs;
 
 import android.app.DatePickerDialog;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -28,7 +30,9 @@ import java.util.Calendar;
 public class CommendationFragment extends Fragment {
 
     TextView date_picker;
-    DatePickerDialog.OnDateSetListener setListener;
+    TextView time_picker;
+    DatePickerDialog.OnDateSetListener setListenerD;
+    TimePickerDialog.OnTimeSetListener setListenerT;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,23 +85,23 @@ public class CommendationFragment extends Fragment {
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
-        Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        Calendar calendarD = Calendar.getInstance();
+        final int year = calendarD.get(Calendar.YEAR);
+        final int month = calendarD.get(Calendar.MONTH);
+        final int day = calendarD.get(Calendar.DAY_OF_MONTH);
 
         date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth
-                        ,setListener,year,month,day);
+                        ,setListenerD,year,month,day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
         });
 
-        setListener = new DatePickerDialog.OnDateSetListener() {
+        setListenerD = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 month = month+1;
@@ -106,6 +110,40 @@ public class CommendationFragment extends Fragment {
             }
         };
 /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ DATE PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ TIME PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+        time_picker = view.findViewById(R.id.time_picker);
+        time_picker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar calendarT = Calendar.getInstance();
+                int hour = calendarT.get(Calendar.HOUR_OF_DAY);
+                int minutes = calendarT.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(
+                        getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth
+                        ,setListenerT,hour,minutes,android.text.format.DateFormat.is24HourFormat(getActivity()));
+                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                timePickerDialog.show();
+            }
+        });
+
+        setListenerT = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minutes) {
+                String am_pm;
+                if (hour > 12)
+                {
+                    hour = hour - 12;
+                    am_pm = "PM";
+                } else {
+                    am_pm = "AM";
+                }
+                String time = hour+":"+minutes+" "+am_pm;
+                time_picker.setText(time);
+            }
+        };
+/* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
         android.widget.ImageView add_image_video = view.findViewById(R.id.add_image_video);
         add_image_video.setOnClickListener(new View.OnClickListener() {
