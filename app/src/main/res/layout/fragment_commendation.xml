@@ -39,25 +39,27 @@
         android:id="@+id/add_image_video"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/add_image_video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.849" />
 
     <ImageView
         android:id="@+id/add_audio"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/add_audio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.626"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.849" />
 
     <TextView
         android:id="@+id/date_picker"
@@ -65,14 +67,14 @@
         android:layout_height="40dp"
         android:background="@drawable/text_box_layout"
         android:gravity="center"
-        android:hint="Date"
+        android:hint="@string/date"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.529" />
 
     <TextView
         android:id="@+id/time_picker"
@@ -80,14 +82,14 @@
         android:layout_height="40dp"
         android:background="@drawable/text_box_layout"
         android:gravity="center"
-        android:hint="Time"
+        android:hint="@string/time"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.529" />
 
     <Button
         android:id="@+id/register_button"
@@ -102,7 +104,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928"
+        app:layout_constraintVertical_bias="0.951"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -112,13 +114,28 @@
         android:background="@drawable/text_box_layout"
         android:ems="10"
         android:gravity="center"
-        android:hint="Your Commendation"
+        android:hint="@string/your_commendation"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintVertical_bias="0.702" />
+
+    <TextView
+        android:id="@+id/plate_number"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/text_box_layout"
+        android:gravity="center"
+        android:text="*Plate Number*"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

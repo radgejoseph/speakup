@@ -33,4 +33,8 @@
     <string name="complaint">COMPLAINT</string>
     <string name="commendation">COMMENDATION</string>
     <string name="SUBMIT">SUBMIT</string>
+    <string name="your_complaint">Your Complaint</string>
+    <string name="your_commendation">Your Commendation</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 </resources>
