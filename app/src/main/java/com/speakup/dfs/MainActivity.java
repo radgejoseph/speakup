@@ -4,11 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class MainActivity extends AppCompatActivity {
     private View decorView;
+
+    EditText editTextusername, editTextpassword;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        editTextusername = findViewById(R.id.usernameL_text);
+        editTextpassword = findViewById(R.id.passwordL_text);
+        progressBar = findViewById(R.id.progress);
+
         Button button = findViewById(R.id.to_register_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +51,45 @@ public class MainActivity extends AppCompatActivity {
         l_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openHomeActivity();
+                final String username, password;
+                username = String.valueOf(editTextusername.getText());
+                password = String.valueOf(editTextpassword.getText());
+
+                if(!username.equals("") && !password.equals("")) {
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Starting Write and Read data with URL
+                            //Creating array for parameters
+                            String[] field = new String[2];
+                            field[0] = "username";
+                            field[1] = "password";
+                            //Creating array for data
+                            String[] data = new String[2];
+                            data[0] = username;
+                            data[1] = password;
+                            PutData putData = new PutData("http://192.168.1.138/LoginRegister/login.php", "POST", field, data);
+                            if (putData.startPut()) {
+                                if (putData.onComplete()) {
+                                    String result = putData.getResult();
+                                    if (result.equals("Login Success")){
+                                        openHomeActivity();
+                                        finish();
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(),result, Toast.LENGTH_SHORT).show();
+                                    }
+                                    Log.i("PutData", result);
+                                }
+                            }
+                            //End Write and Read data with URL
+                        }
+                    });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"All fields are required", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
