@@ -2,7 +2,9 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -21,10 +23,16 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextusername, editTextpassword;
     ProgressBar progressBar;
 
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String usernamekey = "nameKey";
+    public static final String passwordkey = "passwordKey";
+    SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -55,7 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 username = String.valueOf(editTextusername.getText());
                 password = String.valueOf(editTextpassword.getText());
 
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                editor.putString(username, usernamekey);
+                editor.putString(password, passwordkey);
+                editor.commit();
+
                 if(!username.equals("") && !password.equals("")) {
+                    progressBar.setVisibility(view.VISIBLE);
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
@@ -72,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                             PutData putData = new PutData("http://192.168.1.138/LoginRegister/login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
+                                    progressBar.setVisibility(View.GONE);
                                     String result = putData.getResult();
                                     if (result.equals("Login Success")){
                                         openHomeActivity();
