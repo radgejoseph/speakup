@@ -1,13 +1,23 @@
 package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReportTaxicleActivity extends AppCompatActivity {
     private View decorView;
+
+    RecyclerView recyclerView;
+    ListItemAdapter listItemAdapter;
+
+    List<ListItem> itemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,52 @@ public class ReportTaxicleActivity extends AppCompatActivity {
                 openHomeActivity();
             }
         });
+
+        itemList = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.taxicle_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //adding some items to our list
+        itemList.add(
+                new ListItem(
+                        1,
+                        "AVG 123",
+                        R.drawable.taxicle_ico));
+
+        itemList.add(
+                new ListItem(
+                        1,
+                        "JCO 123",
+                        R.drawable.taxicle_ico));
+
+        itemList.add(
+                new ListItem(
+                        1,
+                        "LVT 123",
+                        R.drawable.taxicle_ico));
+
+        itemList.add(
+                new ListItem(
+                        1,
+                        "PPP 123",
+                        R.drawable.taxicle_ico));
+
+         itemList.add(
+                 new ListItem(
+                         1,
+                         "LPG 123",
+                         R.drawable.taxicle_ico));
+
+        itemList.add(
+                new ListItem(
+                        1,
+                        "ABC 123",
+                        R.drawable.taxicle_ico));
+
+        listItemAdapter = new ListItemAdapter(this, itemList);
+        recyclerView.setAdapter(listItemAdapter);
 
     }
     @Override
