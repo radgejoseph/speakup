@@ -1,12 +1,18 @@
 package com.speakup.dfs;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +40,10 @@ public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
     private static String URL_READ = "http://192.168.1.119/SpeakUP/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.119/SpeakUP/edit_detail.php";
 
-    private TextView name, username, password, mobile, email, address;
+    private EditText name, username, password, mobile, email, address;
+    private Menu action;
     String getId;
     SessionManager sessionManager;
 
@@ -43,6 +51,7 @@ public class ProfileFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
+        setHasOptionsMenu(true);
 
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
@@ -134,5 +143,125 @@ public class ProfileFragment extends Fragment{
     public void onResume() {
         super.onResume();
         getUserDetails();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.edit_profile_menu, menu);
+
+        action = menu;
+        action.findItem(R.id.save_profile).setVisible(false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.edit_profile:
+            name.setFocusableInTouchMode(true);
+            username.setFocusableInTouchMode(true);
+            password.setFocusableInTouchMode(true);
+            mobile.setFocusableInTouchMode(true);
+            email.setFocusableInTouchMode(true);
+            address.setFocusableInTouchMode(true);
+
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
+
+            action.findItem(R.id.edit_profile).setVisible(false);
+            action.findItem(R.id.save_profile).setVisible(true);
+
+                return true;
+
+            case R.id.save_profile:
+
+                SaveEditDetails();
+
+                action.findItem(R.id.edit_profile).setVisible(true);
+                action.findItem(R.id.save_profile).setVisible(false);
+
+                name.setFocusableInTouchMode(false);
+                username.setFocusableInTouchMode(false);
+                password.setFocusableInTouchMode(false);
+                mobile.setFocusableInTouchMode(false);
+                email.setFocusableInTouchMode(false);
+                address.setFocusableInTouchMode(false);
+                name.setFocusable(false);
+                username.setFocusable(false);
+                password.setFocusable(false);
+                mobile.setFocusable(false);
+                email.setFocusable(false);
+                address.setFocusable(false);
+
+                return true;
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void SaveEditDetails() {
+        final String name = this.name.getText().toString().trim();
+        final String username = this.username.getText().toString().trim();
+        final String password = this.password.getText().toString().trim();
+        final String mobile = this.mobile.getText().toString().trim();
+        final String email = this.email.getText().toString().trim();
+        final String address = this.address.getText().toString().trim();
+        final String id = getId;
+
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Saving...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+
+                            if (success.equals("1")) {
+                                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                                sessionManager.createSessionEdit(name, username, password, mobile, email, address, id);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            progressDialog.dismiss();
+                            Toast.makeText(getActivity(), "Error!" + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Error!" + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("name", name);
+                params.put("username", username);
+                params.put("password", password);
+                params.put("mobile", mobile);
+                params.put("email", email);
+                params.put("address", address);
+                params.put("id", id);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+
     }
 }

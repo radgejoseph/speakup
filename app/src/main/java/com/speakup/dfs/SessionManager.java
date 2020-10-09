@@ -15,7 +15,11 @@ public class SessionManager {
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     public static final String NAME = "NAME";
+    public static final String USERNAME = "USERNAME";
+    public static final String PASSWORD = "PASSWORD";
+    public static final String MOBILE = "MOBILE";
     public static final String EMAIL = "EMAIL";
+    public static final String ADDRESS = "ADDRESS";
     public static final String ID = "ID";
 
     public SessionManager(Context context) {
@@ -29,6 +33,20 @@ public class SessionManager {
         editor.putBoolean(LOGIN, true);
         editor.putString(NAME, name);
         editor.putString(EMAIL, email);
+        editor.putString(ID, id);
+        editor.apply();
+
+    }
+
+    public void createSessionEdit(String name, String username, String password, String mobile, String email, String address, String id){
+
+        editor.putBoolean(LOGIN, true);
+        editor.putString(NAME, name);
+        editor.putString(USERNAME, username);
+        editor.putString(PASSWORD, password);
+        editor.putString(MOBILE, mobile);
+        editor.putString(EMAIL, email);
+        editor.putString(ADDRESS, address);
         editor.putString(ID, id);
         editor.apply();
 

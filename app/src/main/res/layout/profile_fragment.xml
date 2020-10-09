@@ -17,52 +17,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/header_profile" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
-        android:contentDescription="@string/todo" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.874"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
-
-    <TextView
+    <EditText
         android:id="@+id/fullname_text"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="164dp"
         android:autofillHints=""
         android:ems="10"
         android:text="@string/full_name"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
+    <EditText
         android:id="@+id/username_text"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:autofillHints=""
         android:ems="10"
         android:text="@string/username"
@@ -72,11 +46,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullname_text" />
 
-    <TextView
+    <EditText
         android:id="@+id/password_text"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:autofillHints=""
         android:ems="10"
         android:text="@string/password"
@@ -91,7 +65,7 @@
         android:textColor="@color/colorAccent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:text="@string/personal_information"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -99,11 +73,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_text" />
 
-    <TextView
+    <EditText
         android:id="@+id/phone_text"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:autofillHints=""
         android:ems="10"
         android:text="@string/mobile_number"
@@ -113,11 +87,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <TextView
+    <EditText
         android:id="@+id/email_text"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:text="@string/email"
         android:importantForAutofill="no"
@@ -127,11 +101,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_text" />
 
-    <TextView
+    <EditText
         android:id="@+id/adress_text"
         android:layout_width="280dp"
         android:layout_height="120dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:gravity="start|top"
         android:text="@string/complete_address"

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private View decorView;
 
     private EditText username, password;
-    private Button l_button;
+    private Button l_button, tr_button;
     private ProgressBar progress;
     private static String URL_LOGIN = "http://192.168.1.119/SpeakUP/login.php";
 
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username_text);
         password = findViewById(R.id.password_text);
         l_button = findViewById(R.id.login_button);
+        tr_button = findViewById(R.id.to_register_button);
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -57,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button = findViewById(R.id.to_register_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        //Button button = findViewById(R.id.to_register_button);
+        tr_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openRegisterActivity();
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         progress.setVisibility(View.VISIBLE);
         l_button.setVisibility(View.GONE);
+        tr_button.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
@@ -136,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                             progress.setVisibility(View.GONE);
                             l_button.setVisibility(View.VISIBLE);
+                            tr_button.setVisibility(View.VISIBLE);
                             Toast.makeText(MainActivity.this, "Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -145,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         progress.setVisibility(View.GONE);
                         l_button.setVisibility(View.VISIBLE);
+                        tr_button.setVisibility(View.VISIBLE);
                         Toast.makeText(MainActivity.this, "Error! " + error.toString(), Toast.LENGTH_SHORT).show();
 
                     }
