@@ -1,14 +1,20 @@
 package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.List;
 
 public class RateMeActivity extends AppCompatActivity {
     private View decorView;
+    private TextView textPlate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,16 @@ public class RateMeActivity extends AppCompatActivity {
                     decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+
+        if (getIntent().hasExtra("selected_plate")) {
+            ListItem listItem = getIntent().getParcelableExtra("selected_plate");
+            String plate = listItem.getPlateL();
+
+            textPlate = findViewById(R.id.plate_number);
+            textPlate.setText(plate);
+        }
+
+
     }
 
 
@@ -87,4 +103,5 @@ public class RateMeActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
     }
+
 }

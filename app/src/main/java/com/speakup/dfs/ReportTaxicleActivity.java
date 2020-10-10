@@ -57,7 +57,7 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
 
         itemList = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.taxicle_recyclerview);
+        recyclerView = findViewById(R.id.recyclerview_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -138,7 +138,10 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
 
     @Override
     public void onItemClick(int position) {
-        itemList.get(position);
-        openRateMeActivity();
+        //itemList.get(position);
+        Intent intent = new Intent(ReportTaxicleActivity.this, RateMeActivity.class);
+        intent.putExtra("selected_plate", itemList.get(position));
+        startActivity(intent);
+        //openRateMeActivity();
     }
 }

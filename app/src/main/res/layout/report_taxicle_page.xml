@@ -67,9 +67,10 @@
           android:contentDescription="@string/todo" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taxicle_recyclerview"
-        android:layout_width="315dp"
+        android:id="@+id/recyclerview_list"
+        android:layout_width="match_parent"
         android:layout_height="385dp"
+        android:paddingLeft="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"

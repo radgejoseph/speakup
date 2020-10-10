@@ -9,36 +9,43 @@
     app:cardUseCompatPadding="true"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="#328BC97A"
     app:cardCornerRadius="5dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     tools:ignore="MissingConstraints">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="305dp"
+        android:layout_height="95dp"
+        android:background="@drawable/plate_box_layout"
         android:padding="5dp">
-
-        <ImageView
-            android:id="@+id/taxicle_icon"
-            app:srcCompat="@drawable/taxicle_ico"
-            android:layout_width="120dp"
-            android:layout_height="90dp"
-            android:padding="4dp" />
 
         <TextView
             android:id="@+id/plate_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="23dp"
-            android:layout_marginTop="25dp"
-            android:layout_toRightOf="@id/taxicle_icon"
-            android:paddingRight="35dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:text="ABC 123"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textonly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REGION 5"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </RelativeLayout>
 

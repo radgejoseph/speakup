@@ -43,11 +43,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-//    private static final String TAG = HomeActivity.class.getSimpleName();
-//    private static String URL_READ = "http://192.168.1.119/SpeakUP/read_detail.php";
-//
-//    private TextView name, email;
-//    String getId;
     SessionManager sessionManager;
 
     @Override
