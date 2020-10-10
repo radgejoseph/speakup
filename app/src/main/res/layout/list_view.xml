@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="315dp"
+    android:layout_height="100dp"
+    android:layout_margin="50dp"
+    app:cardUseCompatPadding="true"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="#328BC97A"
+    app:cardCornerRadius="5dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:ignore="MissingConstraints">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="315dp"
-        android:layout_height="100dp"
-        android:layout_margin="50dp"
-        app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="#328BC97A"
-        app:cardCornerRadius="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp">
+        <ImageView
+            android:id="@+id/taxicle_icon"
+            app:srcCompat="@drawable/taxicle_ico"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:padding="4dp" />
 
-            <ImageView
-                android:id="@+id/taxicle_icon"
+        <TextView
+            android:id="@+id/plate_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/taxicle_icon"
+            android:paddingRight="35dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="ABC 123"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:padding="4dp" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/plate_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_toRightOf="@id/taxicle_icon"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-
-                android:textSize="30dp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

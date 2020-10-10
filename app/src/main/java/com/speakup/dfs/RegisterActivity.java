@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, mobile, email, address;
     private ProgressBar progress;
-    private static String URL_REGIST = "http://192.168.1.119/SpeakUP/register.php";
+    private static String URL_REGIST = "http://192.168.1.146/SpeakUP/register.php";
     private Button reg_button;
 
     @Override
@@ -68,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         backBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openMainActivity();
+                onBackPressed();
             }
         });
 
@@ -95,36 +96,11 @@ public class RegisterActivity extends AppCompatActivity {
                     password.setError("Password is Required");
                     mobile.setError("Mobile Number is Required");
                     email.setError("Email Address is Required");
-                    //address.setError("Please insert your password");
                 }
             }
         });
     }
 
-//    private TextWatcher RegisterTextWatcher = new TextWatcher() {
-//        @Override
-//        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//        }
-//
-//        @Override
-//        public void onTextChanged(CharSequence s, int start, int before, int count) {
-//            String nameinput = name.getText().toString().trim();
-//            String usernameinput = username.getText().toString().trim();
-//            String passwordinput = password.getText().toString().trim();
-//            String mobileinput = mobile.getText().toString().trim();
-//            String emailinput = email.getText().toString().trim();
-//            //String addressinput = address.getText().toString().trim();
-//
-//            reg_button.setEnabled(!nameinput.isEmpty() && !usernameinput.isEmpty() && !passwordinput.isEmpty() &&
-//                    !mobileinput.isEmpty() && !emailinput.isEmpty());
-//        }
-//
-//        @Override
-//        public void afterTextChanged(Editable s) {
-//
-//        }
-//    };
 
     private void Regist() {
         progress.setVisibility(View.VISIBLE);
@@ -198,11 +174,22 @@ public class RegisterActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
     }
-    
-    public void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     public void openRegisterComplete() {
         Intent intent = new Intent(this, RegisterComplete.class);
         startActivity(intent);

@@ -18,11 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/taxicle_search" />
 
+    <ImageView
+        android:id="@+id/back_to"
+        android:layout_width="41dp"
+        android:layout_height="47dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/back_to_vehicles" />
+
     <SearchView
         android:id="@+id/search_bar"
         android:layout_width="312dp"
         android:layout_height="56dp"
-        android:contextClickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

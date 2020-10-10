@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,11 +24,11 @@ public class ReportJeepActivity extends AppCompatActivity {
                     decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
-        android.widget.ImageView backBut = findViewById(R.id.back_to_home);
+        android.widget.ImageView backBut = findViewById(R.id.back_to);
         backBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openHomeActivity();
+                onBackPressed();
             }
         });
 
@@ -47,9 +48,19 @@ public class ReportJeepActivity extends AppCompatActivity {
             decorView.setSystemUiVisibility(hideSystemBars());
         }
     }
-    public void openHomeActivity() {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
     public void openRateMeActivity() {
         Intent intent = new Intent(this, RateMeActivity.class);

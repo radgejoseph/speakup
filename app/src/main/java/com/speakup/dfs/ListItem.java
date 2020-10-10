@@ -4,12 +4,10 @@ public class ListItem {
 
     private int id;
     private String plate;
-    private int image;
 
-    public ListItem(int id, String plate, int image) {
+    public ListItem(int id, String plate) {
         this.id = id;
         this.plate = plate;
-        this.image = image;
     }
 
     public int getIdL() {
@@ -20,7 +18,4 @@ public class ListItem {
         return plate;
     }
 
-    public int getImageL() {
-        return image;
-    }
 }

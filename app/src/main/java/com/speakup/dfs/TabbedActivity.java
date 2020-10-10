@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
@@ -34,7 +35,7 @@ public class TabbedActivity extends AppCompatActivity {
         back_to.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openRateMeActivity();
+                onBackPressed();
             }
         });
 
@@ -81,9 +82,19 @@ public class TabbedActivity extends AppCompatActivity {
         }
     }
 
-    public void openRateMeActivity() {
-        Intent intent = new Intent(this, RateMeActivity.class);
-        startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private int hideSystemBars(){

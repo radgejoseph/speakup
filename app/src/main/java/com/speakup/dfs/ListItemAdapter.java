@@ -14,21 +14,23 @@ import java.util.List;
 
 public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListItemHoder> {
 
-    private Context context;
+    //private Context context;
     private List<ListItem> itemList;
+    private OnItemListener mOnItemListener;
 
-    public ListItemAdapter(Context context, List<ListItem> itemList) {
-        this.context = context;
+    public ListItemAdapter(List<ListItem> itemList, OnItemListener onItemListener) {
+        //this.context = context;
         this.itemList = itemList;
+        this.mOnItemListener = onItemListener;
     }
 
     @NonNull
     @Override
     public ListItemHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.list_view, null);
-        ListItemHoder listItemHoder = new ListItemHoder(view);
-        return new ListItemHoder(view);
+        //LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view, null);
+        ListItemHoder listItemHoder = new ListItemHoder(view, mOnItemListener);
+        return new ListItemHoder(view, mOnItemListener);
     }
 
     @Override
@@ -36,7 +38,6 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
         ListItem listItem = itemList.get(position);
 
         holder.textPlate.setText(listItem.getPlateL());
-        holder.imageIcon.setImageDrawable(context.getResources().getDrawable(listItem.getImageL()));
     }
 
     @Override
@@ -44,16 +45,29 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
         return itemList.size();
     }
 
-    class ListItemHoder extends RecyclerView.ViewHolder {
+    class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageIcon;
         TextView textPlate;
+        OnItemListener onItemListener;
 
-        public ListItemHoder(@NonNull View itemView) {
+        public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
             imageIcon = itemView.findViewById(R.id.taxicle_icon);
             textPlate = itemView.findViewById(R.id.plate_number);
+            this.onItemListener = onItemListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            onItemListener.onItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnItemListener{
+        void onItemClick(int position);
     }
 }

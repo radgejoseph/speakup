@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class RateMeActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class RateMeActivity extends AppCompatActivity {
         back_to.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openReportJeepActivity();
+                onBackPressed();
             }
         });
 
@@ -39,6 +40,9 @@ public class RateMeActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -47,15 +51,33 @@ public class RateMeActivity extends AppCompatActivity {
         }
     }
 
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+
+
+
     public void openTabbedActivity() {
         Intent intent = new Intent(this, TabbedActivity.class);
         startActivity(intent);
     }
 
-    public void openReportJeepActivity() {
-        Intent intent = new Intent(this, ReportJeepActivity.class);
-        startActivity(intent);
-    }
+
+
 
     private int hideSystemBars(){
         return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
