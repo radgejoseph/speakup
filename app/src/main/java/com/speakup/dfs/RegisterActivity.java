@@ -99,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 
@@ -194,4 +195,5 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterComplete.class);
         startActivity(intent);
     }
+
 }

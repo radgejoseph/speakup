@@ -40,6 +40,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:imeOptions="actionDone"
         android:paddingStart="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

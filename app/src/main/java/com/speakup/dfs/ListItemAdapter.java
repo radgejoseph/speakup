@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListItemHoder> {
@@ -68,5 +69,10 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
 
     public interface OnItemListener{
         void onItemClick(int position);
+    }
+
+    public void filterList(ArrayList<ListItem> filteredList) {
+        itemList = filteredList;
+        notifyDataSetChanged();
     }
 }

@@ -31,10 +31,15 @@
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/back_to_vehicles" />
 
-    <SearchView
+    <EditText
         android:id="@+id/search_bar"
         android:layout_width="312dp"
         android:layout_height="56dp"
+        android:hint="Search"
+        android:gravity="center"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:background="@drawable/search_box"
         android:layout_marginBottom="468dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,14 +1,22 @@
 package com.speakup.dfs;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,6 +46,26 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_jeep_page);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        EditText editTextSearch = findViewById(R.id.search_bar);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+
+        });
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -62,6 +90,18 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         loadList();
+    }
+
+    private void filter(String text) {
+        ArrayList<ListItem> filteredList = new ArrayList<>();
+
+        for (ListItem item : itemList) {
+            if (item.getPlateL().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        listItemAdapter.filterList(filteredList);
     }
 
     private void loadList() {
@@ -143,4 +183,5 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         startActivity(intent);
         //openRateMeActivity();
     }
+
 }
