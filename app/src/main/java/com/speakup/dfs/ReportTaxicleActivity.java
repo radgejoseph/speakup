@@ -174,7 +174,7 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
-        Intent intent = new Intent(ReportTaxicleActivity.this, RateMeActivity.class);
+        Intent intent = new Intent(ReportTaxicleActivity.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();

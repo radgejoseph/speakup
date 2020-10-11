@@ -173,7 +173,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
-        Intent intent = new Intent(ReportTricycleActivity.this, RateMeActivity.class);
+        Intent intent = new Intent(ReportTricycleActivity.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();

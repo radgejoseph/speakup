@@ -178,7 +178,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
-        Intent intent = new Intent(ReportJeepActivity.this, RateMeActivity.class);
+        Intent intent = new Intent(ReportJeepActivity.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();

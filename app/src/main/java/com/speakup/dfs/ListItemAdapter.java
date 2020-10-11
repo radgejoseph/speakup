@@ -47,14 +47,12 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
 
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView imageIcon;
         TextView textPlate;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
-            imageIcon = itemView.findViewById(R.id.taxicle_icon);
             textPlate = itemView.findViewById(R.id.plate_number);
             this.onItemListener = onItemListener;
 

@@ -173,7 +173,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
-        Intent intent = new Intent(ReportTaxiActivity.this, RateMeActivity.class);
+        Intent intent = new Intent(ReportTaxiActivity.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();
