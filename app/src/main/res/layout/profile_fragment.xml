@@ -53,7 +53,7 @@
         android:layout_marginTop="15dp"
         android:autofillHints=""
         android:ems="10"
-        android:text="@string/password"
+        android:text="**********"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

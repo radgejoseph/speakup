@@ -1,5 +1,8 @@
 package com.speakup.dfs;
 
+import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,12 +10,15 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
+
     private int numOftabs;
+//    private TextView textPlate;
 
     public PageAdapter(@NonNull FragmentManager fm, int numOftabs) {
         super(fm);
         this.numOftabs = numOftabs;
     }
+
 
     @NonNull
     @Override

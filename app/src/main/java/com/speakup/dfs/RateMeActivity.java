@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class RateMeActivity extends AppCompatActivity {
     private View decorView;
+
     private TextView textPlate;
 
     @Override
@@ -46,13 +48,9 @@ public class RateMeActivity extends AppCompatActivity {
             }
         });
 
-        if (getIntent().hasExtra("selected_plate")) {
-            ListItem listItem = getIntent().getParcelableExtra("selected_plate");
-            String plate = listItem.getPlateL();
-
-            textPlate = findViewById(R.id.plate_number);
-            textPlate.setText(plate);
-        }
+        String plate = getIntent().getStringExtra("selected_plate");
+        textPlate = findViewById(R.id.plate_number);
+        textPlate.setText(plate);
 
 
     }
@@ -88,10 +86,13 @@ public class RateMeActivity extends AppCompatActivity {
 
 
     public void openTabbedActivity() {
-        Intent intent = new Intent(this, TabbedActivity.class);
+        String plate = textPlate.getText().toString();
+        Intent intent = new Intent(RateMeActivity.this, TabbedActivity.class);
+        intent.putExtra("selected_plate", plate);
         startActivity(intent);
+//        Intent intent = new Intent(this, TabbedActivity.class);
+//        startActivity(intent);
     }
-
 
 
 

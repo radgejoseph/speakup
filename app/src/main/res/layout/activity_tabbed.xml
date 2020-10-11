@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".TabbedActivity">
 
+    <TextView
+        android:id="@+id/plate_hoder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="421dp"

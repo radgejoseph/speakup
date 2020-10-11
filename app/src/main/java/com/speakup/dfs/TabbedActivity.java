@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -16,6 +17,9 @@ public class TabbedActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     public PagerAdapter pagerAdapter;
+    String plate;
+
+    private TextView textPlate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +74,12 @@ public class TabbedActivity extends AppCompatActivity {
             }
         });
 
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        plate = getIntent().getStringExtra("selected_plate");
+        textPlate = findViewById(R.id.plate_hoder);
+        textPlate.setText(plate);
+
     }
 
     @Override
@@ -105,4 +113,9 @@ public class TabbedActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
     }
+
+    public String sendData() {
+        return plate;
+    }
+
 }

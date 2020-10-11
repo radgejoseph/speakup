@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment{
 
                                     String strName = object.getString("name").trim();
                                     String strUsername = object.getString("username").trim();
-                                    String strPassword = object.getString("password").trim();
+                                    //String strPassword = object.getString("password").trim();
                                     String strMobile = object.getString("mobile").trim();
                                     String strEmail = object.getString("email").trim();
                                     //String id = object.getString("id").trim();
@@ -103,7 +103,7 @@ public class ProfileFragment extends Fragment{
                                     //sessionManager.createSession(name, email, id);
                                     name.setText(strName);
                                     username.setText(strUsername);
-                                    password.setText(strPassword);
+                                    //password.setText(strPassword);
                                     mobile.setText(strMobile);
                                     email.setText(strEmail);
                                     address.setText(strAddress);

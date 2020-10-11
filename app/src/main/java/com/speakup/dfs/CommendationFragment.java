@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class CommendationFragment extends Fragment {
     TextView time_picker;
     DatePickerDialog.OnDateSetListener setListenerD;
     TimePickerDialog.OnTimeSetListener setListenerT;
+    private TextView textPlate;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -66,9 +68,12 @@ public class CommendationFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -82,6 +87,11 @@ public class CommendationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_commendation, container, false);
+
+        TabbedActivity tabbedActivity = (TabbedActivity) getActivity();
+        String getData = tabbedActivity.sendData();
+        textPlate = view.findViewById(R.id.plate_number);
+        textPlate.setText(getData);
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);

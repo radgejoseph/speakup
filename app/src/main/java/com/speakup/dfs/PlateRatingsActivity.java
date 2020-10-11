@@ -3,30 +3,41 @@ package com.speakup.dfs;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlateRatingsActivity extends AppCompatActivity {
     private View decorView;
     private TextView textPlate;
     private Button to_rateme_button;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plate_ratings_activity);
 
+
         to_rateme_button = findViewById(R.id.to_rateme_button);
 
-       to_rateme_button.setOnClickListener(new View.OnClickListener() {
+        to_rateme_button.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               openRateMeActivity();
+               String plate = textPlate.getText().toString();
+               Intent intent = new Intent(PlateRatingsActivity.this, RateMeActivity.class);
+               intent.putExtra("selected_plate", plate);
+               startActivity(intent);
+
            }
-       });
+        });
 
         android.widget.ImageView back_to = findViewById(R.id.back_to);
         back_to.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +64,8 @@ public class PlateRatingsActivity extends AppCompatActivity {
             textPlate.setText(plate);
         }
 
-
     }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -91,7 +102,7 @@ public class PlateRatingsActivity extends AppCompatActivity {
     }
 
     public void openRateMeActivity() {
-        Intent intent = new Intent(this, RateMeActivity.class);
+        Intent intent = new Intent(PlateRatingsActivity.this, RateMeActivity.class);
         startActivity(intent);
     }
 
