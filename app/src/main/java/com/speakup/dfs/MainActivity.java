@@ -31,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-    private static String URL_LOGIN = "http://192.168.1.146/SpeakUP/login.php";
+    private static String URL_LOGIN = "http://192.168.1.117/SpeakUP/login.php";
 
     SessionManager sessionManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

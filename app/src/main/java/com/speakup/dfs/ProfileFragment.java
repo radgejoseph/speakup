@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
@@ -39,8 +40,8 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private static String URL_READ = "http://192.168.1.146/SpeakUP/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.146/SpeakUP/edit_detail.php";
+    private static String URL_READ = "http://192.168.1.117/SpeakUP/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.117/SpeakUP/edit_detail.php";
 
     private EditText name, username, password, mobile, email, address;
     private Menu action;
@@ -65,7 +66,6 @@ public class ProfileFragment extends Fragment{
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);
-
 
         return  view;
     }

@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, mobile, email, address;
     private ProgressBar progress;
-    private static String URL_REGIST = "http://192.168.1.146/SpeakUP/register.php";
+    private static String URL_REGIST = "http://192.168.1.117/SpeakUP/register.php";
     private Button reg_button;
 
     @Override
@@ -48,13 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
         address = findViewById(R.id.adress_text);
         progress = findViewById(R.id.progress);
         reg_button = findViewById(R.id.register_button);
-
-//        name.addTextChangedListener(RegisterTextWatcher);
-//        username.addTextChangedListener(RegisterTextWatcher);
-//        password.addTextChangedListener(RegisterTextWatcher);
-//        mobile.addTextChangedListener(RegisterTextWatcher);
-//        email.addTextChangedListener(RegisterTextWatcher);
-        //address.addTextChangedListener(RegisterTextWatcher);
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -99,9 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
-
 
     private void Regist() {
         progress.setVisibility(View.VISIBLE);
