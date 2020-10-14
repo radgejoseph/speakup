@@ -1,13 +1,11 @@
 package com.speakup.dfs;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -20,15 +18,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import android.os.Environment;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,14 +34,11 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
-import static android.os.Environment.getExternalStoragePublicDirectory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,12 +49,13 @@ public class ComplaintFragment extends Fragment {
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
+    public static final int GALLERY_REQUEST_CODE = 105;
     TextView date_picker;
     TextView time_picker;
     DatePickerDialog.OnDateSetListener setListenerD;
     TimePickerDialog.OnTimeSetListener setListenerT;
     private TextView textPlate;
-    ImageView upload_image_view;
+    ImageView upload_image_view_camera, upload_image_view_gallery;
     String currentPhotoPath;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -185,13 +180,23 @@ public class ComplaintFragment extends Fragment {
         };
 /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-        upload_image_view = view.findViewById(R.id.upload_image_view);
+        upload_image_view_camera = view.findViewById(R.id.upload_image_view_camera);
+        upload_image_view_gallery = view.findViewById(R.id.upload_image_view_camera_gallery);
+
+        android.widget.ImageView capture_image = view.findViewById(R.id.capture_image);
+        capture_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askCameraPermission();
+            }
+        });
 
         android.widget.ImageView add_image_video = view.findViewById(R.id.add_image_video);
         add_image_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                askCameraPermission();
+               Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+               startActivityForResult(gallery, GALLERY_REQUEST_CODE);
             }
         });
 
@@ -242,7 +247,7 @@ public class ComplaintFragment extends Fragment {
         if (requestCode == CAMERA_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 File f = new File(currentPhotoPath);
-                upload_image_view.setImageURI(Uri.fromFile(f));
+                upload_image_view_camera.setImageURI(Uri.fromFile(f));
                 Log.d("tag", "Absolute Url of Image is " + Uri.fromFile(f));
 
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -252,6 +257,22 @@ public class ComplaintFragment extends Fragment {
 
             }
         }
+
+        if (requestCode == GALLERY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Uri contentUri = data.getData();
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                String imageFileName = "JPEG_" + timeStamp +"."+getFileExt(contentUri);
+                Log.d("tag", "onActivityResult: Gallery Image Uri:  " +  imageFileName);
+                upload_image_view_gallery.setImageURI(contentUri);
+            }
+        }
+    }
+
+    private String getFileExt(Uri contentUri) {
+        ContentResolver c = getActivity().getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(c.getType(contentUri));
     }
 
 

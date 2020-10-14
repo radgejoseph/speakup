@@ -10,7 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -155,7 +154,7 @@ public class CommendationFragment extends Fragment {
         };
 /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-        android.widget.ImageView add_image_video = view.findViewById(R.id.add_image_video);
+        android.widget.ImageView add_image_video = view.findViewById(R.id.capture_image);
         add_image_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

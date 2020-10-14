@@ -36,6 +36,19 @@
         android:contentDescription="@string/todo" />
 
     <ImageView
+        android:id="@+id/capture_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/capture_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.861" />
+
+    <ImageView
         android:id="@+id/add_image_video"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -43,10 +56,36 @@
         android:src="@drawable/add_image_video"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.861" />
+
+    <ImageView
+        android:id="@+id/upload_image_view_camera"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="540dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/capture_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/upload_image_view_camera_gallery"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="540dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="@+id/add_image_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/add_audio"
@@ -56,10 +95,10 @@
         android:src="@drawable/add_audio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.861" />
 
     <TextView
         android:id="@+id/date_picker"
@@ -74,7 +113,7 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <TextView
         android:id="@+id/time_picker"
@@ -89,7 +128,7 @@
         app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <Button
         android:id="@+id/register_button"
@@ -110,7 +149,7 @@
     <EditText
         android:id="@+id/commendation_text"
         android:layout_width="330dp"
-        android:layout_height="126dp"
+        android:layout_height="120dp"
         android:background="@drawable/text_box_layout"
         android:ems="10"
         android:gravity="center"
@@ -121,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+        app:layout_constraintVertical_bias="0.677" />
 
     <TextView
         android:id="@+id/plate_number"
@@ -129,13 +168,13 @@
         android:layout_height="40dp"
         android:background="@drawable/text_box_layout"
         android:gravity="center"
-        android:textStyle="bold"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintVertical_bias="0.428" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
