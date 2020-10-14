@@ -40,8 +40,8 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private static String URL_READ = "http://192.168.1.117/SpeakUP/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.117/SpeakUP/edit_detail.php";
+    private static String URL_READ = "http://192.168.1.100/SpeakUP/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.100/SpeakUP/edit_detail.php";
 
     private EditText name, username, password, mobile, email, address;
     private Menu action;
@@ -66,6 +66,7 @@ public class ProfileFragment extends Fragment{
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);
+
 
         return  view;
     }
@@ -175,23 +176,42 @@ public class ProfileFragment extends Fragment{
 
             case R.id.save_profile:
 
-                SaveEditDetails();
+                String name_r = name.getText().toString().trim();
+                String username_r = username.getText().toString().trim();
+                String password_r = password.getText().toString().trim();
+                String mobile_r = mobile.getText().toString().trim();
+                String email_r = email.getText().toString().trim();
+                String address_r = address.getText().toString().trim();
 
-                action.findItem(R.id.edit_profile).setVisible(true);
-                action.findItem(R.id.save_profile).setVisible(false);
+                if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
+                        && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
+                            SaveEditDetails();
 
-                name.setFocusableInTouchMode(false);
-                username.setFocusableInTouchMode(false);
-                password.setFocusableInTouchMode(false);
-                mobile.setFocusableInTouchMode(false);
-                email.setFocusableInTouchMode(false);
-                address.setFocusableInTouchMode(false);
-                name.setFocusable(false);
-                username.setFocusable(false);
-                password.setFocusable(false);
-                mobile.setFocusable(false);
-                email.setFocusable(false);
-                address.setFocusable(false);
+                            action.findItem(R.id.edit_profile).setVisible(true);
+                            action.findItem(R.id.save_profile).setVisible(false);
+
+                            name.setFocusableInTouchMode(false);
+                            username.setFocusableInTouchMode(false);
+                            password.setFocusableInTouchMode(false);
+                            mobile.setFocusableInTouchMode(false);
+                            email.setFocusableInTouchMode(false);
+                            address.setFocusableInTouchMode(false);
+                            name.setFocusable(false);
+                            username.setFocusable(false);
+                            password.setFocusable(false);
+                            mobile.setFocusable(false);
+                            email.setFocusable(false);
+                            address.setFocusable(false);
+
+                        }
+                        else {
+                            name.setError("Full Name is Required");
+                            username.setError("Username is Required");
+                            password.setError("Password is Required");
+                            mobile.setError("Mobile Number is Required");
+                            email.setError("Email Address is Required");
+                            address.setError("Address is Required");
+                        }
 
                 return true;
 

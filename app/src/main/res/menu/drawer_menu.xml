@@ -32,10 +32,6 @@
                 android:title="@string/blank_space"
                 android:enabled="false"/>
             <item
-                android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space"
-                android:enabled="false"/>
-            <item
                 android:id="@+id/logout_menu"
                 android:icon="@drawable/ic_logout"
                 android:title="@string/logout" />

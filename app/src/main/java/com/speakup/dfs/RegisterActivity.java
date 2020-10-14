@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, mobile, email, address;
     private ProgressBar progress;
-    private static String URL_REGIST = "http://192.168.1.117/SpeakUP/register.php";
+    private static String URL_REGIST = "http://192.168.1.100/SpeakUP/register.php";
     private Button reg_button;
 
     @Override

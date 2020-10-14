@@ -31,7 +31,7 @@ import java.util.List;
 public class ReportTaxicleActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
     private View decorView;
 
-    private static final String URL_TAXICLE_LIST = "http://192.168.1.117/SpeakUP/list_taxicle.php";
+    private static final String URL_TAXICLE_LIST = "http://192.168.1.100/SpeakUP/list_taxicle.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;

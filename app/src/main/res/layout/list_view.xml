@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="315dp"
+    android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_margin="50dp"
     app:cardUseCompatPadding="true"
     android:clickable="true"
     android:focusable="true"
@@ -15,19 +14,21 @@
     tools:ignore="MissingConstraints">
 
     <RelativeLayout
-        android:layout_width="305dp"
+        android:layout_width="match_parent"
         android:layout_height="95dp"
         android:background="@drawable/plate_box_layout"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/plate_number"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ABC 123"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textSize="50sp"
             android:textStyle="bold"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,18 +36,19 @@
 
         <TextView
             android:id="@+id/textonly"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="REGION 5"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textSize="15sp"
             android:textStyle="bold"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+</RelativeLayout>
 
-    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

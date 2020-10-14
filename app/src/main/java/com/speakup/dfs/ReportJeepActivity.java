@@ -35,7 +35,7 @@ import java.util.List;
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
     private View decorView;
 
-    private static final String URL_JEEPNEY_LIST = "http://192.168.1.117/SpeakUP/list_jeepney.php";
+    private static final String URL_JEEPNEY_LIST = "http://192.168.1.100/SpeakUP/list_jeepney.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;

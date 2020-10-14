@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-    private static String URL_LOGIN = "http://192.168.1.117/SpeakUP/login.php";
+    private static String URL_LOGIN = "http://192.168.1.100/SpeakUP/login.php";
 
     SessionManager sessionManager;
 
@@ -191,5 +191,6 @@ public class MainActivity extends AppCompatActivity {
     public void openHomeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 }
