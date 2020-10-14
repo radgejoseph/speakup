@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-    private static String URL_LOGIN = "http://192.168.1.100/SpeakUP/login.php";
+    private static String URL_LOGIN = "http://half-a-dozen-school.000webhostapp.com/login.php";
 
     SessionManager sessionManager;
 

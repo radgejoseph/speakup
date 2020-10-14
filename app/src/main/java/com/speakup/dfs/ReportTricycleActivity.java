@@ -30,7 +30,7 @@ import java.util.List;
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
     private View decorView;
 
-    private static final String URL_TRICYCLE_LIST = "http://192.168.1.100/SpeakUP/list_tricycle.php";
+    private static final String URL_TRICYCLE_LIST = "http://half-a-dozen-school.000webhostapp.com/list_tricycle.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;
