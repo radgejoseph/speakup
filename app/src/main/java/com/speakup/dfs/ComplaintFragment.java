@@ -113,11 +113,6 @@ public class ComplaintFragment extends Fragment {
         textPlate = view.findViewById(R.id.plate_number);
         textPlate.setText(getData);
 
-        if (Build.VERSION.SDK_INT >= 23) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
-        }
-
-
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
         Calendar calendarD = Calendar.getInstance();
