@@ -51,7 +51,7 @@
                 android:background="@drawable/text_box_layout"
                 android:gravity="center"
                 android:text="Plate Number"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
                 android:id="@+id/imageView8"
                 android:layout_width="206dp"
                 android:layout_height="28dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="20dp"
                 android:contentDescription="@string/todo"
                 app:srcCompat="@drawable/how_was_your_trip"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
                 android:id="@+id/comment_box"
                 android:layout_width="300dp"
                 android:layout_height="110dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
@@ -104,32 +104,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/ratingBar"
                 tools:ignore="MissingConstraints" />
 
-            <Button
-                android:id="@+id/register_button"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/custom_button_blue"
-                android:text="@string/SUBMIT"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/comment_box"
-                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="235dp"
                 android:layout_height="38dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/complaints_or_commendation"
-                app:layout_constraintTop_toBottomOf="@+id/register_button"
+                app:layout_constraintTop_toBottomOf="@+id/comment_box"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
@@ -139,11 +125,27 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="20dp"
                 app:srcCompat="@drawable/advance_option"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_button_blue"
+                android:text="@string/SUBMIT"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/advance_option"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,12 +43,17 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabTextAppearance="@style/CustomTabText"
             android:background="@color/layout_subheader"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viewpager"
-            app:tabTextColor="#3DB24B"
-            tools:ignore="MissingConstraints">
+            app:tabTextColor="#AFE3C5"
+            android:contextClickable="true"
+            app:tabSelectedTextColor="@color/bluetext"
+            app:tabRippleColor="@color/bluetext"
+            tools:ignore="MissingConstraints"
+            tools:targetApi="m">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_complaint"
