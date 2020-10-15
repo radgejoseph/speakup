@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.password_text);
         mobile = findViewById(R.id.phone_text);
         email = findViewById(R.id.email_text);
-        address = findViewById(R.id.adress_text);
+        address = findViewById(R.id.address_text);
         progress = findViewById(R.id.progress);
         reg_button = findViewById(R.id.register_button);
 

@@ -234,7 +234,7 @@ public class ComplaintFragment extends Fragment {
                 dispatchTakePictureIntent();
             }
             else {
-                Toast.makeText(getActivity(),"Camera Permission is Required to Use Camera.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Camera and Storage Permission are Required to use the Camera.", Toast.LENGTH_SHORT).show();
             }
         }
     }

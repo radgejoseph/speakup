@@ -1,12 +1,9 @@
 package com.speakup.dfs;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,12 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
@@ -63,7 +58,7 @@ public class ProfileFragment extends Fragment{
         password = view.findViewById(R.id.password_text);
         mobile = view.findViewById(R.id.phone_text);
         email = view.findViewById(R.id.email_text);
-        address = view.findViewById(R.id.adress_text);
+        address = view.findViewById(R.id.address_text);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);

@@ -27,37 +27,39 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="30dp"
             android:orientation="vertical">
 
             <View
                 android:id="@+id/header_void"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="171dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="172dp"
+                android:layout_marginTop="15dp"
                 android:text="@string/full_name"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/header_void" />
+                app:layout_constraintTop_toBottomOf="@+id/header_void"
+                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/fullname_text"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="66dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
@@ -65,30 +67,30 @@
                 android:paddingEnd="15dp"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textname" />
+                app:layout_constraintTop_toBottomOf="@+id/textname"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textusername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="171dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="171dp"
                 android:text="@string/username"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fullname_text" />
+                app:layout_constraintTop_toBottomOf="@+id/fullname_text"
+                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/username_text"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="66dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
@@ -96,31 +98,30 @@
                 android:paddingEnd="15dp"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textusername" />
+                app:layout_constraintTop_toBottomOf="@+id/textusername"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textpassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="173dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="172dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/password"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textusername" />
+                app:layout_constraintTop_toBottomOf="@+id/username_text"
+                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/password_text"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="66dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
@@ -130,45 +131,45 @@
                 android:paddingEnd="15dp"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textpassword" />
+                app:layout_constraintTop_toBottomOf="@+id/textpassword"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="110dp"
                 android:text="@string/personal_information"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password_text" />
+                app:layout_constraintTop_toBottomOf="@+id/password_text"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textmobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="183dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="182dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/mobile"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/phone_text"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="66dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
@@ -177,30 +178,30 @@
                 android:paddingEnd="15dp"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textmobile" />
+                app:layout_constraintTop_toBottomOf="@+id/textmobile"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textemail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="187dp"
-                android:layout_marginTop="76dp"
-                android:layout_marginEnd="187dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/email"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textmobile" />
+                app:layout_constraintTop_toBottomOf="@+id/phone_text"
+                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/email_text"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="66dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
@@ -210,42 +211,40 @@
                 android:paddingEnd="15dp"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textemail" />
+                app:layout_constraintTop_toBottomOf="@+id/textemail"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textaddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="142dp"
-                android:layout_marginTop="68dp"
-                android:layout_marginEnd="143dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/complete_address"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textemail" />
+                app:layout_constraintTop_toBottomOf="@+id/email_text"
+                tools:ignore="MissingConstraints" />
 
             <EditText
-                android:id="@+id/adress_text"
+                android:id="@+id/address_text"
                 android:layout_width="350dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="31dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
                 android:importantForAutofill="no"
-                android:paddingVertical="20dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textaddress" />
+                app:layout_constraintTop_toBottomOf="@+id/textaddress"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

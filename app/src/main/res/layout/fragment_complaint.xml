@@ -116,16 +116,16 @@
                 android:id="@+id/complaint_text"
                 android:layout_width="330dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="80dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/your_complaint"
                 android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/date_picker"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/time_picker"
-                app:layout_constraintTop_toBottomOf="@+id/time_picker"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plate_number"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
