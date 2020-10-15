@@ -1,7 +1,7 @@
 package com.speakup.dfs;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,12 +33,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
-    private View decorView;
 
     private static final String URL_JEEPNEY_LIST = "http://half-a-dozen-school.000webhostapp.com/list_jeepney.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;
+    Toolbar toolbar;
 
     List<ListItem> itemList;
 
@@ -47,6 +47,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_jeep_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        setTitle("JEEPNEY");
 
         EditText editTextSearch = findViewById(R.id.search_bar);
         editTextSearch.addTextChangedListener(new TextWatcher() {
@@ -67,21 +68,11 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
         });
 
-        decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if (visibility ==0)
-                    decorView.setSystemUiVisibility(hideSystemBars());
-            }
-        });
-        android.widget.ImageView backBut = findViewById(R.id.back_to);
-        backBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         itemList = new ArrayList<>();
 
@@ -141,40 +132,6 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            decorView.setSystemUiVisibility(hideSystemBars());
-        }
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-
-
-    private int hideSystemBars(){
-        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-    }
-
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
@@ -182,6 +139,12 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

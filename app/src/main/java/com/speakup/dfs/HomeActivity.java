@@ -13,6 +13,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -36,7 +37,6 @@ import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private View decorView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
@@ -51,18 +51,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.home_page);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("VEHICLES");
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
 
-        decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if (visibility ==0)
-                    decorView.setSystemUiVisibility(hideSystemBars());
-            }
-        });
 
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
@@ -81,21 +74,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            decorView.setSystemUiVisibility(hideSystemBars());
-        }
-    }
-    private int hideSystemBars(){
-        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -105,24 +83,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, new VehicleFragment());
             fragmentTransaction.commit();
+            setTitle("VEHICLES");
         }
         if (item.getItemId() == R.id.profile_menu) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, new ProfileFragment());
             fragmentTransaction.commit();
+            setTitle("PROFILE");
         }
         if (item.getItemId() == R.id.notifications_menu) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, new NotificationFragment());
             fragmentTransaction.commit();
+            setTitle("NOTIFICATIONS");
         }
         if (item.getItemId() == R.id.ratings_menu) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, new RatingsFragment());
             fragmentTransaction.commit();
+            setTitle("MY RATINGS");
         }
         else if (item.getItemId() == R.id.logout_menu) {
             sessionManager.logout();

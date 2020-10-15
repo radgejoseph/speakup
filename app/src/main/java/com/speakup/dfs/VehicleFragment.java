@@ -62,12 +62,11 @@ public class VehicleFragment extends Fragment {
             view.findViewById(id).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), ReportTaxicleActivity.class);
+                    Intent intent = new Intent(getActivity(), ReportTricycleActivity.class);
                     startActivity(intent);
                 }
             });
         }
-
 
         Group taxiField = view.findViewById(R.id.group_taxi);
         int[] taxiFieldIds = taxiField.getReferencedIds();
@@ -75,41 +74,11 @@ public class VehicleFragment extends Fragment {
             view.findViewById(id).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), ReportTaxicleActivity.class);
+                    Intent intent = new Intent(getActivity(), ReportTaxiActivity.class);
                     startActivity(intent);
                 }
             });
         }
-
-
-//        jeepImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), ReportJeepActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        taxicleImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), ReportTaxicleActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        tricycleImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), ReportTricycleActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        taxiImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), ReportTaxiActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         return view;
     }

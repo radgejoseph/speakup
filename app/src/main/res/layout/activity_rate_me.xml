@@ -1,134 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RateMeActivity">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="415dp"
-        android:layout_height="324dp"
-        android:layout_marginBottom="480dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/rateme_header"
-        android:contentDescription="@string/todo" />
+    <include layout="@layout/drawer_toolbar"/>
 
-    <TextView
-        android:id="@+id/plate_number"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:background="@drawable/text_box_layout"
-        android:gravity="center"
-        android:text="Plate Number"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="235dp"
-        android:layout_height="38dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toTopOf="@+id/advance_option"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_button"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/complaints_or_commendation" />
-
-    <ImageView
-        android:id="@+id/back_to"
-        android:layout_width="41dp"
-        android:layout_height="47dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/back_to_vehicles" />
-
-    <ImageView
-        android:id="@+id/advance_option"
-        android:layout_width="60dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/advance_option"
-        android:contentDescription="@string/todo" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numStars="5"
-        android:rating="0"
-        android:stepSize="1.0"
-        android:progressTint="@color/buttonGreen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+        android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/comment_box"
-        android:layout_width="300dp"
-        android:layout_height="110dp"
-        android:background="@drawable/text_box_layout"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/your_review"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_button_blue"
-        android:text="@string/SUBMIT"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778"
-        tools:ignore="MissingConstraints" />
+            <View
+                android:id="@+id/view_subheader"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/layout_subheader"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="206dp"
-        android:layout_height="28dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386"
-        app:srcCompat="@drawable/how_was_your_trip" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RATE ME"
+                android:textColor="#4CAF50"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/view_subheader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view_subheader" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/plate_number"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:background="@drawable/text_box_layout"
+                android:gravity="center"
+                android:text="Plate Number"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_subheader"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="206dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="25dp"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/how_was_your_trip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plate_number"
+                tools:ignore="MissingConstraints" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="1.0"
+                android:progressTint="@color/buttonGreen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/comment_box"
+                android:layout_width="300dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/text_box_layout"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/your_review"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/custom_button_blue"
+                android:text="@string/SUBMIT"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/comment_box"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="235dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="30dp"
+                android:contentDescription="@string/todo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/complaints_or_commendation"
+                app:layout_constraintTop_toBottomOf="@+id/register_button"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/advance_option"
+                android:layout_width="60dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/advance_option"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

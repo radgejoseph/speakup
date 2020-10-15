@@ -1,5 +1,6 @@
 package com.speakup.dfs;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -284,4 +285,5 @@ public class ProfileFragment extends Fragment{
         requestQueue.add(stringRequest);
 
     }
+
 }

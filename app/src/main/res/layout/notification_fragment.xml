@@ -7,11 +7,13 @@
     tools:ignore="MissingClass"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView4"
+    <View
+        android:id="@+id/oid"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/header_notifications" />
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

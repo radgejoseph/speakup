@@ -7,11 +7,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView4"
+    <View
+        android:id="@+id/void_header"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/header_vehicle" />
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
 
     <androidx.core.widget.NestedScrollView
@@ -141,8 +143,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="JEEPNEY"
-                android:textColor="@color/buttonBlue"
-                android:textSize="20sp"
+                android:textColor="@color/bluetext"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/jeep_field"
                 app:layout_constraintEnd_toEndOf="@+id/jeep_field"
@@ -156,8 +158,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TAXICLE"
-                android:textColor="@color/buttonBlue"
-                android:textSize="20sp"
+                android:textColor="@color/bluetext"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/taxicle_field"
                 app:layout_constraintEnd_toEndOf="@+id/taxicle_field"
@@ -171,8 +173,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TRICYCLE"
-                android:textColor="@color/buttonBlue"
-                android:textSize="20sp"
+                android:textColor="@color/bluetext"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tricycle_field"
                 app:layout_constraintEnd_toEndOf="@+id/tricycle_field"
@@ -186,8 +188,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TAXI"
-                android:textColor="@color/buttonBlue"
-                android:textSize="20sp"
+                android:textColor="@color/bluetext"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/taxi_field"
                 app:layout_constraintEnd_toEndOf="@+id/taxi_field"

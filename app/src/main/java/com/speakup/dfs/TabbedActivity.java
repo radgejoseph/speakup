@@ -1,6 +1,7 @@
 package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -13,11 +14,11 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 
 public class TabbedActivity extends AppCompatActivity {
-    private View decorView;
 
     private ViewPager viewPager;
     public PagerAdapter pagerAdapter;
     String plate;
+    Toolbar toolbar;
 
     private TextView textPlate;
 
@@ -25,23 +26,13 @@ public class TabbedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
+        setTitle("REPORT");
 
-        decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if (visibility ==0)
-                    decorView.setSystemUiVisibility(hideSystemBars());
-            }
-        });
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        android.widget.ImageView back_to = findViewById(R.id.back_to);
-        back_to.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         findViewById(R.id.tab_complaint);
@@ -83,35 +74,9 @@ public class TabbedActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            decorView.setSystemUiVisibility(hideSystemBars());
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    private int hideSystemBars(){
-        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public String sendData() {
