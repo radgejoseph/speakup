@@ -47,9 +47,9 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ComplaintFragment extends Fragment {
 
+
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
-    public static final int STORAGE_PERM_CODE = 104;
     public static final int GALLERY_REQUEST_CODE = 105;
     TextView date_picker;
     TextView time_picker;

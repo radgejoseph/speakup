@@ -8,13 +8,6 @@
     android:orientation="vertical"
     tools:context=".ComplaintFragment">
 
-    <View
-        android:id="@+id/void_header"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:visibility="invisible"
-        app:layout_constraintHorizontal_bias="0.0"
-        tools:ignore="MissingConstraints" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

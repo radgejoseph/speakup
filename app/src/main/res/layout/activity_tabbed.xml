@@ -22,10 +22,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <View
             android:id="@+id/header_void"
             android:layout_width="wrap_content"
@@ -48,12 +44,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viewpager"
-            app:tabTextColor="#AFE3C5"
-            android:contextClickable="true"
-            app:tabSelectedTextColor="@color/bluetext"
-            app:tabRippleColor="@color/bluetext"
-            tools:ignore="MissingConstraints"
-            tools:targetApi="m">
+            app:tabTextColor="@color/graycolor"
+            android:duplicateParentState="true"
+            app:tabRippleColor="@color/buttonGreen"
+            app:tabSelectedTextColor="@color/buttonBlue">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tab_complaint"
@@ -74,9 +68,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
 
