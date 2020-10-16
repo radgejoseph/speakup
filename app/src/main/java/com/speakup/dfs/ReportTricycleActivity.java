@@ -43,7 +43,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_tricycle_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        setTitle("TRICYCLE");
 
         EditText editTextSearch = findViewById(R.id.search_bar);
         editTextSearch.addTextChangedListener(new TextWatcher() {
@@ -66,6 +65,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

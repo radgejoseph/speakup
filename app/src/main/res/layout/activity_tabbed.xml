@@ -12,13 +12,17 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_gravity="top"
         android:background="@color/blueGreen"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextAppearance="@style/ToolbarTitleTheme">
+        android:layout_gravity="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOUR REPORT"
+            android:layout_gravity="center"
+            android:textAppearance="@style/ToolbarTitleTheme"/>
+
 
     </androidx.appcompat.widget.Toolbar>
 

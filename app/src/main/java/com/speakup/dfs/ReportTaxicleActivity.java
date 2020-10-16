@@ -44,7 +44,6 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_taxicle_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        setTitle("TAXICLE");
 
         EditText editTextSearch = findViewById(R.id.search_bar);
         editTextSearch.addTextChangedListener(new TextWatcher() {
@@ -66,6 +65,7 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

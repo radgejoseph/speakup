@@ -47,7 +47,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_jeep_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        setTitle("JEEPNEY");
+
 
         EditText editTextSearch = findViewById(R.id.search_bar);
         editTextSearch.addTextChangedListener(new TextWatcher() {
@@ -70,6 +70,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -7,7 +7,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-  <include layout="@layout/drawer_toolbar"/>
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:background="@color/blueGreen"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark"
+      android:layout_gravity="top">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JEEPNEY"
+        android:layout_gravity="center"
+        android:textAppearance="@style/ToolbarTitleTheme"/>
+
+
+  </androidx.appcompat.widget.Toolbar>
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
