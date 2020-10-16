@@ -14,7 +14,7 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="170dp"
             android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,9 +25,10 @@
 
         <ImageView
             android:id="@+id/speakup_logo"
-            android:layout_width="393dp"
-            android:layout_height="218dp"
+            android:layout_width="262dp"
+            android:layout_height="146dp"
             android:contentDescription="@string/todo"
+            android:paddingTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view"
@@ -48,7 +49,8 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/password_text"
@@ -65,7 +67,8 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username_text"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/login_button"

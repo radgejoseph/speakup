@@ -8,8 +8,12 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="428dp"
-        android:layout_height="188dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:layout_marginEnd="4dp"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
