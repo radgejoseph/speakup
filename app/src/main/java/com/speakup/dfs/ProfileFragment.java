@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,7 +40,7 @@ public class ProfileFragment extends Fragment{
     private static String URL_READ = "http://half-a-dozen-school.000webhostapp.com/read_detail.php";
     private static String URL_EDIT = "http://half-a-dozen-school.000webhostapp.com/edit_detail.php";
 
-    private EditText name, username, password, mobile, email, address;
+    private TextView name, username, password, mobile, email, address;
     private Menu action;
     String getId;
     SessionManager sessionManager;
@@ -59,6 +60,19 @@ public class ProfileFragment extends Fragment{
         mobile = view.findViewById(R.id.phone_text);
         email = view.findViewById(R.id.email_text);
         address = view.findViewById(R.id.address_text);
+
+        name.setFocusableInTouchMode(false);
+        username.setFocusableInTouchMode(false);
+        password.setFocusableInTouchMode(false);
+        mobile.setFocusableInTouchMode(false);
+        email.setFocusableInTouchMode(false);
+        address.setFocusableInTouchMode(false);
+        name.setFocusable(false);
+        username.setFocusable(false);
+        password.setFocusable(false);
+        mobile.setFocusable(false);
+        email.setFocusable(false);
+        address.setFocusable(false);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);
@@ -181,6 +195,7 @@ public class ProfileFragment extends Fragment{
 
                 if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
                         && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
+
                             SaveEditDetails();
 
                             action.findItem(R.id.edit_profile).setVisible(true);
