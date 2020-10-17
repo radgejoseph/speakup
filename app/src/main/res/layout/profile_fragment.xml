@@ -169,6 +169,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/text_box_layout"
                 android:ems="10"
+                android:maxLength="10"
                 android:gravity="center"
                 android:inputType="phone"
                 android:paddingStart="15dp"

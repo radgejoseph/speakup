@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,8 +26,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
+
     private View decorView;
 
     private EditText name, username, password, mobile, email, address;
@@ -76,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String mobile_r = mobile.getText().toString().trim();
                 String email_r = email.getText().toString().trim();
                 //String address_r = address.getText().toString().trim();
+
 
                 if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
                         && !mobile_r.isEmpty() && !email_r.isEmpty()/* && !address_r.isEmpty()*/) {
