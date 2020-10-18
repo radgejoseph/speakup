@@ -34,12 +34,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="154dp"
-                android:layout_height="25dp"
+            <TextView
+                android:id="@+id/textView9"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/basic_option_text"
+                android:text="Basic Option"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +60,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
                 tools:ignore="MissingConstraints" />
 
             <TextView

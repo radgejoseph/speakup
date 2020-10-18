@@ -63,8 +63,10 @@
             android:id="@+id/to_rateme_button"
             android:layout_width="wrap_content"
             android:layout_height="40sp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:background="@drawable/custom_button_blue"
-            android:text="@string/rate_me"
+            android:text="PROCEED"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -73,12 +75,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view_subheader" />
 
-        <ImageView
-            android:id="@+id/imageView8"
+        <TextView
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@drawable/other_reviews"
+            android:text="Other Reviews"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/buttonBlue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
