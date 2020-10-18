@@ -48,4 +48,5 @@ public class ListItem implements Parcelable {
         dest.writeInt(id);
         dest.writeString(plate);
     }
+
 }

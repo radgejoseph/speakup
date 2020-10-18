@@ -2,24 +2,20 @@ package com.speakup.dfs;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
-
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
-
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -33,7 +29,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
