@@ -76,13 +76,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/view_subheader"
                 tools:ignore="MissingConstraints" />
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="206dp"
-                android:layout_height="28dp"
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:contentDescription="@string/todo"
-                app:srcCompat="@drawable/how_was_your_trip"
+                android:text="How was your trip?"
+                android:textColor="@color/buttonBlue"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,11 +103,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/ratecount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:textColor="#B0B1B1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
                 tools:ignore="MissingConstraints" />
 
             <EditText
-                android:id="@+id/comment_box"
+                android:id="@+id/review_box"
                 android:layout_width="300dp"
                 android:layout_height="110dp"
                 android:layout_marginTop="20dp"
@@ -117,21 +132,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                app:layout_constraintTop_toBottomOf="@+id/ratecount"
                 tools:ignore="MissingConstraints" />
 
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="235dp"
-                android:layout_height="38dp"
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:contentDescription="@string/todo"
+                android:text="Complaints/Commendations?"
+                android:textColor="@color/buttonBlue"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/complaints_or_commendation"
-                app:layout_constraintTop_toBottomOf="@+id/comment_box"
+                app:layout_constraintTop_toBottomOf="@+id/review_box"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
@@ -144,11 +160,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
                 tools:ignore="MissingConstraints" />
 
             <Button
-                android:id="@+id/register_button"
+                android:id="@+id/submit_button"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
