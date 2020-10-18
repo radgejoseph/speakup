@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private View decorView;
+    //private View decorView;
 
     private EditText username, password;
     private Button l_button, tr_button;
@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
         l_button = findViewById(R.id.login_button);
         tr_button = findViewById(R.id.to_register_button);
 
-        decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if (visibility ==0)
-                    decorView.setSystemUiVisibility(hideSystemBars());
-            }
-        });
+//        decorView = getWindow().getDecorView();
+//        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+//            @Override
+//            public void onSystemUiVisibilityChange(int visibility) {
+//                if (visibility ==0)
+//                    decorView.setSystemUiVisibility(hideSystemBars());
+//            }
+//        });
 
         //Button button = findViewById(R.id.to_register_button);
         tr_button.setOnClickListener(new View.OnClickListener() {
@@ -169,21 +169,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            decorView.setSystemUiVisibility(hideSystemBars());
-        }
-    }
-    private int hideSystemBars(){
-        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-    }
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        if (hasFocus) {
+//            decorView.setSystemUiVisibility(hideSystemBars());
+//        }
+//    }
+//    private int hideSystemBars(){
+//        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+//    }
 
     public void openRegisterActivity() {
         Intent intent = new Intent(this, RegisterActivity.class);

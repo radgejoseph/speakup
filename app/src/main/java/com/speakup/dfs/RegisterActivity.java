@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private View decorView;
+    //private View decorView;
 
     private EditText name, username, password, mobile, email, address;
     private ProgressBar progress;
@@ -52,14 +52,14 @@ public class RegisterActivity extends AppCompatActivity {
         progress = findViewById(R.id.progress);
         reg_button = findViewById(R.id.register_button);
 
-        decorView = getWindow().getDecorView();
-        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int visibility) {
-                if (visibility ==0)
-                    decorView.setSystemUiVisibility(hideSystemBars());
-            }
-        });
+//        decorView = getWindow().getDecorView();
+//        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+//            @Override
+//            public void onSystemUiVisibilityChange(int visibility) {
+//                if (visibility ==0)
+//                    decorView.setSystemUiVisibility(hideSystemBars());
+//            }
+//        });
         
         android.widget.ImageView backBut = findViewById(R.id.imagebackButton);
         backBut.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +85,6 @@ public class RegisterActivity extends AppCompatActivity {
                         && !mobile_r.isEmpty() && !email_r.isEmpty()/* && !address_r.isEmpty()*/) {
 
                     Regist();
-                    openRegisterComplete();
                 }
                 else {
                     name.setError("Full Name is Required");
@@ -118,6 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
                             String success = jsonObject.getString("success");
 
                             if (success.equals("1")) {
+                                openRegisterComplete();
                                 Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
                             }
 
@@ -155,21 +155,21 @@ public class RegisterActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            decorView.setSystemUiVisibility(hideSystemBars());
-        }
-    }
-    private int hideSystemBars(){
-        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-    }
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        if (hasFocus) {
+//            decorView.setSystemUiVisibility(hideSystemBars());
+//        }
+//    }
+//    private int hideSystemBars(){
+//        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
