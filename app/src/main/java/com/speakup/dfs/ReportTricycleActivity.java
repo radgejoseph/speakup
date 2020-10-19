@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.android.volley.Request;
@@ -29,6 +33,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;
     Toolbar toolbar;
+    Button button_colorum;
 
     List<ListItem> itemList;
 
@@ -64,9 +69,19 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        button_colorum = findViewById(R.id.button_colorum);
+        button_colorum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTricycleActivity.this, ColorumFormActivity.class);
+                startActivity(intent);
+            }
+        });
+
         itemList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerview_list);
+        recyclerView.bringToFront();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -86,10 +101,15 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     }
 
     private void loadList() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading list...");
+        progressDialog.show();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TRICYCLE_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
@@ -108,6 +128,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            progressDialog.dismiss();
 
                         }
 
@@ -115,6 +136,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
                 Toast.makeText(ReportTricycleActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment{
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-                        Log.i(TAG, response.toString());
+                        //Log.i(TAG, response.toString());
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);

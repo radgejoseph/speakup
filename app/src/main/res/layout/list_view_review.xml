@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="5dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:ignore="MissingConstraints">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/review_box_layout"
+        android:padding="5dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/username_text"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/ratingBar"
+            android:gravity="center_horizontal"
+            android:text="radgejoseph"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/ratecount"
+            android:numStars="5"
+            android:progressTint="@color/buttonGreen"
+            android:rating="4"
+            android:stepSize="1.0"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/ratecount"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username_text"
+            android:gravity="center_horizontal"
+            android:text="Very Good 4/5"
+            android:textColor="#B0B1B1"
+            android:textSize="15sp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratecount"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="Mabuotun man na maray na driver ning si kuya na nasakayan ko, pero 4 star lang ta dai maayos si mga plastick na harang"
+            android:textSize="15sp"
+            tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

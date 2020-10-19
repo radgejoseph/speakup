@@ -1,6 +1,8 @@
 package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     //private View decorView;
 
     private EditText name, username, password, mobile, email, address;
-    private ProgressBar progress;
+    //private ProgressBar progress;
     private static String URL_REGIST = "http://half-a-dozen-school.000webhostapp.com/register.php";
     private Button reg_button;
 
@@ -43,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         mobile = findViewById(R.id.phone_text);
         email = findViewById(R.id.email_text);
         address = findViewById(R.id.address_text);
-        progress = findViewById(R.id.progress);
+        //progress = findViewById(R.id.progress);
         reg_button = findViewById(R.id.register_button);
 
 //        decorView = getWindow().getDecorView();
@@ -92,7 +94,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void Regist() {
-        progress.setVisibility(View.VISIBLE);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Submitting...");
+        progressDialog.show();
+        //progress.setVisibility(View.VISIBLE);
         reg_button.setVisibility(View.GONE);
 
         final String name = this.name.getText().toString().trim();
@@ -117,7 +122,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            progress.setVisibility(View.GONE);
+                            //progress.setVisibility(View.GONE);
+                            progressDialog.dismiss();
                             reg_button.setVisibility(View.VISIBLE);
                             Toast.makeText(RegisterActivity.this,"Register Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
@@ -126,7 +132,8 @@ public class RegisterActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progress.setVisibility(View.GONE);
+                        //progress.setVisibility(View.GONE);
+                        progressDialog.dismiss();
                         reg_button.setVisibility(View.VISIBLE);
                         Toast.makeText(RegisterActivity.this,"Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                     }

@@ -314,5 +314,4 @@ public class CommendationFragment extends Fragment {
             }
         }
     }
-
 }

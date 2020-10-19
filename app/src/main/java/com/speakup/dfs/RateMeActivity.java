@@ -20,7 +20,7 @@ public class RateMeActivity extends AppCompatActivity {
     Toolbar toolbar;
     RatingBar ratingBar;
     Button submit_button;
-    int rateValue; String temp;
+    int rateValue; String temp_review;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +74,19 @@ public class RateMeActivity extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                temp = review.getText().toString();
-                Toast.makeText(RateMeActivity.this, "Your Rating:\n" + rateValue + "\n" + temp, Toast.LENGTH_SHORT).show();
-                review.setText("");
-                ratingBar.setRating(0);
-                rateCount.setText("");
+                temp_review = review.getText().toString();
+
+                if (rateValue != 0 && !temp_review.isEmpty()) {
+
+                    Toast.makeText(RateMeActivity.this, "Your Rating:\n" + rateValue + "\n" + temp_review, Toast.LENGTH_SHORT).show();
+                    review.setText("");
+                    ratingBar.setRating(0);
+                    rateCount.setText("");
+                }
+                else {
+                    //temp_review.setError("Full Name is Required");
+                }
+
             }
         });
 

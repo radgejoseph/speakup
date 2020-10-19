@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.android.volley.Request;
@@ -29,6 +33,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;
     Toolbar toolbar;
+    Button button_colorum;
 
     List<ListItem> itemList;
 
@@ -63,10 +68,20 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        button_colorum = findViewById(R.id.button_colorum);
+        button_colorum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTaxiActivity.this, ColorumFormActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         itemList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerview_list);
+        recyclerView.bringToFront();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -86,10 +101,15 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
     }
 
     private void loadList() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading list...");
+        progressDialog.show();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TAXI_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
@@ -108,6 +128,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            progressDialog.dismiss();
 
                         }
 
@@ -115,6 +136,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
                 Toast.makeText(ReportTaxiActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
