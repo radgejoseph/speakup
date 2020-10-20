@@ -28,9 +28,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     //private View decorView;
 
-    private EditText name, username, password, mobile, email, address;
+    private EditText name, username, password, phone_number, email, address;
     //private ProgressBar progress;
-    private static String URL_REGIST = "http://half-a-dozen-school.000webhostapp.com/register.php";
+    private static String URL_REGIST = "http://192.168.1.117/SpeakUP/register.php";//"http://half-a-dozen-school.000webhostapp.com/register.php";
     private Button reg_button;
 
     @Override
@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         name = findViewById(R.id.fullname_text);
         username = findViewById(R.id.username_text);
         password = findViewById(R.id.password_text);
-        mobile = findViewById(R.id.phone_text);
+        phone_number = findViewById(R.id.phone_text);
         email = findViewById(R.id.email_text);
         address = findViewById(R.id.address_text);
         //progress = findViewById(R.id.progress);
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String name_r = name.getText().toString().trim();
                 String username_r = username.getText().toString().trim();
                 String password_r = password.getText().toString().trim();
-                String mobile_r = mobile.getText().toString().trim();
+                String mobile_r = phone_number.getText().toString().trim();
                 String email_r = email.getText().toString().trim();
                 //String address_r = address.getText().toString().trim();
 
@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                     name.setError("Full Name is Required");
                     username.setError("Username is Required");
                     password.setError("Password is Required");
-                    mobile.setError("Mobile Number is Required");
+                    phone_number.setError("Mobile Number is Required");
                     email.setError("Email Address is Required");
                 }
             }
@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
         final String name = this.name.getText().toString().trim();
         final String username = this.username.getText().toString().trim();
         final String password = this.password.getText().toString().trim();
-        final String mobile = this.mobile.getText().toString().trim();
+        final String phone_number = this.phone_number.getText().toString().trim();
         final String email = this.email.getText().toString().trim();
         final String address = this.address.getText().toString().trim();
 
@@ -145,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("name", name);
                 params.put("username", username);
                 params.put("password", password);
-                params.put("mobile", mobile);
+                params.put("phone_number", phone_number);
                 params.put("email", email);
                 params.put("address", address);
                 return params;

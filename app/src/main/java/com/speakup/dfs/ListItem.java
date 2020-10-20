@@ -5,16 +5,16 @@ import android.os.Parcelable;
 
 public class ListItem implements Parcelable {
 
-    private int id;
+    private String vehicle;
     private String plate;
 
-    public ListItem(int id, String plate) {
-        this.id = id;
+    public ListItem(String vehicle, String plate) {
+        this.vehicle = vehicle;
         this.plate = plate;
     }
 
     protected ListItem(Parcel in) {
-        id = in.readInt();
+        vehicle = in.readString();
         plate = in.readString();
     }
 
@@ -30,8 +30,8 @@ public class ListItem implements Parcelable {
         }
     };
 
-    public int getIdL() {
-        return id;
+    public String getVehicleL() {
+        return vehicle;
     }
 
     public String getPlateL() {
@@ -45,7 +45,7 @@ public class ListItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeString(vehicle);
         dest.writeString(plate);
     }
 

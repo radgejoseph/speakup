@@ -2,6 +2,7 @@ package com.speakup.dfs;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -24,16 +25,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.app.Activity.RESULT_OK;
 
 /**
@@ -42,7 +60,7 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-
+    private static String URL_COMPLAINT = "http://192.168.1.117/SpeakUP/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
@@ -52,8 +70,13 @@ public class ComplaintFragment extends Fragment {
     DatePickerDialog.OnDateSetListener setListenerD;
     TimePickerDialog.OnTimeSetListener setListenerT;
     private TextView textPlate;
+    private TextView textVehicle;
+    private TextView narrative;
     ImageView upload_image_view_camera, upload_image_view_gallery;
     String currentPhotoPath;
+    Button submit_button;
+    String getId, getUsername, getName;
+    SessionManager sessionManager;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -106,9 +129,31 @@ public class ComplaintFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         TabbedActivity tabbedActivity = (TabbedActivity) getActivity();
-        String getData = tabbedActivity.sendData();
+        String getPlate = tabbedActivity.sendPlate();
+        String getVehicle = tabbedActivity.sendVehicle();
         textPlate = view.findViewById(R.id.plate_number);
-        textPlate.setText(getData);
+        textPlate.setText(getPlate);
+        textVehicle = view.findViewById(R.id.vehicle_type_holder);
+        textVehicle.setText(getVehicle);
+
+        sessionManager = new SessionManager(getActivity());
+        sessionManager.checkLogin();
+
+        HashMap<String, String> details = sessionManager.getUserDetail2();
+        getId = details.get(sessionManager.ID);
+        getName = details.get(sessionManager.NAME);
+        getUsername = details.get(sessionManager.USERNAME);
+
+
+        narrative = view.findViewById(R.id.complaint_text);
+
+        submit_button = view.findViewById(R.id.submit_button_complaint);
+        submit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ComplaintSubmit();
+            }
+        });
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
@@ -132,7 +177,7 @@ public class ComplaintFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 month = month+1;
-                String date = day+"/"+month+"/"+year;
+                String date = year+"-"+month+"-"+day;
                 date_picker.setText(date);
             }
         };
@@ -209,6 +254,75 @@ public class ComplaintFragment extends Fragment {
             }
         });
         return  view;
+    }
+
+
+
+    private void ComplaintSubmit() {
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Submitting...");
+        progressDialog.show();
+        //progress.setVisibility(View.VISIBLE);
+        //submit_button.setVisibility(View.GONE);
+
+        final String textPlate = this.textPlate.getText().toString().trim();
+        final String textVehicle = this.textVehicle.getText().toString().trim();
+        final String narrative = this.narrative.getText().toString().trim();
+        final String date = this.date_picker.getText().toString().trim();
+        final String time = this.time_picker.getText().toString().trim();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_COMPLAINT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+
+                            if (success.equals("1")) {
+                                //openRegisterComplete();
+                                progressDialog.dismiss();
+                                Toast.makeText(getActivity(),"Submit Success!", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                startActivity(intent);
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            //progress.setVisibility(View.GONE);
+                            progressDialog.dismiss();
+                            //reg_button.setVisibility(View.VISIBLE);
+                            Toast.makeText(getActivity(),"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //progress.setVisibility(View.GONE);
+                        progressDialog.dismiss();
+                        //reg_button.setVisibility(View.VISIBLE);
+                        Toast.makeText(getActivity(),"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("body_plate", textPlate);
+                params.put("vehicle", textVehicle);
+                params.put("narrative", narrative);
+                params.put("date", date);
+                params.put("time", time);
+                params.put("user_id", getId);
+                params.put("name", getName);
+                params.put("username", getUsername);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 
     private void askCameraPermission() {

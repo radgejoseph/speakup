@@ -29,7 +29,7 @@ import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
 
-    private static final String URL_JEEPNEY_LIST = "http://half-a-dozen-school.000webhostapp.com/list_jeepney.php";
+    private static final String URL_JEEPNEY_LIST = "http://192.168.1.117/SpeakUP/list_jeepney.php";//"http://half-a-dozen-school.000webhostapp.com/list_jeepney.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;
@@ -58,7 +58,8 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
             @Override
             public void afterTextChanged(Editable s) {
-                filter(s.toString());
+                listItemAdapter.getFilter().filter(s);
+                //filter(s.toString());
             }
 
         });
@@ -117,10 +118,10 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                int strID = object.getInt("id");
+                                String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
 
-                                ListItem listItem = new ListItem(strID, strPlate);
+                                ListItem listItem = new ListItem(strVehicle, strPlate);
                                 itemList.add(listItem);
                             }
 

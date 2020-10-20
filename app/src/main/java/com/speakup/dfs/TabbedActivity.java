@@ -12,10 +12,11 @@ public class TabbedActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     public PagerAdapter pagerAdapter;
-    String plate;
+    String plate, vehicle;
     Toolbar toolbar;
 
     private TextView textPlate;
+    private TextView textVehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +65,11 @@ public class TabbedActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         plate = getIntent().getStringExtra("selected_plate");
+        vehicle = getIntent().getStringExtra("vehicle");
         textPlate = findViewById(R.id.plate_hoder);
         textPlate.setText(plate);
+        textVehicle = findViewById(R.id.vehicle_type_holder);
+        textVehicle.setText(vehicle);
 
     }
 
@@ -75,8 +79,12 @@ public class TabbedActivity extends AppCompatActivity {
         return true;
     }
 
-    public String sendData() {
+    public String sendPlate() {
         return plate;
+    }
+
+    public String sendVehicle() {
+        return vehicle;
     }
 
 }

@@ -22,6 +22,8 @@ public class SessionManager {
     public static final String ADDRESS = "ADDRESS";
     public static final String ID = "ID";
 
+    public static final String PLATE = "PLATE";
+
     public SessionManager(Context context) {
         this.context = context;
         sharedPreferences = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -74,6 +76,18 @@ public class SessionManager {
 
         return user;
     }
+
+    public HashMap<String, String> getUserDetail2(){
+
+        HashMap<String, String> details = new HashMap<>();
+        details.put(NAME, sharedPreferences.getString(NAME, null));
+        details.put(EMAIL, sharedPreferences.getString(EMAIL, null));
+        details.put(USERNAME, sharedPreferences.getString(USERNAME, null));
+        details.put(ID, sharedPreferences.getString(ID, null));
+
+        return details;
+    }
+
 
     public void logout(){
 

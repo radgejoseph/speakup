@@ -8,6 +8,8 @@
     app:cardUseCompatPadding="true"
     android:clickable="true"
     android:focusable="true"
+    app:cardElevation="0mm"
+    app:cardMaxElevation="0mm"
     app:cardCornerRadius="5dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"

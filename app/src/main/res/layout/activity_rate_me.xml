@@ -21,6 +21,45 @@
             android:text="YOUR REVIEW"
             android:layout_gravity="center"
             android:textAppearance="@style/ToolbarTitleTheme"/>
+        <TextView
+            android:id="@+id/id_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/username_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/vehicle_type_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -170,7 +209,7 @@
                 tools:ignore="MissingConstraints" />
 
             <Button
-                android:id="@+id/submit_button"
+                android:id="@+id/submit_button_review"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

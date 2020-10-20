@@ -32,10 +32,10 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private static String URL_READ = "http://half-a-dozen-school.000webhostapp.com/read_detail.php";
-    private static String URL_EDIT = "http://half-a-dozen-school.000webhostapp.com/edit_detail.php";
+    private static String URL_READ = "http://192.168.1.117/SpeakUP/read_detail.php";//"http://half-a-dozen-school.000webhostapp.com/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.117/SpeakUP/edit_detail.php";//"http://half-a-dozen-school.000webhostapp.com/edit_detail.php";
 
-    private TextView name, username, password, mobile, email, address;
+    private TextView name, username, password, phone_number, email, address;
     private Menu action;
     String getId;
     SessionManager sessionManager;
@@ -52,20 +52,20 @@ public class ProfileFragment extends Fragment{
         name = view.findViewById(R.id.fullname_text);
         username = view.findViewById(R.id.username_text);
         password = view.findViewById(R.id.password_text);
-        mobile = view.findViewById(R.id.phone_text);
+        phone_number = view.findViewById(R.id.phone_text);
         email = view.findViewById(R.id.email_text);
         address = view.findViewById(R.id.address_text);
 
         name.setFocusableInTouchMode(false);
         username.setFocusableInTouchMode(false);
         password.setFocusableInTouchMode(false);
-        mobile.setFocusableInTouchMode(false);
+        phone_number.setFocusableInTouchMode(false);
         email.setFocusableInTouchMode(false);
         address.setFocusableInTouchMode(false);
         name.setFocusable(false);
         username.setFocusable(false);
         password.setFocusable(false);
-        mobile.setFocusable(false);
+        phone_number.setFocusable(false);
         email.setFocusable(false);
         address.setFocusable(false);
 
@@ -102,7 +102,7 @@ public class ProfileFragment extends Fragment{
                                     String strName = object.getString("name").trim();
                                     String strUsername = object.getString("username").trim();
                                     //String strPassword = object.getString("password").trim();
-                                    String strMobile = object.getString("mobile").trim();
+                                    String strMobile = object.getString("phone_number").trim();
                                     String strEmail = object.getString("email").trim();
                                     //String id = object.getString("id").trim();
                                     String strAddress = object.getString("address").trim();
@@ -110,7 +110,7 @@ public class ProfileFragment extends Fragment{
                                     name.setText(strName);
                                     username.setText(strUsername);
                                     //password.setText(strPassword);
-                                    mobile.setText(strMobile);
+                                    phone_number.setText(strMobile);
                                     email.setText(strEmail);
                                     address.setText(strAddress);
 
@@ -167,7 +167,7 @@ public class ProfileFragment extends Fragment{
             name.setFocusableInTouchMode(true);
             username.setFocusableInTouchMode(true);
             password.setFocusableInTouchMode(true);
-            mobile.setFocusableInTouchMode(true);
+            phone_number.setFocusableInTouchMode(true);
             email.setFocusableInTouchMode(true);
             address.setFocusableInTouchMode(true);
 
@@ -184,7 +184,7 @@ public class ProfileFragment extends Fragment{
                 String name_r = name.getText().toString().trim();
                 String username_r = username.getText().toString().trim();
                 String password_r = password.getText().toString().trim();
-                String mobile_r = mobile.getText().toString().trim();
+                String mobile_r = phone_number.getText().toString().trim();
                 String email_r = email.getText().toString().trim();
                 String address_r = address.getText().toString().trim();
 
@@ -199,13 +199,13 @@ public class ProfileFragment extends Fragment{
                             name.setFocusableInTouchMode(false);
                             username.setFocusableInTouchMode(false);
                             password.setFocusableInTouchMode(false);
-                            mobile.setFocusableInTouchMode(false);
+                            phone_number.setFocusableInTouchMode(false);
                             email.setFocusableInTouchMode(false);
                             address.setFocusableInTouchMode(false);
                             name.setFocusable(false);
                             username.setFocusable(false);
                             password.setFocusable(false);
-                            mobile.setFocusable(false);
+                            phone_number.setFocusable(false);
                             email.setFocusable(false);
                             address.setFocusable(false);
 
@@ -214,7 +214,7 @@ public class ProfileFragment extends Fragment{
                             name.setError("Full Name is Required");
                             username.setError("Username is Required");
                             password.setError("Password is Required");
-                            mobile.setError("Mobile Number is Required");
+                            phone_number.setError("Mobile Number is Required");
                             email.setError("Email Address is Required");
                             address.setError("Address is Required");
                         }
@@ -232,7 +232,7 @@ public class ProfileFragment extends Fragment{
         final String name = this.name.getText().toString().trim();
         final String username = this.username.getText().toString().trim();
         final String password = this.password.getText().toString().trim();
-        final String mobile = this.mobile.getText().toString().trim();
+        final String phone_number = this.phone_number.getText().toString().trim();
         final String email = this.email.getText().toString().trim();
         final String address = this.address.getText().toString().trim();
         final String id = getId;
@@ -253,7 +253,7 @@ public class ProfileFragment extends Fragment{
 
                             if (success.equals("1")) {
                                 Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSessionEdit(name, username, password, mobile, email, address, id);
+                                sessionManager.createSessionEdit(name, username, password, phone_number, email, address, id);
                             }
 
                         } catch (JSONException e) {
@@ -278,7 +278,7 @@ public class ProfileFragment extends Fragment{
                 params.put("name", name);
                 params.put("username", username);
                 params.put("password", password);
-                params.put("mobile", mobile);
+                params.put("phone_number", phone_number);
                 params.put("email", email);
                 params.put("address", address);
                 params.put("id", id);
