@@ -77,16 +77,16 @@ public class SessionManager {
         return user;
     }
 
-    public HashMap<String, String> getUserDetail2(){
-
-        HashMap<String, String> details = new HashMap<>();
-        details.put(NAME, sharedPreferences.getString(NAME, null));
-        details.put(EMAIL, sharedPreferences.getString(EMAIL, null));
-        details.put(USERNAME, sharedPreferences.getString(USERNAME, null));
-        details.put(ID, sharedPreferences.getString(ID, null));
-
-        return details;
-    }
+//    public HashMap<String, String> getUserDetail2(){
+//
+//        HashMap<String, String> details = new HashMap<>();
+//        details.put(NAME, sharedPreferences.getString(NAME, null));
+//        details.put(EMAIL, sharedPreferences.getString(EMAIL, null));
+//        details.put(USERNAME, sharedPreferences.getString(USERNAME, null));
+//        details.put(ID, sharedPreferences.getString(ID, null));
+//
+//        return details;
+//    }
 
 
     public void logout(){

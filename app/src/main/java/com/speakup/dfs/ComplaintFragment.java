@@ -75,7 +75,7 @@ public class ComplaintFragment extends Fragment {
     ImageView upload_image_view_camera, upload_image_view_gallery;
     String currentPhotoPath;
     Button submit_button;
-    String getId, getUsername, getName;
+    String getId;
     SessionManager sessionManager;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -139,10 +139,8 @@ public class ComplaintFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
 
-        HashMap<String, String> details = sessionManager.getUserDetail2();
-        getId = details.get(sessionManager.ID);
-        getName = details.get(sessionManager.NAME);
-        getUsername = details.get(sessionManager.USERNAME);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getId = user.get(sessionManager.ID);
 
 
         narrative = view.findViewById(R.id.complaint_text);
@@ -315,8 +313,6 @@ public class ComplaintFragment extends Fragment {
                 params.put("date", date);
                 params.put("time", time);
                 params.put("user_id", getId);
-                params.put("name", getName);
-                params.put("username", getUsername);
                 return params;
             }
         };

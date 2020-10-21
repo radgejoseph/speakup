@@ -38,7 +38,7 @@ public class RateMeActivity extends AppCompatActivity {
     Toolbar toolbar;
     RatingBar ratingBar;
     Button submit_button;
-    String getId, getName, getUsername;
+    String getId;
     SessionManager sessionManager;
     float rateValue;
 
@@ -101,10 +101,8 @@ public class RateMeActivity extends AppCompatActivity {
         sessionManager = new SessionManager(RateMeActivity.this);
         sessionManager.checkLogin();
 
-        HashMap<String, String> details = sessionManager.getUserDetail2();
-        getId = details.get(sessionManager.ID);
-        getName = details.get(sessionManager.NAME);
-        getUsername = details.get(sessionManager.USERNAME);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getId = user.get(sessionManager.ID);
 
         narrative = findViewById(R.id.review_box);
 
@@ -175,8 +173,6 @@ public class RateMeActivity extends AppCompatActivity {
                 params.put("narrative", narrative);
                 params.put("ratings", ratings);
                 params.put("user_id", getId);
-                params.put("name", getName);
-                params.put("username", getUsername);
                 return params;
             }
         };

@@ -75,7 +75,7 @@ public class CommendationFragment extends Fragment {
     ImageView upload_image_view_camera, upload_image_view_gallery;
     String currentPhotoPath;
     Button submit_button;
-    String getId, getUsername, getName;
+    String getId;
     SessionManager sessionManager;
 
 
@@ -142,10 +142,9 @@ public class CommendationFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
 
-        HashMap<String, String> details = sessionManager.getUserDetail2();
-        getId = details.get(sessionManager.ID);
-        getName = details.get(sessionManager.NAME);
-        getUsername = details.get(sessionManager.USERNAME);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getId = user.get(sessionManager.ID);
+
 
         narrative = view.findViewById(R.id.commendation_text);
 
@@ -153,11 +152,11 @@ public class CommendationFragment extends Fragment {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommendSubmit();
+                ComplaintSubmit();
             }
         });
 
-/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+        /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
         Calendar calendarD = Calendar.getInstance();
         final int year = calendarD.get(Calendar.YEAR);
@@ -183,9 +182,9 @@ public class CommendationFragment extends Fragment {
                 date_picker.setText(date);
             }
         };
-/* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ DATE PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+        /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ DATE PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ TIME PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+        /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ TIME PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         time_picker = view.findViewById(R.id.time_picker);
         time_picker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,7 +216,7 @@ public class CommendationFragment extends Fragment {
                 time_picker.setText(time);
             }
         };
-/* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+        /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
         upload_image_view_camera = view.findViewById(R.id.upload_image_view_camera);
         upload_image_view_gallery = view.findViewById(R.id.upload_image_view_camera_gallery);
@@ -259,7 +258,8 @@ public class CommendationFragment extends Fragment {
     }
 
 
-    private void CommendSubmit() {
+
+    private void ComplaintSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Submitting...");
         progressDialog.show();
@@ -316,8 +316,6 @@ public class CommendationFragment extends Fragment {
                 params.put("date", date);
                 params.put("time", time);
                 params.put("user_id", getId);
-                params.put("name", getName);
-                params.put("username", getUsername);
                 return params;
             }
         };
