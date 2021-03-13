@@ -60,7 +60,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class CommendationFragment extends Fragment {
-    private static String URL_COMMEND = "http://192.168.1.117/SpeakUP/commendation.php";
+    private static String URL_COMMEND = "http://192.168.1.103/SpeakUP/commendation.php";
+    private static String URL_IMAGECOMMEND = "http://192.168.1.103/SpeakUP/commendations_images_upload.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;

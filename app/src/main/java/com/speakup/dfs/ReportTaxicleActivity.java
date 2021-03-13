@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ReportTaxicleActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
 
-    private static final String URL_TAXICLE_LIST = "http://192.168.1.117/SpeakUP/list_taxicle.php";//"http://half-a-dozen-school.000webhostapp.com/list_taxicle.php";
+    private static final String URL_TAXICLE_LIST = "http://192.168.1.103/SpeakUP/list_taxicle.php";//"http://half-a-dozen-school.000webhostapp.com/list_taxicle.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;

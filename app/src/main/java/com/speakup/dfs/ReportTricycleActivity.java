@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
 
-    private static final String URL_TRICYCLE_LIST = "http://192.168.1.117/SpeakUP/list_tricycle.php";//"http://half-a-dozen-school.000webhostapp.com/list_tricycle.php";
+    private static final String URL_TRICYCLE_LIST = "http://192.168.1.103/SpeakUP/list_tricycle.php";//"http://half-a-dozen-school.000webhostapp.com/list_tricycle.php";
 
     RecyclerView recyclerView;
     ListItemAdapter listItemAdapter;

@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -53,6 +56,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +64,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-    private static String URL_COMPLAINT = "http://192.168.1.117/SpeakUP/complaint.php";
+    private static String URL_COMPLAINT = "http://192.168.1.103/SpeakUP/complaint.php";
+    //private static String URL_IMAGECOMPLAINT = "http://192.168.1.103/SpeakUP/commendations_images_upload.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
@@ -72,6 +77,7 @@ public class ComplaintFragment extends Fragment {
     private TextView textPlate;
     private TextView textVehicle;
     private TextView narrative;
+    //private Bitmap bitmap;
     ImageView upload_image_view_camera, upload_image_view_gallery;
     String currentPhotoPath;
     Button submit_button;

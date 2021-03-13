@@ -7,15 +7,18 @@ public class ListItem implements Parcelable {
 
     private String vehicle;
     private String plate;
+    //private String ratings;
 
-    public ListItem(String vehicle, String plate) {
+    public ListItem(String vehicle, String plate /*, String ratings*/) {
         this.vehicle = vehicle;
         this.plate = plate;
+        //this.ratings = ratings;
     }
 
     protected ListItem(Parcel in) {
         vehicle = in.readString();
         plate = in.readString();
+        //ratings = in.readString();
     }
 
     public static final Creator<ListItem> CREATOR = new Creator<ListItem>() {
@@ -38,6 +41,10 @@ public class ListItem implements Parcelable {
         return plate;
     }
 
+//    public String getRatingsL() {
+//        return ratings;
+//    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -47,6 +54,7 @@ public class ListItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(vehicle);
         dest.writeString(plate);
+        //dest.writeString(ratings);
     }
 
 }

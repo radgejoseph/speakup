@@ -32,8 +32,8 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private static String URL_READ = "http://192.168.1.117/SpeakUP/read_detail.php";//"http://half-a-dozen-school.000webhostapp.com/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.117/SpeakUP/edit_detail.php";//"http://half-a-dozen-school.000webhostapp.com/edit_detail.php";
+    private static String URL_READ = "http://192.168.1.103/SpeakUP/read_detail.php";//"http://half-a-dozen-school.000webhostapp.com/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.103/SpeakUP/edit_detail.php";//"http://half-a-dozen-school.000webhostapp.com/edit_detail.php";
 
     private TextView name, username, password, phone_number, email, address;
     private Menu action;
