@@ -153,7 +153,15 @@ public class CommendationFragment extends Fragment {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ComplaintSubmit();
+                if (date_picker.isPressed() && !time_picker.isPressed()) {
+                    //Log.d("success", "onClick if "+URL_REGIST);
+                    CommendationSubmit();
+                }
+                else {
+                    date_picker.setError("Required");
+                    time_picker.setError("Required");
+                }
+
             }
         });
 
@@ -239,20 +247,21 @@ public class CommendationFragment extends Fragment {
             }
         });
 
-        android.widget.ImageView add_audio = view.findViewById(R.id.add_audio);
-        add_audio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(),"Audio is Clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        android.widget.ImageView add_audio = view.findViewById(R.id.add_audio);
+//        add_audio.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getActivity(),"Audio is Clicked!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         android.widget.ImageView basic_option = view.findViewById(R.id.basic_option);
         basic_option.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RateMeActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), RateMeActivity.class);
+//                startActivity(intent);
+                tabbedActivity.finish();
             }
         });
         return  view;
@@ -260,7 +269,7 @@ public class CommendationFragment extends Fragment {
 
 
 
-    private void ComplaintSubmit() {
+    private void CommendationSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Submitting...");
         progressDialog.show();

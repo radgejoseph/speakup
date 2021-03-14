@@ -135,14 +135,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/plate_number"
                 tools:ignore="MissingConstraints" />
 
+
             <ImageView
                 android:id="@+id/upload_image_view_camera"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.254"
+                app:layout_constraintHorizontal_bias="0.341"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complaint_text"
                 tools:ignore="MissingConstraints" />
@@ -151,22 +152,10 @@
                 android:id="@+id/upload_image_view_camera_gallery"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complaint_text"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/upload_other_files"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="20dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.737"
+                app:layout_constraintHorizontal_bias="0.653"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complaint_text"
                 tools:ignore="MissingConstraints" />
@@ -179,7 +168,7 @@
                 android:contentDescription="@string/todo"
                 android:src="@drawable/capture_image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.239"
+                app:layout_constraintHorizontal_bias="0.321"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/upload_image_view_camera"
                 tools:ignore="MissingConstraints" />
@@ -192,24 +181,10 @@
                 android:contentDescription="@string/todo"
                 android:src="@drawable/add_image_video"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/upload_image_view_camera_gallery"
                 tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/add_audio"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/add_audio"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.76"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/upload_other_files"
-                tools:ignore="MissingConstraints" />
-
 
             <Button
                 android:id="@+id/submit_button_complaint"
