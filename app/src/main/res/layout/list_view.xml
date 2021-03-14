@@ -24,33 +24,37 @@
 
         <TextView
             android:id="@+id/plate_number"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
             android:text="ABC 123"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="50sp"
+            android:textSize="35sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textonly"
-            android:layout_width="match_parent"
+        <RatingBar
+            android:id="@+id/ratingBarView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="REGION 5"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-</RelativeLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:paddingTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:numStars="5"
+            android:progressTint="@color/buttonGreen"
+            android:rating="5"
+            android:stepSize="1.0"
+            tools:ignore="MissingConstraints" />
+
+
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

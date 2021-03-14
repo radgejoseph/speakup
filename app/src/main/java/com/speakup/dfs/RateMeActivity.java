@@ -68,12 +68,23 @@ public class RateMeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String plate = getIntent().getStringExtra("selected_plate");
-        String vehicle = getIntent().getStringExtra("vehicle");
-        textPlate = findViewById(R.id.plate_number);
-        textPlate.setText(plate);
-        textVehicle = findViewById(R.id.vehicle_type_holder);
-        textVehicle.setText(vehicle);
+//        String plate = getIntent().getStringExtra("selected_plate");
+//        String vehicle = getIntent().getStringExtra("vehicle");
+//        textPlate = findViewById(R.id.plate_number);
+//        textPlate.setText(plate);
+//        textVehicle = findViewById(R.id.vehicle_type_holder);
+//        textVehicle.setText(vehicle);
+
+        if (getIntent().hasExtra("selected_plate")) {
+            ListItem listItem = getIntent().getParcelableExtra("selected_plate");
+            String plate = listItem.getPlateL();
+            String vehicle = listItem.getVehicleL();
+
+            textPlate = findViewById(R.id.plate_number);
+            textPlate.setText(plate);
+            textVehicle = findViewById(R.id.vehicle_type_holder);
+            textVehicle.setText(vehicle);
+        }
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override

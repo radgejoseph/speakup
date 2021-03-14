@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +40,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
         ListItem listItem = itemList.get(position);
 
         holder.textPlate.setText(listItem.getPlateL());
-        //holder.textVehicle.setText(listItem.getVehicleL());
+        //holder.ratings.setNumStars(listItem.getRatingsL());
     }
 
     @Override
@@ -87,13 +88,14 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
 
 
         TextView textPlate;
-        //TextView textVehicle;
+        //RatingBar ratings;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
             textPlate = itemView.findViewById(R.id.plate_number);
+            //ratings = itemView.findViewById(R.id.ratingBarView);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

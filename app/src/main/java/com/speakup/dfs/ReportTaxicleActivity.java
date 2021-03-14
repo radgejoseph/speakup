@@ -115,10 +115,11 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                String strVehicle = object.getString("vehicle");
+                                String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
+                                //int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate);
+                                ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
                                 itemList.add(listItem);
                             }
 
@@ -147,7 +148,7 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
-        Intent intent = new Intent(ReportTaxicleActivity.this, PlateRatingsActivity.class);
+        Intent intent = new Intent(ReportTaxicleActivity.this, RateMeActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();

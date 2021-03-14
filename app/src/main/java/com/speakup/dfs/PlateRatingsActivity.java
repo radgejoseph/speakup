@@ -12,6 +12,11 @@ import com.android.volley.toolbox.StringRequest;
 
 import java.util.HashMap;
 
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+
 public class PlateRatingsActivity extends AppCompatActivity {
 
     private TextView textPlate;
@@ -19,6 +24,10 @@ public class PlateRatingsActivity extends AppCompatActivity {
     private Button to_rateme_button;
     Toolbar toolbar;
 
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,3 +84,8 @@ public class PlateRatingsActivity extends AppCompatActivity {
     }
 
 }
+
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//

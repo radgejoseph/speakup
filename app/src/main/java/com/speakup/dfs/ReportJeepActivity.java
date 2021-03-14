@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -120,8 +121,9 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
                                 String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
+                                //int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate);
+                                ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
                                 itemList.add(listItem);
                             }
 
@@ -149,7 +151,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
     @Override
     public void onItemClick(int position) {
         //itemList.get(position);
-        Intent intent = new Intent(ReportJeepActivity.this, PlateRatingsActivity.class);
+        Intent intent = new Intent(ReportJeepActivity.this, RateMeActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
         //openRateMeActivity();

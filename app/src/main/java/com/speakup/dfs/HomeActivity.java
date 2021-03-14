@@ -70,13 +70,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             setTitle("PROFILE");
         }
-        if (item.getItemId() == R.id.notifications_menu) {
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, new NotificationFragment());
-            fragmentTransaction.commit();
-            setTitle("NOTIFICATIONS");
-        }
+//        if (item.getItemId() == R.id.notifications_menu) {
+//            fragmentManager = getSupportFragmentManager();
+//            fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.container_fragment, new NotificationFragment());
+//            fragmentTransaction.commit();
+//            setTitle("NOTIFICATIONS");
+//        }
         if (item.getItemId() == R.id.ratings_menu) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
