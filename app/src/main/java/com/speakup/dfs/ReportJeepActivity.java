@@ -28,12 +28,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapter.OnItemListener {
+public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
 
     private static final String URL_JEEPNEY_LIST = "http://192.168.1.103/SpeakUP/list_jeepney.php";//"http://half-a-dozen-school.000webhostapp.com/list_jeepney.php";
 
     RecyclerView recyclerView;
-    ListItemAdapter listItemAdapter;
+    ListItemAdapterJeep listItemAdapter;
     Toolbar toolbar;
     Button button_colorum;
 
@@ -127,7 +127,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
                                 itemList.add(listItem);
                             }
 
-                            listItemAdapter = new ListItemAdapter(itemList, ReportJeepActivity.this);
+                            listItemAdapter = new ListItemAdapterJeep(itemList, ReportJeepActivity.this);
                             recyclerView.setAdapter(listItemAdapter);
 
                         } catch (JSONException e) {
