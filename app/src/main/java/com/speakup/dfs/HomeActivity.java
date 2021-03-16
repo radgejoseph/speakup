@@ -29,7 +29,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("VEHICLES");
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
@@ -86,9 +85,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (item.getItemId() == R.id.logout_menu) {
             sessionManager.logout();
-//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
         }
         return true;
     }

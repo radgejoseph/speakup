@@ -2,10 +2,8 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -30,7 +27,7 @@ import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
 
-    private static final String URL_JEEPNEY_LIST = "http://192.168.1.103/SpeakUP/list_jeepney.php";//"http://half-a-dozen-school.000webhostapp.com/list_jeepney.php";
+    private static final String URL_JEEPNEY_LIST = "http://192.168.1.139/SpeakUP/list_jeepney.php";
 
     RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
@@ -60,7 +57,6 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
             @Override
             public void afterTextChanged(Editable s) {
                 listItemAdapter.getFilter().filter(s);
-                //filter(s.toString());
             }
 
         });
@@ -121,9 +117,8 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
                                 String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
-                                //int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
+                                ListItem listItem = new ListItem(strVehicle, strPlate);
                                 itemList.add(listItem);
                             }
 
@@ -150,11 +145,9 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
     @Override
     public void onItemClick(int position) {
-        //itemList.get(position);
-        Intent intent = new Intent(ReportJeepActivity.this, RateMeActivity.class);
+        Intent intent = new Intent(ReportJeepActivity.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
-        //openRateMeActivity();
     }
 
     @Override

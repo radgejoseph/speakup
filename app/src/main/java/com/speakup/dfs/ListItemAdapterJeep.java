@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +13,11 @@ import java.util.List;
 
 public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJeep.ListItemHoder> implements Filterable {
 
-    //private Context context;
     private List<ListItem> itemList;
     private List<ListItem> itemListFull;
     private OnItemListener mOnItemListener;
 
     public ListItemAdapterJeep(List<ListItem> itemList, OnItemListener onItemListener) {
-        //this.context = context;
         this.itemList = itemList;
         itemListFull = new ArrayList<>(itemList);
         this.mOnItemListener = onItemListener;
@@ -29,7 +26,6 @@ public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJee
     @NonNull
     @Override
     public ListItemHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view_jeep, null);
         ListItemHoder listItemHoder = new ListItemHoder(view, mOnItemListener);
         return new ListItemHoder(view, mOnItemListener);
@@ -40,7 +36,6 @@ public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJee
         ListItem listItem = itemList.get(position);
 
         holder.textPlate.setText(listItem.getPlateL());
-        //holder.ratings.setNumStars(listItem.getRatingsL());
     }
 
     @Override
@@ -88,14 +83,12 @@ public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJee
 
 
         TextView textPlate;
-        //RatingBar ratings;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
             textPlate = itemView.findViewById(R.id.plate_number);
-            //ratings = itemView.findViewById(R.id.ratingBarView);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

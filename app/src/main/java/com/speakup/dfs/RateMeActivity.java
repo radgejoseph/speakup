@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-    private static String URL_REVIEW = "http://192.168.1.103/SpeakUP/review.php";
+    private static String URL_REVIEW = "http://192.168.1.139/SpeakUP/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
@@ -68,23 +67,23 @@ public class RateMeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//        String plate = getIntent().getStringExtra("selected_plate");
-//        String vehicle = getIntent().getStringExtra("vehicle");
-//        textPlate = findViewById(R.id.plate_number);
-//        textPlate.setText(plate);
-//        textVehicle = findViewById(R.id.vehicle_type_holder);
-//        textVehicle.setText(vehicle);
+        String plate = getIntent().getStringExtra("selected_plate");
+        String vehicle = getIntent().getStringExtra("vehicle");
+        textPlate = findViewById(R.id.plate_number);
+        textPlate.setText(plate);
+        textVehicle = findViewById(R.id.vehicle_type_holder);
+        textVehicle.setText(vehicle);
 
-        if (getIntent().hasExtra("selected_plate")) {
-            ListItem listItem = getIntent().getParcelableExtra("selected_plate");
-            String plate = listItem.getPlateL();
-            String vehicle = listItem.getVehicleL();
-
-            textPlate = findViewById(R.id.plate_number);
-            textPlate.setText(plate);
-            textVehicle = findViewById(R.id.vehicle_type_holder);
-            textVehicle.setText(vehicle);
-        }
+//        if (getIntent().hasExtra("selected_plate")) {
+//            ListItem listItem = getIntent().getParcelableExtra("selected_plate");
+//            String plate = listItem.getPlateL();
+//            String vehicle = listItem.getVehicleL();
+//
+//            textPlate = findViewById(R.id.plate_number);
+//            textPlate.setText(plate);
+//            textVehicle = findViewById(R.id.vehicle_type_holder);
+//            textVehicle.setText(vehicle);
+//        }
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -132,9 +131,6 @@ public class RateMeActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(RateMeActivity.this);
         progressDialog.setMessage("Submitting...");
         progressDialog.show();
-        //progress.setVisibility(View.VISIBLE);
-        //submit_button.setVisibility(View.GONE);
-        //temp_rating = rateCount.getText().toString().trim();
 
         final String textPlate = this.textPlate.getText().toString().trim();
         final String textVehicle = this.textVehicle.getText().toString().trim();
@@ -150,18 +146,15 @@ public class RateMeActivity extends AppCompatActivity {
                             String success = jsonObject.getString("success");
 
                             if (success.equals("1")) {
-                                //openRegisterComplete();
                                 progressDialog.dismiss();
-                                Toast.makeText(RateMeActivity.this,"Submit Success!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RateMeActivity.this,"Rating submitted successfully!", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(RateMeActivity.this, HomeActivity.class);
                                 startActivity(intent);
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            //progress.setVisibility(View.GONE);
                             progressDialog.dismiss();
-                            //reg_button.setVisibility(View.VISIBLE);
                             Toast.makeText(RateMeActivity.this,"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -169,9 +162,7 @@ public class RateMeActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //progress.setVisibility(View.GONE);
                         progressDialog.dismiss();
-                        //reg_button.setVisibility(View.VISIBLE);
                         Toast.makeText(RateMeActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -200,8 +191,6 @@ public class RateMeActivity extends AppCompatActivity {
         intent.putExtra("selected_plate", plate);
         intent.putExtra("vehicle", vehicle);
         startActivity(intent);
-//        Intent intent = new Intent(this, TabbedActivity.class);
-//        startActivity(intent);
     }
 
     @Override

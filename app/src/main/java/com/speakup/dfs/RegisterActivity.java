@@ -27,11 +27,8 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    //private View decorView;
-
     private EditText name, username, password, phone_number, email, address;
-    //private ProgressBar progress;
-    private static String URL_REGIST = "http://192.168.1.103/SpeakUP/register.php";//"http://half-a-dozen-school.000webhostapp.com/register.php";
+    private static String URL_REGIST = "http://192.168.1.139/SpeakUP/register.php";
     private Button reg_button;
 
     @Override
@@ -46,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
         phone_number = findViewById(R.id.phone_text);
         email = findViewById(R.id.email_text);
         address = findViewById(R.id.address_text);
-        //progress = findViewById(R.id.progress);
         reg_button = findViewById(R.id.register_button);
 
 //        decorView = getWindow().getDecorView();
@@ -66,7 +62,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        //Button button = findViewById(R.id.register_button);
         reg_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,13 +71,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String mobile_r = phone_number.getText().toString().trim();
                 String email_r = email.getText().toString().trim();
                 String address_r = address.getText().toString().trim();
-                //Log.d("success", "onClick "+URL_REGIST);
 
 
                 if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
                         && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
 
-                    //Log.d("success", "onClick if "+URL_REGIST);
                     Regist();
                 }
                 else {
@@ -91,7 +84,6 @@ public class RegisterActivity extends AppCompatActivity {
                     password.setError("Password is Required");
                     phone_number.setError("Mobile Number is Required");
                     email.setError("Email Address is Required");
-                    //Log.d("success", "onClick else "+URL_REGIST);
                 }
             }
         });
@@ -101,9 +93,6 @@ public class RegisterActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Submitting...");
         progressDialog.show();
-        //progress.setVisibility(View.VISIBLE);
-        //reg_button.setVisibility(View.GONE);
-        //Log.d("success", "Regist "+URL_REGIST);
 
         final String name = this.name.getText().toString().trim();
         final String username = this.username.getText().toString().trim();
@@ -119,13 +108,11 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
-                            //Log.d("success", response);
 
                             if (success.equals("1")) {
                                 openRegisterComplete();
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
-                                //Log.d("success", "onResponse if "+URL_REGIST);
                             }
                             else if (success.equals("0")) {
                                 progressDialog.dismiss();
@@ -134,22 +121,18 @@ public class RegisterActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            //progress.setVisibility(View.GONE);
                             progressDialog.dismiss();
                             reg_button.setVisibility(View.VISIBLE);
                             Toast.makeText(RegisterActivity.this,"Register Error! " + e.toString(), Toast.LENGTH_SHORT).show();
-                            //Log.d("success", "onResponse catch "+URL_REGIST);
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //progress.setVisibility(View.GONE);
                         progressDialog.dismiss();
                         reg_button.setVisibility(View.VISIBLE);
                         Toast.makeText(RegisterActivity.this,"Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
-                        //Log.d("success", "onErrorResponse "+URL_REGIST);
                     }
                 })
         {

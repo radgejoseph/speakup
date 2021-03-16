@@ -58,7 +58,6 @@ public class PlateRatingsActivity extends AppCompatActivity {
            }
         });
 
-
         if (getIntent().hasExtra("selected_plate")) {
             ListItem listItem = getIntent().getParcelableExtra("selected_plate");
             String plate = listItem.getPlateL();

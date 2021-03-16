@@ -23,12 +23,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    //private View decorView;
 
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-    private static String URL_LOGIN = "http://192.168.1.103/SpeakUP/login.php";//"http://half-a-dozen-school.000webhostapp.com/login.php";
+    private static String URL_LOGIN = "http://192.168.1.139/SpeakUP/login.php";
 
     SessionManager sessionManager;
 

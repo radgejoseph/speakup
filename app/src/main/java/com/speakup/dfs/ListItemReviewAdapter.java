@@ -1,7 +1,3 @@
-//package com.speakup.dfs;
-//
-//public class ListItemReviewAdapter {
-//}
 package com.speakup.dfs;
 
 import android.view.LayoutInflater;
@@ -16,12 +12,10 @@ import java.util.List;
 
 public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAdapter.ListItemHoder> {
 
-    //private Context context;
     private List<ListItemReviews> itemListReview;
     private OnItemListener mOnItemListener;
 
     public ListItemReviewAdapter(List<ListItemReviews> itemList, OnItemListener onItemListener) {
-        //this.context = context;
         this.itemListReview = itemListReview;
         this.mOnItemListener = onItemListener;
     }
@@ -29,7 +23,6 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
     @NonNull
     @Override
     public ListItemHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view_review, null);
         ListItemHoder listItemHoder = new ListItemHoder(view, mOnItemListener);
         return new ListItemHoder(view, mOnItemListener);

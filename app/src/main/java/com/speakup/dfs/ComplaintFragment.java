@@ -7,7 +7,6 @@ import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -20,7 +19,6 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +40,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -56,7 +52,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,8 +59,8 @@ import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-    private static String URL_COMPLAINT = "http://192.168.1.103/SpeakUP/complaint.php";
-    //private static String URL_IMAGECOMPLAINT = "http://192.168.1.103/SpeakUP/commendations_images_upload.php";
+    private static String URL_COMPLAINT = "http://192.168.1.139/SpeakUP/complaint.php";
+    private static String URL_IMAGECOMPLAINT = "http://192.168.1.139/SpeakUP/commendations_images_upload.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
@@ -77,7 +72,6 @@ public class ComplaintFragment extends Fragment {
     private TextView textPlate;
     private TextView textVehicle;
     private TextView narrative;
-    //private Bitmap bitmap;
     ImageView upload_image_view_camera, upload_image_view_gallery;
     String currentPhotoPath;
     Button submit_button;
@@ -155,14 +149,15 @@ public class ComplaintFragment extends Fragment {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (date_picker.isPressed() && !time_picker.isPressed()) {
-                    //Log.d("success", "onClick if "+URL_REGIST);
-                    ComplaintSubmit();
-                }
-                else {
-                    date_picker.setError("Required");
-                    time_picker.setError("Required");
-                }
+                ComplaintSubmit();
+//                if (date_picker.isPressed() && !time_picker.isPressed()) {
+//                    //Log.d("success", "onClick if "+URL_REGIST);
+//                    ComplaintSubmit();
+//                }
+//                else {
+//                    date_picker.setError("Required");
+//                    time_picker.setError("Required");
+//                }
             }
         });
 
@@ -248,34 +243,20 @@ public class ComplaintFragment extends Fragment {
             }
         });
 
-//        android.widget.ImageView add_audio = view.findViewById(R.id.add_audio);
-//        add_audio.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getActivity(),"Audio is Clicked!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
         android.widget.ImageView basic_option = view.findViewById(R.id.basic_option);
         basic_option.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), RateMeActivity.class);
-//                startActivity(intent);
                 tabbedActivity.finish();
             }
         });
         return  view;
     }
 
-
-
     private void ComplaintSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Submitting...");
         progressDialog.show();
-        //progress.setVisibility(View.VISIBLE);
-        //submit_button.setVisibility(View.GONE);
 
         final String textPlate = this.textPlate.getText().toString().trim();
         final String textVehicle = this.textVehicle.getText().toString().trim();
@@ -292,18 +273,15 @@ public class ComplaintFragment extends Fragment {
                             String success = jsonObject.getString("success");
 
                             if (success.equals("1")) {
-                                //openRegisterComplete();
                                 progressDialog.dismiss();
-                                Toast.makeText(getActivity(),"Submit Success!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(),"Complaint submitted successfully!", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                                 startActivity(intent);
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            //progress.setVisibility(View.GONE);
                             progressDialog.dismiss();
-                            //reg_button.setVisibility(View.VISIBLE);
                             Toast.makeText(getActivity(),"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -311,9 +289,7 @@ public class ComplaintFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //progress.setVisibility(View.GONE);
                         progressDialog.dismiss();
-                        //reg_button.setVisibility(View.VISIBLE);
                         Toast.makeText(getActivity(),"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -346,7 +322,6 @@ public class ComplaintFragment extends Fragment {
         }
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == CAMERA_PERM_CODE) {
@@ -358,7 +333,6 @@ public class ComplaintFragment extends Fragment {
             }
         }
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -393,7 +367,6 @@ public class ComplaintFragment extends Fragment {
         return mime.getExtensionFromMimeType(c.getType(contentUri));
     }
 
-
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -410,7 +383,6 @@ public class ComplaintFragment extends Fragment {
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
-
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

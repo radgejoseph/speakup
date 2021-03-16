@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +27,7 @@ import java.util.List;
 
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapterTricycle.OnItemListener {
 
-    private static final String URL_TRICYCLE_LIST = "http://192.168.1.103/SpeakUP/list_tricycle.php";//"http://half-a-dozen-school.000webhostapp.com/list_tricycle.php";
+    private static final String URL_TRICYCLE_LIST = "http://192.168.1.139/SpeakUP/list_tricycle.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTricycle listItemAdapter;
@@ -106,34 +105,30 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TRICYCLE_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                String  strVehicle = object.getString("vehicle");
-                                String strPlate = object.getString("body_plate");
-                                //int strRatings = object.getInt("ratings");
+                            String  strVehicle = object.getString("vehicle");
+                            String strPlate = object.getString("body_plate");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
-                                itemList.add(listItem);
-                            }
-
-                            listItemAdapter = new ListItemAdapterTricycle(itemList, ReportTricycleActivity.this);
-                            recyclerView.setAdapter(listItemAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
+                            ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
+                            itemList.add(listItem);
                         }
 
+                        listItemAdapter = new ListItemAdapterTricycle(itemList, ReportTricycleActivity.this);
+                        recyclerView.setAdapter(listItemAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+
                     }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -148,11 +143,9 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
 
     @Override
     public void onItemClick(int position) {
-        //itemList.get(position);
-        Intent intent = new Intent(ReportTricycleActivity.this, RateMeActivity.class);
+        Intent intent = new Intent(ReportTricycleActivity.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
-        //openRateMeActivity();
     }
 
     @Override

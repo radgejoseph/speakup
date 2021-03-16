@@ -12,16 +12,10 @@ import androidx.fragment.app.Fragment;
 
 public class VehicleFragment extends Fragment {
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.vehicle_fragment, container, false);
-
-        //Group jeepImage = (Group) view.findViewById(R.id.group_jeepney);
-        //Group taxicleImage = (Group) view.findViewById(R.id.group_taxicle);
-        //Group tricycleImage = (Group) view.findViewById(R.id.group_tricycle);
-        // taxiImage = (Group) view.findViewById(R.id.group_taxi);
 
         Group jeepField = view.findViewById(R.id.group_jeepney);
         int[] jeepFieldIds = jeepField.getReferencedIds();
@@ -34,7 +28,6 @@ public class VehicleFragment extends Fragment {
                 }
             });
         }
-
 
         Group taxicleField = view.findViewById(R.id.group_taxicle);
         int[] taxicleFieldIds = taxicleField.getReferencedIds();
