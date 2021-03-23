@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Validation Error.", Toast.LENGTH_LONG).show();
                 }
 
-                if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
+                /*if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
                         && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
 
                     regC();
@@ -84,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                     _txtPassword.setError("Password is Required");
                     _txtPhone.setError("Mobile Number is Required");
                     _txtEmail.setError("Email Address is Required");
-                }
+                }*/
             }
         });
 
