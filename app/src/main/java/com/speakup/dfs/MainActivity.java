@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-    private static String URL_LOGIN = "http://192.168.1.139/SpeakUP/login.php";
+    private static String URL_LOGIN = "http://localhost/SpeakUP/login.php";
 
     SessionManager sessionManager;
 
@@ -40,21 +40,12 @@ public class MainActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         progress = findViewById(R.id.progress);
-        username = findViewById(R.id.username_text);
-        password = findViewById(R.id.password_text);
+        username = findViewById(R.id.txtUsername);
+        password = findViewById(R.id.txtPassword);
         l_button = findViewById(R.id.login_button);
         tr_button = findViewById(R.id.to_register_button);
 
-//        decorView = getWindow().getDecorView();
-//        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-//            @Override
-//            public void onSystemUiVisibilityChange(int visibility) {
-//                if (visibility ==0)
-//                    decorView.setSystemUiVisibility(hideSystemBars());
-//            }
-//        });
-
-        //Button button = findViewById(R.id.to_register_button);
+        //Section for Opening Registration
         tr_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Button l_button = findViewById(R.id.login_button);
+        //Section of Login
         l_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username_l = username.getText().toString().trim();
-                String password_l = password.getText().toString().trim();
+                String username_l = username.getText().toString();
+                String password_l = password.getText().toString();
 
                 if (!username_l.isEmpty() && !password_l.isEmpty()) {
                     Login(username_l, password_l);
@@ -101,30 +92,18 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     String name = object.getString("name").trim();
-                                    //String username = object.getString("username").trim();
-                                    //String password = object.getString("password").trim();
-                                    //String mobile = object.getString("mobile").trim();
                                     String email = object.getString("email").trim();
                                     String id = object.getString("id").trim();
-                                    //String address = object.getString("address").trim();
                                     sessionManager.createSession(name, email, id);
 
                                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                     intent.putExtra("name", name);
-                                    //intent.putExtra("username", username);
-                                    //intent.putExtra("password", password);
-                                    //intent.putExtra("mobile", mobile);
                                     intent.putExtra("email", email);
-                                    //intent.putExtra("id", id);
-                                    //intent.putExtra("address", address);
                                     startActivity(intent);
 
                                     Toast.makeText(MainActivity.this, "Success Login! \nName : "
                                             +name+"\nEmail : "+email, Toast.LENGTH_LONG).show();
 
-//                                    Toast.makeText(MainActivity.this, "Success Login! \nName : "
-//                                            +name+"\nUsername : "+username+"\nPassword : "+password+
-//                                            "\nMobile : "+mobile+"\nEmail : "+email+"\nAddress : "+address, Toast.LENGTH_LONG).show();
                                     progress.setVisibility(View.GONE);
                                     openHomeActivity();
                                 }

@@ -57,7 +57,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
 
             textPlate = itemView.findViewById(R.id.plate_number);
             textReview = itemView.findViewById(R.id.review);
-            textUsername = itemView.findViewById(R.id.username_text);
+            textUsername = itemView.findViewById(R.id.txtUsername);
             ratingBar = itemView.findViewById(R.id.ratingBar);
             this.onItemListener = onItemListener;
 

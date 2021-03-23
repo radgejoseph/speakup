@@ -48,12 +48,12 @@ public class ProfileFragment extends Fragment{
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
 
-        name = view.findViewById(R.id.fullname_text);
-        username = view.findViewById(R.id.username_text);
-        password = view.findViewById(R.id.password_text);
-        phone_number = view.findViewById(R.id.phone_text);
-        email = view.findViewById(R.id.email_text);
-        address = view.findViewById(R.id.address_text);
+        name = view.findViewById(R.id.txtFullname);
+        username = view.findViewById(R.id.txtUsername);
+        password = view.findViewById(R.id.txtPassword);
+        phone_number = view.findViewById(R.id.txtPhone);
+        email = view.findViewById(R.id.txtEmail);
+        address = view.findViewById(R.id.txtAddress);
 
         name.setFocusableInTouchMode(false);
         username.setFocusableInTouchMode(false);

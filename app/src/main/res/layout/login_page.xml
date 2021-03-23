@@ -36,7 +36,7 @@
 
 
         <EditText
-            android:id="@+id/username_text"
+            android:id="@+id/txtUsername"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:background="@drawable/text_box_layout"
@@ -53,7 +53,7 @@
             android:autofillHints="" />
 
         <EditText
-            android:id="@+id/password_text"
+            android:id="@+id/txtPassword"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
@@ -66,7 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_text"
+            app:layout_constraintTop_toBottomOf="@+id/txtUsername"
             tools:ignore="MissingConstraints"
             android:autofillHints="" />
 
@@ -82,7 +82,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_text"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword"
             tools:ignore="MissingConstraints" />
 
         <Button

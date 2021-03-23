@@ -22,7 +22,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/username_text"
+            android:id="@+id/txtUsername"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -51,7 +51,7 @@
             android:id="@+id/ratecount"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/username_text"
+            android:layout_below="@+id/txtUsername"
             android:gravity="center_horizontal"
             android:text="Very Good 4/5"
             android:textColor="#B0B1B1"

@@ -57,7 +57,7 @@
             tools:ignore="MissingConstraints" />
 
         <EditText
-        android:id="@+id/fullname_text"
+        android:id="@+id/txtFullname"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@drawable/text_box_layout"
@@ -74,7 +74,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/username_text"
+        android:id="@+id/txtUsername"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@drawable/text_box_layout"
@@ -86,12 +86,12 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullname_text"
+        app:layout_constraintTop_toBottomOf="@+id/txtFullname"
         tools:ignore="MissingConstraints"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/password_text"
+        android:id="@+id/txtPassword"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@drawable/text_box_layout"
@@ -103,7 +103,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_text"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsername"
         tools:ignore="MissingConstraints"
         android:autofillHints="" />
 
@@ -118,11 +118,11 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_text"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/phone_text"
+        android:id="@+id/txtPhone"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@drawable/text_box_layout"
@@ -140,7 +140,7 @@
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/email_text"
+        android:id="@+id/txtEmail"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@drawable/text_box_layout"
@@ -152,12 +152,12 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_text"
+        app:layout_constraintTop_toBottomOf="@+id/txtPhone"
         tools:ignore="MissingConstraints"
         android:importantForAutofill="no" />
 
     <EditText
-        android:id="@+id/address_text"
+        android:id="@+id/txtAddress"
         android:layout_width="280dp"
         android:layout_height="120dp"
         android:background="@drawable/text_box_layout"
@@ -172,12 +172,12 @@
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_text"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
         tools:ignore="MissingConstraints"
         android:importantForAutofill="no" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/btnReg"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -188,7 +188,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_text"
+        app:layout_constraintTop_toBottomOf="@+id/txtAddress"
         tools:ignore="MissingConstraints" />
 
 <!--        <ProgressBar-->
