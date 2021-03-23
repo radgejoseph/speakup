@@ -2,20 +2,29 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private Button _btnReg;
     private EditText _txtName, _txtUsername, _txtPassword, _txtPhone, _txtEmail, _txtAddress;
     //private static String _URL_Reg = "http://localhost/SpeakUP/register.php";
-
+    AwesomeValidation awesomeValidation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +38,17 @@ public class RegisterActivity extends AppCompatActivity {
         _txtAddress = findViewById(R.id.txtAddress);
         _txtPassword = findViewById(R.id.txtPassword);
         _btnReg = findViewById(R.id.btnReg);
+        //initialize validation style
+        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        //add validation Name
+        awesomeValidation.addValidation(this, R.id.txtFullname, RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+        //For Mobile Number
+        awesomeValidation.addValidation(this,R.id.txtPhone, "[0]{1}[9]{1}[0-9]{9}$", R.string.invalid_mobile);
+        //for email
+        awesomeValidation.addValidation(this,R.id.txtEmail, Patterns.EMAIL_ADDRESS, R.string.invalid_email);
+        //for password
+        awesomeValidation.addValidation(this,R.id.txtPassword, ".{8,}", R.string.invalid_password);
 
-        //@@@@@@@@@@@@@
         /*android.widget.ImageView backBut = findViewById(R.id.imagebackButton);
         backBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,26 +56,27 @@ public class RegisterActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });*/
-
         _btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username_r = _txtUsername.getText().toString();
-                //Toast.makeText(getApplicationContext(), "success Input " + username_r, Toast.LENGTH_LONG).show();
                 String name_r = _txtName.getText().toString();
                 String email_r = _txtEmail.getText().toString();
                 String mobile_r = _txtPhone.getText().toString();
                 String address_r = _txtAddress.getText().toString();
                 String password_r = _txtPassword.getText().toString();
-                String type_r = "reg";
-                BackgroundTask backgroundTask = new BackgroundTask(getApplicationContext());
-                backgroundTask.execute(type_r, username_r, name_r, email_r, mobile_r, address_r, password_r);
-                //Toast.makeText(getApplicationContext(), "RegisterActivity Input Pass", Toast.LENGTH_LONG).show();
+                //String type_r = "reg";
+                if (awesomeValidation.validate()){
+                    Toast.makeText(getApplicationContext(), "Form Validate Successfully...", Toast.LENGTH_LONG).show();
+                    regC();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Validation Error.", Toast.LENGTH_LONG).show();
+                }
 
-                if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
+                /*if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
                         && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
 
-                    //Regist();
+                    regC();
                 }
                 else {
                     _txtName.setError("Full Name is Required");
@@ -65,36 +84,35 @@ public class RegisterActivity extends AppCompatActivity {
                     _txtPassword.setError("Password is Required");
                     _txtPhone.setError("Mobile Number is Required");
                     _txtEmail.setError("Email Address is Required");
-                }
+                }*/
             }
         });
 
     }
 
-    /*private void Regist() {
+    private void regC() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Submitting...");
         progressDialog.show();
 
-        final String name = this._name.getText().toString();
-        final String username = this._username.getText().toString();
-        final String password = this._password.getText().toString();
-        final String phone_number = this._phone_number.getText().toString();
-        final String email = this._email.getText().toString();
-        final String address = this._address.getText().toString();
+        final String fUsername = this._txtUsername.getText().toString();
+        final String fName = this._txtName.getText().toString();
+        final String fEmail = this._txtEmail.getText().toString();
+        final String fPhone_number = this._txtPhone.getText().toString();
+        final String fAddress = this._txtAddress.getText().toString();
+        final String fPassword = this._txtPassword.getText().toString();
+        final String fType = "reg";
 
-        Toast.makeText(RegisterActivity.this,"Check Input " + name, Toast.LENGTH_SHORT).show();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, _URL_REGIST,
+        BackgroundTask backgroundTask = new BackgroundTask(getApplicationContext());
+        backgroundTask.execute(fType, fUsername, fName, fEmail, fPhone_number, fAddress, fPassword);
+        openRegisterComplete();
+        /*StringRequest stringRequest = new StringRequest(Request.Method.POST, _URL_REGIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            //Toast.makeText(RegisterActivity.this,"Check Input " + jsonObject, Toast.LENGTH_SHORT).show();
-                            //JSONObject jsonObject = new JSONObject("["+response+"]");
                             String success = jsonObject.getString("success");
-
 
                             if (success.equals("1")) {
                                 openRegisterComplete();
@@ -140,8 +158,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Toast.makeText(RegisterActivity.this,"Check Input " + requestQueue, Toast.LENGTH_SHORT).show();
-        requestQueue.add(stringRequest);
-    }*/
+        requestQueue.add(stringRequest);*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

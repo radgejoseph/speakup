@@ -46,5 +46,5 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     //noinspection GradleCompatible
     implementation 'com.android.support:design:28.0.0'
-
+    implementation 'com.basgeekball:awesome-validation:4.2'
 }

@@ -40,4 +40,8 @@
     <string name="rate_me">RATE ME</string>
     <string name="your_review">Your Review</string>
     <string name="mobile">Mobile</string>
+    <string name="invalid_name">Please Enter Valid Name</string>
+    <string name="invalid_mobile">Please Enter a Valid Number</string>
+    <string name="invalid_email">Enter Valid Email</string>
+    <string name="invalid_password">Enter 8 Digit Password</string>
 </resources>
