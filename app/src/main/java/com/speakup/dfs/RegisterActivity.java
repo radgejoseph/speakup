@@ -43,6 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
         //add validation Name
         awesomeValidation.addValidation(this, R.id.txtFullname, RegexTemplate.NOT_EMPTY,R.string.invalid_name);
+        //For User Name
+        awesomeValidation.addValidation(this,R.id.txtUsername, RegexTemplate.NOT_EMPTY, R.string.invalid_username);
         //For Mobile Number
         awesomeValidation.addValidation(this,R.id.txtPhone, "[0]{1}[9]{1}[0-9]{9}$", R.string.invalid_mobile);
         //for email

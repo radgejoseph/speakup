@@ -44,4 +44,5 @@
     <string name="invalid_mobile">Please Enter a Valid Number</string>
     <string name="invalid_email">Enter Valid Email</string>
     <string name="invalid_password">Enter 8 Digit Password</string>
+    <string name="invalid_username">Please Enter User Name</string>
 </resources>
