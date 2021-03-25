@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         _txtPassword = findViewById(R.id.txtPassword);
         _btnLogIn = findViewById(R.id.btnLogin);
         _btnToReg = findViewById(R.id.btnToReg);
-        //Section of Login
 
+        //Section of Login
         _btnLogIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Login(final String username, final String password) {
-
         _progress.setVisibility(View.VISIBLE);
         _btnLogIn.setVisibility(View.GONE);
         _btnToReg.setVisibility(View.GONE);
