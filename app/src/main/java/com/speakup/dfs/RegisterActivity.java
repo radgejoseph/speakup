@@ -66,25 +66,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String address_r = _txtAddress.getText().toString();
                 String password_r = _txtPassword.getText().toString();
                 //String type_r = "reg";
-                if (awesomeValidation.validate()){
+                if (awesomeValidation.validate()&&!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
+                        && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Form Validate Successfully...", Toast.LENGTH_LONG).show();
                     regC();
                 }else{
                     Toast.makeText(getApplicationContext(),"Validation Error.", Toast.LENGTH_LONG).show();
                 }
-
-                /*if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
-                        && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
-
-                    regC();
-                }
-                else {
-                    _txtName.setError("Full Name is Required");
-                    _txtUsername.setError("Username is Required");
-                    _txtPassword.setError("Password is Required");
-                    _txtPhone.setError("Mobile Number is Required");
-                    _txtEmail.setError("Email Address is Required");
-                }*/
             }
         });
 
@@ -105,59 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
         BackgroundTask backgroundTask = new BackgroundTask(getApplicationContext());
         backgroundTask.execute(fType, fUsername, fName, fEmail, fPhone_number, fAddress, fPassword);
         openRegisterComplete();
-        /*StringRequest stringRequest = new StringRequest(Request.Method.POST, _URL_REGIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-
-                            if (success.equals("1")) {
-                                openRegisterComplete();
-                                progressDialog.dismiss();
-                                Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
-                            }
-                            else if (success.equals("0")) {
-                                progressDialog.dismiss();
-                                Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            _reg_button.setVisibility(View.VISIBLE);
-                            //Toast.makeText(RegisterActivity.this,"Register Error!@@@ " + e.toString(), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(RegisterActivity.this,"Register Error!@@@ ["+response+"]", Toast.LENGTH_SHORT).show();
-                        }
-                        //progressDialog.dismiss();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        _reg_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(RegisterActivity.this,"Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("name", name);
-                params.put("username", username);
-                params.put("password", password);
-                params.put("phone_number", phone_number);
-                params.put("email", email);
-                params.put("address", address);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        Toast.makeText(RegisterActivity.this,"Check Input " + requestQueue, Toast.LENGTH_SHORT).show();
-        requestQueue.add(stringRequest);*/
+        progressDialog.dismiss();
     }
 
     @Override

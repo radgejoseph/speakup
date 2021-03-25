@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText username, password;
-    private Button l_button, tr_button;
+    private EditText _txtUsername, _txtPassword;
+    private Button _btnLogIn, _btnRegF;
     private ProgressBar progress;
     private static String URL_LOGIN = "http://localhost/SpeakUP/login.php";
 
@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         progress = findViewById(R.id.progress);
-        username = findViewById(R.id.txtUsername);
-        password = findViewById(R.id.txtPassword);
-        l_button = findViewById(R.id.login_button);
-        tr_button = findViewById(R.id.to_register_button);
+        _txtUsername = findViewById(R.id.txtUsername);
+        _txtPassword = findViewById(R.id.txtPassword);
+        _btnLogIn = findViewById(R.id.login_button);
+        _btnRegF = findViewById(R.id.to_register_button);
 
         //Section for Opening Registration
-        tr_button.setOnClickListener(new View.OnClickListener() {
+        _btnRegF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openRegisterActivity();
@@ -54,18 +54,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Section of Login
-        l_button.setOnClickListener(new View.OnClickListener() {
+        _btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username_l = username.getText().toString();
-                String password_l = password.getText().toString();
+                String username_l = _txtUsername.getText().toString();
+                String password_l = _txtPassword.getText().toString();
 
                 if (!username_l.isEmpty() && !password_l.isEmpty()) {
                     Login(username_l, password_l);
                 }
                 else {
-                    username.setError("Please insert your username");
-                    password.setError("Please insert your password");
+                    _txtUsername.setError("Please insert your username");
+                    _txtPassword.setError("Please insert your password");
                 }
             }
         });
@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
     private void Login(final String username, final String password) {
 
         progress.setVisibility(View.VISIBLE);
-        l_button.setVisibility(View.GONE);
-        tr_button.setVisibility(View.GONE);
+        _btnLogIn.setVisibility(View.GONE);
+        _btnRegF.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progress.setVisibility(View.GONE);
-                            l_button.setVisibility(View.VISIBLE);
-                            tr_button.setVisibility(View.VISIBLE);
+                            _btnLogIn.setVisibility(View.VISIBLE);
+                            _btnRegF.setVisibility(View.VISIBLE);
                             Toast.makeText(MainActivity.this, "Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progress.setVisibility(View.GONE);
-                        l_button.setVisibility(View.VISIBLE);
-                        tr_button.setVisibility(View.VISIBLE);
+                        _btnLogIn.setVisibility(View.VISIBLE);
+                        _btnRegF.setVisibility(View.VISIBLE);
                         Toast.makeText(MainActivity.this, "Error! " + error.toString(), Toast.LENGTH_SHORT).show();
 
                     }
