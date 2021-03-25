@@ -88,7 +88,7 @@ public class ListItemAdapterTricycle extends RecyclerView.Adapter<ListItemAdapte
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
-            textPlate = itemView.findViewById(R.id.plate_number);
+            textPlate = itemView.findViewById(R.id.txtPlate_number);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

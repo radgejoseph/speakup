@@ -6,21 +6,24 @@ import android.os.Parcelable;
 public class ListItemReviews implements Parcelable {
 
     private String username;
+    private String vehicle;
     private String plate;
-    private int ratecount;
+    private int rateCount;
     private String review;
 
-    public ListItemReviews(String username, String plate, int ratecount, String review) {
+    public ListItemReviews(String username,String vehicle, String plate, int rateCount, String review) {
         this.username = username;
+        this.vehicle = vehicle;
         this.plate = plate;
-        this.ratecount = ratecount;
+        this.rateCount = rateCount;
         this.review = review;
     }
 
     protected ListItemReviews(Parcel in) {
         username = in.readString();
+        vehicle = in.readString();
         plate = in.readString();
-        ratecount = in.readInt();
+        rateCount = in.readInt();
         review = in.readString();
     }
 
@@ -40,12 +43,15 @@ public class ListItemReviews implements Parcelable {
         return username;
     }
 
+    public String getVehicle() {
+        return vehicle; }
+
     public String getPlateL() {
         return plate;
     }
 
-    public int getRatcountL() {
-        return ratecount;
+    public int getRatCountL() {
+        return rateCount;
     }
 
     public String getReviewL() {
@@ -60,8 +66,9 @@ public class ListItemReviews implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(username);
+        dest.writeString(vehicle);
         dest.writeString(plate);
-        dest.writeInt(ratecount);
+        dest.writeInt(rateCount);
         dest.writeString(review);
     }
 

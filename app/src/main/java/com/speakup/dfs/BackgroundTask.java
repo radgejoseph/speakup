@@ -119,7 +119,6 @@ public class BackgroundTask extends AsyncTask<String, String, String> {
                 e.printStackTrace();
             }
         }
-
         return null;
     }
 

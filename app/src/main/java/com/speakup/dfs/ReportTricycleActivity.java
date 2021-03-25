@@ -68,7 +68,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        button_colorum = findViewById(R.id.button_colorum);
+        button_colorum = findViewById(R.id.btnColorum);
         button_colorum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

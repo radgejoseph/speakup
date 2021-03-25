@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 String pass_word = _txtPassword.getText().toString();
 
                 if (awesomeValidation.validate()&&!user_name.isEmpty() && !pass_word.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Form Validate Successfully...", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Successful To Log-In", Toast.LENGTH_LONG).show();
                     Login(user_name, pass_word);
                 }else{
-                    Toast.makeText(getApplicationContext(),"Validation Error.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Failed To Log-In.", Toast.LENGTH_LONG).show();
                 }
             }
         });

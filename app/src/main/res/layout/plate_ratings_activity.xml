@@ -36,7 +36,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/plate_number"
+                android:id="@+id/txtPlate_number"
                 android:layout_width="200dp"
                 android:layout_height="60dp"
                 android:background="@drawable/plate_box_layout"

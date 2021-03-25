@@ -80,15 +80,13 @@ public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJee
     };
 
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-
         TextView textPlate;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
-            textPlate = itemView.findViewById(R.id.plate_number);
+            textPlate = itemView.findViewById(R.id.txtPlate_number);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

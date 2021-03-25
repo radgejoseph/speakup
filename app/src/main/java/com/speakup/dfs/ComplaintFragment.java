@@ -131,7 +131,7 @@ public class ComplaintFragment extends Fragment {
         TabbedActivity tabbedActivity = (TabbedActivity) getActivity();
         String getPlate = tabbedActivity.sendPlate();
         String getVehicle = tabbedActivity.sendVehicle();
-        textPlate = view.findViewById(R.id.plate_number);
+        textPlate = view.findViewById(R.id.txtPlate_number);
         textPlate.setText(getPlate);
         textVehicle = view.findViewById(R.id.vehicle_type_holder);
         textVehicle.setText(getVehicle);

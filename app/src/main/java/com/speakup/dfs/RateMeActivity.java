@@ -69,7 +69,7 @@ public class RateMeActivity extends AppCompatActivity {
 
         String plate = getIntent().getStringExtra("selected_plate");
         String vehicle = getIntent().getStringExtra("vehicle");
-        textPlate = findViewById(R.id.plate_number);
+        textPlate = findViewById(R.id.txtPlate_number);
         textPlate.setText(plate);
         textVehicle = findViewById(R.id.vehicle_type_holder);
         textVehicle.setText(vehicle);

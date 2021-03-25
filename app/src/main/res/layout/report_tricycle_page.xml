@@ -109,7 +109,7 @@
                 android:paddingEnd="60dp">
 
                 <TextView
-                    android:id="@+id/text_noplate"
+                    android:id="@+id/txtNoplate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="10dp"
@@ -117,7 +117,7 @@
                     android:textSize="20dp" />
 
                 <Button
-                    android:id="@+id/button_colorum"
+                    android:id="@+id/btnColorum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_button_green"
@@ -133,7 +133,7 @@
                 android:id="@+id/group_noplatewithbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="view_group,button_colorum,text_noplate" />
+                app:constraint_referenced_ids="view_group,btnColorum,txtNoplate" />
 
         </RelativeLayout>
 

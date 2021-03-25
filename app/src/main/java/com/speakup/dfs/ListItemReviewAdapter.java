@@ -35,7 +35,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
         holder.textPlate.setText(listItemReviews.getPlateL());
         holder.textUsername.setText(listItemReviews.getUsernameL());
         holder.textReview.setText(listItemReviews.getReviewL());
-        holder.ratingBar.setNumStars(listItemReviews.getRatcountL());
+        holder.ratingBar.setNumStars(listItemReviews.getRatCountL());
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
-            textPlate = itemView.findViewById(R.id.plate_number);
+            textPlate = itemView.findViewById(R.id.txtPlate_number);
             textReview = itemView.findViewById(R.id.review);
             textUsername = itemView.findViewById(R.id.txtUsername);
             ratingBar = itemView.findViewById(R.id.ratingBar);

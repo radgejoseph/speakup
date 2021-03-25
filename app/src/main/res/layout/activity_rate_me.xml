@@ -106,7 +106,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/plate_number"
+                android:id="@+id/txtPlate_number"
                 android:layout_width="170dp"
                 android:layout_height="50dp"
                 android:background="@drawable/text_box_layout"
@@ -133,7 +133,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plate_number"
+                app:layout_constraintTop_toBottomOf="@+id/txtPlate_number"
                 tools:ignore="MissingConstraints" />
 
             <RatingBar

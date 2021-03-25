@@ -24,7 +24,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Button _btnReg;
     private EditText _txtName, _txtUsername, _txtPassword, _txtPhone, _txtEmail, _txtAddress;
-    //private static String _URL_Reg = "http://localhost/SpeakUP/register.php";
     AwesomeValidation awesomeValidation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

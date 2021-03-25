@@ -26,8 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
-
-    private static final String URL_JEEPNEY_LIST = "http://192.168.1.139/SpeakUP/list_jeepney.php";
+    private static final String listURL = "http://10.0.2.2/SpeakUP/list_puv.php";
 
     RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
@@ -68,7 +67,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        button_colorum = findViewById(R.id.button_colorum);
+        button_colorum = findViewById(R.id.btnColorum);
         button_colorum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,17 +103,20 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_JEEPNEY_LIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, listURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            JSONArray jsonArray = new JSONArray(response);
+                            JSONArray jsArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                            for (int i = 0; i < jsArray.length(); i++) {
+                                JSONObject object = jsArray.getJSONObject(i);
 
+                                /*productList.add(new Product(
+
+                                ))*/
                                 String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
 

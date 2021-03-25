@@ -8,11 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.StringRequest;
-
-import java.util.HashMap;
-
-    // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
+// =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
     // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
     // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
     // =========================================== THIS CLASS IS NOT USED AT THE MOMENT ====================================================//
@@ -63,7 +59,7 @@ public class PlateRatingsActivity extends AppCompatActivity {
             String plate = listItem.getPlateL();
             String vehicle = listItem.getVehicleL();
 
-            textPlate = findViewById(R.id.plate_number);
+            textPlate = findViewById(R.id.txtPlate_number);
             textPlate.setText(plate);
             textVehicle = findViewById(R.id.vehicle_type_holder);
             textVehicle.setText(vehicle);

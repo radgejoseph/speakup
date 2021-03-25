@@ -33,7 +33,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/plate_number"
+            android:id="@+id/txtPlate_number"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/vehicle_type"
@@ -64,7 +64,7 @@
             android:id="@+id/ratecount"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/plate_number"
+            android:layout_below="@+id/txtPlate_number"
             android:gravity="center_horizontal"
             android:text="Very Good 4/5"
             android:textColor="@color/black"
