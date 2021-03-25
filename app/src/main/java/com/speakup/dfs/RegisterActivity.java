@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_page);
-        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         _txtUsername = findViewById(R.id.txtUsername);
         _txtName = findViewById(R.id.txtFullname);
@@ -82,16 +83,16 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setMessage("Submitting...");
         progressDialog.show();
 
-        final String fUsername = this._txtUsername.getText().toString();
-        final String fName = this._txtName.getText().toString();
-        final String fEmail = this._txtEmail.getText().toString();
-        final String fPhone_number = this._txtPhone.getText().toString();
-        final String fAddress = this._txtAddress.getText().toString();
-        final String fPassword = this._txtPassword.getText().toString();
-        final String fType = "reg";
+        final String rUsername = this._txtUsername.getText().toString();
+        final String rName = this._txtName.getText().toString();
+        final String rEmail = this._txtEmail.getText().toString();
+        final String rPhone_number = this._txtPhone.getText().toString();
+        final String rAddress = this._txtAddress.getText().toString();
+        final String rPassword = this._txtPassword.getText().toString();
+        final String rType = "reg";
 
         BackgroundTask backgroundTask = new BackgroundTask(getApplicationContext());
-        backgroundTask.execute(fType, fUsername, fName, fEmail, fPhone_number, fAddress, fPassword);
+        backgroundTask.execute(rType, rUsername, rName, rEmail, rPhone_number, rAddress, rPassword);
         openRegisterComplete();
         progressDialog.dismiss();
     }

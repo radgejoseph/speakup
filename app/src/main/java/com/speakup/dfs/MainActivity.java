@@ -25,8 +25,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private EditText _txtUsername, _txtPassword;
-    private Button _btnLogIn, _btnRegF;
-    private ProgressBar progress;
+    private Button _btnLogIn, _btnToReg;
+    private ProgressBar _progress;
     private static String URL_LOGIN = "http://localhost/SpeakUP/login.php";
 
     SessionManager sessionManager;
@@ -39,22 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
-        progress = findViewById(R.id.progress);
+        _progress = findViewById(R.id.progress);
         _txtUsername = findViewById(R.id.txtUsername);
         _txtPassword = findViewById(R.id.txtPassword);
-        _btnLogIn = findViewById(R.id.login_button);
-        _btnRegF = findViewById(R.id.to_register_button);
+        _btnLogIn = findViewById(R.id.btnLogin);
+        _btnToReg = findViewById(R.id.btnToReg);
+        //Section of Login
 
-        //Section for Opening Registration
-        _btnRegF.setOnClickListener(new View.OnClickListener() {
+        _btnLogIn.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                openRegisterActivity();
+            public void onClick(View v) {
+                String user_name = _txtUsername.getText().toString();
+                String pass_word = _txtPassword.getText().toString();
+                String type = "login";
+                BackgroundTask backgroundTask = new BackgroundTask(getApplicationContext());
+                backgroundTask.execute(type, user_name, pass_word);
             }
         });
 
-        //Section of Login
-        _btnLogIn.setOnClickListener(new View.OnClickListener() {
+        /*_btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username_l = _txtUsername.getText().toString();
@@ -68,14 +71,22 @@ public class MainActivity extends AppCompatActivity {
                     _txtPassword.setError("Please insert your password");
                 }
             }
+        });*/
+
+        //Section for Opening Registration
+        _btnToReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegisterActivity();
+            }
         });
     }
 
     private void Login(final String username, final String password) {
 
-        progress.setVisibility(View.VISIBLE);
+        _progress.setVisibility(View.VISIBLE);
         _btnLogIn.setVisibility(View.GONE);
-        _btnRegF.setVisibility(View.GONE);
+        _btnToReg.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
@@ -104,16 +115,16 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this, "Success Login! \nName : "
                                             +name+"\nEmail : "+email, Toast.LENGTH_LONG).show();
 
-                                    progress.setVisibility(View.GONE);
+                                    _progress.setVisibility(View.GONE);
                                     openHomeActivity();
                                 }
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            progress.setVisibility(View.GONE);
+                            _progress.setVisibility(View.GONE);
                             _btnLogIn.setVisibility(View.VISIBLE);
-                            _btnRegF.setVisibility(View.VISIBLE);
+                            _btnToReg.setVisibility(View.VISIBLE);
                             Toast.makeText(MainActivity.this, "Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -121,9 +132,9 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progress.setVisibility(View.GONE);
+                        _progress.setVisibility(View.GONE);
                         _btnLogIn.setVisibility(View.VISIBLE);
-                        _btnRegF.setVisibility(View.VISIBLE);
+                        _btnToReg.setVisibility(View.VISIBLE);
                         Toast.makeText(MainActivity.this, "Error! " + error.toString(), Toast.LENGTH_SHORT).show();
 
                     }

@@ -39,9 +39,10 @@
             android:id="@+id/txtUsername"
             android:layout_width="280dp"
             android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:autofillHints=""
             android:background="@drawable/text_box_layout"
             android:ems="10"
-            android:layout_marginTop="50dp"
             android:hint="@string/username"
             android:inputType="textPersonName"
             android:paddingStart="15dp"
@@ -49,14 +50,14 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            tools:ignore="MissingConstraints"
-            android:autofillHints="" />
+            tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/txtPassword"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
+            android:autofillHints=""
             android:background="@drawable/text_box_layout"
             android:ems="10"
             android:hint="@string/password"
@@ -67,11 +68,10 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtUsername"
-            tools:ignore="MissingConstraints"
-            android:autofillHints="" />
+            tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/btnLogin"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -86,11 +86,10 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/to_register_button"
+            android:id="@+id/btnToReg"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/custom_button_green"
             android:text="@string/register"
             android:textColor="#FFFFFF"
@@ -98,7 +97,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_button"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
             tools:ignore="MissingConstraints" />
 
 
