@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
-    private static final String listURL = "http://10.0.2.2/SpeakUP/list_puv.php";
+    private static final String listURL = "http://10.0.2.2/SpeakUP/list_Jeepney.php";
     private RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
     Toolbar toolbar;
@@ -105,7 +105,6 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
                         try {
                             JSONArray jsArray = new JSONArray(response);
 
@@ -121,7 +120,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
                                 ListItem listItem = new ListItem(strVehicle, strPlate);
                                 itemList.add(listItem);
                             }
-
+                            progressDialog.dismiss();
                             listItemAdapter = new ListItemAdapterJeep(itemList, ReportJeepActivity.this);
                             recyclerView.setAdapter(listItemAdapter);
                         } catch (JSONException e) {
