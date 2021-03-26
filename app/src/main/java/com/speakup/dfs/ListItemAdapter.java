@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListItemHoder> implements Filterable {
+public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListItemHolder> implements Filterable {
 
     private List<ListItem> itemList;
     private List<ListItem> itemListFull;
@@ -25,14 +25,14 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
 
     @NonNull
     @Override
-    public ListItemHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view, null);
-        ListItemHoder listItemHoder = new ListItemHoder(view, mOnItemListener);
-        return new ListItemHoder(view, mOnItemListener);
+        ListItemHolder listItemHolder = new ListItemHolder(view, mOnItemListener);
+        return new ListItemHolder(view, mOnItemListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListItemHoder holder, int position) {
+    public void onBindViewHolder(@NonNull ListItemHolder holder, int position) {
         ListItem listItem = itemList.get(position);
 
         holder.textPlate.setText(listItem.getPlateL());
@@ -79,12 +79,12 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
         }
     };
 
-    class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+    public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView mVehicle, mBodyPlate;
         TextView textPlate;
         OnItemListener onItemListener;
 
-        public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
+        public ListItemHolder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
             textPlate = itemView.findViewById(R.id.txtPlate_number);

@@ -38,6 +38,15 @@ public class ListItem implements Parcelable {
         return plate;
     }
 
+    public void setVehicle(String vehicle){
+        this.vehicle = vehicle;
+    }
+
+    public void setPlate(String plate){
+        this.plate = plate;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;

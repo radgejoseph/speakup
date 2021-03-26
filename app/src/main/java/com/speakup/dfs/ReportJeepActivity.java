@@ -27,8 +27,7 @@ import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
     private static final String listURL = "http://10.0.2.2/SpeakUP/list_puv.php";
-
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
     Toolbar toolbar;
     Button button_colorum;
@@ -57,7 +56,6 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
             public void afterTextChanged(Editable s) {
                 listItemAdapter.getFilter().filter(s);
             }
-
         });
 
         toolbar = findViewById(R.id.toolbar);
@@ -117,7 +115,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
                                 /*productList.add(new Product(
 
                                 ))*/
-                                String  strVehicle = object.getString("vehicle");
+                                String strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
 
                                 ListItem listItem = new ListItem(strVehicle, strPlate);
@@ -126,13 +124,10 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
 
                             listItemAdapter = new ListItemAdapterJeep(itemList, ReportJeepActivity.this);
                             recyclerView.setAdapter(listItemAdapter);
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override
