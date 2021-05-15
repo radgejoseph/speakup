@@ -59,8 +59,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-    private static String URL_COMPLAINT = "http://192.168.1.139/SpeakUP/complaint.php";
-    private static String URL_IMAGECOMPLAINT = "http://192.168.1.139/SpeakUP/commendations_images_upload.php";
+    private static String URL_COMPLAINT = "http://192.168.1.136/SpeakUP/complaint.php";
+    private static String URL_IMAGECOMPLAINT = "http://192.168.1.136/SpeakUP/commendations_images_upload.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
