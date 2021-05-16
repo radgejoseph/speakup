@@ -12,11 +12,13 @@ import java.util.List;
 
 public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAdapter.ListItemHoder> {
 
-    private List<ListItemReviews> itemListReview;
+    private List<ListItemReviews> itemList;
+    private List<ListItemReviews> itemListFull;
     private OnItemListener mOnItemListener;
 
     public ListItemReviewAdapter(List<ListItemReviews> itemList, OnItemListener onItemListener) {
-        this.itemListReview = itemListReview;
+        this.itemList = itemList;
+        itemListFull = new ArrayList<>(itemList);
         this.mOnItemListener = onItemListener;
     }
 
@@ -30,17 +32,18 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
 
     @Override
     public void onBindViewHolder(@NonNull ListItemHoder holder, int position) {
-        ListItemReviews listItemReviews = itemListReview.get(position);
+        ListItemReviews listItemReviews = itemList.get(position);
 
         holder.textPlate.setText(listItemReviews.getPlateL());
-        holder.textUsername.setText(listItemReviews.getUsernameL());
+        holder.textVehicle.setText(listItemReviews.getVehicleL());
         holder.textReview.setText(listItemReviews.getReviewL());
+        holder.ratecount.setText(listItemReviews.getRatcountL());
         holder.ratingBar.setNumStars(listItemReviews.getRatcountL());
     }
 
     @Override
     public int getItemCount() {
-        return itemListReview.size();
+        return itemList.size();
     }
 
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -48,17 +51,18 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
 
         TextView textPlate;
         TextView textReview;
-        TextView textUsername;
+        TextView textVehicle;
         RatingBar ratingBar;
+        TextView ratecount;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
-            textPlate = itemView.findViewById(R.id.plate_number);
+            textPlate = itemView.findViewById(R.id.body_plate);
             textReview = itemView.findViewById(R.id.review);
-            textUsername = itemView.findViewById(R.id.username_text);
-            ratingBar = itemView.findViewById(R.id.ratingBar);
+            textVehicle = itemView.findViewById(R.id.vehicle_type);
+            ratecount = itemView.findViewById(R.id.ratecount);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);
@@ -75,7 +79,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
     }
 
     public void filterList(ArrayList<ListItemReviews> filteredList) {
-        itemListReview = filteredList;
+        itemList = filteredList;
         notifyDataSetChanged();
     }
 

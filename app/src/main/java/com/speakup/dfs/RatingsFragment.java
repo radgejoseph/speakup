@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -23,14 +25,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.OnItemListener{
 
-    //private static final String URL_MY_LIST = "http://192.168.1.117/SpeakUP/my_ratings.php";
-    //private static String URL_READ = "http://192.168.1.117/SpeakUP/read_detail.php";
+    private static final String URL_MY_LIST = "http://192.168.1.136/SpeakUP/my_ratings.php";
 
+    RecyclerView recyclerView;
+    ListItemReviewAdapter listItemAdapter;
+
+    List<ListItemReviews> itemList;
 
     @Nullable
     @Override
@@ -38,8 +45,61 @@ public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.
         View view = inflater.inflate(R.layout.ratings_fragment, container, false);
         setHasOptionsMenu(true);
 
+        itemList = new ArrayList<>();
 
+        recyclerView = view.findViewById(R.id.recyclerview_list_review);
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        loadList();
         return view;
+    }
+
+    private void loadList() {
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading list...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_MY_LIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
+
+                                String  strVehicle = object.getString("vehicle");
+                                String strPlate = object.getString("body_plate");
+                                int strRatings = object.getInt("ratings");
+                                String strNarrative = object.getString("narrative");
+
+                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
+                                itemList.add(listItemReviews);
+                            }
+
+                            listItemAdapter = new ListItemReviewAdapter(itemList, (ListItemReviewAdapter.OnItemListener) getActivity());
+                            recyclerView.setAdapter(listItemAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            progressDialog.dismiss();
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
 

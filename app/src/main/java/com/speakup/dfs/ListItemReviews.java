@@ -3,53 +3,59 @@ package com.speakup.dfs;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 public class ListItemReviews implements Parcelable {
 
-    private String username;
-    private String plate;
-    private int ratecount;
-    private String review;
+    private String vehicle;
+    private String body_plate;
+    private int ratings;
+    private String narrative;
 
-    public ListItemReviews(String username, String plate, int ratecount, String review) {
-        this.username = username;
-        this.plate = plate;
-        this.ratecount = ratecount;
-        this.review = review;
+    public ListItemReviews(String vehicle, String body_plate, int ratings, String narrative) {
+        this.vehicle = vehicle;
+        this.body_plate = body_plate;
+        this.ratings = ratings;
+        this.narrative = narrative;
     }
 
     protected ListItemReviews(Parcel in) {
-        username = in.readString();
-        plate = in.readString();
-        ratecount = in.readInt();
-        review = in.readString();
+        vehicle = in.readString();
+        body_plate = in.readString();
+        ratings = in.readInt();
+        narrative = in.readString();
     }
 
-    public static final Creator<ListItem> CREATOR = new Creator<ListItem>() {
+    public static final Creator<ListItemReviews> CREATOR = new Creator<ListItemReviews>() {
         @Override
-        public ListItem createFromParcel(Parcel in) {
-            return new ListItem(in);
+        public ListItemReviews createFromParcel(Parcel in) {
+            return new ListItemReviews(in);
         }
 
         @Override
-        public ListItem[] newArray(int size) {
-            return new ListItem[size];
+        public ListItemReviews[] newArray(int size) {
+            return new ListItemReviews[size];
         }
     };
 
-    public String getUsernameL() {
-        return username;
+//    public ListItemReviews(List<ListItemReviews> listItemReviews, RatingsFragment ratingsFragment) {
+//
+//    }
+
+    public String getVehicleL() {
+        return vehicle;
     }
 
     public String getPlateL() {
-        return plate;
+        return body_plate;
     }
 
     public int getRatcountL() {
-        return ratecount;
+        return ratings;
     }
 
     public String getReviewL() {
-        return review;
+        return narrative;
     }
 
     @Override
@@ -59,10 +65,10 @@ public class ListItemReviews implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(username);
-        dest.writeString(plate);
-        dest.writeInt(ratecount);
-        dest.writeString(review);
+        dest.writeString(vehicle);
+        dest.writeString(body_plate);
+        dest.writeInt(ratings);
+        dest.writeString(narrative);
     }
 
 }
