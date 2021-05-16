@@ -136,61 +136,62 @@
                 tools:ignore="MissingConstraints" />
 
 
-            <ImageView
-                android:id="@+id/upload_image_view_camera"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.341"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/complaint_text"
-                tools:ignore="MissingConstraints" />
+<!--            <ImageView-->
+<!--                android:id="@+id/upload_image_view_camera"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:contentDescription="@string/todo"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.341"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/complaint_text"-->
+<!--                tools:ignore="MissingConstraints" />-->
+
+            <!--            <ImageView-->
+<!--                android:id="@+id/capture_image"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:contentDescription="@string/todo"-->
+<!--                android:src="@drawable/capture_image"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.321"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/upload_image_view_camera"-->
+<!--                tools:ignore="MissingConstraints" />-->
 
             <ImageView
                 android:id="@+id/upload_image_view_camera_gallery"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/text_box_layout"
                 android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.653"
+                app:layout_constraintHorizontal_bias="0.658"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complaint_text"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/capture_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/capture_image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.321"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/upload_image_view_camera"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:id="@+id/add_image_video"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="48dp"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/add_image_video"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintHorizontal_bias="0.321"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/upload_image_view_camera_gallery"
+                app:layout_constraintTop_toBottomOf="@+id/complaint_text"
                 tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/submit_button_complaint"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/custom_button_blue"
                 android:text="@string/SUBMIT"
                 android:textColor="#FFFFFF"
@@ -203,16 +204,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/add_image_video"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="can send plate, time, date, commend but image is not"
-                app:layout_constraintBottom_toTopOf="@+id/submit_button_complaint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
+<!--            <TextView-->
+<!--                android:id="@+id/textView11"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:text="can send plate, time, date, commend but image is not"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/submit_button_complaint"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                tools:ignore="MissingConstraints" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
