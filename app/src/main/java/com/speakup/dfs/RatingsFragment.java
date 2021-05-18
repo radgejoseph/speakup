@@ -33,10 +33,10 @@ import java.util.Map;
 //public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.OnItemListener{
 public class RatingsFragment extends Fragment {
 
-    private static final String URL_MY_LIST = "http://192.168.1.136/SpeakUP/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.137/SpeakUP/my_ratings.php";
 
     RecyclerView recyclerView;
-    ListItemReviewAdapter listItemAdapter;
+//    ListItemReviewAdapter listItemAdapter;
     List<ListItemReviews> itemList;
 
     @Nullable
@@ -52,8 +52,8 @@ public class RatingsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        listItemAdapter = new ListItemReviewAdapter(getContext(), itemList);
-        recyclerView.setAdapter(listItemAdapter);
+//        listItemAdapter = new ListItemReviewAdapter(getContext(), itemList);
+//        recyclerView.setAdapter(listItemAdapter);
         loadList();
 
         return view;
@@ -64,7 +64,7 @@ public class RatingsFragment extends Fragment {
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_MY_LIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_MY_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -75,17 +75,23 @@ public class RatingsFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                String  strVehicle = object.getString("vehicle");
-                                String strPlate = object.getString("body_plate");
-                                int strRatings = object.getInt("ratings");
-                                String strNarrative = object.getString("narrative");
+                                itemList.add(new ListItemReviews(
+                                        object.getString("vehicle"),
+                                        object.getString("body_plate"),
+                                        object.getInt("ratings"),
+                                        object.getString("narrative")
+                                ));
+//                                String  strVehicle = object.getString("vehicle");
+//                                String strPlate = object.getString("body_plate");
+//                                int strRatings = object.getInt("ratings");
+//                                String strNarrative = object.getString("narrative");
 
-                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
-                                itemList.add(listItemReviews);
+//                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
+//                                itemList.add(listItemReviews);
                             }
 
-                            //listItemAdapter = new ListItemReviewAdapter(itemList, (ListItemReviewAdapter.OnItemListener) getActivity());
-                            recyclerView.setAdapter(listItemAdapter);
+                            ListItemReviewAdapter  listItemReviewAdapter= new ListItemReviewAdapter(getActivity(), itemList);
+                            recyclerView.setAdapter(listItemReviewAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

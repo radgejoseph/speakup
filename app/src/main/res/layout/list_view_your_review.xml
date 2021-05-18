@@ -16,7 +16,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/review_box_layout"
+        android:background="@color/graycolor"
         android:padding="5dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
-            android:text="Tricycle"
+            android:hint="Tricycle"
             android:textStyle="bold"
             android:textSize="15sp"
             tools:ignore="MissingConstraints" />
@@ -40,7 +40,7 @@
             android:layout_toStartOf="@+id/ratingBar"
             android:gravity="center_horizontal"
             android:background="@drawable/small_plate_box_layout"
-            android:text="WMG 005"
+            android:hint="WMG 005"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -48,19 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-<!--        <RatingBar-->
-<!--            android:id="@+id/ratingBar"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:layout_toEndOf="@+id/ratecount"-->
-<!--            android:numStars="5"-->
-<!--            android:progressTint="@color/buttonGreen"-->
-<!--            android:rating="0"-->
-<!--            android:stepSize="1.0"-->
-<!--            tools:ignore="MissingConstraints" />-->
-
-        <TextView
+                <TextView
             android:id="@+id/ratecount"
             android:layout_width="193dp"
             android:layout_height="wrap_content"
@@ -71,10 +59,22 @@
             android:background="@drawable/text_box_layout"
             android:layout_toEndOf="@+id/body_plate"
             android:gravity="center_horizontal"
-            android:hint="Very Good 4/5"
+            android:hint="5"
             android:textColor="@color/black"
             android:textSize="25sp"
             tools:ignore="MissingConstraints" />
+
+<!--        <RatingBar-->
+<!--            android:id="@+id/ratingBar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:numStars="5"-->
+<!--            android:progressTint="@color/buttonGreen"-->
+<!--            android:rating="0"-->
+<!--            android:stepSize="1.0"-->
+<!--            tools:ignore="MissingConstraints" />-->
 
         <TextView
             android:id="@+id/review"
@@ -82,11 +82,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/body_plate"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:hint="Mabuotun man na maray na driver ning si kuya na nasakayan ko, pero 4 star lang ta dai maayos si mga plastick na harang"
             android:textSize="15sp"
             tools:ignore="MissingConstraints" />
-
 
 
     </RelativeLayout>
