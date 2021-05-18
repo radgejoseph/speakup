@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-    private static String URL_COLORUM = "http://192.168.1.137/SpeakUP/colorum.php";
+    private static String URL_COLORUM = "http://192.168.1.138/SpeakUP/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;

@@ -1,11 +1,5 @@
 package com.speakup.dfs;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.util.List;
-
-//public class ListItemReviews implements Parcelable {
 public class ListItemReviews {
 
     private String vehicle;

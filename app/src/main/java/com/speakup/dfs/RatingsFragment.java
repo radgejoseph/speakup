@@ -2,6 +2,7 @@ package com.speakup.dfs;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,17 +34,23 @@ import java.util.Map;
 //public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.OnItemListener{
 public class RatingsFragment extends Fragment {
 
-    private static final String URL_MY_LIST = "http://192.168.1.137/SpeakUP/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.138/SpeakUP/my_ratings.php";
 
     RecyclerView recyclerView;
 //    ListItemReviewAdapter listItemAdapter;
     List<ListItemReviews> itemList;
+
+    String getId;
+    SessionManager sessionManager;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ratings_fragment, container, false);
         setHasOptionsMenu(true);
+
+        sessionManager = new SessionManager(getActivity());
+        sessionManager.checkLogin();
 
         itemList = new ArrayList<>();
 
@@ -56,6 +63,9 @@ public class RatingsFragment extends Fragment {
 //        recyclerView.setAdapter(listItemAdapter);
         loadList();
 
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getId = user.get(sessionManager.ID);
+
         return view;
     }
 
@@ -64,7 +74,7 @@ public class RatingsFragment extends Fragment {
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_MY_LIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_MY_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -72,15 +82,15 @@ public class RatingsFragment extends Fragment {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
 
-                                itemList.add(new ListItemReviews(
-                                        object.getString("vehicle"),
-                                        object.getString("body_plate"),
-                                        object.getInt("ratings"),
-                                        object.getString("narrative")
-                                ));
+                                    itemList.add(new ListItemReviews(
+                                            object.getString("vehicle"),
+                                            object.getString("body_plate"),
+                                            object.getInt("ratings"),
+                                            object.getString("narrative")
+                                    ));
 //                                String  strVehicle = object.getString("vehicle");
 //                                String strPlate = object.getString("body_plate");
 //                                int strRatings = object.getInt("ratings");
@@ -88,7 +98,7 @@ public class RatingsFragment extends Fragment {
 
 //                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
 //                                itemList.add(listItemReviews);
-                            }
+                                }
 
                             ListItemReviewAdapter  listItemReviewAdapter= new ListItemReviewAdapter(getActivity(), itemList);
                             recyclerView.setAdapter(listItemReviewAdapter);
@@ -106,7 +116,15 @@ public class RatingsFragment extends Fragment {
                 progressDialog.dismiss();
                 Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id", getId);
+                return params;
+            }
+        };
 
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }

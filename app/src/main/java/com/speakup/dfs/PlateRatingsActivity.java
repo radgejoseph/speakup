@@ -2,17 +2,41 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PlateRatingsActivity extends AppCompatActivity {
+
+    private static final String URL_MY_LIST = "http://192.168.1.138/SpeakUP/plate_reviews.php";
+
+    RecyclerView recyclerView2;
+    //    ListItemReviewAdapter listItemAdapter;
+    List<ListItemPlateReviews> itemListPlate;
 
     private TextView textPlate;
     private TextView textVehicle;
@@ -30,6 +54,13 @@ public class PlateRatingsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        itemListPlate = new ArrayList<>();
+
+        recyclerView2 = findViewById(R.id.recyclerview_list_reports);
+        recyclerView2.bringToFront();
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
 
 
         to_rateme_button = findViewById(R.id.to_rateme_button);
@@ -57,8 +88,73 @@ public class PlateRatingsActivity extends AppCompatActivity {
             textPlate.setText(plate);
             textVehicle = findViewById(R.id.vehicle_type_holder);
             textVehicle.setText(vehicle);
+
         }
 
+        loadList();
+
+    }
+
+    private void loadList() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading list...");
+        progressDialog.show();
+
+        final String body_plate = this.textPlate.getText().toString().trim();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_MY_LIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
+
+                                itemListPlate.add(new ListItemPlateReviews(
+                                        //object.getString("vehicle"),
+                                        object.getString("username"),
+                                        object.getInt("ratings"),
+                                        object.getString("narrative")
+                                ));
+//                                String  strVehicle = object.getString("vehicle");
+//                                String strPlate = object.getString("body_plate");
+//                                int strRatings = object.getInt("ratings");
+//                                String strNarrative = object.getString("narrative");
+
+//                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
+//                                itemList.add(listItemReviews);
+                            }
+
+                            ListItemPlateReviewAdapter  listItemPlateReviewAdapter= new ListItemPlateReviewAdapter(PlateRatingsActivity.this, itemListPlate);
+                            recyclerView2.setAdapter(listItemPlateReviewAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            progressDialog.dismiss();
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(PlateRatingsActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("selected_body_plate", body_plate);
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 
     @Override

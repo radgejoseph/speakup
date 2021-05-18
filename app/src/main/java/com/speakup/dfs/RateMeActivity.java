@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-    private static String URL_REVIEW = "http://192.168.1.137/SpeakUP/review.php";
+    private static String URL_REVIEW = "http://192.168.1.138/SpeakUP/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
