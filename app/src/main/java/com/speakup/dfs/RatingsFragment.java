@@ -30,13 +30,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.OnItemListener{
+//public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.OnItemListener{
+public class RatingsFragment extends Fragment {
 
     private static final String URL_MY_LIST = "http://192.168.1.136/SpeakUP/my_ratings.php";
 
     RecyclerView recyclerView;
     ListItemReviewAdapter listItemAdapter;
-
     List<ListItemReviews> itemList;
 
     @Nullable
@@ -52,7 +52,10 @@ public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        listItemAdapter = new ListItemReviewAdapter(getContext(), itemList);
+        recyclerView.setAdapter(listItemAdapter);
         loadList();
+
         return view;
     }
 
@@ -81,7 +84,7 @@ public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.
                                 itemList.add(listItemReviews);
                             }
 
-                            listItemAdapter = new ListItemReviewAdapter(itemList, (ListItemReviewAdapter.OnItemListener) getActivity());
+                            //listItemAdapter = new ListItemReviewAdapter(itemList, (ListItemReviewAdapter.OnItemListener) getActivity());
                             recyclerView.setAdapter(listItemAdapter);
 
                         } catch (JSONException e) {
@@ -102,9 +105,4 @@ public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.
         Volley.newRequestQueue(getContext()).add(stringRequest);
     }
 
-
-    @Override
-    public void onItemClick(int position) {
-
-    }
 }

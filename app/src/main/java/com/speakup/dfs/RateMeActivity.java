@@ -6,9 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +34,7 @@ public class RateMeActivity extends AppCompatActivity {
 
     private TextView textPlate;
     private TextView textVehicle;
-    private TextView narrative;
+    private EditText narrative;
     TextView rateCount;
     Toolbar toolbar;
     RatingBar ratingBar;
@@ -121,6 +123,14 @@ public class RateMeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ReviewSubmit();
+//                if (TextUtils.isEmpty(narrative.getText().toString()) && ratingBar.isPressed()){
+//                    ReviewSubmit();
+//                }
+//                else {
+//                    narrative.setError("Required");
+//                    Toast.makeText(RateMeActivity.this,"Rating not set, Setting to default!", Toast.LENGTH_LONG).show();
+//                    ratingBar.setRating(3);
+//                }
             }
         });
 
