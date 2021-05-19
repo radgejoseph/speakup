@@ -160,16 +160,17 @@ public class CommendationFragment extends Fragment {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommendationSubmit();
-//                if (date_picker.isPressed() && !time_picker.isPressed()) {
-//                    //Log.d("success", "onClick if "+URL_REGIST);
-//                    CommendationSubmit();
-//                }
-//                else {
-//                    date_picker.setError("Required");
-//                    time_picker.setError("Required");
-//                }
 
+                String narrative_r = narrative.getText().toString().trim();
+
+                if (!narrative_r.isEmpty()/* && date_picker.isPressed() && !time_picker.isPressed()*/){
+                    CommendationSubmit();
+                }
+                else {
+                    narrative.setError("Your Commendation is Required");
+//                    date_picker.setError("Date is Required");
+//                    time_picker.setError("Time is Required");
+                }
             }
         });
 

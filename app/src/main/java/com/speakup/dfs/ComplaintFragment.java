@@ -156,15 +156,18 @@ public class ComplaintFragment extends Fragment {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ComplaintSubmit();
-//                if (date_picker.isPressed() && !time_picker.isPressed()) {
-//                    //Log.d("success", "onClick if "+URL_REGIST);
-//                    ComplaintSubmit();
-//                }
-//                else {
-//                    date_picker.setError("Required");
-//                    time_picker.setError("Required");
-//                }
+
+                String narrative_r = narrative.getText().toString().trim();
+                //String date_r = date_picker.getText().toString().trim();
+
+                if (!narrative_r.isEmpty()/* && !date_r.equals("0000-00-00")*/){
+                    ComplaintSubmit();
+                }
+                else {
+                    narrative.setError("Your Complaint is Required");
+                    //date_picker.setError("Date is Required");
+//                    time_picker.setError("Time is Required");
+                }
             }
         });
 

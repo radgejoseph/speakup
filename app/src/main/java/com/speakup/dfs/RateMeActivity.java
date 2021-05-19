@@ -122,7 +122,16 @@ public class RateMeActivity extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReviewSubmit();
+
+                String narrative_r = narrative.getText().toString().trim();
+
+                if (!narrative_r.isEmpty()/* && ratingBar.isPressed()*/){
+                    ReviewSubmit();
+                }
+                else {
+                    narrative.setError("Your Review is Required");
+                    //narrative.setError("Your Rating is Required");
+                }
 //                if (TextUtils.isEmpty(narrative.getText().toString()) && ratingBar.isPressed()){
 //                    ReviewSubmit();
 //                }

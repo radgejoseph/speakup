@@ -163,13 +163,13 @@
 
             <ImageView
                 android:id="@+id/upload_image_view_camera_gallery"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="35dp"
                 android:background="@drawable/text_box_layout"
                 android:contentDescription="@string/todo"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.658"
+                app:layout_constraintHorizontal_bias="0.655"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/complaint_text"
                 tools:ignore="MissingConstraints" />
@@ -178,7 +178,7 @@
                 android:id="@+id/add_image_video"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="53dp"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/add_image_video"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -204,7 +204,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/add_image_video"
                 app:layout_constraintVertical_bias="0.0" />
 
-<!--            <TextView-->
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image is Required"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@+id/upload_image_view_camera_gallery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!--            <TextView-->
 <!--                android:id="@+id/textView11"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
