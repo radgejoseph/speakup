@@ -38,12 +38,61 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/text_box_layout"
+            android:paddingHorizontal="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/plate_number">
+
+            <TextView
+                android:id="@+id/preratecount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="Avg. "
+                android:textColor="@color/buttonGreen"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/ratecount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/preratecount"
+                android:gravity="center"
+                android:hint="5"
+                android:textColor="@color/buttonGreen"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/postratecount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/ratecount"
+                android:gravity="center"
+                android:text="/5"
+                android:textColor="@color/buttonGreen"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+        </RelativeLayout>
+
         <ImageView
             android:id="@+id/taxicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="-5dp"
             android:paddingVertical="14dp"
             android:layout_centerVertical="true"
             android:gravity="center"

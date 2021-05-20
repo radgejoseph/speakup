@@ -31,13 +31,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//public class RatingsFragment extends Fragment implements  ListItemReviewAdapter.OnItemListener{
 public class RatingsFragment extends Fragment {
 
     private static final String URL_MY_LIST = "http://192.168.1.138/SpeakUP/my_ratings.php";
 
     RecyclerView recyclerView;
-//    ListItemReviewAdapter listItemAdapter;
     List<ListItemReviews> itemList;
 
     String getId;
@@ -59,8 +57,6 @@ public class RatingsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        listItemAdapter = new ListItemReviewAdapter(getContext(), itemList);
-//        recyclerView.setAdapter(listItemAdapter);
         loadList();
 
         HashMap<String, String> user = sessionManager.getUserDetail();
@@ -100,7 +96,7 @@ public class RatingsFragment extends Fragment {
 //                                itemList.add(listItemReviews);
                                 }
 
-                            ListItemReviewAdapter  listItemReviewAdapter= new ListItemReviewAdapter(getActivity(), itemList);
+                            ListItemReviewAdapter  listItemReviewAdapter = new ListItemReviewAdapter(getActivity(), itemList);
                             recyclerView.setAdapter(listItemReviewAdapter);
 
                         } catch (JSONException e) {

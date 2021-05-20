@@ -8,6 +8,8 @@
     app:cardUseCompatPadding="true"
     android:clickable="true"
     android:focusable="true"
+    app:cardElevation="0mm"
+    app:cardMaxElevation="0mm"
     app:cardCornerRadius="5dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -33,24 +35,49 @@
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/ratecount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/vehicle_type"
-            android:background="@drawable/text_box_layout"
-            android:gravity="center_horizontal"
-            android:hint="5"
-            android:paddingHorizontal="5dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="5dp"
+    android:paddingHorizontal="6dp"
+    android:background="@drawable/text_box_layout"
+    android:layout_toEndOf="@+id/vehicle_type"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/postratecount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/ratecount"
+        android:gravity="center_horizontal"
+        android:textColor="@color/buttonGreen"
+        android:text="/5"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/ratecount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:textColor="@color/buttonGreen"
+        android:hint="5"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    </RelativeLayout>
+
 
         <TextView
             android:id="@+id/body_plate"
@@ -63,7 +90,7 @@
             android:background="@drawable/small_plate_box_layout"
             android:gravity="center_horizontal"
             android:hint="WMG 005"
-            android:textColor="@color/black"
+            android:textColor="@color/bluetext"
             android:textSize="25sp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />

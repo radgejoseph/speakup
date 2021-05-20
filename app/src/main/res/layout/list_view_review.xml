@@ -8,6 +8,8 @@
     app:cardUseCompatPadding="true"
     android:clickable="true"
     android:focusable="true"
+    app:cardElevation="0mm"
+    app:cardMaxElevation="0mm"
     app:cardCornerRadius="5dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -16,13 +18,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/graycolor"
+        android:background="@drawable/review_view_layout"
         android:padding="5dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/username_text1"
+            android:layout_marginStart="20dp"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -32,7 +35,7 @@
             android:gravity="center_horizontal"
             android:hint="radgejoseph"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,29 +51,49 @@
 <!--            android:rating="4"-->
 <!--            android:stepSize="1.0"-->
 <!--            tools:ignore="MissingConstraints" />-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:paddingHorizontal="6dp"
+        android:background="@drawable/text_box_layout"
+        android:layout_toEndOf="@+id/username_text1"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/ratecount1"
-            android:layout_width="150dp"
+            android:id="@+id/postratecount1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_box_layout"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/username_text1"
+            android:layout_toEndOf="@+id/ratecount1"
+            android:gravity="center_horizontal"
+            android:text="/5"
+            android:textColor="@color/buttonGreen"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/ratecount1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:hint="5"
-            android:textColor="#B0B1B1"
+            android:textColor="@color/buttonGreen"
             android:textSize="25sp"
+            android:textStyle="bold"
             tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
 
         <TextView
             android:id="@+id/review1"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ratecount1"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_below="@+id/username_text1"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:hint="Mabuotun man na maray na driver ning si kuya na nasakayan ko, pero 4 star lang ta dai maayos si mga plastick na harang"
             android:textSize="15sp"
             tools:ignore="MissingConstraints" />

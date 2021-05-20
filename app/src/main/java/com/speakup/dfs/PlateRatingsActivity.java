@@ -32,16 +32,17 @@ import java.util.Map;
 
 public class PlateRatingsActivity extends AppCompatActivity {
 
-    private static final String URL_MY_LIST = "http://192.168.1.138/SpeakUP/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "http://192.168.1.138/SpeakUP/plate_reviews.php";
 
     RecyclerView recyclerView2;
-    //    ListItemReviewAdapter listItemAdapter;
     List<ListItemPlateReviews> itemListPlate;
 
     private TextView textPlate;
     private TextView textVehicle;
     private Button to_rateme_button;
     Toolbar toolbar;
+
+    String body_plate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class PlateRatingsActivity extends AppCompatActivity {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
 
+        //body_plate = textPlate.getText().toString().trim();
 
         to_rateme_button = findViewById(R.id.to_rateme_button);
 
@@ -93,6 +95,9 @@ public class PlateRatingsActivity extends AppCompatActivity {
 
         loadList();
 
+        body_plate = this.textPlate.getText().toString().trim();
+
+
     }
 
     private void loadList() {
@@ -100,9 +105,7 @@ public class PlateRatingsActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        final String body_plate = this.textPlate.getText().toString().trim();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_MY_LIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_PLATE_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -114,7 +117,6 @@ public class PlateRatingsActivity extends AppCompatActivity {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
                                 itemListPlate.add(new ListItemPlateReviews(
-                                        //object.getString("vehicle"),
                                         object.getString("username"),
                                         object.getInt("ratings"),
                                         object.getString("narrative")
@@ -128,7 +130,7 @@ public class PlateRatingsActivity extends AppCompatActivity {
 //                                itemList.add(listItemReviews);
                             }
 
-                            ListItemPlateReviewAdapter  listItemPlateReviewAdapter= new ListItemPlateReviewAdapter(PlateRatingsActivity.this, itemListPlate);
+                            ListItemPlateReviewAdapter  listItemPlateReviewAdapter = new ListItemPlateReviewAdapter(PlateRatingsActivity.this, itemListPlate);
                             recyclerView2.setAdapter(listItemPlateReviewAdapter);
 
                         } catch (JSONException e) {
@@ -149,7 +151,7 @@ public class PlateRatingsActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("selected_body_plate", body_plate);
+                params.put("body_plate", body_plate);
                 return params;
             }
         };

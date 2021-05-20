@@ -90,9 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:text="Other Reviews"
-            android:textStyle="bold"
-            android:textSize="25sp"
             android:textColor="@color/buttonBlue"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -115,14 +115,15 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingTop="150dp"
-            android:paddingHorizontal="20dp"
-            android:textSize="25dp"
-            android:text="Si mga Reviews kang ibang user dgd maluwas 'lit_view_review.xml'"
-            tools:ignore="MissingConstraints" />
+            android:layout_marginTop="30dp"
+            android:text="There are no Reviews"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

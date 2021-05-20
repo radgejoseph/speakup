@@ -35,7 +35,7 @@ public class RateMeActivity extends AppCompatActivity {
     private TextView textPlate;
     private TextView textVehicle;
     private EditText narrative;
-    TextView rateCount;
+    TextView rateCount, rateCountText;
     Toolbar toolbar;
     RatingBar ratingBar;
     Button submit_button;
@@ -60,6 +60,7 @@ public class RateMeActivity extends AppCompatActivity {
 
         ratingBar = findViewById(R.id.ratingBar);
         //narrative = findViewById(R.id.review_box);
+        rateCountText = findViewById(R.id.ratecounttext);
         rateCount = findViewById(R.id.ratecount);
 
         toolbar = findViewById(R.id.toolbar);
@@ -93,18 +94,23 @@ public class RateMeActivity extends AppCompatActivity {
                 rateValue = ratingBar.getRating();
 
                 if (rateValue == 1){
+                    rateCountText.setText("Terrible Driver \uD83D\uDE21");
                     rateCount.setText("1");
                 }
                 else if (rateValue == 2) {
+                    rateCountText.setText("Bad Driver \uD83D\uDE1E");
                     rateCount.setText("2");
                 }
                 else if (rateValue == 3) {
+                    rateCountText.setText("Okay Driver \uD83D\uDE10");
                     rateCount.setText("3");
                 }
                 else if (rateValue == 4) {
+                    rateCountText.setText("Good Driver \uD83D\uDE0A");
                     rateCount.setText("4");
                 }
                 else if (rateValue == 5) {
+                    rateCountText.setText("Great Driver \uD83D\uDE04");
                     rateCount.setText("5");
                 }
             }

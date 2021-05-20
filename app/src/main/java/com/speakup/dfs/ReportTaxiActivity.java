@@ -117,8 +117,9 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
 
                                 String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
+                                int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
+                                ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
                                 itemList.add(listItem);
                             }
 

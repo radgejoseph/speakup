@@ -36,6 +36,7 @@ public class ListItemAdapterTaxi extends RecyclerView.Adapter<ListItemAdapterTax
         ListItem listItem = itemList.get(position);
 
         holder.textPlate.setText(listItem.getPlateL());
+        holder.textRatings.setText(String.valueOf(listItem.getRatingsL()));
     }
 
     @Override
@@ -82,13 +83,14 @@ public class ListItemAdapterTaxi extends RecyclerView.Adapter<ListItemAdapterTax
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        TextView textPlate;
+        TextView textPlate, textRatings;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
             super(itemView);
 
             textPlate = itemView.findViewById(R.id.plate_number);
+            textRatings = itemView.findViewById(R.id.ratecount);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

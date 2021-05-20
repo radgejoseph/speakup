@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAdapter.ListItemHoder> {
 public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAdapter.ListItemViewHolder> {
 
     private Context mCtx;
@@ -27,7 +26,6 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
     public ListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_view_your_review, null);
-        //ListItemViewHolder holder = new ListItemViewHolder(view);
         return new ListItemViewHolder(view);
     }
 

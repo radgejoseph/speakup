@@ -116,8 +116,9 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
 
                                 String  strVehicle = object.getString("vehicle");
                                 String strPlate = object.getString("body_plate");
+                                int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate/*, strRatings*/);
+                                ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
                                 itemList.add(listItem);
                             }
 
