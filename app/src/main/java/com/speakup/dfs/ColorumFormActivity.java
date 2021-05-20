@@ -32,7 +32,6 @@ public class ColorumFormActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     private TextView textPlate;
-    //private TextView textOperator;
     private AutoCompleteTextView textVehicle;
     String[] vehicles = { "jeep","taxicle","tricycle","taxi" };
 
