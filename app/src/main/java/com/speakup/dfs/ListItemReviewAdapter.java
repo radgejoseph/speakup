@@ -33,7 +33,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
     public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
         ListItemReviews listReviewItem = listItemReviews.get(position);
 
-        holder.vehicle.setText(listReviewItem.getVehicle());
+//        holder.vehicle.setText(listReviewItem.getVehicle());
         holder.narrative.setText(listReviewItem.getNarrative());
         holder.ratings.setText(String.valueOf(listReviewItem.getRatings()));
         holder.body_plate.setText(listReviewItem.getBody_plate());
@@ -46,12 +46,12 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
 
     class ListItemViewHolder extends RecyclerView.ViewHolder{
 
-        TextView vehicle, narrative, ratings, body_plate;
+        TextView narrative, ratings, body_plate;
 
         public ListItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            vehicle = itemView.findViewById(R.id.vehicle_type);
+//            vehicle = itemView.findViewById(R.id.vehicle_type);
             narrative = itemView.findViewById(R.id.review);
             ratings = itemView.findViewById(R.id.ratecount);
             body_plate = itemView.findViewById(R.id.body_plate);

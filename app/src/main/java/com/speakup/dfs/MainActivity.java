@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button l_button, tr_button;
     private ProgressBar progress;
     private static String URL_LOGIN = "http://192.168.1.138/SpeakUP/login.php";
+//    private static String URL_LOGIN = "https://speakup-app-apk.herokuapp.com/login.php";
 
     SessionManager sessionManager;
 

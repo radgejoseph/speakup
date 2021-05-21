@@ -31,6 +31,7 @@ import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
     private static String URL_REVIEW = "http://192.168.1.138/SpeakUP/review.php";
+//    private static String URL_REVIEW = "https://speakup-app-apk.herokuapp.com/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
@@ -158,7 +159,7 @@ public class RateMeActivity extends AppCompatActivity {
         progressDialog.show();
 
         final String textPlate = this.textPlate.getText().toString().trim();
-        final String textVehicle = this.textVehicle.getText().toString().trim();
+//        final String textVehicle = this.textVehicle.getText().toString().trim();
         final String narrative = this.narrative.getText().toString().trim();
         final String ratings = this.rateCount.getText().toString().trim();
 
@@ -196,7 +197,7 @@ public class RateMeActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("body_plate", textPlate);
-                params.put("vehicle", textVehicle);
+//                params.put("vehicle", textVehicle);
                 params.put("narrative", narrative);
                 params.put("ratings", ratings);
                 params.put("user_id", getId);

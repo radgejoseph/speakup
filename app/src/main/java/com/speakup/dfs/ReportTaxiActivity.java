@@ -28,6 +28,7 @@ import java.util.List;
 public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
 
     private static final String URL_TAXI_LIST = "http://192.168.1.138/SpeakUP/list_taxi.php";
+//    private static final String URL_TAXI_LIST = "https://speakup-app-apk.herokuapp.com/list_taxi.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;

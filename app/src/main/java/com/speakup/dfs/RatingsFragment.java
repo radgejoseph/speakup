@@ -34,6 +34,7 @@ import java.util.Map;
 public class RatingsFragment extends Fragment {
 
     private static final String URL_MY_LIST = "http://192.168.1.138/SpeakUP/my_ratings.php";
+//    private static final String URL_MY_LIST = "https://speakup-app-apk.herokuapp.com/my_ratings.php";
 
     RecyclerView recyclerView;
     List<ListItemReviews> itemList;
@@ -82,7 +83,6 @@ public class RatingsFragment extends Fragment {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     itemList.add(new ListItemReviews(
-                                            object.getString("vehicle"),
                                             object.getString("body_plate"),
                                             object.getInt("ratings"),
                                             object.getString("narrative")

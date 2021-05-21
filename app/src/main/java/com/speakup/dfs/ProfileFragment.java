@@ -33,6 +33,8 @@ public class ProfileFragment extends Fragment{
     private static final String TAG = HomeActivity.class.getSimpleName();
     private static String URL_READ = "http://192.168.1.138/SpeakUP/read_detail.php";
     private static String URL_EDIT = "http://192.168.1.138/SpeakUP/edit_detail.php";
+//    private static String URL_READ = "https://speakup-app-apk.herokuapp.com/read_detail.php";
+//    private static String URL_EDIT = "https://speakup-app-apk.herokuapp.com/edit_detail.php";
 
     private TextView name, username, password, phone_number, email, address;
     private Menu action;

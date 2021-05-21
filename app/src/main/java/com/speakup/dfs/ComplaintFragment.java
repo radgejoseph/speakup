@@ -65,6 +65,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ComplaintFragment extends Fragment {
     private static String URL_COMPLAINT = "http://192.168.1.138/SpeakUP/complaint.php";
+//    private static String URL_COMPLAINT = "https://speakup-app-apk.herokuapp.com/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     //public static final int CAMERA_REQUEST_CODE = 102;
