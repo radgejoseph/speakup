@@ -15,9 +15,9 @@
     <color name="layout_taxicle" >#A9DBE8</color>
     <color name="layout_tricycle" >#74D0FF</color>
     <color name="layout_taxi" >#7FB6FD</color>
-
+    <color name="dark_gray">#696969</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#3F51B5</color>
     <color name="bluetext">#046EC8</color>
     <color name="graycolor">#E4E3E3</color>
-    <color name="black">#B0B1B1</color>
+    <color name="black">#000000</color>
 </resources>

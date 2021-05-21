@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:text="Avg. "
+                android:text="Avg.⭐"
                 android:textColor="@color/buttonGreen"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -87,13 +87,12 @@
 
         </RelativeLayout>
 
-
         <ImageView
             android:id="@+id/tricycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-25dp"
+            android:layout_marginEnd="-35dp"
             android:layout_centerVertical="true"
             android:gravity="center"
             app:srcCompat="@drawable/tricycle_ico"
