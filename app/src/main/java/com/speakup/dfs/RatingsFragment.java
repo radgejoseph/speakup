@@ -83,6 +83,7 @@ public class RatingsFragment extends Fragment {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     itemList.add(new ListItemReviews(
+                                            object.getString("vehicle"),
                                             object.getString("body_plate"),
                                             object.getInt("ratings"),
                                             object.getString("narrative")
