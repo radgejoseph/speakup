@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button l_button, tr_button;
     private ProgressBar progress;
     private static String URL_LOGIN = "http://192.168.1.138/SpeakUP/login.php";
+//private static String URL_LOGIN = "https://speakupadnu.000webhostapp.com/login.php";
 //    private static String URL_LOGIN = "https://speakup-app-apk.herokuapp.com/login.php";
 
     SessionManager sessionManager;
@@ -193,8 +194,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed()
-    {
-            finish();
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }

@@ -146,7 +146,6 @@
                 android:stepSize="1.0"
                 android:progressTint="@color/buttonGreen"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
                 tools:ignore="MissingConstraints" />
