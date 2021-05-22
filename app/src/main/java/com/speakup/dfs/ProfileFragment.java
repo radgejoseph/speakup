@@ -101,28 +101,22 @@ public class ProfileFragment extends Fragment{
 
                                     String strName = object.getString("name").trim();
                                     String strUsername = object.getString("username").trim();
-                                    //String strPassword = object.getString("password").trim();
                                     String strMobile = object.getString("phone_number").trim();
                                     String strEmail = object.getString("email").trim();
-                                    //String id = object.getString("id").trim();
                                     String strAddress = object.getString("address").trim();
-                                    //sessionManager.createSession(name, email, id);
                                     name.setText(strName);
                                     username.setText(strUsername);
-                                    //password.setText(strPassword);
                                     phone_number.setText(strMobile);
                                     email.setText(strEmail);
                                     address.setText(strAddress);
 
                                 }
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
                             Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {

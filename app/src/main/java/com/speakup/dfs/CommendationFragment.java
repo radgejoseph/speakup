@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,21 +12,16 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -47,12 +41,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,7 +59,6 @@ public class CommendationFragment extends Fragment {
 //    private static String URL_COMMEND = "https://speakup-app-apk.herokuapp.com/commendation.php";
 
     public static final int CAMERA_PERM_CODE = 101;
-    //public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
     TextView date_picker;
     TextView time_picker;
@@ -78,8 +67,7 @@ public class CommendationFragment extends Fragment {
     private TextView textPlate;
     private TextView textVehicle;
     private TextView narrative;
-    ImageView upload_image_view_camera, upload_image_view_gallery;
-    String currentPhotoPath;
+    ImageView upload_image_view_gallery;
     Button submit_button;
     String getId;
     Bitmap bitmap;
@@ -118,8 +106,6 @@ public class CommendationFragment extends Fragment {
         return fragment;
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,11 +117,9 @@ public class CommendationFragment extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_commendation, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -164,13 +148,11 @@ public class CommendationFragment extends Fragment {
 
                 String narrative_r = narrative.getText().toString().trim();
 
-                if (!narrative_r.isEmpty()/* && date_picker.isPressed() && !time_picker.isPressed()*/){
+                if (!narrative_r.isEmpty()){
                     CommendationSubmit();
                 }
                 else {
                     narrative.setError("Your Commendation is Required");
-//                    date_picker.setError("Date is Required");
-//                    time_picker.setError("Time is Required");
                 }
             }
         });
@@ -237,16 +219,7 @@ public class CommendationFragment extends Fragment {
         };
         /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
-        //upload_image_view_camera = view.findViewById(R.id.upload_image_view_camera);
         upload_image_view_gallery = view.findViewById(R.id.upload_image_view_camera_gallery);
-
-//        android.widget.ImageView capture_image = view.findViewById(R.id.capture_image);
-//        capture_image.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                askCameraPermission();
-//            }
-//        });
 
         android.widget.ImageView add_image_video = view.findViewById(R.id.add_image_video);
         add_image_video.setOnClickListener(new View.OnClickListener() {
@@ -277,7 +250,7 @@ public class CommendationFragment extends Fragment {
 
     private void CommendationSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Submitting...");
+        progressDialog.setMessage("Submitting Please Wait...");
         progressDialog.show();
 
         final String textPlate = this.textPlate.getText().toString().trim();
@@ -340,39 +313,10 @@ public class CommendationFragment extends Fragment {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, CAMERA_PERM_CODE);
         }
-
-//        else {
-//            dispatchTakePictureIntent();
-//        }
     }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        if (requestCode == CAMERA_PERM_CODE) {
-//            if (permissions[0].equals(Manifest.permission.CAMERA) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                dispatchTakePictureIntent();
-//            }
-//            else {
-//                Toast.makeText(getActivity(),"Camera and Storage Permission are Required to use the Camera.", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        if (requestCode == CAMERA_REQUEST_CODE) {
-//            if (resultCode == RESULT_OK) {
-//                File f = new File(currentPhotoPath);
-//                upload_image_view_camera.setImageURI(Uri.fromFile(f));
-//                Log.d("tag", "Absolute Url of Image is " + Uri.fromFile(f));
-//
-//                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-//                Uri contentUri = Uri.fromFile(f);
-//                mediaScanIntent.setData(contentUri);
-//                getActivity().sendBroadcast(mediaScanIntent);
-//
-//            }
-//        }
 
         if (requestCode == GALLERY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
@@ -391,49 +335,4 @@ public class CommendationFragment extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-//    private String getFileExt(Uri contentUri) {
-//        ContentResolver c = getActivity().getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(c.getType(contentUri));
-//    }
-
-//    private File createImageFile() throws IOException {
-//        // Create an image file name
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-//        String imageFileName = "JPEG_" + timeStamp + "_";
-//        //File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-//        File image = File.createTempFile(
-//                imageFileName,  /* prefix */
-//                ".jpg",         /* suffix */
-//                storageDir      /* directory */
-//        );
-//
-//        // Save a file: path for use with ACTION_VIEW intents
-//        currentPhotoPath = image.getAbsolutePath();
-//        return image;
-//    }
-
-//    private void dispatchTakePictureIntent() {
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        // Ensure that there's a camera activity to handle the intent
-//        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-//            // Create the File where the photo should go
-//            File photoFile = null;
-//            try {
-//                photoFile = createImageFile();
-//            } catch (IOException ex) {
-//                // Error occurred while creating the File
-//            }
-//            // Continue only if the File was successfully created
-//            if (photoFile != null) {
-//                Uri photoURI = FileProvider.getUriForFile(getActivity(),
-//                        "com.speakup.android.fileprovider",
-//                        photoFile);
-//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-//                //startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
-//            }
-//        }
-//    }
 }

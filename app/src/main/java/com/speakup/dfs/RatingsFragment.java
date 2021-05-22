@@ -2,7 +2,6 @@ package com.speakup.dfs;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -88,13 +86,6 @@ public class RatingsFragment extends Fragment {
                                             object.getInt("ratings"),
                                             object.getString("narrative")
                                     ));
-//                                String  strVehicle = object.getString("vehicle");
-//                                String strPlate = object.getString("body_plate");
-//                                int strRatings = object.getInt("ratings");
-//                                String strNarrative = object.getString("narrative");
-
-//                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
-//                                itemList.add(listItemReviews);
                                 }
 
                             ListItemReviewAdapter  listItemReviewAdapter = new ListItemReviewAdapter(getActivity(), itemList);

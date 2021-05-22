@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -60,7 +59,6 @@ public class RateMeActivity extends AppCompatActivity {
 
 
         ratingBar = findViewById(R.id.ratingBar);
-        //narrative = findViewById(R.id.review_box);
         rateCountText = findViewById(R.id.ratecounttext);
         rateCount = findViewById(R.id.ratecount);
 
@@ -77,17 +75,6 @@ public class RateMeActivity extends AppCompatActivity {
         textPlate.setText(plate);
         textVehicle = findViewById(R.id.vehicle_type_holder);
         textVehicle.setText(vehicle);
-
-//        if (getIntent().hasExtra("selected_plate")) {
-//            ListItem listItem = getIntent().getParcelableExtra("selected_plate");
-//            String plate = listItem.getPlateL();
-//            String vehicle = listItem.getVehicleL();
-//
-//            textPlate = findViewById(R.id.plate_number);
-//            textPlate.setText(plate);
-//            textVehicle = findViewById(R.id.vehicle_type_holder);
-//            textVehicle.setText(vehicle);
-//        }
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -137,16 +124,7 @@ public class RateMeActivity extends AppCompatActivity {
                 }
                 else {
                     narrative.setError("Your Review is Required");
-                    //narrative.setError("Your Rating is Required");
                 }
-//                if (TextUtils.isEmpty(narrative.getText().toString()) && ratingBar.isPressed()){
-//                    ReviewSubmit();
-//                }
-//                else {
-//                    narrative.setError("Required");
-//                    Toast.makeText(RateMeActivity.this,"Rating not set, Setting to default!", Toast.LENGTH_LONG).show();
-//                    ratingBar.setRating(3);
-//                }
             }
         });
 

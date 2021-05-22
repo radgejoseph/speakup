@@ -53,11 +53,7 @@ public class ColorumFormActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         textPlate = findViewById(R.id.plate_number);
-        //textOperator = findViewById(R.id.operator_name);
 
-        //String vehicle = getIntent().getStringExtra("vehicle");
-        //textVehicle = findViewById(R.id.vehicle_type_holder);
-        //textVehicle.setText(vehicle);
         //Create Array Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, vehicles);
         //Find TextView control
@@ -89,7 +85,6 @@ public class ColorumFormActivity extends AppCompatActivity {
 
         final String textPlate = this.textPlate.getText().toString().trim();
         final String textVehicle = this.textVehicle.getText().toString().trim();
-        //final String textOperator = this.textOperator.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_COLORUM,
                 new Response.Listener<String>() {

@@ -47,16 +47,6 @@ public class MainActivity extends AppCompatActivity {
         l_button = findViewById(R.id.login_button);
         tr_button = findViewById(R.id.to_register_button);
 
-//        decorView = getWindow().getDecorView();
-//        decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-//            @Override
-//            public void onSystemUiVisibilityChange(int visibility) {
-//                if (visibility ==0)
-//                    decorView.setSystemUiVisibility(hideSystemBars());
-//            }
-//        });
-
-        //Button button = findViewById(R.id.to_register_button);
         tr_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Button l_button = findViewById(R.id.login_button);
         l_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,30 +92,18 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     String name = object.getString("name").trim();
-                                    //String username = object.getString("username").trim();
-                                    //String password = object.getString("password").trim();
-                                    //String mobile = object.getString("mobile").trim();
                                     String email = object.getString("email").trim();
                                     String id = object.getString("id").trim();
-                                    //String address = object.getString("address").trim();
                                     sessionManager.createSession(name, email, id);
 
                                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                     intent.putExtra("name", name);
-                                    //intent.putExtra("username", username);
-                                    //intent.putExtra("password", password);
-                                    //intent.putExtra("mobile", mobile);
                                     intent.putExtra("email", email);
-                                    //intent.putExtra("id", id);
-                                    //intent.putExtra("address", address);
                                     startActivity(intent);
 
                                     Toast.makeText(MainActivity.this, "Success Login! \nName : "
                                             +name+"\nEmail : "+email, Toast.LENGTH_LONG).show();
 
-//                                    Toast.makeText(MainActivity.this, "Success Login! \nName : "
-//                                            +name+"\nUsername : "+username+"\nPassword : "+password+
-//                                            "\nMobile : "+mobile+"\nEmail : "+email+"\nAddress : "+address, Toast.LENGTH_LONG).show();
                                     progress.setVisibility(View.GONE);
                                     openHomeActivity();
                                 }
@@ -165,22 +142,6 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
-//    @Override
-//    public void onWindowFocusChanged(boolean hasFocus) {
-//        super.onWindowFocusChanged(hasFocus);
-//        if (hasFocus) {
-//            decorView.setSystemUiVisibility(hideSystemBars());
-//        }
-//    }
-//    private int hideSystemBars(){
-//        return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-//                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                | View.SYSTEM_UI_FLAG_FULLSCREEN
-//                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-//    }
 
     public void openRegisterActivity() {
         Intent intent = new Intent(this, RegisterActivity.class);

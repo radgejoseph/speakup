@@ -64,8 +64,6 @@ public class PlateRatingsActivity extends AppCompatActivity {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
 
-        //body_plate = textPlate.getText().toString().trim();
-
         to_rateme_button = findViewById(R.id.to_rateme_button);
 
         to_rateme_button.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +71,6 @@ public class PlateRatingsActivity extends AppCompatActivity {
            public void onClick(View view) {
                String plate = textPlate.getText().toString();
                String vehicle = textVehicle.getText().toString();
-               //String vehicle = textVehicle.getText().toString();
                Intent intent = new Intent(PlateRatingsActivity.this, RateMeActivity.class);
                intent.putExtra("selected_plate", plate);
                intent.putExtra("vehicle", vehicle);
@@ -93,12 +90,9 @@ public class PlateRatingsActivity extends AppCompatActivity {
             textVehicle.setText(vehicle);
 
         }
-
         loadList();
 
         body_plate = this.textPlate.getText().toString().trim();
-
-
     }
 
     private void loadList() {
@@ -122,13 +116,6 @@ public class PlateRatingsActivity extends AppCompatActivity {
                                         object.getInt("ratings"),
                                         object.getString("narrative")
                                 ));
-//                                String  strVehicle = object.getString("vehicle");
-//                                String strPlate = object.getString("body_plate");
-//                                int strRatings = object.getInt("ratings");
-//                                String strNarrative = object.getString("narrative");
-
-//                                ListItemReviews listItemReviews = new ListItemReviews(strVehicle, strPlate, strRatings, strNarrative);
-//                                itemList.add(listItemReviews);
                             }
 
                             ListItemPlateReviewAdapter  listItemPlateReviewAdapter = new ListItemPlateReviewAdapter(PlateRatingsActivity.this, itemListPlate);
@@ -165,10 +152,4 @@ public class PlateRatingsActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
-    public void openRateMeActivity() {
-        Intent intent = new Intent(PlateRatingsActivity.this, RateMeActivity.class);
-        startActivity(intent);
-    }
-
 }
