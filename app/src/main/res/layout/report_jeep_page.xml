@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +27,7 @@
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
       android:orientation="vertical">
 
     <View
@@ -71,6 +71,15 @@
         app:layout_constraintTop_toBottomOf="@+id/view_subheader"
         tools:ignore="MissingConstraints" />
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        app:layout_constraintVertical_bias="0.0">
     <RelativeLayout
         android:id="@+id/recyclerview_container"
         android:layout_width="match_parent"
@@ -86,12 +95,14 @@
           android:layout_height="wrap_content"
           android:layout_alignParentStart="true"
           android:layout_alignParentEnd="true"
+          android:layout_gravity="fill_vertical"
           android:layout_marginStart="0dp"
           android:layout_marginTop="10dp"
           android:layout_marginEnd="0dp"
+          android:layout_marginBottom="?attr/actionBarSize"
           android:paddingStart="10dp"
           android:paddingEnd="10dp"
-          android:paddingBottom="20dp"
+          android:paddingBottom="60dp"
           app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
@@ -103,29 +114,29 @@
           android:id="@+id/view_group"
           android:layout_width="match_parent"
           android:layout_height="95dp"
-          android:paddingStart="60dp"
-          android:paddingEnd="60dp"
           android:gravity="center"
-          android:orientation="horizontal">
+          android:orientation="horizontal"
+          android:paddingStart="60dp"
+          android:paddingEnd="60dp">
 
         <TextView
             android:id="@+id/text_noplate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
             android:paddingEnd="10dp"
-            android:text="No Plate Found" />
+            android:text="No Plate Found"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/button_colorum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:background="@drawable/custom_button_green"
-            android:textColor="@color/white"
-            android:textStyle="bold"
             android:padding="5dp"
-            android:text="Report Colorum" />
+            android:text="Report Colorum"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
       </LinearLayout>
 
@@ -136,6 +147,8 @@
           app:constraint_referenced_ids="view_group,button_colorum,text_noplate" />
 
     </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
