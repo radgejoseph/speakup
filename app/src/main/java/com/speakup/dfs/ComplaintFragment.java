@@ -30,6 +30,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -54,7 +55,7 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-    private static String URL_COMPLAINT = "http://192.168.1.138/SpeakUP/complaint.php";
+    private static String URL_COMPLAINT = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/complaint.php";
 //    private static String URL_COMPLAINT = "https://speakup-app-apk.herokuapp.com/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
@@ -304,6 +305,13 @@ public class ComplaintFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     private void askCameraPermission() {

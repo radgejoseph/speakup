@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,6 @@
         android:visibility="invisible"
         app:layout_constraintHorizontal_bias="0.0"
         tools:ignore="MissingConstraints" />
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -40,7 +39,7 @@
             <View
                 android:id="@+id/jeep_field"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:background="@color/layout_jeep"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +51,7 @@
             <View
                 android:id="@+id/taxicle_field"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:background="@color/layout_taxicle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +63,7 @@
             <View
                 android:id="@+id/tricycle_field"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:background="@color/layout_tricycle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +75,7 @@
             <View
                 android:id="@+id/taxi_field"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:background="@color/layout_taxi"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:text="JEEPNEY"
                 android:textColor="@color/bluetext"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/jeep_field"
                 app:layout_constraintEnd_toEndOf="@+id/jeep_field"
@@ -159,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:text="TAXICLE"
                 android:textColor="@color/bluetext"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/taxicle_field"
                 app:layout_constraintEnd_toEndOf="@+id/taxicle_field"
@@ -174,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:text="TRICYCLE"
                 android:textColor="@color/bluetext"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tricycle_field"
                 app:layout_constraintEnd_toEndOf="@+id/tricycle_field"
@@ -189,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:text="TAXI"
                 android:textColor="@color/bluetext"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/taxi_field"
                 app:layout_constraintEnd_toEndOf="@+id/taxi_field"
@@ -225,5 +224,13 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/void_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/layout_taxi"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
 </LinearLayout>

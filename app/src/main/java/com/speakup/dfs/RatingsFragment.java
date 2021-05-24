@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class RatingsFragment extends Fragment {
 
-    private static final String URL_MY_LIST = "http://192.168.1.138/SpeakUP/my_ratings.php";
+    private static final String URL_MY_LIST = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/my_ratings.php";
 //    private static final String URL_MY_LIST = "https://speakup-app-apk.herokuapp.com/my_ratings.php";
 
     RecyclerView recyclerView;
