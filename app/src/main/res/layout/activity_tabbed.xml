@@ -58,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viewpager"
-            app:tabTextColor="@color/graycolor"
+            app:tabTextColor="@color/graytext"
             android:duplicateParentState="true"
             app:tabRippleColor="@color/buttonGreen"
             app:tabSelectedTextColor="@color/buttonBlue">

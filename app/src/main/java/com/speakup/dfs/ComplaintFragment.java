@@ -55,8 +55,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-    private static String URL_COMPLAINT = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/complaint.php";
-//    private static String URL_COMPLAINT = "https://speakup-app-apk.herokuapp.com/complaint.php";
+//    private static String URL_COMPLAINT = "http://speakupnaga.herokuapp.com/speakup/complaint.php";
+    private static String URL_COMPLAINT = "http://48383786ae99.ngrok.io/SpeakUp/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -148,25 +148,26 @@ public class ComplaintFragment extends Fragment {
 
                 String narrative_r = narrative.getText().toString().trim();
 
-                if (!narrative_r.isEmpty()){
+                if (upload_image_view_gallery.getDrawable() != null){
                     ComplaintSubmit();
                 }
                 else {
-                    narrative.setError("Your Complaint is Required");
+                    Toast.makeText(getActivity(),"Image is Required!", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
-        Calendar calendarD = Calendar.getInstance();
-        final int year = calendarD.get(Calendar.YEAR);
-        final int month = calendarD.get(Calendar.MONTH);
-        final int day = calendarD.get(Calendar.DAY_OF_MONTH);
 
         date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Calendar calendarD = Calendar.getInstance();
+                int year = calendarD.get(Calendar.YEAR);
+                int month = calendarD.get(Calendar.MONTH);
+                int day = calendarD.get(Calendar.DAY_OF_MONTH);
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth
                         ,setListenerD,year,month,day);
@@ -177,7 +178,7 @@ public class ComplaintFragment extends Fragment {
 
         setListenerD = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month+1;
                 String date = year+"-"+month+"-"+day;
                 date_picker.setText(date);

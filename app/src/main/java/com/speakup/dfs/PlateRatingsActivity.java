@@ -32,8 +32,8 @@ import java.util.Map;
 
 public class PlateRatingsActivity extends AppCompatActivity {
 
-    private static final String URL_PLATE_LIST = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/plate_reviews.php";
-//    private static final String URL_PLATE_LIST = "https://speakup-app-apk.herokuapp.com/plate_reviews.php";
+//    private static final String URL_PLATE_LIST = "http://speakupnaga.herokuapp.com/speakup/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "http://48383786ae99.ngrok.io/SpeakUp/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;

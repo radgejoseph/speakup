@@ -27,9 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-    private static String URL_LOGIN = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/login.php";
-//private static String URL_LOGIN = "https://speakupadnu.000webhostapp.com/login.php";
-//    private static String URL_LOGIN = "https://speakup-app-apk.herokuapp.com/login.php";
+//    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
+    private static String URL_LOGIN = "http://48383786ae99.ngrok.io/SpeakUp/login.php";
 
     SessionManager sessionManager;
 
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             progress.setVisibility(View.GONE);
                             l_button.setVisibility(View.VISIBLE);
                             tr_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(MainActivity.this, "Error! " + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Error! ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         progress.setVisibility(View.GONE);
                         l_button.setVisibility(View.VISIBLE);
                         tr_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(MainActivity.this, "Error! " + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error! ", Toast.LENGTH_SHORT).show();
 
                     }
                 })

@@ -26,9 +26,8 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
-    private static String URL_REGIST = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/register.php";
-//private static String URL_REGIST = "http://192.168.1.102/SpeakUp/register.php";
-//    private static String URL_REGIST = "https://speakup-app-apk.herokuapp.com/register.php";
+//    private static String URL_REGIST = "http://speakup-app-apk.herokuapp.com/register.php";
+    private static String URL_REGIST = "http://48383786ae99.ngrok.io/SpeakUp/register.php";
     private Button reg_button;
 
     @Override
@@ -105,16 +104,16 @@ public class RegisterActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
                             }
-                            else if (success.equals("0")) {
-                                progressDialog.dismiss();
-                                Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
-                            }
+//                            else if (success.equals("0")) {
+//                                progressDialog.dismiss();
+//                                Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
+//                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
                             reg_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(RegisterActivity.this,"Register Error! " + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"Register Error! Username already exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

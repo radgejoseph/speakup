@@ -56,8 +56,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class CommendationFragment extends Fragment {
-    private static String URL_COMMEND = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/commendation.php";
-//    private static String URL_COMMEND = "https://speakup-app-apk.herokuapp.com/commendation.php";
+//    private static String URL_COMMEND = "http://speakupnaga.herokuapp.com/speakup/commendation.php";
+    private static String URL_COMMEND = "http://48383786ae99.ngrok.io/SpeakUp/commendation.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -149,25 +149,27 @@ public class CommendationFragment extends Fragment {
 
                 String narrative_r = narrative.getText().toString().trim();
 
-                if (!narrative_r.isEmpty()){
+//                if (!narrative_r.isEmpty() && upload_image_view_gallery.getDrawable() == null){
+                if (upload_image_view_gallery.getDrawable() != null){
                     CommendationSubmit();
                 }
                 else {
-                    narrative.setError("Your Commendation is Required");
+                    Toast.makeText(getActivity(),"Image is Required!", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
         /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
-        Calendar calendarD = Calendar.getInstance();
-        final int year = calendarD.get(Calendar.YEAR);
-        final int month = calendarD.get(Calendar.MONTH);
-        final int day = calendarD.get(Calendar.DAY_OF_MONTH);
 
         date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Calendar calendarD = Calendar.getInstance();
+                int year = calendarD.get(Calendar.YEAR);
+                int month = calendarD.get(Calendar.MONTH);
+                int day = calendarD.get(Calendar.DAY_OF_MONTH);
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth
                         ,setListenerD,year,month,day);
@@ -178,7 +180,7 @@ public class CommendationFragment extends Fragment {
 
         setListenerD = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month+1;
                 String date = year+"-"+month+"-"+day;
                 date_picker.setText(date);

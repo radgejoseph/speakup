@@ -27,8 +27,8 @@ import java.util.List;
 
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapterTricycle.OnItemListener {
 
-    private static final String URL_TRICYCLE_LIST = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/list_tricycle.php";
-//    private static final String URL_TRICYCLE_LIST = "https://speakup-app-apk.herokuapp.com/list_tricycle.php";
+//    private static final String URL_TRICYCLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_tricycle.php";
+    private static final String URL_TRICYCLE_LIST = "http://48383786ae99.ngrok.io/SpeakUp/list_tricycle.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTricycle listItemAdapter;

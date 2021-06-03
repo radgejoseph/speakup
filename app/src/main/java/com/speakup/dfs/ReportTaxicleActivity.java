@@ -27,8 +27,8 @@ import java.util.List;
 
 public class ReportTaxicleActivity extends AppCompatActivity implements ListItemAdapterTaxicle.OnItemListener {
 
-    private static final String URL_TAXICLE_LIST = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/list_taxicle.php";
-//    private static final String URL_TAXICLE_LIST = "https://speakup-app-apk.herokuapp.com/list_taxicle.php";
+//    private static final String URL_TAXICLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxicle.php";
+    private static final String URL_TAXICLE_LIST = "http://48383786ae99.ngrok.io/SpeakUp/list_taxicle.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxicle listItemAdapter;

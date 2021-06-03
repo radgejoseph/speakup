@@ -31,10 +31,10 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private static String URL_READ = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/read_detail.php";
-    private static String URL_EDIT = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/edit_detail.php";
-//    private static String URL_READ = "https://speakup-app-apk.herokuapp.com/read_detail.php";
-//    private static String URL_EDIT = "https://speakup-app-apk.herokuapp.com/edit_detail.php";
+//    private static String URL_READ = "http://speakupnaga.herokuapp.com/speakup/read_detail.php";
+//    private static String URL_EDIT = "http://speakupnaga.herokuapp.com/speakup/edit_detail.php";
+    private static String URL_READ = "http://48383786ae99.ngrok.io/SpeakUp/read_detail.php";
+    private static String URL_EDIT = "http://48383786ae99.ngrok.io/SpeakUp/edit_detail.php";
 
     private TextView name, username, password, phone_number, email, address;
     private Menu action;

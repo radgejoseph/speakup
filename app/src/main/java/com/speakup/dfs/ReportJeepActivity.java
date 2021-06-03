@@ -27,8 +27,8 @@ import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
 
-    private static final String URL_JEEPNEY_LIST = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/list_jeepney.php";
-//    private static final String URL_JEEPNEY_LIST = "https://speakup-app-apk.herokuapp.com/list_jeepney.php";
+//    private static final String URL_JEEPNEY_LIST = "http://speakupnaga.herokuapp.com/speakup/list_jeepney.php";
+    private static final String URL_JEEPNEY_LIST = "http://48383786ae99.ngrok.io/SpeakUp/list_jeepney.php";
 
     RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;

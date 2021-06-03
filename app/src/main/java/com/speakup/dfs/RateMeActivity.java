@@ -29,8 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-    private static String URL_REVIEW = "http://cc6cfbb7f8ff.ngrok.io/SpeakUP/review.php";
-//    private static String URL_REVIEW = "https://speakup-app-apk.herokuapp.com/review.php";
+//    private static String URL_REVIEW = "http://speakupnaga.herokuapp.com/speakup/review.php";
+    private static String URL_REVIEW = "http://48383786ae99.ngrok.io/SpeakUp/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;

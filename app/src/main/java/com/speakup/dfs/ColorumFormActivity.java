@@ -28,8 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-    private static String URL_COLORUM = "http://cc6cfbb7f8ff.ngrok.io/SpeakUp/colorum.php";
-//    private static String URL_COLORUM = "https://speakup-app-apk.herokuapp.com/colorum.php";
+//    private static String URL_COLORUM = "http://speakupnaga.herokuapp.com/speakup/colorum.php";
+    private static String URL_COLORUM = "http://48383786ae99.ngrok.io/SpeakUp/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;
@@ -73,7 +73,15 @@ public class ColorumFormActivity extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ColorumSubmit();
+
+                String textPlate_r = textPlate.getText().toString().trim();
+                if (!textPlate_r.isEmpty()){
+                    ColorumSubmit();
+                }
+                else {
+                    textPlate.setError("Plate nad type is Required");
+                    Toast.makeText(ColorumFormActivity.this,"Plate nad type is Required", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -104,7 +112,7 @@ public class ColorumFormActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(ColorumFormActivity.this,"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ColorumFormActivity.this,"Submit Error! Plate already exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
