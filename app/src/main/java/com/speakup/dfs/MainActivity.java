@@ -1,8 +1,14 @@
 package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,16 +25,24 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListItemPlateAdapter.OnItemListener{
 
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
 //    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
-    private static String URL_LOGIN = "http://48383786ae99.ngrok.io/SpeakUp/login.php";
+    private static String URL_LOGIN = "http://192.168.1.139/SpeakUp/login.php";
+    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.139/SpeakUp/vehicle_plate_list.php";
+
+    RecyclerView recyclerView;
+    ListItemPlateAdapter listItemAdapter;
+    List<ListItem> itemList;
 
     SessionManager sessionManager;
 
@@ -37,6 +51,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        EditText editTextSearch = findViewById(R.id.search_bar);
+        editTextSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                listItemAdapter.getFilter().filter(s);
+            }
+
+        });
 
         sessionManager = new SessionManager(this);
 
@@ -68,6 +101,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+        itemList = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recyclerview_list);
+        recyclerView.bringToFront();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        loadList();
+
+
+
     }
 
     private void Login(final String username, final String password) {
@@ -160,4 +207,60 @@ public class MainActivity extends AppCompatActivity {
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
     }
+
+
+
+    private void loadList() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading list...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALL_PLATE_LIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
+
+                                String  strVehicle = object.getString("vehicle");
+                                String strPlate = object.getString("body_plate");
+                                int strRatings = object.getInt("ratings");
+
+                                ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
+                                itemList.add(listItem);
+                            }
+
+                            listItemAdapter = new ListItemPlateAdapter(itemList, MainActivity.this);
+                            recyclerView.setAdapter(listItemAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            progressDialog.dismiss();
+
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(MainActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(MainActivity.this, PlateRatingsActivity.class);
+        intent.putExtra("selected_plate", itemList.get(position));
+        startActivity(intent);
+    }
+
+
 }

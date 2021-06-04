@@ -109,20 +109,14 @@
                 android:paddingEnd="60dp"
                 android:gravity="center"
                 android:orientation="horizontal">
-                android:orientation="horizontal"
-                android:paddingStart="60dp"
-                android:paddingEnd="60dp">
-
                 <TextView
                     android:id="@+id/text_noplate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:paddingEnd="10dp"
+                    android:textStyle="bold"
                     android:text="No Plate Found" />
-                android:text="No Plate Found"
-                android:textSize="20dp" />
-
                 <Button
                     android:id="@+id/button_colorum"
                     android:layout_width="wrap_content"
@@ -132,11 +126,7 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:padding="5dp"
-                    android:text="Report Colorum" />
-                android:text="Report Colorum"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                    android:text="Add Plate" />
 
             </LinearLayout>
 

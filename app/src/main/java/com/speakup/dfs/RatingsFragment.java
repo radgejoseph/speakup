@@ -32,7 +32,7 @@ import java.util.Map;
 public class RatingsFragment extends Fragment {
 
 //    private static final String URL_MY_LIST = "http://speakupnaga.herokuapp.com/speakup/my_ratings.php";
-    private static final String URL_MY_LIST = "http://48383786ae99.ngrok.io/SpeakUp/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.139/SpeakUp/my_ratings.php";
 
     RecyclerView recyclerView;
     List<ListItemReviews> itemList;

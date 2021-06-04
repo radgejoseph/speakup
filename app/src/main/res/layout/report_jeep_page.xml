@@ -114,6 +114,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:paddingEnd="10dp"
+            android:textStyle="bold"
             android:text="No Plate Found" />
         <Button
             android:id="@+id/button_colorum"
@@ -124,7 +125,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:padding="5dp"
-            android:text="Report Colorum" />
+            android:text="Add Plate" />
       </LinearLayout>
       <androidx.constraintlayout.widget.Group
           android:id="@+id/group_noplatewithbutton"

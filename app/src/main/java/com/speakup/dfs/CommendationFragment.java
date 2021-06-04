@@ -57,7 +57,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class CommendationFragment extends Fragment {
 //    private static String URL_COMMEND = "http://speakupnaga.herokuapp.com/speakup/commendation.php";
-    private static String URL_COMMEND = "http://48383786ae99.ngrok.io/SpeakUp/commendation.php";
+    private static String URL_COMMEND = "http://192.168.1.139/SpeakUp/commendation.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
