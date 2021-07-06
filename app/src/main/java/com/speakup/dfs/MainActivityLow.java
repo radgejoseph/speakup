@@ -7,14 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
@@ -33,14 +31,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements ListItemPlateAdapter.OnItemListener{
+public class MainActivityLow extends AppCompatActivity implements ListItemPlateAdapter.OnItemListener{
 
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-//    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
+    //    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
     private static String URL_LOGIN = "http://192.168.1.139/SpeakUp/login.php";
-    private static final String URL_ALL_PLATE_LIST_RECENT = "http://192.168.1.139/SpeakUp/vehicle_plate_list_recent.php";
+    //private static final String URL_ALL_PLATE_LIST_RECENT = "http://192.168.1.139/SpeakUp/vehicle_plate_list_recent.php";
     private static final String URL_ALL_PLATE_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/vehicle_plate_list_highest.php";
     private static final String URL_ALL_PLATE_LIST_LOWEST = "http://192.168.1.139/SpeakUp/vehicle_plate_list_lowest.php";
 
@@ -106,12 +104,20 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
             }
         });
 
+        android.widget.ImageView recent = findViewById(R.id.recent);
+        recent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivityLow.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         android.widget.ImageView high = findViewById(R.id.high);
         high.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
+                Intent intent = new Intent(MainActivityLow.this, MainActivityHigh.class);
                 startActivity(intent);
             }
         });
@@ -120,16 +126,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         low.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
-                startActivity(intent);
-            }
-        });
-
-        android.widget.ImageView recent = findViewById(R.id.recent);
-        recent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                Intent intent = new Intent(MainActivityLow.this, MainActivityLow.class);
                 startActivity(intent);
             }
         });
@@ -174,12 +171,12 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                                     String id = object.getString("id").trim();
                                     sessionManager.createSession(name, email, id);
 
-                                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                    Intent intent = new Intent(MainActivityLow.this, HomeActivity.class);
                                     intent.putExtra("name", name);
                                     intent.putExtra("email", email);
                                     startActivity(intent);
 
-                                    Toast.makeText(MainActivity.this, "Success Login! \nName : "
+                                    Toast.makeText(MainActivityLow.this, "Success Login! \nName : "
                                             +name+"\nEmail : "+email, Toast.LENGTH_LONG).show();
 
                                     progress.setVisibility(View.GONE);
@@ -192,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                             progress.setVisibility(View.GONE);
                             l_button.setVisibility(View.VISIBLE);
                             tr_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(MainActivity.this, "Error! ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivityLow.this, "Error! ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -202,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                         progress.setVisibility(View.GONE);
                         l_button.setVisibility(View.VISIBLE);
                         tr_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(MainActivity.this, "Error! ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivityLow.this, "Error! ", Toast.LENGTH_SHORT).show();
 
                     }
                 })
@@ -247,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALL_PLATE_LIST_RECENT,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALL_PLATE_LIST_LOWEST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -266,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                                 itemList.add(listItem);
                             }
 
-                            listItemAdapter = new ListItemPlateAdapter(itemList, MainActivity.this);
+                            listItemAdapter = new ListItemPlateAdapter(itemList, MainActivityLow.this);
                             recyclerView.setAdapter(listItemAdapter);
 
                         } catch (JSONException e) {
@@ -280,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(MainActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivityLow.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -289,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(MainActivity.this, PlateRatingsActivityView.class);
+        Intent intent = new Intent(MainActivityLow.this, PlateRatingsActivityView.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
     }

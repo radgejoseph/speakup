@@ -28,7 +28,9 @@ import java.util.List;
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapterTricycle.OnItemListener {
 
 //    private static final String URL_TRICYCLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_tricycle.php";
-    private static final String URL_TRICYCLE_LIST = "http://192.168.1.139/SpeakUp/list_tricycle.php";
+    private static final String URL_TRICYCLE_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_tricycle_recent.php";
+    private static final String URL_TRICYCLE_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_tricycle_highest.php";
+    private static final String URL_TRICYCLE_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_tricycle_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTricycle listItemAdapter;
@@ -78,6 +80,33 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
             }
         });
 
+        android.widget.ImageView high = findViewById(R.id.high);
+        high.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivityHigh.class);
+                startActivity(intent);
+            }
+        });
+
+        android.widget.ImageView low = findViewById(R.id.low);
+        low.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivityLow.class);
+                startActivity(intent);
+            }
+        });
+
+        android.widget.ImageView recent = findViewById(R.id.recent);
+        recent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivity.class);
+                startActivity(intent);
+            }
+        });
+
         itemList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerview_list);
@@ -105,7 +134,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TRICYCLE_LIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TRICYCLE_LIST_RECENT,
                 response -> {
                     progressDialog.dismiss();
                     try {
@@ -153,6 +182,9 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+        Intent intent = new Intent(ReportTricycleActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
         return true;
     }
 

@@ -20,13 +20,15 @@
                 android:icon="@drawable/ic_ratings"
                 android:title="@string/ratings" />
             <item
-                android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space"
-                android:enabled="false"/>
+                android:id="@+id/commendation_menu"
+                android:icon="@drawable/ic_baseline_mood_24"
+                android:iconTint="@color/white"
+                android:title="@string/commendation" />
             <item
-                android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space"
-                android:enabled="false"/>
+                android:id="@+id/complaint_menu"
+                android:icon="@drawable/ic_baseline_mood_bad_24"
+                android:iconTint="@color/white"
+                android:title="@string/complaint" />
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
                 android:title="@string/blank_space"
@@ -38,6 +40,7 @@
             <item
                 android:id="@+id/logout_menu"
                 android:icon="@drawable/ic_logout"
+                android:iconTint="@color/logoutRed"
                 android:title="@string/logout" />
         </menu>
     </item>

@@ -49,7 +49,7 @@
             app:layout_constraintTop_toTopOf="@+id/view_subheader" />
         <EditText
             android:id="@+id/search_bar"
-            android:layout_width="312dp"
+            android:layout_width="180dp"
             android:layout_height="56dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/search_box"
@@ -58,9 +58,49 @@
             android:imeOptions="actionDone"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="@+id/view_subheader"
             app:layout_constraintTop_toBottomOf="@+id/view_subheader"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/recent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView2"
+            app:layout_constraintStart_toEndOf="@+id/search_bar"
+            app:layout_constraintTop_toBottomOf="@+id/view_subheader"
+            app:srcCompat="@drawable/ic_baseline_import_export_24"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/high"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView2"
+            app:layout_constraintTop_toBottomOf="@+id/view_subheader"
+            app:layout_constraintStart_toEndOf="@+id/recent"
+            app:layout_constraintVertical_bias="0.562"
+            app:srcCompat="@drawable/ic_baseline_mood_24"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/low"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView2"
+            app:layout_constraintTop_toBottomOf="@+id/view_subheader"
+            app:layout_constraintStart_toEndOf="@+id/high"
+            app:srcCompat="@drawable/ic_baseline_mood_bad_24"
             tools:ignore="MissingConstraints" />
 
         <androidx.core.widget.NestedScrollView

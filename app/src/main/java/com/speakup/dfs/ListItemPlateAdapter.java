@@ -36,6 +36,7 @@ public class ListItemPlateAdapter extends RecyclerView.Adapter<ListItemPlateAdap
 
         holder.textPlate.setText(listItem.getPlateL());
         holder.textRatings.setText(String.valueOf(listItem.getRatingsL()));
+        holder.textVehicle.setText(listItem.getVehicleL());
     }
 
     @Override
@@ -82,7 +83,7 @@ public class ListItemPlateAdapter extends RecyclerView.Adapter<ListItemPlateAdap
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        TextView textPlate, textRatings;
+        TextView textPlate, textRatings, textVehicle;
         OnItemListener onItemListener;
 
         public ListItemHoder(@NonNull View itemView, OnItemListener onItemListener) {
@@ -90,6 +91,7 @@ public class ListItemPlateAdapter extends RecyclerView.Adapter<ListItemPlateAdap
 
             textPlate = itemView.findViewById(R.id.plate_number);
             textRatings = itemView.findViewById(R.id.ratecount);
+            textVehicle = itemView.findViewById(R.id.vehicle_type);
             this.onItemListener = onItemListener;
 
             itemView.setOnClickListener(this);

@@ -25,15 +25,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
+public class ReportTaxicleActivityLow extends AppCompatActivity implements ListItemAdapterTaxicle.OnItemListener {
 
-//    private static final String URL_TAXI_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxi.php";
-    private static final String URL_TAXI_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_taxi_recent.php";
-    private static final String URL_TAXI_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_taxi_highest.php";
-    private static final String URL_TAXI_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_taxi_lowest.php";
+    //    private static final String URL_TAXICLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxicle.php";
+    private static final String URL_TAXICLE_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_taxicle_recent.php";
+    private static final String URL_TAXICLE_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_taxicle_highest.php";
+    private static final String URL_TAXICLE_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_taxicle_lowest.php";
 
     RecyclerView recyclerView;
-    ListItemAdapterTaxi listItemAdapter;
+    ListItemAdapterTaxicle listItemAdapter;
     Toolbar toolbar;
     Button button_colorum;
 
@@ -42,7 +42,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.report_taxi_page);
+        setContentView(R.layout.report_taxicle_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         EditText editTextSearch = findViewById(R.id.search_bar);
@@ -74,25 +74,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         button_colorum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ColorumFormActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        android.widget.ImageView high = findViewById(R.id.high);
-        high.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivityHigh.class);
-                startActivity(intent);
-            }
-        });
-
-        android.widget.ImageView low = findViewById(R.id.low);
-        low.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivityLow.class);
+                Intent intent = new Intent(ReportTaxicleActivityLow.this, ColorumFormActivity.class);
                 startActivity(intent);
             }
         });
@@ -101,11 +83,28 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivity.class);
+                Intent intent = new Intent(ReportTaxicleActivityLow.this, ReportTaxicleActivity.class);
                 startActivity(intent);
             }
         });
 
+        android.widget.ImageView high = findViewById(R.id.high);
+        high.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTaxicleActivityLow.this, ReportTaxicleActivityHigh.class);
+                startActivity(intent);
+            }
+        });
+
+        android.widget.ImageView low = findViewById(R.id.low);
+        low.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportTaxicleActivityLow.this, ReportTaxicleActivityLow.class);
+                startActivity(intent);
+            }
+        });
 
         itemList = new ArrayList<>();
 
@@ -134,7 +133,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TAXI_LIST_RECENT,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TAXICLE_LIST_LOWEST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -153,7 +152,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
                                 itemList.add(listItem);
                             }
 
-                            listItemAdapter = new ListItemAdapterTaxi(itemList, ReportTaxiActivity.this);
+                            listItemAdapter = new ListItemAdapterTaxicle(itemList, ReportTaxicleActivityLow.this);
                             recyclerView.setAdapter(listItemAdapter);
 
                         } catch (JSONException e) {
@@ -167,7 +166,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(ReportTaxiActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReportTaxicleActivityLow.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -177,7 +176,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(ReportTaxiActivity.this, PlateRatingsActivity.class);
+        Intent intent = new Intent(ReportTaxicleActivityLow.this, PlateRatingsActivity.class);
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
     }
@@ -185,7 +184,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
-        Intent intent = new Intent(ReportTaxiActivity.this, HomeActivity.class);
+        Intent intent = new Intent(ReportTaxicleActivityLow.this, HomeActivity.class);
         startActivity(intent);
         finish();
         return true;

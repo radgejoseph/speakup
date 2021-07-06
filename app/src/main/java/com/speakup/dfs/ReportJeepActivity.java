@@ -28,7 +28,9 @@ import java.util.List;
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
 
 //    private static final String URL_JEEPNEY_LIST = "http://speakupnaga.herokuapp.com/speakup/list_jeepney.php";
-    private static final String URL_JEEPNEY_LIST = "http://192.168.1.139/SpeakUp/list_jeepney.php";
+    private static final String URL_JEEPNEY_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_jeepney_recent.php";
+    private static final String URL_JEEPNEY_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_jeepney_highest.php";
+    private static final String URL_JEEPNEY_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_jeepney_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
@@ -78,6 +80,33 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
             }
         });
 
+        android.widget.ImageView high = findViewById(R.id.high);
+        high.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportJeepActivity.this, ReportJeepActivityHigh.class);
+                startActivity(intent);
+            }
+        });
+
+        android.widget.ImageView low = findViewById(R.id.low);
+        low.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportJeepActivity.this, ReportJeepActivityLow.class);
+                startActivity(intent);
+            }
+        });
+
+        android.widget.ImageView recent = findViewById(R.id.recent);
+        recent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ReportJeepActivity.this, ReportJeepActivity.class);
+                startActivity(intent);
+            }
+        });
+
         itemList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerview_list);
@@ -105,7 +134,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_JEEPNEY_LIST,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_JEEPNEY_LIST_RECENT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -155,6 +184,9 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+        Intent intent = new Intent(ReportJeepActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
         return true;
     }
 
