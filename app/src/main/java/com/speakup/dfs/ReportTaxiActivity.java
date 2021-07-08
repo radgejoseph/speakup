@@ -28,9 +28,9 @@ import java.util.List;
 public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
 
 //    private static final String URL_TAXI_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxi.php";
-    private static final String URL_TAXI_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_taxi_recent.php";
-    private static final String URL_TAXI_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_taxi_highest.php";
-    private static final String URL_TAXI_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_taxi_lowest.php";
+    private static final String URL_TAXI_LIST_RECENT = "http://192.168.1.121/SpeakUp/list_taxi_recent.php";
+    private static final String URL_TAXI_LIST_HIGHEST = "http://192.168.1.121/SpeakUp/list_taxi_highest.php";
+    private static final String URL_TAXI_LIST_LOWEST = "http://192.168.1.121/SpeakUp/list_taxi_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;

@@ -29,13 +29,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RatingsFragment extends Fragment {
+public class ComplaintViewFragment extends Fragment {
 
-//    private static final String URL_MY_LIST = "http://speakupnaga.herokuapp.com/speakup/my_ratings.php";
-    private static final String URL_MY_LIST = "http://192.168.1.121/SpeakUp/my_ratings.php";
+    //    private static final String URL_MY_LIST = "http://speakupnaga.herokuapp.com/speakup/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.121/SpeakUp/my_complaints.php";
 
     RecyclerView recyclerView;
-    List<ListItemReviews> itemList;
+    List<ListItemCommendComplaint> itemListComplaint;
 
     String getId;
     SessionManager sessionManager;
@@ -43,15 +43,15 @@ public class RatingsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ratings_fragment, container, false);
+        View view = inflater.inflate(R.layout.complaintview_fragment, container, false);
         setHasOptionsMenu(true);
 
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
 
-        itemList = new ArrayList<>();
+        itemListComplaint = new ArrayList<>();
 
-        recyclerView = view.findViewById(R.id.recyclerview_list_review);
+        recyclerView = view.findViewById(R.id.recyclerview_list_review_complaint);
         recyclerView.bringToFront();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -77,19 +77,21 @@ public class RatingsFragment extends Fragment {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
 
-                                    itemList.add(new ListItemReviews(
-                                            object.getString("vehicle"),
-                                            object.getString("body_plate"),
-                                            object.getInt("ratings"),
-                                            object.getString("narrative")
-                                    ));
-                                }
+                                itemListComplaint.add(new ListItemCommendComplaint(
+                                        object.getString("vehicle"),
+                                        object.getString("body_plate"),
+                                        object.getString("narrative"),
+                                        object.getString("date"),
+                                        object.getString("time"),
+                                        object.getString("image_name")
+                                ));
+                            }
 
-                            ListItemReviewAdapter  listItemReviewAdapter = new ListItemReviewAdapter(getActivity(), itemList);
-                            recyclerView.setAdapter(listItemReviewAdapter);
+                            ListItemComndComptAdapter  listItemComndComptAdapter = new ListItemComndComptAdapter(getActivity(), itemListComplaint);
+                            recyclerView.setAdapter(listItemComndComptAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

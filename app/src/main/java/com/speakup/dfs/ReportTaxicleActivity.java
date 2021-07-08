@@ -28,9 +28,9 @@ import java.util.List;
 public class ReportTaxicleActivity extends AppCompatActivity implements ListItemAdapterTaxicle.OnItemListener {
 
 //    private static final String URL_TAXICLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxicle.php";
-    private static final String URL_TAXICLE_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_taxicle_recent.php";
-    private static final String URL_TAXICLE_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_taxicle_highest.php";
-    private static final String URL_TAXICLE_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_taxicle_lowest.php";
+    private static final String URL_TAXICLE_LIST_RECENT = "http://192.168.1.121/SpeakUp/list_taxicle_recent.php";
+    private static final String URL_TAXICLE_LIST_HIGHEST = "http://192.168.1.121/SpeakUp/list_taxicle_highest.php";
+    private static final String URL_TAXICLE_LIST_LOWEST = "http://192.168.1.121/SpeakUp/list_taxicle_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxicle listItemAdapter;

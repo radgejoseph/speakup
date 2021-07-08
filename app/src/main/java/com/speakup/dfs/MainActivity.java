@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private Button l_button, tr_button;
     private ProgressBar progress;
 //    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
-    private static String URL_LOGIN = "http://192.168.1.139/SpeakUp/login.php";
-    private static final String URL_ALL_PLATE_LIST_RECENT = "http://192.168.1.139/SpeakUp/vehicle_plate_list_recent.php";
-    private static final String URL_ALL_PLATE_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/vehicle_plate_list_highest.php";
-    private static final String URL_ALL_PLATE_LIST_LOWEST = "http://192.168.1.139/SpeakUp/vehicle_plate_list_lowest.php";
+    private static String URL_LOGIN = "http://192.168.1.121/SpeakUp/login.php";
+    private static final String URL_ALL_PLATE_LIST_RECENT = "http://192.168.1.121/SpeakUp/vehicle_plate_list_recent.php";
+    private static final String URL_ALL_PLATE_LIST_HIGHEST = "http://192.168.1.121/SpeakUp/vehicle_plate_list_highest.php";
+    private static final String URL_ALL_PLATE_LIST_LOWEST = "http://192.168.1.121/SpeakUp/vehicle_plate_list_lowest.php";
 
     RecyclerView recyclerView;
     ListItemPlateAdapter listItemAdapter;

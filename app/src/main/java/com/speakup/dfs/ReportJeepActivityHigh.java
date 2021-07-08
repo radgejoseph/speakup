@@ -28,9 +28,9 @@ import java.util.List;
 public class ReportJeepActivityHigh extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
 
     //    private static final String URL_JEEPNEY_LIST = "http://speakupnaga.herokuapp.com/speakup/list_jeepney.php";
-    private static final String URL_JEEPNEY_LIST_RECENT = "http://192.168.1.139/SpeakUp/list_jeepney_recent.php";
-    private static final String URL_JEEPNEY_LIST_HIGHEST = "http://192.168.1.139/SpeakUp/list_jeepney_highest.php";
-    private static final String URL_JEEPNEY_LIST_LOWEST = "http://192.168.1.139/SpeakUp/list_jeepney_lowest.php";
+    private static final String URL_JEEPNEY_LIST_RECENT = "http://192.168.1.121/SpeakUp/list_jeepney_recent.php";
+    private static final String URL_JEEPNEY_LIST_HIGHEST = "http://192.168.1.121/SpeakUp/list_jeepney_highest.php";
+    private static final String URL_JEEPNEY_LIST_LOWEST = "http://192.168.1.121/SpeakUp/list_jeepney_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
