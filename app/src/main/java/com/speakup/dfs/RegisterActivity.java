@@ -23,11 +23,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import papaya.in.sendmail.SendMail;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
 //    private static String URL_REGIST = "http://speakup-app-apk.herokuapp.com/register.php";
-    private static String URL_REGIST = "http://192.168.1.121/SpeakUp/register.php";
+    private static String URL_REGIST = "http://192.168.1.103/speakup/register.php";
     private Button reg_button;
 
     @Override
@@ -43,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.email_text);
         address = findViewById(R.id.address_text);
         reg_button = findViewById(R.id.register_button);
+
         
         android.widget.ImageView backBut = findViewById(R.id.imagebackButton);
         backBut.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +144,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+        SendMail mail = new SendMail("speakupadnu@gmail.com", "delasalasferrersanjoaquin",
+                email,
+                "Registration Complete",
+                "Thank you for registering to SpeakUP.");
+        mail.execute();
     }
 
     @Override

@@ -28,9 +28,9 @@ import java.util.List;
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapterTricycle.OnItemListener {
 
 //    private static final String URL_TRICYCLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_tricycle.php";
-    private static final String URL_TRICYCLE_LIST_RECENT = "http://192.168.1.121/SpeakUp/list_tricycle_recent.php";
-    private static final String URL_TRICYCLE_LIST_HIGHEST = "http://192.168.1.121/SpeakUp/list_tricycle_highest.php";
-    private static final String URL_TRICYCLE_LIST_LOWEST = "http://192.168.1.121/SpeakUp/list_tricycle_lowest.php";
+    private static final String URL_TRICYCLE_LIST_RECENT = "http://192.168.1.103/speakup/list_tricycle_recent.php";
+    private static final String URL_TRICYCLE_LIST_HIGHEST = "http://192.168.1.103/speakup/list_tricycle_highest.php";
+    private static final String URL_TRICYCLE_LIST_LOWEST = "http://192.168.1.103/speakup/list_tricycle_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTricycle listItemAdapter;

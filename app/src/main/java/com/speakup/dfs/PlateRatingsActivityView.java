@@ -33,7 +33,7 @@ import java.util.Map;
 public class PlateRatingsActivityView extends AppCompatActivity {
 
     //    private static final String URL_PLATE_LIST = "http://speakupnaga.herokuapp.com/speakup/plate_reviews.php";
-    private static final String URL_PLATE_LIST = "http://192.168.1.121/SpeakUp/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "http://192.168.1.103/speakup/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;
