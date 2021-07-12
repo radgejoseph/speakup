@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,10 +38,10 @@ public class MainActivityHigh extends AppCompatActivity implements ListItemPlate
     private Button l_button, tr_button;
     private ProgressBar progress;
     //    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
-    private static String URL_LOGIN = "http://192.168.1.103/speakup/login.php";
-    //private static final String URL_ALL_PLATE_LIST_RECENT = "http://192.168.1.103/speakup/vehicle_plate_list_recent.php";
-    private static final String URL_ALL_PLATE_LIST_HIGHEST = "http://192.168.1.103/speakup/vehicle_plate_list_highest.php";
-    private static final String URL_ALL_PLATE_LIST_LOWEST = "http://192.168.1.103/speakup/vehicle_plate_list_lowest.php";
+    private static String URL_LOGIN = "https://speakupadnu.000webhostapp.com/login.php";
+    //private static final String URL_ALL_PLATE_LIST_RECENT = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_recent.php";
+    private static final String URL_ALL_PLATE_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_highest.php";
+    private static final String URL_ALL_PLATE_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_lowest.php";
 
     RecyclerView recyclerView;
     ListItemPlateAdapter listItemAdapter;
@@ -216,6 +217,13 @@ public class MainActivityHigh extends AppCompatActivity implements ListItemPlate
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
     }
 
     public void openRegisterActivity() {
@@ -282,6 +290,13 @@ public class MainActivityHigh extends AppCompatActivity implements ListItemPlate
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override

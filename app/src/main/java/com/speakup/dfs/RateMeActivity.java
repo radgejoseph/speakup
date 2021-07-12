@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,7 +31,7 @@ import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
 //    private static String URL_REVIEW = "http://speakupnaga.herokuapp.com/speakup/review.php";
-    private static String URL_REVIEW = "http://192.168.1.103/speakup/review.php";
+    private static String URL_REVIEW = "https://speakupadnu.000webhostapp.com/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
@@ -130,7 +131,6 @@ public class RateMeActivity extends AppCompatActivity {
 
     }
 
-
     private void ReviewSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(RateMeActivity.this);
         progressDialog.setMessage("Submitting...");
@@ -185,6 +185,13 @@ public class RateMeActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(RateMeActivity.this);
         requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
 

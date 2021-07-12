@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -35,7 +36,7 @@ import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
 //    private static String URL_COLORUM = "http://speakupnaga.herokuapp.com/speakup/colorum.php";
-    private static String URL_COLORUM = "http://192.168.1.103/speakup/colorum.php";
+    private static String URL_COLORUM = "https://speakupadnu.000webhostapp.com/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;
@@ -197,6 +198,13 @@ public class ColorumFormActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(ColorumFormActivity.this);
         requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override

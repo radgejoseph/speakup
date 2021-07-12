@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,7 +34,7 @@ import java.util.Map;
 public class PlateRatingsActivity extends AppCompatActivity {
 
 //    private static final String URL_PLATE_LIST = "http://speakupnaga.herokuapp.com/speakup/plate_reviews.php";
-    private static final String URL_PLATE_LIST = "http://192.168.1.103/speakup/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "https://speakupadnu.000webhostapp.com/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;
@@ -145,6 +146,13 @@ public class PlateRatingsActivity extends AppCompatActivity {
         };
 
         Volley.newRequestQueue(this).add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override

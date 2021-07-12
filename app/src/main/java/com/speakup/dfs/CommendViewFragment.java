@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -32,7 +33,7 @@ import java.util.Map;
 public class CommendViewFragment extends Fragment {
 
     //    private static final String URL_MY_LIST = "http://speakupnaga.herokuapp.com/speakup/my_ratings.php";
-    private static final String URL_MY_LIST = "http://192.168.1.103/speakup/my_commendations.php";
+    private static final String URL_MY_LIST = "https://speakupadnu.000webhostapp.com/my_commendations.php";
 
     RecyclerView recyclerView;
     List<ListItemCommendComplaint> itemListCommend;
@@ -117,6 +118,13 @@ public class CommendViewFragment extends Fragment {
         };
 
         Volley.newRequestQueue(getContext()).add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
 }

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
 //    private static String URL_REGIST = "http://speakup-app-apk.herokuapp.com/register.php";
-    private static String URL_REGIST = "http://192.168.1.103/speakup/register.php";
+    private static String URL_REGIST = "https://speakupadnu.000webhostapp.com/register.php";
     private Button reg_button;
 
     @Override
@@ -144,10 +145,18 @@ public class RegisterActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         SendMail mail = new SendMail("speakupadnu@gmail.com", "delasalasferrersanjoaquin",
                 email,
                 "Registration Complete",
-                "Thank you for registering to SpeakUP.");
+                "Thank you " + name + " for signing up.\n\nYou can now share your PUV experiences with us.");
         mail.execute();
     }
 

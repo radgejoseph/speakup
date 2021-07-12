@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,9 +30,9 @@ import java.util.List;
 public class ReportTaxiActivityLow extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
 
     //    private static final String URL_TAXI_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxi.php";
-    private static final String URL_TAXI_LIST_RECENT = "http://192.168.1.103/speakup/list_taxi_recent.php";
-    private static final String URL_TAXI_LIST_HIGHEST = "http://192.168.1.103/speakup/list_taxi_highest.php";
-    private static final String URL_TAXI_LIST_LOWEST = "http://192.168.1.103/speakup/list_taxi_lowest.php";
+    private static final String URL_TAXI_LIST_RECENT = "https://speakupadnu.000webhostapp.com/list_taxi_recent.php";
+    private static final String URL_TAXI_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/list_taxi_highest.php";
+    private static final String URL_TAXI_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/list_taxi_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;
@@ -172,6 +174,13 @@ public class ReportTaxiActivityLow extends AppCompatActivity implements ListItem
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
 

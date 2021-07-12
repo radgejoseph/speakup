@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,8 +34,8 @@ public class ProfileFragment extends Fragment{
     private static final String TAG = HomeActivity.class.getSimpleName();
 //    private static String URL_READ = "http://speakupnaga.herokuapp.com/speakup/read_detail.php";
 //    private static String URL_EDIT = "http://speakupnaga.herokuapp.com/speakup/edit_detail.php";
-    private static String URL_READ = "http://192.168.1.103/speakup/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.103/speakup/edit_detail.php";
+    private static String URL_READ = "https://speakupadnu.000webhostapp.com/read_detail.php";
+    private static String URL_EDIT = "https://speakupadnu.000webhostapp.com/edit_detail.php";
 
     private TextView name, username, password, phone_number, email, address;
     private Menu action;
@@ -137,6 +138,13 @@ public class ProfileFragment extends Fragment{
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override
@@ -282,6 +290,13 @@ public class ProfileFragment extends Fragment{
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+
+        int MY_SOCKET_TIMEOUT_MS = 50000;
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
     }
 
