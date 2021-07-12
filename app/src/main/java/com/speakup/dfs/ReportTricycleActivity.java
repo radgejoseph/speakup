@@ -25,14 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapterTricycle.OnItemListener {
 
-    private static final String URL_TRICYCLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_tricycle.php";
-//    private static final String URL_TRICYCLE_LIST_RECENT = "https://192.168.1.137/speakup/list_tricycle_recent.php";
-//    private static final String URL_TRICYCLE_LIST_HIGHEST = "https://192.168.1.137/speakup/list_tricycle_highest.php";
-//    private static final String URL_TRICYCLE_LIST_LOWEST = "https://192.168.1.137/speakup/list_tricycle_lowest.php";
+    private static final String URL_TRICYCLE_LIST = "http://192.168.1.137/speakup/list_tricycle.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTricycle listItemAdapter;
@@ -86,8 +84,10 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         high.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivityHigh.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
+//                startActivity(intent);
             }
         });
 
@@ -95,8 +95,10 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         low.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivityLow.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
+//                startActivity(intent);
             }
         });
 
@@ -104,8 +106,10 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivity.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorAZ);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivity.class);
+//                startActivity(intent);
             }
         });
 

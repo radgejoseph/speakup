@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-//    private static String URL_COLORUM = "http://speakupnaga.herokuapp.com/speakup/colorum.php";
-    private static String URL_COLORUM = "https://192.168.1.137/speakup/colorum.php";
+//    private static String URL_COLORUM = "http://192.168.1.137/speakup/colorum.php";
+    private static String URL_COLORUM = "http://192.168.1.137/speakup/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;

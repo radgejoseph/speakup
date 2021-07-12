@@ -18,8 +18,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".MainActivityLow" />
-        <activity android:name=".MainActivityHigh" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,17 +28,9 @@
         <activity android:name=".ColorumFormActivity" />
         <activity android:name=".RateMeActivity" />
         <activity android:name=".ReportTaxiActivity" />
-        <activity android:name=".ReportTaxiActivityHigh" />
-        <activity android:name=".ReportTaxiActivityLow" />
         <activity android:name=".ReportTricycleActivity" />
-        <activity android:name=".ReportTricycleActivityHigh" />
-        <activity android:name=".ReportTricycleActivityLow" />
         <activity android:name=".ReportTaxicleActivity" />
-        <activity android:name=".ReportTaxicleActivityHigh" />
-        <activity android:name=".ReportTaxicleActivityLow" />
         <activity android:name=".ReportJeepActivity" />
-        <activity android:name=".ReportJeepActivityHigh" />
-        <activity android:name=".ReportJeepActivityLow" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterComplete" />
         <activity android:name=".RegisterActivity" />

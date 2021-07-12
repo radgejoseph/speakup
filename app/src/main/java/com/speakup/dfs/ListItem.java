@@ -59,17 +59,24 @@ public class ListItem implements Parcelable {
         dest.writeInt(ratings);
     }
 
-    public static Comparator<ListItem> listItemComparatorHtoL = new Comparator<ListItem>() {
+    public static Comparator<ListItem> listItemComparatorLtoH = new Comparator<ListItem>() {
         @Override
         public int compare(ListItem o1, ListItem o2) {
             return o1.getRatingsL() - (o2.getRatingsL());
         }
     };
 
-    public static Comparator<ListItem> listItemComparatorLtoH = new Comparator<ListItem>() {
+    public static Comparator<ListItem> listItemComparatorHtoL = new Comparator<ListItem>() {
         @Override
         public int compare(ListItem o1, ListItem o2) {
             return o2.getRatingsL() - (o1.getRatingsL());
+        }
+    };
+
+    public static Comparator<ListItem> listItemComparatorAZ = new Comparator<ListItem>() {
+        @Override
+        public int compare(ListItem o1, ListItem o2) {
+            return o2.getPlateL().compareTo(o1.getPlateL());
         }
     };
 

@@ -41,11 +41,10 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private EditText username, password;
     private Button l_button, tr_button;
     private ProgressBar progress;
-//    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
-    private static String URL_LOGIN = "https://192.168.1.137/speakup/login.php";
-    private static final String URL_ALL_PLATE_LIST_RECENT = "https://192.168.1.137/speakup/list_jeepney.php";
-    private static final String URL_ALL_PLATE_LIST_HIGHEST = "https://192.168.1.137/speakup/vehicle_plate_list_highest.php";
-    private static final String URL_ALL_PLATE_LIST_LOWEST = "https://192.168.1.137/speakup/vehicle_plate_list_lowest.php";
+
+    private static String URL_LOGIN = "http://192.168.1.137/speakup/login.php";
+    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.137/speakup/list_jeepney.php";
+
 
     RecyclerView recyclerView;
     ListItemPlateAdapter listItemAdapter;
@@ -136,8 +135,10 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorAZ);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -261,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALL_PLATE_LIST_RECENT,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALL_PLATE_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -25,14 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
 
-    private static final String URL_TAXI_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxi.php";
-//    private static final String URL_TAXI_LIST_RECENT = "https://192.168.1.137/speakup/list_taxi_recent.php";
-//    private static final String URL_TAXI_LIST_HIGHEST = "https://192.168.1.137/speakup/list_taxi_highest.php";
-//    private static final String URL_TAXI_LIST_LOWEST = "https://192.168.1.137/speakup/list_taxi_lowest.php";
+    private static final String URL_TAXI_LIST = "http://192.168.1.137/speakup/list_taxi.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;
@@ -85,8 +83,10 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         high.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivityHigh.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
+//                startActivity(intent);
             }
         });
 
@@ -94,8 +94,10 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         low.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivityLow.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
+//                startActivity(intent);
             }
         });
 
@@ -103,8 +105,10 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivity.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorAZ);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivity.class);
+//                startActivity(intent);
             }
         });
 

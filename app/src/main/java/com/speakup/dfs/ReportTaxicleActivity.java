@@ -25,14 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReportTaxicleActivity extends AppCompatActivity implements ListItemAdapterTaxicle.OnItemListener {
 
-    private static final String URL_TAXICLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxicle.php";
-//    private static final String URL_TAXICLE_LIST_RECENT = "https://192.168.1.137/speakup/list_taxicle_recent.php";
-//    private static final String URL_TAXICLE_LIST_HIGHEST = "https://192.168.1.137/speakup/list_taxicle_highest.php";
-//    private static final String URL_TAXICLE_LIST_LOWEST = "https://192.168.1.137/speakup/list_taxicle_lowest.php";
+    private static final String URL_TAXICLE_LIST = "http://192.168.1.137/speakup/list_taxicle.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxicle listItemAdapter;
@@ -85,8 +83,10 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
         high.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxicleActivity.this, ReportTaxicleActivityHigh.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
+//                startActivity(intent);
             }
         });
 
@@ -94,8 +94,10 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
         low.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxicleActivity.this, ReportTaxicleActivityLow.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
+//                startActivity(intent);
             }
         });
 
@@ -103,8 +105,10 @@ public class ReportTaxicleActivity extends AppCompatActivity implements ListItem
         recent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ReportTaxicleActivity.this, ReportTaxicleActivity.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorAZ);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(ReportTaxicleActivity.this, ReportTaxicleActivity.class);
+//                startActivity(intent);
             }
         });
 
