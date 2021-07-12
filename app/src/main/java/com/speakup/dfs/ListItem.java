@@ -3,6 +3,8 @@ package com.speakup.dfs;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Comparator;
+
 public class ListItem implements Parcelable {
 
     private String vehicle;
@@ -56,5 +58,19 @@ public class ListItem implements Parcelable {
         dest.writeString(plate);
         dest.writeInt(ratings);
     }
+
+    public static Comparator<ListItem> listItemComparatorHtoL = new Comparator<ListItem>() {
+        @Override
+        public int compare(ListItem o1, ListItem o2) {
+            return o1.getRatingsL() - (o2.getRatingsL());
+        }
+    };
+
+    public static Comparator<ListItem> listItemComparatorLtoH = new Comparator<ListItem>() {
+        @Override
+        public int compare(ListItem o1, ListItem o2) {
+            return o2.getRatingsL() - (o1.getRatingsL());
+        }
+    };
 
 }

@@ -30,9 +30,9 @@ import java.util.List;
 public class ReportTaxicleActivityHigh extends AppCompatActivity implements ListItemAdapterTaxicle.OnItemListener {
 
     //    private static final String URL_TAXICLE_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxicle.php";
-    private static final String URL_TAXICLE_LIST_RECENT = "https://speakupadnu.000webhostapp.com/list_taxicle_recent.php";
-    private static final String URL_TAXICLE_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/list_taxicle_highest.php";
-    private static final String URL_TAXICLE_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/list_taxicle_lowest.php";
+    private static final String URL_TAXICLE_LIST_RECENT = "https://192.168.1.137/speakup/list_taxicle_recent.php";
+    private static final String URL_TAXICLE_LIST_HIGHEST = "https://192.168.1.137/speakup/list_taxicle_highest.php";
+    private static final String URL_TAXICLE_LIST_LOWEST = "https://192.168.1.137/speakup/list_taxicle_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxicle listItemAdapter;

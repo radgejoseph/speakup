@@ -30,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +42,10 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private Button l_button, tr_button;
     private ProgressBar progress;
 //    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
-    private static String URL_LOGIN = "https://speakupadnu.000webhostapp.com/login.php";
-    private static final String URL_ALL_PLATE_LIST_RECENT = "https://speakupadnu.000webhostapp.com/vehicle_plate_list.php";
-    private static final String URL_ALL_PLATE_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_highest.php";
-    private static final String URL_ALL_PLATE_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_lowest.php";
+    private static String URL_LOGIN = "https://192.168.1.137/speakup/login.php";
+    private static final String URL_ALL_PLATE_LIST_RECENT = "https://192.168.1.137/speakup/list_jeepney.php";
+    private static final String URL_ALL_PLATE_LIST_HIGHEST = "https://192.168.1.137/speakup/vehicle_plate_list_highest.php";
+    private static final String URL_ALL_PLATE_LIST_LOWEST = "https://192.168.1.137/speakup/vehicle_plate_list_lowest.php";
 
     RecyclerView recyclerView;
     ListItemPlateAdapter listItemAdapter;
@@ -112,8 +114,10 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         high.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
+//                startActivity(intent);
             }
         });
 
@@ -121,8 +125,10 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         low.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
-                startActivity(intent);
+                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+                listItemAdapter.notifyDataSetChanged();
+//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
+//                startActivity(intent);
             }
         });
 

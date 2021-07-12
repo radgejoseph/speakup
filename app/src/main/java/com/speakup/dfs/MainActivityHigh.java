@@ -38,7 +38,7 @@ public class MainActivityHigh extends AppCompatActivity implements ListItemPlate
     private Button l_button, tr_button;
     private ProgressBar progress;
     //    private static String URL_LOGIN = "http://speakupnaga.herokuapp.com/speakup/login.php";
-    private static String URL_LOGIN = "https://speakupadnu.000webhostapp.com/login.php";
+    private static String URL_LOGIN = "https://192.168.1.137/speakup/login.php";
     //private static final String URL_ALL_PLATE_LIST_RECENT = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_recent.php";
     private static final String URL_ALL_PLATE_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_highest.php";
     private static final String URL_ALL_PLATE_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/vehicle_plate_list_lowest.php";

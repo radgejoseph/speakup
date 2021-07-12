@@ -33,7 +33,7 @@ import java.util.Map;
 public class CommendViewFragment extends Fragment {
 
     //    private static final String URL_MY_LIST = "http://speakupnaga.herokuapp.com/speakup/my_ratings.php";
-    private static final String URL_MY_LIST = "https://speakupadnu.000webhostapp.com/my_commendations.php";
+    private static final String URL_MY_LIST = "https://192.168.1.137/speakup/my_commendations.php";
 
     RecyclerView recyclerView;
     List<ListItemCommendComplaint> itemListCommend;

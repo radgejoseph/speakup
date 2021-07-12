@@ -29,10 +29,10 @@ import java.util.List;
 
 public class ReportJeepActivity extends AppCompatActivity implements ListItemAdapterJeep.OnItemListener {
 
-//    private static final String URL_JEEPNEY_LIST = "http://speakupnaga.herokuapp.com/speakup/list_jeepney.php";
-    private static final String URL_JEEPNEY_LIST_RECENT = "https://speakupadnu.000webhostapp.com/list_jeepney_recent.php";
-    private static final String URL_JEEPNEY_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/list_jeepney_highest.php";
-    private static final String URL_JEEPNEY_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/list_jeepney_lowest.php";
+    private static final String URL_JEEPNEY_LIST = "https://192.168.1.137/speakup/list_jeepney.php";
+//    private static final String URL_JEEPNEY_LIST_RECENT = "https://speakupadnu.000webhostapp.com/list_jeepney_recent.php";
+//    private static final String URL_JEEPNEY_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/list_jeepney_highest.php";
+//    private static final String URL_JEEPNEY_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/list_jeepney_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterJeep listItemAdapter;
@@ -136,7 +136,7 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_JEEPNEY_LIST_RECENT,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_JEEPNEY_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

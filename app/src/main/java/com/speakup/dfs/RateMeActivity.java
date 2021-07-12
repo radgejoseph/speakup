@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
 //    private static String URL_REVIEW = "http://speakupnaga.herokuapp.com/speakup/review.php";
-    private static String URL_REVIEW = "https://speakupadnu.000webhostapp.com/review.php";
+    private static String URL_REVIEW = "https://192.168.1.137/speakup/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;

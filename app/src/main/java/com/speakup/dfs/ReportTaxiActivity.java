@@ -29,10 +29,10 @@ import java.util.List;
 
 public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
 
-//    private static final String URL_TAXI_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxi.php";
-    private static final String URL_TAXI_LIST_RECENT = "https://speakupadnu.000webhostapp.com/list_taxi_recent.php";
-    private static final String URL_TAXI_LIST_HIGHEST = "https://speakupadnu.000webhostapp.com/list_taxi_highest.php";
-    private static final String URL_TAXI_LIST_LOWEST = "https://speakupadnu.000webhostapp.com/list_taxi_lowest.php";
+    private static final String URL_TAXI_LIST = "http://speakupnaga.herokuapp.com/speakup/list_taxi.php";
+//    private static final String URL_TAXI_LIST_RECENT = "https://192.168.1.137/speakup/list_taxi_recent.php";
+//    private static final String URL_TAXI_LIST_HIGHEST = "https://192.168.1.137/speakup/list_taxi_highest.php";
+//    private static final String URL_TAXI_LIST_LOWEST = "https://192.168.1.137/speakup/list_taxi_lowest.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;
@@ -136,7 +136,7 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TAXI_LIST_RECENT,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TAXI_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
