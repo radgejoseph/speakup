@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText name, username, password, phone_number, email, address;
 //    private static String URL_REGIST = "http://speakup-app-apk.herokuapp.com/register.php";
     private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/register.php";
+    private static String VERIFICATION = "http://speakupadnu.000webhostapp.com/verification.php";
     private Button reg_button;
 
     @Override
@@ -117,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                             e.printStackTrace();
                             progressDialog.dismiss();
                             reg_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(RegisterActivity.this,"Register Error! Username already exist", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -155,8 +156,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         SendMail mail = new SendMail("speakupadnu@gmail.com", "delasalasferrersanjoaquin",
                 email,
-                "Registration Complete",
-                "Thank you " + name + " for signing up.\n\nYou can now share your PUV experiences with us.");
+                "Verify Your Email",
+                "Thank you " + name + " for signing up.\n\nUsername: "+ username +"\nPassword: "+ password +"\n\nYou can now share your PUV experiences with us.\n\nPlease Click the link to verify your account "+ VERIFICATION);
         mail.execute();
     }
 
