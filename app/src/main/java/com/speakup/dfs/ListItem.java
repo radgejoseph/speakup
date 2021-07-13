@@ -76,7 +76,7 @@ public class ListItem implements Parcelable {
     public static Comparator<ListItem> listItemComparatorAZ = new Comparator<ListItem>() {
         @Override
         public int compare(ListItem o1, ListItem o2) {
-            return o2.getPlateL().compareTo(o1.getPlateL());
+            return o1.getPlateL().compareTo(o2.getPlateL());
         }
     };
 

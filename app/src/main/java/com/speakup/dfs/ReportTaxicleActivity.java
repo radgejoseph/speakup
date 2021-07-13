@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ReportTaxicleActivity extends AppCompatActivity implements ListItemAdapterTaxicle.OnItemListener {
 
-    private static final String URL_TAXICLE_LIST = "http://192.168.1.137/speakup/list_taxicle.php";
+    private static final String URL_TAXICLE_LIST = "http://speakupadnu.000webhostapp.com/list_taxicle.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxicle listItemAdapter;

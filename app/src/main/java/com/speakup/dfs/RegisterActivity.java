@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
 //    private static String URL_REGIST = "http://speakup-app-apk.herokuapp.com/register.php";
-    private static String URL_REGIST = "http://192.168.1.137/speakup/register.php";
+    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/register.php";
     private Button reg_button;
 
     @Override

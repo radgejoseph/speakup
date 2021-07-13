@@ -55,8 +55,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-//    private static String URL_COMPLAINT = "http://192.168.1.137/speakup/complaint.php";
-    private static String URL_COMPLAINT = "http://192.168.1.137/speakup/complaint.php";
+//    private static String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/complaint.php";
+    private static String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -293,12 +293,12 @@ public class ComplaintFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("user_id", getId);
                 params.put("body_plate", textPlate);
-                params.put("vehicle", textVehicle);
-                params.put("narrative", narrative);
                 params.put("date", date);
                 params.put("time", time);
-                params.put("user_id", getId);
+                params.put("narrative", narrative);
+                params.put("vehicle", textVehicle);
                 params.put("file", encodeImageString);
                 return params;
             }

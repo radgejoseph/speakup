@@ -32,12 +32,12 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-//    private static String URL_READ = "http://192.168.1.137/speakup/read_detail.php";
-//    private static String URL_EDIT = "http://192.168.1.137/speakup/edit_detail.php";
-    private static String URL_READ = "http://192.168.1.137/speakup/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.137/speakup/edit_detail.php";
+//    private static String URL_READ = "http://speakupadnu.000webhostapp.com/read_detail.php";
+//    private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/edit_detail.php";
+    private static String URL_READ = "http://speakupadnu.000webhostapp.com/read_detail.php";
+    private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/edit_detail.php";
 
-    private TextView name, username, password, phone_number, email, address;
+    private TextView name, username, password, phone_number, email, address, status;
     private Menu action;
     String getId;
     SessionManager sessionManager;
@@ -57,6 +57,7 @@ public class ProfileFragment extends Fragment{
         phone_number = view.findViewById(R.id.phone_text);
         email = view.findViewById(R.id.email_text);
         address = view.findViewById(R.id.address_text);
+        status = view.findViewById(R.id.textVerified);
 
         name.setFocusableInTouchMode(false);
         username.setFocusableInTouchMode(false);
@@ -105,11 +106,13 @@ public class ProfileFragment extends Fragment{
                                     String strMobile = object.getString("phone_number").trim();
                                     String strEmail = object.getString("email").trim();
                                     String strAddress = object.getString("address").trim();
+                                    String strStatus = object.getString("status").trim();
                                     name.setText(strName);
                                     username.setText(strUsername);
                                     phone_number.setText(strMobile);
                                     email.setText(strEmail);
                                     address.setText(strAddress);
+                                    status.setText(strStatus);
 
                                 }
                             }

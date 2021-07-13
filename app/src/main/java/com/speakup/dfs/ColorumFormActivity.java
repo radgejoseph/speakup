@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-//    private static String URL_COLORUM = "http://192.168.1.137/speakup/colorum.php";
-    private static String URL_COLORUM = "http://192.168.1.137/speakup/colorum.php";
+//    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/colorum.php";
+    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;
@@ -165,7 +165,7 @@ public class ColorumFormActivity extends AppCompatActivity {
 
                             if (success.equals("1")) {
                                 progressDialog.dismiss();
-                                Toast.makeText(ColorumFormActivity.this,"Colorum Plate submitted successfully!"+"\n"+"You Can now Search the plate", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ColorumFormActivity.this,"New PUV record submitted succesfully!"+"\n"+"You Can now Search the plate", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(ColorumFormActivity.this, HomeActivity.class);
                                 startActivity(intent);
                             }

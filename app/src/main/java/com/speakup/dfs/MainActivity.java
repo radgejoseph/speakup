@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private Button l_button, tr_button;
     private ProgressBar progress;
 
-    private static String URL_LOGIN = "http://192.168.1.137/speakup/login.php";
-    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.137/speakup/list_jeepney.php";
+    private static String URL_LOGIN = "http://speakupadnu.000webhostapp.com/login.php";
+    private static final String URL_ALL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/vehicle_plate_list.php";
 
 
     RecyclerView recyclerView;
@@ -152,8 +152,6 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         loadList();
-
-
 
     }
 

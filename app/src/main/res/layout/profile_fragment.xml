@@ -42,6 +42,23 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:id="@+id/textVerified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:text="Verified"
+                android:background="@drawable/custom_button_blue"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_void"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
                 android:id="@+id/textname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +69,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/header_void"
+                app:layout_constraintTop_toBottomOf="@+id/textVerified"
                 tools:ignore="MissingConstraints" />
 
             <EditText
