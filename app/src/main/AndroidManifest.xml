@@ -18,25 +18,25 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ColorumFormActivity" />
-        <activity android:name=".RateMeActivity" />
-        <activity android:name=".ReportTaxiActivity" />
-        <activity android:name=".ReportTricycleActivity" />
-        <activity android:name=".ReportTaxicleActivity" />
-        <activity android:name=".ReportJeepActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".RegisterComplete" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".TabbedActivity" />
-        <activity android:name=".PlateRatingsActivity" />
-        <activity android:name=".PlateRatingsActivityView" />
+        <activity android:name=".ColorumFormActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RateMeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ReportTaxiActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ReportTricycleActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ReportTaxicleActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ReportJeepActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RegisterComplete" android:screenOrientation="portrait"/>
+        <activity android:name=".RegisterActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TabbedActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PlateRatingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PlateRatingsActivityView" android:screenOrientation="portrait"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
