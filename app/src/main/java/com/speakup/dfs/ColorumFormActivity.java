@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-//    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/colorum.php";
-    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/colorum.php";
+//    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/speakupmobile/colorum.php";
+    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/speakupmobile/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;
