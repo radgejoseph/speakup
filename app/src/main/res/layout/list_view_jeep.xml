@@ -89,14 +89,14 @@
 
         <ImageView
             android:id="@+id/jeep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-55dp"
+            android:layout_marginEnd="15dp"
             android:paddingVertical="5dp"
             android:layout_centerVertical="true"
             android:gravity="center"
-            app:srcCompat="@drawable/jeepney_ico"
+            app:srcCompat="@drawable/ic_jeepney_ico"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

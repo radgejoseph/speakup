@@ -89,13 +89,13 @@
 
         <ImageView
             android:id="@+id/tricycle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="-55dp"
+            android:layout_marginEnd="15dp"
             android:layout_centerVertical="true"
             android:gravity="center"
-            app:srcCompat="@drawable/tricycle_ico"
+            app:srcCompat="@drawable/ic_tricycle_ico"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
