@@ -29,8 +29,8 @@ import papaya.in.sendmail.SendMail;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
-//    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/speakupmobile/register.php";
-    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/speakupmobile/register.php";
+//    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
+    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
     private static String VERIFICATION = "https://bit.ly/3xBuSvk";
     private Button reg_button;
 
