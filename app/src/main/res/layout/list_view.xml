@@ -40,6 +40,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
+            android:id="@+id/relativelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:text="Avg.⭐"
+                android:text="⭐"
                 android:textColor="@color/buttonGreen"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -94,13 +95,13 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="240dp"
+            android:layout_marginStart="255dp"
             android:layout_marginEnd="15dp"
             android:fontFamily="@font/licenseplate"
             android:gravity="center"
             android:text="V-TYPE DGD"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
