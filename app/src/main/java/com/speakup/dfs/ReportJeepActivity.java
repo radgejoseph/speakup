@@ -8,6 +8,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
@@ -63,6 +65,9 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
             }
 
         });
+
+        editTextSearch.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+        editTextSearch.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

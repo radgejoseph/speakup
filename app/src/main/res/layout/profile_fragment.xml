@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:padding="5dp"
-                android:text="Verified"
+                android:text="NOT VERIFIED"
                 android:background="@drawable/custom_button_blue"
                 android:textAlignment="textStart"
                 android:textAllCaps="true"

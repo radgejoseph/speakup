@@ -6,8 +6,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -112,6 +114,9 @@ public class RateMeActivity extends AppCompatActivity {
         getId = user.get(sessionManager.ID);
 
         narrative = findViewById(R.id.review_box);
+
+        narrative.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        narrative.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         submit_button = findViewById(R.id.submit_button_review);
         submit_button.setOnClickListener(new View.OnClickListener() {

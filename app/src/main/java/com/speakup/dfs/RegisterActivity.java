@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
         address = findViewById(R.id.address_text);
         reg_button = findViewById(R.id.register_button);
 
+        address.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        address.setRawInputType(InputType.TYPE_CLASS_TEXT);
         
         android.widget.ImageView backBut = findViewById(R.id.imagebackButton);
         backBut.setOnClickListener(new View.OnClickListener() {

@@ -6,6 +6,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -60,15 +62,6 @@ public class ColorumFormActivity extends AppCompatActivity {
 
         textPlate = findViewById(R.id.plate_number);
 
-//        //Create Array Adapter
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, vehicles);
-//        //Find TextView control
-//        textVehicle = findViewById(R.id.vehicle_type_holder);
-//        //Set the number of characters the user must type before the drop down list is shown
-//        textVehicle.setThreshold(1);
-//        //Set the adapter
-//        textVehicle.setAdapter(adapter);
-
         sessionManager = new SessionManager(ColorumFormActivity.this);
         sessionManager.checkLogin();
 
@@ -85,7 +78,7 @@ public class ColorumFormActivity extends AppCompatActivity {
                     ColorumSubmit();
                 }
                 else {
-                    textPlate.setError("Plate nad type is Required");
+                    textPlate.setError("Plate and type is Required");
                     Toast.makeText(ColorumFormActivity.this,"Plate nad type is Required", Toast.LENGTH_LONG).show();
                 }
             }
@@ -118,6 +111,34 @@ public class ColorumFormActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedItemText = (String) parent.getItemAtPosition(position);
+                if (selectedItemText.equals("tricycle"))
+                {
+                    textPlate.setEnabled(true);
+                    textPlate.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});
+                    textPlate.setInputType(InputType.TYPE_CLASS_NUMBER);
+                }
+                if (selectedItemText.equals("jeep"))
+                {
+                    textPlate.setEnabled(true);
+                    textPlate.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+                    textPlate.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                if (selectedItemText.equals("taxicle"))
+                {
+                    textPlate.setEnabled(true);
+                    textPlate.setFilters(new InputFilter[]{new InputFilter.LengthFilter(7)});
+                    textPlate.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                if (selectedItemText.equals("taxi"))
+                {
+                    textPlate.setEnabled(true);
+                    textPlate.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+                    textPlate.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                }
+                if (selectedItemText.equals("select type"))
+                {
+                    textPlate.setEnabled(false);
+                }
 
                 // Notify the selected item text
                 Toast.makeText
@@ -132,20 +153,6 @@ public class ColorumFormActivity extends AppCompatActivity {
         });
     }
 
-//    // add items into spinner dynamically
-//    public void addItemsOnSpinner() {
-//
-//        textVehicle = (Spinner) findViewById(R.id.vehicle_type_holder);
-//        List<String> list = new ArrayList<String>();
-//        list.add("jeep");
-//        list.add("taxicle");
-//        list.add("tricycle");
-//        list.add("taxi");
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item, list);
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        textVehicle.setAdapter(dataAdapter);
-//    }
 
     private void ColorumSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(ColorumFormActivity.this);
@@ -189,7 +196,6 @@ public class ColorumFormActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("body_plate", textPlate);
-                //params.put("name", textOperator);
                 params.put("vehicle", textVehicle);
                 params.put("user_id", getId);
                 return params;

@@ -17,11 +17,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -141,6 +143,9 @@ public class CommendationFragment extends Fragment {
         askCameraPermission();
 
         narrative = view.findViewById(R.id.commendation_text);
+
+        narrative.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        narrative.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         submit_button = view.findViewById(R.id.submit_button_commend);
         submit_button.setOnClickListener(new View.OnClickListener() {

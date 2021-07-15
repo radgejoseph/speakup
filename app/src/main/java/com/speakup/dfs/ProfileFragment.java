@@ -3,12 +3,14 @@ package com.speakup.dfs;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +60,17 @@ public class ProfileFragment extends Fragment{
         email = view.findViewById(R.id.email_text);
         address = view.findViewById(R.id.address_text);
         status = view.findViewById(R.id.textVerified);
+
+        address.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        address.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        name.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        name.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        username.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        password.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        username.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        email.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        email.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        phone_number.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         name.setFocusableInTouchMode(false);
         username.setFocusableInTouchMode(false);
