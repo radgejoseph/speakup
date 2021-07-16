@@ -37,6 +37,7 @@ public class ListItemPlateReviewAdapter extends RecyclerView.Adapter<ListItemPla
         holder.narrative1.setText(listPlateReview.getNarrative());
         holder.ratings1.setText(String.valueOf(listPlateReview.getRatings()));
         holder.username1.setText(listPlateReview.getUsername());
+        holder.textdatecreated.setText(listPlateReview.getTimestampL());
 
     }
 
@@ -47,7 +48,7 @@ public class ListItemPlateReviewAdapter extends RecyclerView.Adapter<ListItemPla
 
     public class ListItemPlateViewHolder extends RecyclerView.ViewHolder {
 
-        TextView narrative1, ratings1, username1;
+        TextView narrative1, ratings1, username1, textdatecreated;
 
         public ListItemPlateViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,6 +56,7 @@ public class ListItemPlateReviewAdapter extends RecyclerView.Adapter<ListItemPla
             narrative1 = itemView.findViewById(R.id.review1);
             ratings1 = itemView.findViewById(R.id.ratecount1);
             username1 = itemView.findViewById(R.id.username_text1);
+            textdatecreated = itemView.findViewById(R.id.textdatecreated);
         }
 
     }

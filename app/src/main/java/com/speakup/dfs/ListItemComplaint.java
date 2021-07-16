@@ -1,6 +1,6 @@
 package com.speakup.dfs;
 
-public class ListItemCommendComplaint {
+public class ListItemComplaint {
 
     private String vehicle;
     private String body_plate;
@@ -8,15 +8,17 @@ public class ListItemCommendComplaint {
     private String date;
     private String time;
     private String image_name;
+    private String status;
 
 
-    public ListItemCommendComplaint(String vehicle, String body_plate, String narrative, String date, String time, String image_name) {
+    public ListItemComplaint(String vehicle, String body_plate, String narrative, String date, String time, String image_name, String status) {
         this.vehicle = vehicle;
         this.body_plate = body_plate;
         this.narrative = narrative;
         this.date = date;
         this.time = time;
         this.image_name = image_name;
+        this.status = status;
     }
 
     public String getVehicle() {
@@ -41,5 +43,8 @@ public class ListItemCommendComplaint {
 
     public String getImage_name() {
         return image_name;
+    }
+    public String getStatus() {
+        return status;
     }
 }

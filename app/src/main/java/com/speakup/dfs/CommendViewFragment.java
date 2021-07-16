@@ -32,11 +32,11 @@ import java.util.Map;
 
 public class CommendViewFragment extends Fragment {
 
-    //    private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_ratings.php";
-    private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_commendations.php";
+    //    private static final String URL_MY_LIST = "http://192.168.1.138/speakupmobile/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.138/speakupmobile/my_commendations.php";
 
     RecyclerView recyclerView;
-    List<ListItemCommendComplaint> itemListCommend;
+    List<ListItemCommend> itemListCommend;
 
     String getId;
     SessionManager sessionManager;
@@ -81,7 +81,7 @@ public class CommendViewFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                itemListCommend.add(new ListItemCommendComplaint(
+                                itemListCommend.add(new ListItemCommend(
                                         object.getString("vehicle"),
                                         object.getString("body_plate"),
                                         object.getString("narrative"),
@@ -91,8 +91,8 @@ public class CommendViewFragment extends Fragment {
                                 ));
                             }
 
-                            ListItemComndComptAdapter  listItemComndComptAdapter = new ListItemComndComptAdapter(getActivity(), itemListCommend);
-                            recyclerView.setAdapter(listItemComndComptAdapter);
+                            ListItemCommendAdapter listItemCommendAdapter = new ListItemCommendAdapter(getActivity(), itemListCommend);
+                            recyclerView.setAdapter(listItemCommendAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

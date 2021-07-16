@@ -39,6 +39,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <RelativeLayout
+            android:id="@+id/relativelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/review1"
@@ -74,16 +75,29 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/textdatecreated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/relativelayout"
+            android:background="@color/graytext"
+            android:gravity="center_horizontal"
+            android:hint="2021-07-13 02:15:43"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/review1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/username_text1"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:textColor="@color/black"
             android:gravity="center"
             android:hint="Mabuotun man na maray na driver ning si kuya na nasakayan ko, pero 4 star lang ta dai maayos si mga plastick na harang"
+            android:textColor="@color/black"
             android:textSize="15sp"
             tools:ignore="MissingConstraints" />
 

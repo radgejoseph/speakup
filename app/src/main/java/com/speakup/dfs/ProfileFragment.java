@@ -34,10 +34,10 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-//    private static String URL_READ = "http://speakupadnu.000webhostapp.com/speakupmobile/read_detail.php";
-//    private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/speakupmobile/edit_detail.php";
-    private static String URL_READ = "http://speakupadnu.000webhostapp.com/speakupmobile/read_detail.php";
-    private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/speakupmobile/edit_detail.php";
+//    private static String URL_READ = "http://192.168.1.138/speakupmobile/read_detail.php";
+//    private static String URL_EDIT = "http://192.168.1.138/speakupmobile/edit_detail.php";
+    private static String URL_READ = "http://192.168.1.138/speakupmobile/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.138/speakupmobile/edit_detail.php";
 
     private TextView name, username, password, phone_number, email, address, status;
     private Menu action;

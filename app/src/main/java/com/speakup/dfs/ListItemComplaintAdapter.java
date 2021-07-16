@@ -9,44 +9,45 @@ package com.speakup.dfs;
         import androidx.recyclerview.widget.RecyclerView;
         import java.util.List;
 
-public class ListItemComndComptAdapter extends RecyclerView.Adapter<ListItemComndComptAdapter.ListItemViewHolder> {
+public class ListItemComplaintAdapter extends RecyclerView.Adapter<ListItemComplaintAdapter.ListItemViewHolder> {
 
     private Context mCtx;
-    private List<ListItemCommendComplaint> listItemCommendComplaints;
+    private List<ListItemComplaint> listItemComplaints;
 
-    public ListItemComndComptAdapter(Context mCtx, List<ListItemCommendComplaint> listItemCommendComplaints) {
+    public ListItemComplaintAdapter(Context mCtx, List<ListItemComplaint> listItemComplaints) {
         this.mCtx = mCtx;
-        this.listItemCommendComplaints = listItemCommendComplaints;
+        this.listItemComplaints = listItemComplaints;
     }
 
     @NonNull
     @Override
     public ListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.list_view_commend_complaint, null);
+        View view = inflater.inflate(R.layout.list_view_complaint, null);
         return new ListItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
-        ListItemCommendComplaint listCommendComplaintItem = listItemCommendComplaints.get(position);
+        ListItemComplaint listComplaintItem = listItemComplaints.get(position);
 
-        holder.vehicle.setText(listCommendComplaintItem.getVehicle());
-        holder.narrative.setText(listCommendComplaintItem.getNarrative());
-        holder.body_plate.setText(listCommendComplaintItem.getBody_plate());
-        holder.date.setText(listCommendComplaintItem.getDate());
-        holder.time.setText(listCommendComplaintItem.getTime());
-        holder.image_name.setText(listCommendComplaintItem.getImage_name());
+        holder.vehicle.setText(listComplaintItem.getVehicle());
+        holder.narrative.setText(listComplaintItem.getNarrative());
+        holder.body_plate.setText(listComplaintItem.getBody_plate());
+        holder.date.setText(listComplaintItem.getDate());
+        holder.time.setText(listComplaintItem.getTime());
+        holder.image_name.setText(listComplaintItem.getImage_name());
+        holder.status.setText(listComplaintItem.getStatus());
     }
 
     @Override
     public int getItemCount() {
-        return listItemCommendComplaints.size();
+        return listItemComplaints.size();
     }
 
     class ListItemViewHolder extends RecyclerView.ViewHolder{
 
-        TextView vehicle, narrative, body_plate, date, time, image_name;
+        TextView vehicle, narrative, body_plate, date, time, image_name, status;
 
         public ListItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +58,7 @@ public class ListItemComndComptAdapter extends RecyclerView.Adapter<ListItemComn
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
             image_name = itemView.findViewById(R.id.image_name);
+            status = itemView.findViewById(R.id.statustext);
         }
     }
 }

@@ -27,21 +27,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PlateRatingsActivityView extends AppCompatActivity {
 
-    //    private static final String URL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/plate_reviews.php";
-    private static final String URL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/plate_reviews.php";
+    //    private static final String URL_PLATE_LIST = "http://192.168.1.138/speakupmobile/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "http://192.168.1.138/speakupmobile/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;
 
     private TextView textPlate;
     private TextView textVehicle;
-    private Button to_rateme_button;
     Toolbar toolbar;
 
     String body_plate;
@@ -65,21 +65,6 @@ public class PlateRatingsActivityView extends AppCompatActivity {
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
 
-        to_rateme_button = findViewById(R.id.to_rateme_button);
-
-        to_rateme_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String plate = textPlate.getText().toString();
-                String vehicle = textVehicle.getText().toString();
-                Intent intent = new Intent(PlateRatingsActivityView.this, RateMeActivity.class);
-                intent.putExtra("selected_plate", plate);
-                intent.putExtra("vehicle", vehicle);
-                startActivity(intent);
-
-            }
-        });
-
         if (getIntent().hasExtra("selected_plate")) {
             ListItem listItem = getIntent().getParcelableExtra("selected_plate");
             String plate = listItem.getPlateL();
@@ -92,6 +77,7 @@ public class PlateRatingsActivityView extends AppCompatActivity {
 
         }
         loadList();
+//        Collections.sort(itemListPlate, ListItemPlateReviews.listItemComparatorDT);
 
         body_plate = this.textPlate.getText().toString().trim();
     }
@@ -115,7 +101,8 @@ public class PlateRatingsActivityView extends AppCompatActivity {
                                 itemListPlate.add(new ListItemPlateReviews(
                                         object.getString("username"),
                                         object.getInt("ratings"),
-                                        object.getString("narrative")
+                                        object.getString("narrative"),
+                                        object.getString("created_at")
                                 ));
                             }
 

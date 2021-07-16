@@ -35,6 +35,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
         holder.narrative.setText(listReviewItem.getNarrative());
         holder.ratings.setText(String.valueOf(listReviewItem.getRatings()));
         holder.body_plate.setText(listReviewItem.getBody_plate());
+        holder.textdatecreated.setText(listReviewItem.getTimestampL());
     }
 
     @Override
@@ -44,7 +45,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
 
     class ListItemViewHolder extends RecyclerView.ViewHolder{
 
-        TextView vehicle, narrative, ratings, body_plate;
+        TextView vehicle, narrative, ratings, body_plate, textdatecreated;
 
         public ListItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,6 +54,7 @@ public class ListItemReviewAdapter extends RecyclerView.Adapter<ListItemReviewAd
             narrative = itemView.findViewById(R.id.review);
             ratings = itemView.findViewById(R.id.ratecount);
             body_plate = itemView.findViewById(R.id.body_plate);
+            textdatecreated = itemView.findViewById(R.id.textdatecreated);
         }
     }
 }

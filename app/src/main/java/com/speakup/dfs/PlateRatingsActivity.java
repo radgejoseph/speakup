@@ -33,14 +33,15 @@ import java.util.Map;
 
 public class PlateRatingsActivity extends AppCompatActivity {
 
-//    private static final String URL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/plate_reviews.php";
-    private static final String URL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/plate_reviews.php";
+//    private static final String URL_PLATE_LIST = "http://192.168.1.138/speakupmobile/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "http://192.168.1.138/speakupmobile/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;
 
     private TextView textPlate;
     private TextView textVehicle;
+    private TextView textCreated;
     private Button to_rateme_button;
     Toolbar toolbar;
 
@@ -115,7 +116,8 @@ public class PlateRatingsActivity extends AppCompatActivity {
                                 itemListPlate.add(new ListItemPlateReviews(
                                         object.getString("username"),
                                         object.getInt("ratings"),
-                                        object.getString("narrative")
+                                        object.getString("narrative"),
+                                        object.getString("created_at")
                                 ));
                             }
 

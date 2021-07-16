@@ -32,11 +32,11 @@ import java.util.Map;
 
 public class ComplaintViewFragment extends Fragment {
 
-    //    private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_ratings.php";
-    private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_complaints.php";
+    //    private static final String URL_MY_LIST = "http://192.168.1.138/speakupmobile/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.138/speakupmobile/my_complaints.php";
 
     RecyclerView recyclerView;
-    List<ListItemCommendComplaint> itemListComplaint;
+    List<ListItemComplaint> itemListComplaint;
 
     String getId;
     SessionManager sessionManager;
@@ -81,18 +81,19 @@ public class ComplaintViewFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
 
-                                itemListComplaint.add(new ListItemCommendComplaint(
+                                itemListComplaint.add(new ListItemComplaint(
                                         object.getString("vehicle"),
                                         object.getString("body_plate"),
                                         object.getString("narrative"),
                                         object.getString("date"),
                                         object.getString("time"),
-                                        object.getString("image_name")
+                                        object.getString("image_name"),
+                                        object.getString("status")
                                 ));
                             }
 
-                            ListItemComndComptAdapter  listItemComndComptAdapter = new ListItemComndComptAdapter(getActivity(), itemListComplaint);
-                            recyclerView.setAdapter(listItemComndComptAdapter);
+                            ListItemComplaintAdapter listItemComplaintAdapter = new ListItemComplaintAdapter(getActivity(), itemListComplaint);
+                            recyclerView.setAdapter(listItemComplaintAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
