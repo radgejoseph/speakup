@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:background="@color/dark_gray"
+            android:textAllCaps="true"
             android:layout_marginTop="5dp"
             android:paddingStart="50dp"
             android:hint="Tricycle"

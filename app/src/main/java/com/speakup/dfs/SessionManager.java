@@ -40,19 +40,32 @@ public class SessionManager {
 
     }
 
-    public void createSessionEdit(String name, String username, String password, String mobile, String email, String address, String id){
+//    public void createSessionEdit(String name, String username, String password, String mobile, String email, String address, String id){
+//
+//        editor.putBoolean(LOGIN, true);
+//        editor.putString(NAME, name);
+//        editor.putString(USERNAME, username);
+//        editor.putString(PASSWORD, password);
+//        editor.putString(MOBILE, mobile);
+//        editor.putString(EMAIL, email);
+//        editor.putString(ADDRESS, address);
+//        editor.putString(ID, id);
+//        editor.apply();
+//
+//    }
 
-        editor.putBoolean(LOGIN, true);
-        editor.putString(NAME, name);
-        editor.putString(USERNAME, username);
-        editor.putString(PASSWORD, password);
-        editor.putString(MOBILE, mobile);
-        editor.putString(EMAIL, email);
-        editor.putString(ADDRESS, address);
-        editor.putString(ID, id);
-        editor.apply();
+    public void createSessionEdit(String name, String username, String mobile, String email, String address, String id){
 
-    }
+    editor.putBoolean(LOGIN, true);
+    editor.putString(NAME, name);
+    editor.putString(USERNAME, username);
+    editor.putString(MOBILE, mobile);
+    editor.putString(EMAIL, email);
+    editor.putString(ADDRESS, address);
+    editor.putString(ID, id);
+    editor.apply();
+
+}
 
     public boolean isLoggin(){
         return sharedPreferences.getBoolean(LOGIN, false);

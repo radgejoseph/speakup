@@ -89,13 +89,13 @@ public class ColorumFormActivity extends AppCompatActivity {
         final Spinner textVehicle = (Spinner) findViewById(R.id.vehicle_type_holder);
 
         // Initializing a String Array
-        String[] plants = new String[]{ "select type","jeep","taxicle","tricycle","taxi" };
+        String[] choice = new String[]{ "select type","jeep","taxicle","tricycle","taxi" };
 
-        final List<String> plantsList = new ArrayList<>(Arrays.asList(plants));
+        final List<String> choiceList = new ArrayList<>(Arrays.asList(choice));
 
         // Initializing an ArrayAdapter
         final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                this,R.layout.spinner_item,plantsList){
+                this,R.layout.spinner_item,choiceList){
             @Override
             public View getDropDownView(int position, View convertView,
                                         ViewGroup parent) {

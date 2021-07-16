@@ -73,7 +73,7 @@
             app:layout_constraintBottom_toTopOf="@+id/nestedScrollView2"
             app:layout_constraintStart_toEndOf="@+id/search_bar"
             app:layout_constraintTop_toBottomOf="@+id/view_subheader"
-            app:srcCompat="@drawable/ic_baseline_import_export_24"
+            app:srcCompat="@drawable/ic_baseline_sort_by_alpha_24"
             tools:ignore="MissingConstraints" />
 
         <ImageView
