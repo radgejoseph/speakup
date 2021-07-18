@@ -1,9 +1,12 @@
 package com.speakup.dfs;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -12,6 +15,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -27,7 +32,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -49,6 +53,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
@@ -59,13 +64,15 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-//    private static String URL_COMPLAINT = "http://192.168.1.133/speakupmobile/complaint.php";
-    private static String URL_COMPLAINT = "http://192.168.1.133/speakupmobile/complaint.php";
+//    private static String URL_COMPLAINT = "http://192.168.1.136/speakupmobile/complaint.php";
+    private static String URL_COMPLAINT = "http://192.168.1.136/speakupmobile/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
+    String complaint_selection = "";
     TextView date_picker;
     TextView time_picker;
+    TextView checked_items;
     DatePickerDialog.OnDateSetListener setListenerD;
     TimePickerDialog.OnTimeSetListener setListenerT;
     private TextView textPlate;
@@ -77,6 +84,8 @@ public class ComplaintFragment extends Fragment {
     Bitmap bitmap;
     String encodeImageString;
     SessionManager sessionManager;
+
+    private List<String> mSelectedItems;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -135,6 +144,8 @@ public class ComplaintFragment extends Fragment {
         textVehicle = view.findViewById(R.id.vehicle_type_holder);
         textVehicle.setText(getVehicle);
 
+        checked_items = view.findViewById(R.id.checked_items);
+
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
 
@@ -148,28 +159,45 @@ public class ComplaintFragment extends Fragment {
         narrative.setImeOptions(EditorInfo.IME_ACTION_DONE);
         narrative.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
+        Button buttonComplaintType = view.findViewById(R.id.buttonComplaintType);
+        buttonComplaintType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                complaint_selection = "";
+                onCreateDialog().show();
+            }
+        });
+
         submit_button = view.findViewById(R.id.submit_button_complaint);
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String narrative_r = narrative.getText().toString().trim();
+                String checked_items_r = checked_items.getText().toString().trim();
 
-                if (upload_image_view_gallery.getDrawable() != null){
+                if (upload_image_view_gallery.getDrawable() != null && !checked_items_r.equals("")){
                     ComplaintSubmit();
                 }
                 else {
-                    Toast.makeText(getActivity(),"Image is Required!", Toast.LENGTH_LONG).show();
+                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(getActivity());
+                    builder1.setMessage("Image and Complaint are Required!");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+
+                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                    alert11.show();
+//                    Toast.makeText(getActivity(),"Image and Complaint is Required!", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
-
-//        final String[] select_qualification = {
-//                "Select Complaints", "Contracting Passenger", "Overcharging Of Fare/Undercharging", "Arrogant/Discourteous Driver",
-//                "Refusal To Convey Passenger", "Fast Meter", "No Flag Down Meter", "Hit And Run", "Threatening Passenger",
-//                "Reckless Driving", "Discriminating Againts Passenger", "Refusal To Grant Senior/Student/PWD Discount", "Other (Please Specify)"};
-//
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);
@@ -270,9 +298,11 @@ public class ComplaintFragment extends Fragment {
 
         final String textPlate = this.textPlate.getText().toString().trim();
         final String textVehicle = this.textVehicle.getText().toString().trim();
-        final String narrative = this.narrative.getText().toString().trim();
+        final String other_narrative = this.narrative.getText().toString().trim();
         final String date = this.date_picker.getText().toString().trim();
         final String time = this.time_picker.getText().toString().trim();
+        final String complaint_selection = this.complaint_selection.trim();
+        final String narrative = complaint_selection + other_narrative;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_COMPLAINT,
                 new Response.Listener<String>() {
@@ -354,5 +384,46 @@ public class ComplaintFragment extends Fragment {
             }
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @NonNull
+    public Dialog onCreateDialog() {
+        mSelectedItems = new ArrayList<>();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Select Complaints");
+
+        builder.setMultiChoiceItems(R.array.complaints, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                String[] items = getActivity().getResources().getStringArray(R.array.complaints);
+                if (isChecked)
+                {
+                    mSelectedItems.add(items[which]);
+                }
+                else if(mSelectedItems.contains(items[which]))
+                {
+                    mSelectedItems.remove(items[which]);
+                }
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                for (String Item : mSelectedItems)
+                {
+                    complaint_selection = complaint_selection+Item+", ";
+                }
+//                Toast.makeText(getActivity(),"Selected: "+complaint_selection,Toast.LENGTH_LONG).show();
+                checked_items.setText(complaint_selection);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        return builder.create();
     }
 }

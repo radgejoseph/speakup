@@ -32,7 +32,7 @@ import java.util.List;
 
 public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
 
-    private static final String URL_TAXI_LIST = "http://192.168.1.133/speakupmobile/list_taxi.php";
+    private static final String URL_TAXI_LIST = "http://192.168.1.136/speakupmobile/list_taxi.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;

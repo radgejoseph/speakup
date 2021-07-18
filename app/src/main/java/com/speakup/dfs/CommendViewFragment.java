@@ -32,8 +32,8 @@ import java.util.Map;
 
 public class CommendViewFragment extends Fragment {
 
-    //    private static final String URL_MY_LIST = "http://192.168.1.133/speakupmobile/my_ratings.php";
-    private static final String URL_MY_LIST = "http://192.168.1.133/speakupmobile/my_commendations.php";
+    //    private static final String URL_MY_LIST = "http://192.168.1.136/speakupmobile/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.136/speakupmobile/my_commendations.php";
 
     RecyclerView recyclerView;
     List<ListItemCommend> itemListCommend;

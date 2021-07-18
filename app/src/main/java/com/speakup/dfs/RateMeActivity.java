@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -32,8 +33,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-//    private static String URL_REVIEW = "http://192.168.1.133/speakupmobile/review.php";
-    private static String URL_REVIEW = "http://192.168.1.133/speakupmobile/review.php";
+//    private static String URL_REVIEW = "http://192.168.1.136/speakupmobile/review.php";
+    private static String URL_REVIEW = "http://192.168.1.136/speakupmobile/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
@@ -125,11 +126,26 @@ public class RateMeActivity extends AppCompatActivity {
 
                 String narrative_r = narrative.getText().toString().trim();
 
-                if (!narrative_r.isEmpty()/* && ratingBar.isPressed()*/){
+                if (!narrative_r.isEmpty() && ratingBar.getRating() != 0.0){
                     ReviewSubmit();
                 }
                 else {
-                    narrative.setError("Your Review is Required");
+                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(RateMeActivity.this);
+                    builder1.setMessage("Both Review and Rating is Required");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+
+                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    //narrative.setError("Your Review and Rating is Required");
                 }
             }
         });

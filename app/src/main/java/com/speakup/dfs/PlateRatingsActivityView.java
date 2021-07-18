@@ -34,8 +34,8 @@ import java.util.Map;
 
 public class PlateRatingsActivityView extends AppCompatActivity {
 
-    //    private static final String URL_PLATE_LIST = "http://192.168.1.133/speakupmobile/plate_reviews.php";
-    private static final String URL_PLATE_LIST = "http://192.168.1.133/speakupmobile/plate_reviews.php";
+    //    private static final String URL_PLATE_LIST = "http://192.168.1.136/speakupmobile/plate_reviews.php";
+    private static final String URL_PLATE_LIST = "http://192.168.1.136/speakupmobile/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;

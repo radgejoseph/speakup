@@ -1,8 +1,10 @@
 package com.speakup.dfs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -31,8 +33,8 @@ import papaya.in.sendmail.SendMail;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
-//    private static String URL_REGIST = "http://192.168.1.133/speakupmobile/register.php";
-    private static String URL_REGIST = "http://192.168.1.133/speakupmobile/register.php";
+//    private static String URL_REGIST = "http://192.168.1.136/speakupmobile/register.php";
+    private static String URL_REGIST = "http://192.168.1.136/speakupmobile/register.php";
     private static String VERIFICATION = "https://bit.ly/3xBuSvk";
     private Button reg_button;
 
@@ -78,11 +80,20 @@ public class RegisterActivity extends AppCompatActivity {
                     Regist();
                 }
                 else {
-                    name.setError("Full Name is Required");
-                    username.setError("Username is Required");
-                    password.setError("Password is Required");
-                    phone_number.setError("Mobile Number is Required");
-                    email.setError("Email Address is Required");
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
+                    builder1.setMessage("Please make sure all fields are filled.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             }
         });
@@ -122,7 +133,22 @@ public class RegisterActivity extends AppCompatActivity {
                             e.printStackTrace();
                             progressDialog.dismiss();
                             reg_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
+                            builder1.setMessage("Register Error! " + response);
+                            builder1.setCancelable(true);
+
+                            builder1.setPositiveButton(
+                                    "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+
+                            AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                            //Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

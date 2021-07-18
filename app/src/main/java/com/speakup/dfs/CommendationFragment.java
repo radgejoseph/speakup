@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -58,8 +59,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class CommendationFragment extends Fragment {
-//    private static String URL_COMMEND = "http://192.168.1.133/speakupmobile/commendation.php";
-    private static String URL_COMMEND = "http://192.168.1.133/speakupmobile/commendation.php";
+//    private static String URL_COMMEND = "http://192.168.1.136/speakupmobile/commendation.php";
+    private static String URL_COMMEND = "http://192.168.1.136/speakupmobile/commendation.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -155,11 +156,24 @@ public class CommendationFragment extends Fragment {
                 String narrative_r = narrative.getText().toString().trim();
 
 //                if (!narrative_r.isEmpty() && upload_image_view_gallery.getDrawable() == null){
-                if (upload_image_view_gallery.getDrawable() != null){
+                if (upload_image_view_gallery.getDrawable() != null && !narrative_r.equals("")){
                     CommendationSubmit();
                 }
                 else {
-                    Toast.makeText(getActivity(),"Image is Required!", Toast.LENGTH_LONG).show();
+                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(getActivity());
+                    builder1.setMessage("Image and Commendation are Required!");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                    alert11.show();
+//                    Toast.makeText(getActivity(),"Image and Commendation is Required!", Toast.LENGTH_LONG).show();
                 }
             }
         });

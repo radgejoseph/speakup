@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -37,8 +38,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-//    private static String URL_COLORUM = "http://192.168.1.133/speakupmobile/colorum.php";
-    private static String URL_COLORUM = "http://192.168.1.133/speakupmobile/colorum.php";
+//    private static String URL_COLORUM = "http://192.168.1.136/speakupmobile/colorum.php";
+    private static String URL_COLORUM = "http://192.168.1.136/speakupmobile/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;
@@ -78,8 +79,21 @@ public class ColorumFormActivity extends AppCompatActivity {
                     ColorumSubmit();
                 }
                 else {
-                    textPlate.setError("Plate and type is Required");
-                    Toast.makeText(ColorumFormActivity.this,"Plate nad type is Required", Toast.LENGTH_LONG).show();
+                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ColorumFormActivity.this);
+                    builder1.setMessage("Plate and Type is Required!");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                    alert11.show();
+//                    textPlate.setError("Plate and type is Required");
+//                    Toast.makeText(ColorumFormActivity.this,"Plate nad type is Required", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -180,7 +194,20 @@ public class ColorumFormActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(ColorumFormActivity.this,"Submit Error! Plate already exist", Toast.LENGTH_SHORT).show();
+                            androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ColorumFormActivity.this);
+                            builder1.setMessage("Submit Error! Plate already exist!");
+                            builder1.setCancelable(true);
+
+                            builder1.setPositiveButton(
+                                    "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                            androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                            alert11.show();
+//                            Toast.makeText(ColorumFormActivity.this,"Submit Error! Plate already exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

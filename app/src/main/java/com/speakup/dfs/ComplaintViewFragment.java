@@ -32,8 +32,8 @@ import java.util.Map;
 
 public class ComplaintViewFragment extends Fragment {
 
-    //    private static final String URL_MY_LIST = "http://192.168.1.133/speakupmobile/my_ratings.php";
-    private static final String URL_MY_LIST = "http://192.168.1.133/speakupmobile/my_complaints.php";
+    //    private static final String URL_MY_LIST = "http://192.168.1.136/speakupmobile/my_ratings.php";
+    private static final String URL_MY_LIST = "http://192.168.1.136/speakupmobile/my_complaints.php";
 
     RecyclerView recyclerView;
     List<ListItemComplaint> itemListComplaint;

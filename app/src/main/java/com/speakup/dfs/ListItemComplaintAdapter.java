@@ -34,8 +34,7 @@ public class ListItemComplaintAdapter extends RecyclerView.Adapter<ListItemCompl
         holder.vehicle.setText(listComplaintItem.getVehicle());
         holder.narrative.setText(listComplaintItem.getNarrative());
         holder.body_plate.setText(listComplaintItem.getBody_plate());
-        holder.date.setText(listComplaintItem.getDate());
-        holder.time.setText(listComplaintItem.getTime());
+        holder.date_time.setText(listComplaintItem.getDate() +"  |  "+ listComplaintItem.getTime());
         holder.image_name.setText(listComplaintItem.getImage_name());
         holder.status.setText(listComplaintItem.getStatus());
     }
@@ -47,7 +46,7 @@ public class ListItemComplaintAdapter extends RecyclerView.Adapter<ListItemCompl
 
     class ListItemViewHolder extends RecyclerView.ViewHolder{
 
-        TextView vehicle, narrative, body_plate, date, time, image_name, status;
+        TextView vehicle, narrative, body_plate, date_time, image_name, status;
 
         public ListItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,8 +54,7 @@ public class ListItemComplaintAdapter extends RecyclerView.Adapter<ListItemCompl
             vehicle = itemView.findViewById(R.id.vehicle_type);
             narrative = itemView.findViewById(R.id.review);
             body_plate = itemView.findViewById(R.id.body_plate);
-            date = itemView.findViewById(R.id.date);
-            time = itemView.findViewById(R.id.time);
+            date_time = itemView.findViewById(R.id.date_time);
             image_name = itemView.findViewById(R.id.image_name);
             status = itemView.findViewById(R.id.statustext);
         }

@@ -40,4 +40,20 @@
     <string name="rate_me">RATE ME</string>
     <string name="your_review">Your Review</string>
     <string name="mobile">Mobile</string>
+    
+    <string-array name="complaints">
+        <item>Others: </item>
+        <item>Contracting Passenger</item>
+        <item>Overcharging of Fare / Undercharging</item>
+        <item>Arrogant / Discouteous Driver</item>
+        <item>Refusal to Convey Passenger</item>
+        <item>Fast Meter</item>
+        <item>No Flag Down Meter</item>
+        <item>Hit and Run</item>
+        <item>Threatening Passenger</item>
+        <item>Reckless Driving</item>
+        <item>Discriminating Againts Passenger</item>
+        <item>Refusal to grant Senior / Student / PWD Discount</item>
+    </string-array>
+
 </resources>

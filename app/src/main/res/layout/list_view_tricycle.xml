@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:text="Avg.⭐"
+                android:text="⭐"
                 android:textColor="@color/buttonGreen"
                 android:textSize="20sp"
                 android:textStyle="bold"

@@ -34,8 +34,7 @@ public class ListItemCommendAdapter extends RecyclerView.Adapter<ListItemCommend
         holder.vehicle.setText(listCommendItem.getVehicle());
         holder.narrative.setText(listCommendItem.getNarrative());
         holder.body_plate.setText(listCommendItem.getBody_plate());
-        holder.date.setText(listCommendItem.getDate());
-        holder.time.setText(listCommendItem.getTime());
+        holder.date_time.setText(listCommendItem.getDate() +"  |  "+ listCommendItem.getTime());
         holder.image_name.setText(listCommendItem.getImage_name());
     }
 
@@ -46,7 +45,7 @@ public class ListItemCommendAdapter extends RecyclerView.Adapter<ListItemCommend
 
     class ListItemViewHolder extends RecyclerView.ViewHolder{
 
-        TextView vehicle, narrative, body_plate, date, time, image_name;
+        TextView vehicle, narrative, body_plate, date_time, image_name;
 
         public ListItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,8 +53,7 @@ public class ListItemCommendAdapter extends RecyclerView.Adapter<ListItemCommend
             vehicle = itemView.findViewById(R.id.vehicle_type);
             narrative = itemView.findViewById(R.id.review);
             body_plate = itemView.findViewById(R.id.body_plate);
-            date = itemView.findViewById(R.id.date);
-            time = itemView.findViewById(R.id.time);
+            date_time = itemView.findViewById(R.id.date_time);
             image_name = itemView.findViewById(R.id.image_name);
         }
     }

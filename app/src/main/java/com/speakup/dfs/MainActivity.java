@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private Button l_button, tr_button;
     private ProgressBar progress;
 
-    private static String URL_LOGIN = "http://192.168.1.133/speakupmobile/login.php";
-    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.133/speakupmobile/vehicle_plate_list.php";
+    private static String URL_LOGIN = "http://192.168.1.136/speakupmobile/login.php";
+    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.136/speakupmobile/vehicle_plate_list.php";
 
 
     RecyclerView recyclerView;
@@ -181,17 +181,15 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     String name = object.getString("name").trim();
-                                    String email = object.getString("email").trim();
                                     String id = object.getString("id").trim();
-                                    sessionManager.createSession(name, email, id);
+                                    sessionManager.createSession(name, id);
 
                                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                     intent.putExtra("name", name);
-                                    intent.putExtra("email", email);
                                     startActivity(intent);
 
-                                    Toast.makeText(MainActivity.this, "Success Login! \nName : "
-                                            +name+"\nEmail : "+email, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(MainActivity.this, "WELCOME "
+                                            +name+"!", Toast.LENGTH_LONG).show();
 
                                     progress.setVisibility(View.GONE);
                                     openHomeActivity();

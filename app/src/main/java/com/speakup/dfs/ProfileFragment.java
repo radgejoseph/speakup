@@ -2,6 +2,7 @@ package com.speakup.dfs;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -34,10 +36,10 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-//    private static String URL_READ = "http://192.168.1.133/speakupmobile/read_detail.php";
-//    private static String URL_EDIT = "http://192.168.1.133/speakupmobile/edit_detail.php";
-    private static String URL_READ = "http://192.168.1.133/speakupmobile/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.133/speakupmobile/edit_detail.php";
+//    private static String URL_READ = "http://192.168.1.136/speakupmobile/read_detail.php";
+//    private static String URL_EDIT = "http://192.168.1.136/speakupmobile/edit_detail.php";
+    private static String URL_READ = "http://192.168.1.136/speakupmobile/read_detail.php";
+    private static String URL_EDIT = "http://192.168.1.136/speakupmobile/edit_detail.php";
 
 //    private TextView name, username, password, phone_number, email, address, status;
     private TextView name, username, phone_number, email, address, status;
@@ -231,12 +233,22 @@ public class ProfileFragment extends Fragment{
 
                         }
                         else {
-                            name.setError("Full Name is Required");
-                            username.setError("Username is Required");
-//                            password.setError("Password is Required");
-                            phone_number.setError("Mobile Number is Required");
-                            email.setError("Email Address is Required");
-                            address.setError("Address is Required");
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                            builder1.setMessage("Please make sure all fields are filled.");
+                            builder1.setCancelable(true);
+
+                            builder1.setPositiveButton(
+                                    "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+
+                            AlertDialog alert11 = builder1.create();
+                            alert11.show();
+
                         }
 
                 return true;
@@ -317,6 +329,8 @@ public class ProfileFragment extends Fragment{
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
     }
 
 }
