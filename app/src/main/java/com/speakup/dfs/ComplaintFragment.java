@@ -27,6 +27,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,8 +59,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-//    private static String URL_COMPLAINT = "http://192.168.1.138/speakupmobile/complaint.php";
-    private static String URL_COMPLAINT = "http://192.168.1.138/speakupmobile/complaint.php";
+//    private static String URL_COMPLAINT = "http://192.168.1.133/speakupmobile/complaint.php";
+    private static String URL_COMPLAINT = "http://192.168.1.133/speakupmobile/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -161,6 +163,13 @@ public class ComplaintFragment extends Fragment {
                 }
             }
         });
+
+
+//        final String[] select_qualification = {
+//                "Select Complaints", "Contracting Passenger", "Overcharging Of Fare/Undercharging", "Arrogant/Discourteous Driver",
+//                "Refusal To Convey Passenger", "Fast Meter", "No Flag Down Meter", "Hit And Run", "Threatening Passenger",
+//                "Reckless Driving", "Discriminating Againts Passenger", "Refusal To Grant Senior/Student/PWD Discount", "Other (Please Specify)"};
+//
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = view.findViewById(R.id.date_picker);

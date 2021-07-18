@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private Button l_button, tr_button;
     private ProgressBar progress;
 
-    private static String URL_LOGIN = "http://192.168.1.138/speakupmobile/login.php";
-    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.138/speakupmobile/vehicle_plate_list.php";
+    private static String URL_LOGIN = "http://192.168.1.133/speakupmobile/login.php";
+    private static final String URL_ALL_PLATE_LIST = "http://192.168.1.133/speakupmobile/vehicle_plate_list.php";
 
 
     RecyclerView recyclerView;
