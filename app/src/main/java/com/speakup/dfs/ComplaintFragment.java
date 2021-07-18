@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.text.format.DateFormat;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,8 +65,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComplaintFragment extends Fragment {
-//    private static String URL_COMPLAINT = "http://192.168.1.136/speakupmobile/complaint.php";
-    private static String URL_COMPLAINT = "http://192.168.1.136/speakupmobile/complaint.php";
+//    private static String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/speakupmobile/complaint.php";
+    private static String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/speakupmobile/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -239,7 +240,7 @@ public class ComplaintFragment extends Fragment {
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth
-                    ,setListenerT,hour,minutes,android.text.format.DateFormat.is24HourFormat(getActivity()));
+                    ,setListenerT,hour,minutes, DateFormat.is24HourFormat(getActivity()));
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 timePickerDialog.show();
             }
@@ -256,15 +257,14 @@ public class ComplaintFragment extends Fragment {
                 } else {
                     am_pm = "AM";
                 }
-                String time = hour+":"+minutes+" "+am_pm;
-                time_picker.setText(time);
+                time_picker.setText(String.format("%02d:%02d %s",hour, minutes, am_pm));
             }
         };
 /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
         upload_image_view_gallery = view.findViewById(R.id.upload_image_view_camera_gallery);
 
-        android.widget.ImageView add_image_video = view.findViewById(R.id.add_image_video);
+        ImageView add_image_video = view.findViewById(R.id.add_image_video);
         add_image_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -273,7 +273,7 @@ public class ComplaintFragment extends Fragment {
             }
         });
 
-        android.widget.ImageView basic_option = view.findViewById(R.id.basic_option);
+        ImageView basic_option = view.findViewById(R.id.basic_option);
         basic_option.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

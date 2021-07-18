@@ -33,8 +33,8 @@ import papaya.in.sendmail.SendMail;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
-//    private static String URL_REGIST = "http://192.168.1.136/speakupmobile/register.php";
-    private static String URL_REGIST = "http://192.168.1.136/speakupmobile/register.php";
+//    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
+    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
     private static String VERIFICATION = "https://bit.ly/3xBuSvk";
     private Button reg_button;
 
@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
-                    builder1.setMessage("Please make sure all fields are filled.");
+                    builder1.setMessage("Please make sure all fields are filled in correctly.");
                     builder1.setCancelable(true);
 
                     builder1.setPositiveButton(

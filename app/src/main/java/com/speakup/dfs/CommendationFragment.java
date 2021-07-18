@@ -59,8 +59,8 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class CommendationFragment extends Fragment {
-//    private static String URL_COMMEND = "http://192.168.1.136/speakupmobile/commendation.php";
-    private static String URL_COMMEND = "http://192.168.1.136/speakupmobile/commendation.php";
+//    private static String URL_COMMEND = "http://speakupadnu.000webhostapp.com/speakupmobile/commendation.php";
+    private static String URL_COMMEND = "http://speakupadnu.000webhostapp.com/speakupmobile/commendation.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -235,8 +235,7 @@ public class CommendationFragment extends Fragment {
                 } else {
                     am_pm = "AM";
                 }
-                String time = hour+":"+minutes+" "+am_pm;
-                time_picker.setText(time);
+                time_picker.setText(String.format("%02d:%02d %s",hour, minutes, am_pm));
             }
         };
         /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */

@@ -33,8 +33,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-//    private static String URL_REVIEW = "http://192.168.1.136/speakupmobile/review.php";
-    private static String URL_REVIEW = "http://192.168.1.136/speakupmobile/review.php";
+//    private static String URL_REVIEW = "http://speakupadnu.000webhostapp.com/speakupmobile/review.php";
+    private static String URL_REVIEW = "http://speakupadnu.000webhostapp.com/speakupmobile/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
