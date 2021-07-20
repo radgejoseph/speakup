@@ -1,10 +1,12 @@
 package com.speakup.dfs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -107,13 +109,24 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                     Login(username_l, password_l);
                 }
                 else {
-                    username.setError("Please insert your username");
-                    password.setError("Please insert your password");
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    builder1.setMessage("Please check your username and password.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             }
         });
-
-
 
 
         android.widget.ImageView high = findViewById(R.id.high);
@@ -230,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-        int MY_SOCKET_TIMEOUT_MS = 50000;
+        int MY_SOCKET_TIMEOUT_MS = 10000;
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
                 MY_SOCKET_TIMEOUT_MS,
@@ -258,8 +271,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         startActivity(a);
     }
 
-
-
+    
     private void loadList() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading list...");
