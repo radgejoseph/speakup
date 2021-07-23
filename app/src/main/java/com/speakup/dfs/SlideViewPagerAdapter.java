@@ -91,7 +91,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                 ind10.setImageResource(R.drawable.unselected);
 
                 title.setText("Welcome to SpeakUp");
-                description.setText("Swipe left or click the arrow at the right to see how the app works.");
+                description.setText("This walk-through guide will only appear once. Swipe left or click the arrow at the right to see how the app works.");
                 back.setVisibility(View.GONE);
                 next.setVisibility(View.VISIBLE);
                 break;
