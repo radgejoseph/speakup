@@ -220,7 +220,7 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Image is Required"
+                android:text="Image evidence is Required"
                 android:textSize="13sp"
                 android:textStyle="italic"
                 android:layout_marginTop="15dp"

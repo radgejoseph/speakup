@@ -118,11 +118,12 @@ public class ComplaintActivity extends AppCompatActivity {
 
         androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ComplaintActivity.this);
         builder1.setTitle("DISCLAIMER!");
-        builder1.setMessage("You are responsible to Blablabla Blablabla Blablabla Blablabla.");
+        builder1.setIcon(R.drawable.ic_baseline_notification_important_24);
+        builder1.setMessage("All complaint reports are recorded, scrutinized, and reviewed by the Public Safety Office (PSO). Thus, you are liable for every complaint report you will submit.");
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(
-                "OK, Got it!",
+                "Proceed!",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

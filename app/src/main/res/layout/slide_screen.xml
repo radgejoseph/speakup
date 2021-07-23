@@ -7,9 +7,8 @@
 
     <ImageView
         android:id="@+id/image_tutorial"
-        android:layout_width="269dp"
-        android:layout_height="429dp"
-
+        android:layout_width="300dp"
+        android:layout_height="425dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,13 +21,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
+        android:paddingHorizontal="15dp"
         android:text="After Login"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -101,10 +101,65 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/ind4"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ind6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ind4"
         app:layout_constraintTop_toTopOf="@+id/ind4"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/ind6"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ind5"
+        app:layout_constraintEnd_toStartOf="@+id/ind7"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ind5"
+        app:layout_constraintTop_toTopOf="@+id/ind5"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/ind7"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ind6"
+        app:layout_constraintEnd_toStartOf="@+id/ind8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ind6"
+        app:layout_constraintTop_toTopOf="@+id/ind6"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/ind8"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ind7"
+        app:layout_constraintEnd_toStartOf="@+id/ind9"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ind7"
+        app:layout_constraintTop_toTopOf="@+id/ind7"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/ind9"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ind8"
+        app:layout_constraintEnd_toStartOf="@+id/ind10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ind8"
+        app:layout_constraintTop_toTopOf="@+id/ind8"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/ind10"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ind9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ind9"
+        app:layout_constraintTop_toTopOf="@+id/ind9"
         app:srcCompat="@drawable/selected" />
 
     <ImageView
@@ -133,6 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:paddingHorizontal="15dp"
         android:textSize="15sp"
         android:text="Description of text"
         app:layout_constraintEnd_toEndOf="parent"

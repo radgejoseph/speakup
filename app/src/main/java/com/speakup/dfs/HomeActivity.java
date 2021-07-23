@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, new ProfileFragment());
             fragmentTransaction.commit();
-            setTitle("PROFILE");
+            setTitle("MY PROFILE");
         }
 //        if (item.getItemId() == R.id.notifications_menu) {
 //            fragmentManager = getSupportFragmentManager();
