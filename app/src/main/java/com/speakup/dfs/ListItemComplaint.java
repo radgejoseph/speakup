@@ -44,6 +44,7 @@ public class ListItemComplaint {
     public String getImage_name() {
         return image_name;
     }
+
     public String getStatus() {
         return status;
     }

@@ -178,8 +178,8 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private void Login(final String username, final String password) {
 
         progress.setVisibility(View.VISIBLE);
-        l_button.setVisibility(View.GONE);
-        tr_button.setVisibility(View.GONE);
+//        l_button.setVisibility(View.GONE);
+//        tr_button.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
@@ -204,11 +204,30 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                                     startActivity(intent);
 
                                     Toast.makeText(MainActivity.this, "WELCOME "
-                                            +name+"!", Toast.LENGTH_LONG).show();
+                                            + name + "!", Toast.LENGTH_LONG).show();
 
                                     progress.setVisibility(View.GONE);
                                     openHomeActivity();
                                 }
+                            }
+                            else if (success.equals("0"))
+                            {
+                                progress.setVisibility(View.GONE);
+                                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                                builder1.setMessage("Wrong Username or Password!");
+                                builder1.setCancelable(true);
+
+                                builder1.setPositiveButton(
+                                        "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+
+
+                                AlertDialog alert11 = builder1.create();
+                                alert11.show();
                             }
 
                         } catch (JSONException e) {
@@ -216,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                             progress.setVisibility(View.GONE);
                             l_button.setVisibility(View.VISIBLE);
                             tr_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(MainActivity.this, "Error! ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Error! 1", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -226,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                         progress.setVisibility(View.GONE);
                         l_button.setVisibility(View.VISIBLE);
                         tr_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(MainActivity.this, "Error! ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error! 2", Toast.LENGTH_SHORT).show();
 
                     }
                 })

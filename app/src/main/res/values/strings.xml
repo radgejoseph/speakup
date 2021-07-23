@@ -40,7 +40,7 @@
     <string name="rate_me">RATE ME</string>
     <string name="your_review">Your Review</string>
     <string name="mobile">Mobile</string>
-    
+
     <string-array name="complaints">
         <item>Others: </item>
         <item>Contracting Passenger</item>

@@ -44,6 +44,7 @@ public class ColorumFormActivity extends AppCompatActivity {
     Toolbar toolbar;
     private TextView textPlate;
     private String selectedItemText;
+    private TextView textVehicle;
 
     String getId;
     SessionManager sessionManager;
@@ -68,6 +69,10 @@ public class ColorumFormActivity extends AppCompatActivity {
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);
+
+        String vehicle = getIntent().getStringExtra("vehicle");
+        textVehicle = findViewById(R.id.vehicle_type_holder);
+        textVehicle.setText(vehicle);
 
         submit_button = findViewById(R.id.submit_colorum);
         submit_button.setOnClickListener(new View.OnClickListener() {
@@ -99,32 +104,30 @@ public class ColorumFormActivity extends AppCompatActivity {
         });
 
 
-        // Get reference of widgets from XML layout
-        final Spinner textVehicle = (Spinner) findViewById(R.id.vehicle_type_holder);
+//        // Get reference of widgets from XML layout
+//        final Spinner textVehicle = (Spinner) findViewById(R.id.vehicle_type_holder);
+//
+//        // Initializing a String Array
+//        String[] choice = new String[]{ "select type","jeep","taxicle","tricycle","taxi" };
+//
+//        final List<String> choiceList = new ArrayList<>(Arrays.asList(choice));
+//
+//        // Initializing an ArrayAdapter
+//        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+//                this,R.layout.spinner_item,choiceList){
+//            @Override
+//            public View getDropDownView(int position, View convertView,
+//                                        ViewGroup parent) {
+//                View view = super.getDropDownView(position, convertView, parent);
+//
+//                return view;
+//            }
+//        };
+//        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+//        textVehicle.setAdapter(spinnerArrayAdapter);
+//
 
-        // Initializing a String Array
-        String[] choice = new String[]{ "select type","jeep","taxicle","tricycle","taxi" };
-
-        final List<String> choiceList = new ArrayList<>(Arrays.asList(choice));
-
-        // Initializing an ArrayAdapter
-        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-                this,R.layout.spinner_item,choiceList){
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-
-                return view;
-            }
-        };
-        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
-        textVehicle.setAdapter(spinnerArrayAdapter);
-
-        textVehicle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedItemText = (String) parent.getItemAtPosition(position);
+                selectedItemText = textVehicle.getText().toString().trim();
                 if (selectedItemText.equals("tricycle"))
                 {
                     textPlate.setEnabled(true);
@@ -149,22 +152,7 @@ public class ColorumFormActivity extends AppCompatActivity {
                     textPlate.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
                     textPlate.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                 }
-                if (selectedItemText.equals("select type"))
-                {
-                    textPlate.setEnabled(false);
-                }
 
-                // Notify the selected item text
-                Toast.makeText
-                        (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                        .show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
 

@@ -30,6 +30,7 @@
             android:layout_alignParentTop="true"
             android:background="@color/dark_gray"
             android:layout_marginTop="5dp"
+            android:textAllCaps="true"
             android:paddingStart="50dp"
             android:hint="Tricycle"
             android:textSize="25sp"

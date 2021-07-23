@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -76,11 +77,14 @@ public class ReportJeepActivity extends AppCompatActivity implements ListItemAda
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
         button_colorum = findViewById(R.id.button_colorum);
         button_colorum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String vehicle = "jeep";
                 Intent intent = new Intent(ReportJeepActivity.this, ColorumFormActivity.class);
+                intent.putExtra("vehicle", vehicle);
                 startActivity(intent);
             }
         });

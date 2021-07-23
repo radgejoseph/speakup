@@ -84,13 +84,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             setTitle("MY RATINGS");
         }
 
-        if (item.getItemId() == R.id.commendation_menu) {
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment, new CommendViewFragment());
-            fragmentTransaction.commit();
-            setTitle("MY COMMENDATIONS");
-        }
+//        if (item.getItemId() == R.id.commendation_menu) {
+//            fragmentManager = getSupportFragmentManager();
+//            fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.container_fragment, new CommendViewFragment());
+//            fragmentTransaction.commit();
+//            setTitle("MY COMMENDATIONS");
+//        }
 
         if (item.getItemId() == R.id.complaint_menu) {
             fragmentManager = getSupportFragmentManager();

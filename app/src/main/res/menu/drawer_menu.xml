@@ -19,16 +19,20 @@
                 android:id="@+id/ratings_menu"
                 android:icon="@drawable/ic_ratings"
                 android:title="@string/ratings" />
-            <item
-                android:id="@+id/commendation_menu"
-                android:icon="@drawable/ic_baseline_mood_24"
-                android:iconTint="@color/white"
-                android:title="@string/commendation" />
+<!--            <item-->
+<!--                android:id="@+id/commendation_menu"-->
+<!--                android:icon="@drawable/ic_baseline_mood_24"-->
+<!--                android:iconTint="@color/white"-->
+<!--                android:title="@string/commendation" />-->
             <item
                 android:id="@+id/complaint_menu"
                 android:icon="@drawable/ic_baseline_mood_bad_24"
                 android:iconTint="@color/white"
-                android:title="@string/complaint" />
+                android:title="COMPLAINTS" />
+            <item
+                android:icon="@drawable/ic_baseline_minimize_24"
+                android:title="@string/blank_space"
+                android:enabled="false"/>
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
                 android:title="@string/blank_space"

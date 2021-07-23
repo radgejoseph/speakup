@@ -57,7 +57,7 @@ public class RateMeActivity extends AppCompatActivity {
         backBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openTabbedActivity();
+                openComplaintActivity();
             }
         });
 
@@ -216,10 +216,19 @@ public class RateMeActivity extends AppCompatActivity {
     }
 
 
-    public void openTabbedActivity() {
+//    public void openTabbedActivity() {
+//        String plate = textPlate.getText().toString();
+//        String vehicle = textVehicle.getText().toString();
+//        Intent intent = new Intent(RateMeActivity.this, TabbedActivity.class);
+//        intent.putExtra("selected_plate", plate);
+//        intent.putExtra("vehicle", vehicle);
+//        startActivity(intent);
+//    }
+
+    public void openComplaintActivity() {
         String plate = textPlate.getText().toString();
         String vehicle = textVehicle.getText().toString();
-        Intent intent = new Intent(RateMeActivity.this, TabbedActivity.class);
+        Intent intent = new Intent(RateMeActivity.this, ComplaintActivity.class);
         intent.putExtra("selected_plate", plate);
         intent.putExtra("vehicle", vehicle);
         startActivity(intent);

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -38,6 +39,7 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     ListItemAdapterTricycle listItemAdapter;
     Toolbar toolbar;
     Button button_colorum;
+    private TextView textVehicle;
 
     List<ListItem> itemList;
 
@@ -79,7 +81,9 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         button_colorum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String vehicle = "tricycle";
                 Intent intent = new Intent(ReportTricycleActivity.this, ColorumFormActivity.class);
+                intent.putExtra("vehicle", vehicle);
                 startActivity(intent);
             }
         });

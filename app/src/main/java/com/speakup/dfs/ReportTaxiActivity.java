@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -79,7 +80,9 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         button_colorum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String vehicle = "taxi";
                 Intent intent = new Intent(ReportTaxiActivity.this, ColorumFormActivity.class);
+                intent.putExtra("vehicle", vehicle);
                 startActivity(intent);
             }
         });
