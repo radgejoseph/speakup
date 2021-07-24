@@ -80,6 +80,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                 description.setText("This walk-through guide will only appear once. Swipe left or click the arrow at the right to see how the app works.");
                 back.setVisibility(View.GONE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 1:
                 image_tutorial.setImageResource(R.drawable.screenshot_2);
@@ -99,6 +100,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                         "You can search and sort them alphabetically or by their average ratings. You can also Login or register through the button.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 2:
                 image_tutorial.setImageResource(R.drawable.screenshot_3);
@@ -118,6 +120,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                         "You can also access here the navigation menu by swiping right or by clicking the menu button (3 line) at the upper-left corner of the screen.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 3:
                 image_tutorial.setImageResource(R.drawable.screenshot_4);
@@ -136,6 +139,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                 description.setText("By swiping right or by clicking the menu button (3 line) at the upper-left corner of the screen you will be presented with this menu.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 4:
                 image_tutorial.setImageResource(R.drawable.screenshot_5);
@@ -155,6 +159,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                         "You can also edit your profile by clicking the pen button at the upper-right of the screen and once your done you can click again the save icon.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 5:
                 image_tutorial.setImageResource(R.drawable.screenshot_6);
@@ -173,6 +178,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                 description.setText("In this page you will be presented with all the ratings you submitted and also your complaints and it's status.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 6:
                 image_tutorial.setImageResource(R.drawable.screenshot_7);
@@ -192,6 +198,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                         "You can search and sort them alphabetically or by their average ratings.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 7:
                 image_tutorial.setImageResource(R.drawable.screenshot_8);
@@ -212,6 +219,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                         "You can rate your selected plate by clicking the PROCEED button");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 8:
                 image_tutorial.setImageResource(R.drawable.screenshot_9);
@@ -230,6 +238,7 @@ public class SlideViewPagerAdapter extends PagerAdapter {
                 description.setText("You can rate and send your ratings here. You can click the Complaint button if you have Complaint to the selected PUV plate.");
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
+                get_started_button.setVisibility(View.GONE);
                 break;
             case 9:
                 image_tutorial.setImageResource(R.drawable.screenshot_10);
