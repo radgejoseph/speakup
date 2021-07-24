@@ -10,7 +10,6 @@ public class ListItemComplaint {
     private String image_name;
     private String status;
 
-
     public ListItemComplaint(String vehicle, String body_plate, String narrative, String date, String time, String image_name, String status) {
         this.vehicle = vehicle;
         this.body_plate = body_plate;

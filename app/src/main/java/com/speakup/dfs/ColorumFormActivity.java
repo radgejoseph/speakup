@@ -61,29 +61,22 @@ public class ColorumFormActivity extends AppCompatActivity {
         textVehicle.setText(vehicle);
 
         submit_button = findViewById(R.id.submit_colorum);
-        submit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        submit_button.setOnClickListener(v -> {
 
-                String textPlate_r = textPlate.getText().toString().trim();
-                if (!textPlate_r.isEmpty()){
-                    ColorumSubmit();
-                }
-                else {
-                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ColorumFormActivity.this);
-                    builder1.setMessage("Plate and Type is Required!");
-                    builder1.setCancelable(true);
+            String textPlate_r = textPlate.getText().toString().trim();
+            if (!textPlate_r.isEmpty()){
+                ColorumSubmit();
+            }
+            else {
+                androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ColorumFormActivity.this);
+                builder1.setMessage("Plate and Type is Required!");
+                builder1.setCancelable(true);
 
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
+                builder1.setPositiveButton(
+                        "OK",
+                        (dialog, id) -> dialog.cancel());
+                androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
 
@@ -123,45 +116,35 @@ public class ColorumFormActivity extends AppCompatActivity {
         final String textVehicle = this.selectedItemText.trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_COLORUM,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
 
-                            if (success.equals("1")) {
-                                progressDialog.dismiss();
-                                Toast.makeText(ColorumFormActivity.this,"New PUV record submitted succesfully!"+"\n"+"You Can now Search the plate", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(ColorumFormActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (success.equals("1")) {
                             progressDialog.dismiss();
-                            androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ColorumFormActivity.this);
-                            builder1.setMessage("Submit Error! Plate already exist!");
-                            builder1.setCancelable(true);
-
-                            builder1.setPositiveButton(
-                                    "OK",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            dialog.cancel();
-                                        }
-                                    });
-                            androidx.appcompat.app.AlertDialog alert11 = builder1.create();
-                            alert11.show();
+                            Toast.makeText(ColorumFormActivity.this,"New PUV record submitted succesfully!"+"\n"+"You Can now Search the plate", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(ColorumFormActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                        androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ColorumFormActivity.this);
+                        builder1.setMessage("Submit Error! Plate already exist!");
+                        builder1.setCancelable(true);
+
+                        builder1.setPositiveButton(
+                                "OK",
+                                (dialog, id) -> dialog.cancel());
+                        androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                        alert11.show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(ColorumFormActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(ColorumFormActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override

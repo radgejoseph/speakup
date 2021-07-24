@@ -59,17 +59,14 @@ public class PlateRatingsActivity extends AppCompatActivity {
 
         to_rateme_button = findViewById(R.id.to_rateme_button);
 
-        to_rateme_button.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               String plate = textPlate.getText().toString();
-               String vehicle = textVehicle.getText().toString();
-               Intent intent = new Intent(PlateRatingsActivity.this, RateMeActivity.class);
-               intent.putExtra("selected_plate", plate);
-               intent.putExtra("vehicle", vehicle);
-               startActivity(intent);
+        to_rateme_button.setOnClickListener(view -> {
+            String plate = textPlate.getText().toString();
+            String vehicle = textVehicle.getText().toString();
+            Intent intent = new Intent(PlateRatingsActivity.this, RateMeActivity.class);
+            intent.putExtra("selected_plate", plate);
+            intent.putExtra("vehicle", vehicle);
+            startActivity(intent);
 
-           }
         });
 
         if (getIntent().hasExtra("selected_plate")) {
@@ -94,41 +91,35 @@ public class PlateRatingsActivity extends AppCompatActivity {
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_PLATE_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                itemListPlate.add(new ListItemPlateReviews(
-                                        object.getString("username"),
-                                        object.getInt("ratings"),
-                                        object.getString("narrative"),
-                                        object.getString("created_at")
-                                ));
-                            }
-
-                            ListItemPlateReviewAdapter  listItemPlateReviewAdapter = new ListItemPlateReviewAdapter(PlateRatingsActivity.this, itemListPlate);
-                            recyclerView2.setAdapter(listItemPlateReviewAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
+                            itemListPlate.add(new ListItemPlateReviews(
+                                    object.getString("username"),
+                                    object.getInt("ratings"),
+                                    object.getString("narrative"),
+                                    object.getString("created_at")
+                            ));
                         }
 
+                        ListItemPlateReviewAdapter  listItemPlateReviewAdapter = new ListItemPlateReviewAdapter(PlateRatingsActivity.this, itemListPlate);
+                        recyclerView2.setAdapter(listItemPlateReviewAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(PlateRatingsActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        })
+
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(PlateRatingsActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

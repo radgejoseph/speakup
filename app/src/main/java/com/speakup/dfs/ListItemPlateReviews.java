@@ -30,5 +30,4 @@ public ListItemPlateReviews(String username, int ratings, String narrative, Stri
     public String getTimestampL() {
         return created_at;
     }
-
 }

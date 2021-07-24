@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -20,24 +18,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ComplaintViewFragment extends Fragment {
-
-    //    private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_ratings.php";
     private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_complaints.php";
 
     RecyclerView recyclerView;
     List<ListItemComplaint> itemListComplaint;
-
     String getId;
     SessionManager sessionManager;
 
@@ -71,44 +64,38 @@ public class ComplaintViewFragment extends Fragment {
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_MY_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                itemListComplaint.add(new ListItemComplaint(
-                                        object.getString("vehicle"),
-                                        object.getString("body_plate"),
-                                        object.getString("narrative"),
-                                        object.getString("date"),
-                                        object.getString("time"),
-                                        object.getString("image_name"),
-                                        object.getString("status")
-                                ));
-                            }
-
-                            ListItemComplaintAdapter listItemComplaintAdapter = new ListItemComplaintAdapter(getActivity(), itemListComplaint);
-                            recyclerView.setAdapter(listItemComplaintAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
+                            itemListComplaint.add(new ListItemComplaint(
+                                    object.getString("vehicle"),
+                                    object.getString("body_plate"),
+                                    object.getString("narrative"),
+                                    object.getString("date"),
+                                    object.getString("time"),
+                                    object.getString("image_name"),
+                                    object.getString("status")
+                            ));
                         }
 
+                        ListItemComplaintAdapter listItemComplaintAdapter = new ListItemComplaintAdapter(getActivity(), itemListComplaint);
+                        recyclerView.setAdapter(listItemComplaintAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        })
+
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+                })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

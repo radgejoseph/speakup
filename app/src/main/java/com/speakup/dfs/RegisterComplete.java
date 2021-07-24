@@ -15,12 +15,7 @@ public class RegisterComplete extends AppCompatActivity {
 
 
         Button button = findViewById(R.id.ok_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMainActivity();
-            }
-        });
+        button.setOnClickListener(view -> openMainActivity());
     }
 
     public void openMainActivity() {

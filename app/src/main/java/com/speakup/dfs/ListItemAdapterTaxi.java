@@ -82,7 +82,6 @@ public class ListItemAdapterTaxi extends RecyclerView.Adapter<ListItemAdapterTax
 
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
         TextView textPlate, textRatings;
         OnItemListener onItemListener;
 

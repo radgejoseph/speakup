@@ -19,7 +19,6 @@ public class ListItemPlateReviewAdapter extends RecyclerView.Adapter<ListItemPla
         this.listItemPlateReviews = listItemPlateReviews;
     }
 
-
     @NonNull
     @Override
     public ListItemPlateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

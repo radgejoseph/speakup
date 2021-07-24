@@ -115,19 +115,13 @@ public class ComplaintActivity extends AppCompatActivity {
 
         builder1.setPositiveButton(
                 "Proceed!",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, id) -> dialog.cancel());
         builder1.setNegativeButton(
                 "Take me back!",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                        onBackPressed();
-                        dialog.cancel();
-                    }
+                (dialog, id) -> {
+                    finish();
+                    onBackPressed();
+                    dialog.cancel();
                 });
 
         androidx.appcompat.app.AlertDialog alert11 = builder1.create();
@@ -139,115 +133,90 @@ public class ComplaintActivity extends AppCompatActivity {
         narrative.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         Button buttonComplaintType = findViewById(R.id.buttonComplaintType);
-        buttonComplaintType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                complaint_selection = "";
-                onCreateDialog().show();
-            }
+        buttonComplaintType.setOnClickListener(v -> {
+            complaint_selection = "";
+            onCreateDialog().show();
         });
 
         submit_button = findViewById(R.id.submit_button_complaint);
-        submit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        submit_button.setOnClickListener(v -> {
 
-                String checked_items_r = checked_items.getText().toString().trim();
+            String checked_items_r = checked_items.getText().toString().trim();
 
-                if (upload_image_view_gallery.getDrawable() != null && !checked_items_r.equals("")){
-                    ComplaintSubmit();
-                }
-                else {
-                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ComplaintActivity.this);
-                    builder1.setMessage("Image and Complaint are Required!");
-                    builder1.setCancelable(true);
+            if (upload_image_view_gallery.getDrawable() != null && !checked_items_r.equals("")){
+                ComplaintSubmit();
+            }
+            else {
+                androidx.appcompat.app.AlertDialog.Builder builder11 = new androidx.appcompat.app.AlertDialog.Builder(ComplaintActivity.this);
+                builder11.setMessage("Image and Complaint are Required!");
+                builder11.setCancelable(true);
 
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                builder11.setPositiveButton(
+                        "OK",
+                        (dialog, id) -> dialog.cancel());
 
 
-                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
+                androidx.appcompat.app.AlertDialog alert111 = builder11.create();
+                alert111.show();
             }
         });
 
         /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ DATE PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         date_picker = findViewById(R.id.date_picker);
 
-        date_picker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar calendarD = Calendar.getInstance();
-                int year = calendarD.get(Calendar.YEAR);
-                int month = calendarD.get(Calendar.MONTH);
-                int day = calendarD.get(Calendar.DAY_OF_MONTH);
+        date_picker.setOnClickListener(view -> {
+            final Calendar calendarD = Calendar.getInstance();
+            int year = calendarD.get(Calendar.YEAR);
+            int month = calendarD.get(Calendar.MONTH);
+            int day = calendarD.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        ComplaintActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth
-                        ,setListenerD,year,month,day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    ComplaintActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth
+                    ,setListenerD,year,month,day);
+            datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            datePickerDialog.show();
         });
 
-        setListenerD = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month+1;
-                String date = year+"-"+month+"-"+day;
-                date_picker.setText(date);
-            }
+        setListenerD = (datePicker, year, month, day) -> {
+            month = month+1;
+            String date = year+"-"+month+"-"+day;
+            date_picker.setText(date);
         };
         /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ DATE PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
         /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ TIME PICKER ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
         time_picker = findViewById(R.id.time_picker);
-        time_picker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar calendarT = Calendar.getInstance();
-                int hour = calendarT.get(Calendar.HOUR_OF_DAY);
-                int minutes = calendarT.get(Calendar.MINUTE);
+        time_picker.setOnClickListener(view -> {
+            final Calendar calendarT = Calendar.getInstance();
+            int hour = calendarT.get(Calendar.HOUR_OF_DAY);
+            int minutes = calendarT.get(Calendar.MINUTE);
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                        ComplaintActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth
-                        ,setListenerT,hour,minutes, DateFormat.is24HourFormat(ComplaintActivity.this));
-                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                timePickerDialog.show();
-            }
+            TimePickerDialog timePickerDialog = new TimePickerDialog(
+                    ComplaintActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth
+                    ,setListenerT,hour,minutes, DateFormat.is24HourFormat(ComplaintActivity.this));
+            timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            timePickerDialog.show();
         });
 
-        setListenerT = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minutes) {
-                String am_pm;
-                if (hour > 12)
-                {
-                    hour = hour - 12;
-                    am_pm = "PM";
-                } else {
-                    am_pm = "AM";
-                }
-                time_picker.setText(String.format("%02d:%02d %s",hour, minutes, am_pm));
+        setListenerT = (timePicker, hour, minutes) -> {
+            String am_pm;
+            if (hour > 12)
+            {
+                hour = hour - 12;
+                am_pm = "PM";
+            } else {
+                am_pm = "AM";
             }
+            time_picker.setText(String.format("%02d:%02d %s",hour, minutes, am_pm));
         };
         /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ TIME PICKER ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
         upload_image_view_gallery = findViewById(R.id.upload_image_view_camera_gallery);
 
         ImageView add_image_video = findViewById(R.id.add_image_video);
-        add_image_video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(gallery, GALLERY_REQUEST_CODE);
-            }
+        add_image_video.setOnClickListener(view -> {
+            Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(gallery, GALLERY_REQUEST_CODE);
         });
 
     }
@@ -274,33 +243,27 @@ public class ComplaintActivity extends AppCompatActivity {
         final String narrative = complaint_selection + other_narrative;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_COMPLAINT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
 
-                            if (success.equals("1")) {
-                                progressDialog.dismiss();
-                                Toast.makeText(ComplaintActivity.this,"Complaint submitted successfully!", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(ComplaintActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (success.equals("1")) {
                             progressDialog.dismiss();
-                            Toast.makeText(ComplaintActivity.this,"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ComplaintActivity.this,"Complaint submitted successfully!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(ComplaintActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                        Toast.makeText(ComplaintActivity.this,"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(ComplaintActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(ComplaintActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override
@@ -361,36 +324,27 @@ public class ComplaintActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ComplaintActivity.this);
         builder.setTitle("Select Complaints");
 
-        builder.setMultiChoiceItems(R.array.complaints, null, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                String[] items = ComplaintActivity.this.getResources().getStringArray(R.array.complaints);
-                if (isChecked)
-                {
-                    mSelectedItems.add(items[which]);
-                }
-                else if(mSelectedItems.contains(items[which]))
-                {
-                    mSelectedItems.remove(items[which]);
-                }
+        builder.setMultiChoiceItems(R.array.complaints, null, (dialog, which, isChecked) -> {
+            String[] items = ComplaintActivity.this.getResources().getStringArray(R.array.complaints);
+            if (isChecked)
+            {
+                mSelectedItems.add(items[which]);
+            }
+            else if(mSelectedItems.contains(items[which]))
+            {
+                mSelectedItems.remove(items[which]);
             }
         });
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton("OK", (dialog, which) -> {
 
-                for (String Item : mSelectedItems)
-                {
-                    complaint_selection = complaint_selection+Item+", ";
-                }
-                checked_items.setText(complaint_selection);
+            for (String Item : mSelectedItems)
+            {
+                complaint_selection = complaint_selection+Item+", ";
             }
+            checked_items.setText(complaint_selection);
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton("Cancel", (dialog, which) -> {
 
-            }
         });
         return builder.create();
     }

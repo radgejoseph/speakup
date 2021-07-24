@@ -82,7 +82,6 @@ public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJee
 
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
         TextView textPlate, textRatings;
         OnItemListener onItemListener;
 

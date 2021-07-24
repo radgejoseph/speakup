@@ -85,68 +85,47 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         l_button = findViewById(R.id.login_button);
         tr_button = findViewById(R.id.to_register_button);
 
-        tr_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openRegisterActivity();
+        tr_button.setOnClickListener(view -> openRegisterActivity());
+
+        l_button.setOnClickListener(view -> {
+            String username_l = username.getText().toString().trim();
+            String password_l = password.getText().toString().trim();
+
+            if (!username_l.isEmpty() && !password_l.isEmpty()) {
+                Login(username_l, password_l);
             }
-        });
+            else {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                builder1.setMessage("Please check your username and password.");
+                builder1.setCancelable(true);
 
-        l_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username_l = username.getText().toString().trim();
-                String password_l = password.getText().toString().trim();
-
-                if (!username_l.isEmpty() && !password_l.isEmpty()) {
-                    Login(username_l, password_l);
-                }
-                else {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
-                    builder1.setMessage("Please check your username and password.");
-                    builder1.setCancelable(true);
-
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                builder1.setPositiveButton(
+                        "OK",
+                        (dialog, id) -> dialog.cancel());
 
 
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
 
 
         android.widget.ImageView high = findViewById(R.id.high);
-        high.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        high.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         android.widget.ImageView low = findViewById(R.id.low);
-        low.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        low.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         android.widget.ImageView recent = findViewById(R.id.recent);
-        recent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorAZ);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        recent.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorAZ);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         itemList = new ArrayList<>();
@@ -165,71 +144,61 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         progress.setVisibility(View.VISIBLE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("login");
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                            if (success.equals("1")) {
+                        if (success.equals("1")) {
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String name = object.getString("name").trim();
-                                    String id = object.getString("id").trim();
-                                    sessionManager.createSession(name, id);
+                                String name = object.getString("name").trim();
+                                String id = object.getString("id").trim();
+                                sessionManager.createSession(name, id);
 
-                                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                                    intent.putExtra("name", name);
-                                    startActivity(intent);
+                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                intent.putExtra("name", name);
+                                startActivity(intent);
 
-                                    Toast.makeText(MainActivity.this, "WELCOME "
-                                            + name + "!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "WELCOME "
+                                        + name + "!", Toast.LENGTH_LONG).show();
 
-                                    progress.setVisibility(View.GONE);
-                                    openHomeActivity();
-                                }
-                            }
-                            else if (success.equals("0"))
-                            {
                                 progress.setVisibility(View.GONE);
-                                AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
-                                builder1.setMessage("Wrong Username or Password!");
-                                builder1.setCancelable(true);
-
-                                builder1.setPositiveButton(
-                                        "OK",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int id) {
-                                                dialog.cancel();
-                                            }
-                                        });
-
-                                AlertDialog alert11 = builder1.create();
-                                alert11.show();
+                                openHomeActivity();
                             }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progress.setVisibility(View.GONE);
-                            l_button.setVisibility(View.VISIBLE);
-                            tr_button.setVisibility(View.VISIBLE);
-                            Toast.makeText(MainActivity.this, "Error! 1", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                        else if (success.equals("0"))
+                        {
+                            progress.setVisibility(View.GONE);
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                            builder1.setMessage("Wrong Username or Password!");
+                            builder1.setCancelable(true);
+
+                            builder1.setPositiveButton(
+                                    "OK",
+                                    (dialog, id) -> dialog.cancel());
+
+                            AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                         progress.setVisibility(View.GONE);
                         l_button.setVisibility(View.VISIBLE);
                         tr_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(MainActivity.this, "Error! 2", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(MainActivity.this, "Error! 1", Toast.LENGTH_SHORT).show();
                     }
+                },
+                error -> {
+                    progress.setVisibility(View.GONE);
+                    l_button.setVisibility(View.VISIBLE);
+                    tr_button.setVisibility(View.VISIBLE);
+                    Toast.makeText(MainActivity.this, "Error! 2", Toast.LENGTH_SHORT).show();
+
                 })
         {
             @Override
@@ -279,41 +248,35 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ALL_PLATE_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                String  strVehicle = object.getString("vehicle");
-                                String strPlate = object.getString("body_plate");
-                                int strRatings = object.getInt("ratings");
+                            String  strVehicle = object.getString("vehicle");
+                            String strPlate = object.getString("body_plate");
+                            int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
-                                itemList.add(listItem);
-                            }
-
-                            listItemAdapter = new ListItemPlateAdapter(itemList, MainActivity.this);
-                            recyclerView.setAdapter(listItemAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
+                            ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
+                            itemList.add(listItem);
                         }
 
+                        listItemAdapter = new ListItemPlateAdapter(itemList, MainActivity.this);
+                        recyclerView.setAdapter(listItemAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(MainActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(MainActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
 
         Volley.newRequestQueue(this).add(stringRequest);
 

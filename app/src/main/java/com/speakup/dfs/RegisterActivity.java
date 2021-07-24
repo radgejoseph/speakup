@@ -53,45 +53,33 @@ public class RegisterActivity extends AppCompatActivity {
         address.setRawInputType(InputType.TYPE_CLASS_TEXT);
         
         android.widget.ImageView backBut = findViewById(R.id.imagebackButton);
-        backBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
+        backBut.setOnClickListener(view -> onBackPressed());
+
+        reg_button.setOnClickListener(view -> {
+            String name_r = name.getText().toString().trim();
+            String username_r = username.getText().toString().trim();
+            String password_r = password.getText().toString().trim();
+            String mobile_r = phone_number.getText().toString().trim();
+            String email_r = email.getText().toString().trim();
+            String address_r = address.getText().toString().trim();
+
+
+            if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
+                    && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
+
+                Regist();
             }
-        });
+            else {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
+                builder1.setMessage("Please make sure all fields are filled in correctly.");
+                builder1.setCancelable(true);
 
-        reg_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name_r = name.getText().toString().trim();
-                String username_r = username.getText().toString().trim();
-                String password_r = password.getText().toString().trim();
-                String mobile_r = phone_number.getText().toString().trim();
-                String email_r = email.getText().toString().trim();
-                String address_r = address.getText().toString().trim();
+                builder1.setPositiveButton(
+                        "OK",
+                        (dialog, id) -> dialog.cancel());
 
-
-                if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
-                        && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
-
-                    Regist();
-                }
-                else {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
-                    builder1.setMessage("Please make sure all fields are filled in correctly.");
-                    builder1.setCancelable(true);
-
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
     }
@@ -109,48 +97,38 @@ public class RegisterActivity extends AppCompatActivity {
         final String address = this.address.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
 
-                            if (success.equals("1")) {
-                                openRegisterComplete();
-                                progressDialog.dismiss();
-                                Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (success.equals("1")) {
+                            openRegisterComplete();
                             progressDialog.dismiss();
-                            reg_button.setVisibility(View.VISIBLE);
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
-                            builder1.setMessage("Register Error! " + response);
-                            builder1.setCancelable(true);
-
-                            builder1.setPositiveButton(
-                                    "OK",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            dialog.cancel();
-                                        }
-                                    });
-
-
-                            AlertDialog alert11 = builder1.create();
-                            alert11.show();
+                            Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                         progressDialog.dismiss();
                         reg_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(RegisterActivity.this,"Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
+                        builder1.setMessage("Register Error! " + response);
+                        builder1.setCancelable(true);
+
+                        builder1.setPositiveButton(
+                                "OK",
+                                (dialog, id) -> dialog.cancel());
+
+
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
                     }
+                },
+                error -> {
+                    progressDialog.dismiss();
+                    reg_button.setVisibility(View.VISIBLE);
+                    Toast.makeText(RegisterActivity.this,"Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override

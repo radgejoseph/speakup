@@ -37,7 +37,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     ListItemAdapterTricycle listItemAdapter;
     Toolbar toolbar;
     Button button_colorum;
-    private TextView textVehicle;
     List<ListItem> itemList;
 
     @Override
@@ -75,41 +74,29 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         button_colorum = findViewById(R.id.button_colorum);
-        button_colorum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String vehicle = "tricycle";
-                Intent intent = new Intent(ReportTricycleActivity.this, ColorumFormActivity.class);
-                intent.putExtra("vehicle", vehicle);
-                startActivity(intent);
-            }
+        button_colorum.setOnClickListener(view -> {
+            String vehicle = "tricycle";
+            Intent intent = new Intent(ReportTricycleActivity.this, ColorumFormActivity.class);
+            intent.putExtra("vehicle", vehicle);
+            startActivity(intent);
         });
 
         android.widget.ImageView high = findViewById(R.id.high);
-        high.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        high.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         android.widget.ImageView low = findViewById(R.id.low);
-        low.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        low.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         android.widget.ImageView recent = findViewById(R.id.recent);
-        recent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorAZ);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        recent.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorAZ);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         itemList = new ArrayList<>();
@@ -120,18 +107,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         loadList();
-    }
-
-    private void filter(String text) {
-        ArrayList<ListItem> filteredList = new ArrayList<>();
-
-        for (ListItem item : itemList) {
-            if (item.getPlateL().toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(item);
-            }
-        }
-
-        listItemAdapter.filterList(filteredList);
     }
 
     private void loadList() {
@@ -165,13 +140,10 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
 
                     }
 
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(ReportTricycleActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportTricycleActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
 
         Volley.newRequestQueue(this).add(stringRequest);
 

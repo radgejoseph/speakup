@@ -59,6 +59,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             setTitle("VEHICLES");
         }
+
         if (item.getItemId() == R.id.profile_menu) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();

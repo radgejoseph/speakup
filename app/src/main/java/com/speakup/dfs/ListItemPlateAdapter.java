@@ -83,7 +83,6 @@ public class ListItemPlateAdapter extends RecyclerView.Adapter<ListItemPlateAdap
 
     class ListItemHoder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
         TextView textPlate, textRatings, textVehicle;
         OnItemListener onItemListener;
 
@@ -106,11 +105,6 @@ public class ListItemPlateAdapter extends RecyclerView.Adapter<ListItemPlateAdap
 
     public interface OnItemListener{
         void onItemClick(int position);
-    }
-
-    public void filterList(ArrayList<ListItem> filteredList) {
-        itemList = filteredList;
-        notifyDataSetChanged();
     }
 
 }

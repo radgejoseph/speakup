@@ -64,42 +64,36 @@ public class RatingsFragment extends Fragment {
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_MY_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
+
+                                itemList.add(new ListItemReviews(
+                                        object.getString("vehicle"),
+                                        object.getString("body_plate"),
+                                        object.getInt("ratings"),
+                                        object.getString("narrative"),
+                                        object.getString("created_at")
+                                ));
+                            }
+
+                        ListItemReviewAdapter  listItemReviewAdapter = new ListItemReviewAdapter(getActivity(), itemList);
+                        recyclerView.setAdapter(listItemReviewAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                         progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject object = jsonArray.getJSONObject(i);
-
-                                    itemList.add(new ListItemReviews(
-                                            object.getString("vehicle"),
-                                            object.getString("body_plate"),
-                                            object.getInt("ratings"),
-                                            object.getString("narrative"),
-                                            object.getString("created_at")
-                                    ));
-                                }
-
-                            ListItemReviewAdapter  listItemReviewAdapter = new ListItemReviewAdapter(getActivity(), itemList);
-                            recyclerView.setAdapter(listItemReviewAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
-                        }
 
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        })
+
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+                })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

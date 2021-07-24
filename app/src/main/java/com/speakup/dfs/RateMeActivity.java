@@ -49,12 +49,7 @@ public class RateMeActivity extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         android.widget.ImageView backBut = findViewById(R.id.advance_option);
-        backBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openComplaintActivity();
-            }
-        });
+        backBut.setOnClickListener(view -> openComplaintActivity());
 
         ratingBar = findViewById(R.id.ratingBar);
         rateCountText = findViewById(R.id.ratecounttext);
@@ -74,31 +69,28 @@ public class RateMeActivity extends AppCompatActivity {
         textVehicle = findViewById(R.id.vehicle_type_holder);
         textVehicle.setText(vehicle);
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                rateValue = ratingBar.getRating();
+        ratingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+            rateValue = ratingBar.getRating();
 
-                if (rateValue == 1){
-                    rateCountText.setText("Terrible Driver \uD83D\uDE21");
-                    rateCount.setText("1");
-                }
-                else if (rateValue == 2) {
-                    rateCountText.setText("Bad Driver \uD83D\uDE1E");
-                    rateCount.setText("2");
-                }
-                else if (rateValue == 3) {
-                    rateCountText.setText("Okay Driver \uD83D\uDE10");
-                    rateCount.setText("3");
-                }
-                else if (rateValue == 4) {
-                    rateCountText.setText("Good Driver \uD83D\uDE0A");
-                    rateCount.setText("4");
-                }
-                else if (rateValue == 5) {
-                    rateCountText.setText("Great Driver \uD83D\uDE04");
-                    rateCount.setText("5");
-                }
+            if (rateValue == 1){
+                rateCountText.setText("Terrible Driver \uD83D\uDE21");
+                rateCount.setText("1");
+            }
+            else if (rateValue == 2) {
+                rateCountText.setText("Bad Driver \uD83D\uDE1E");
+                rateCount.setText("2");
+            }
+            else if (rateValue == 3) {
+                rateCountText.setText("Okay Driver \uD83D\uDE10");
+                rateCount.setText("3");
+            }
+            else if (rateValue == 4) {
+                rateCountText.setText("Good Driver \uD83D\uDE0A");
+                rateCount.setText("4");
+            }
+            else if (rateValue == 5) {
+                rateCountText.setText("Great Driver \uD83D\uDE04");
+                rateCount.setText("5");
             }
         });
 
@@ -114,32 +106,25 @@ public class RateMeActivity extends AppCompatActivity {
         narrative.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
         submit_button = findViewById(R.id.submit_button_review);
-        submit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        submit_button.setOnClickListener(v -> {
 
-                String narrative_r = narrative.getText().toString().trim();
+            String narrative_r = narrative.getText().toString().trim();
 
-                if (!narrative_r.isEmpty() && ratingBar.getRating() != 0.0){
-                    ReviewSubmit();
-                }
-                else {
-                    androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(RateMeActivity.this);
-                    builder1.setMessage("Both Review and Rating is Required");
-                    builder1.setCancelable(true);
+            if (!narrative_r.isEmpty() && ratingBar.getRating() != 0.0){
+                ReviewSubmit();
+            }
+            else {
+                androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(RateMeActivity.this);
+                builder1.setMessage("Both Review and Rating is Required");
+                builder1.setCancelable(true);
 
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                builder1.setPositiveButton(
+                        "OK",
+                        (dialog, id) -> dialog.cancel());
 
 
-                    androidx.appcompat.app.AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
+                androidx.appcompat.app.AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
 
@@ -156,33 +141,27 @@ public class RateMeActivity extends AppCompatActivity {
         final String ratings = this.rateCount.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REVIEW,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
 
-                            if (success.equals("1")) {
-                                progressDialog.dismiss();
-                                Toast.makeText(RateMeActivity.this,"Rating submitted successfully!", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(RateMeActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        if (success.equals("1")) {
                             progressDialog.dismiss();
-                            Toast.makeText(RateMeActivity.this,"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RateMeActivity.this,"Rating submitted successfully!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(RateMeActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                        Toast.makeText(RateMeActivity.this,"Submit Error! " + e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(RateMeActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(RateMeActivity.this,"Submit Error! " + error.toString(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override

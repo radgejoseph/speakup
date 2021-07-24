@@ -53,26 +53,13 @@ public class SlideViewPagerAdapter extends PagerAdapter {
         ImageView next = view.findViewById(R.id.next);
         ImageView back = view.findViewById(R.id.back);
         Button get_started_button = view.findViewById(R.id.get_stated_button);
-        get_started_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ctx, SplashScreen.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-                ctx.startActivity(intent);
-            }
+        get_started_button.setOnClickListener(v -> {
+            Intent intent = new Intent(ctx, SplashScreen.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+            ctx.startActivity(intent);
         });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SlideActivity.viewPager.setCurrentItem(position+1);
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SlideActivity.viewPager.setCurrentItem(position-1);
-            }
-        });
+        next.setOnClickListener(v -> SlideActivity.viewPager.setCurrentItem(position+1));
+        back.setOnClickListener(v -> SlideActivity.viewPager.setCurrentItem(position-1));
 
         switch (position)
         {

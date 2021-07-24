@@ -73,41 +73,29 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         button_colorum = findViewById(R.id.button_colorum);
-        button_colorum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String vehicle = "taxi";
-                Intent intent = new Intent(ReportTaxiActivity.this, ColorumFormActivity.class);
-                intent.putExtra("vehicle", vehicle);
-                startActivity(intent);
-            }
+        button_colorum.setOnClickListener(view -> {
+            String vehicle = "taxi";
+            Intent intent = new Intent(ReportTaxiActivity.this, ColorumFormActivity.class);
+            intent.putExtra("vehicle", vehicle);
+            startActivity(intent);
         });
 
         android.widget.ImageView high = findViewById(R.id.high);
-        high.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorHtoL);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        high.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorHtoL);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         android.widget.ImageView low = findViewById(R.id.low);
-        low.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorLtoH);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        low.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorLtoH);
+            listItemAdapter.notifyDataSetChanged();
         });
 
         android.widget.ImageView recent = findViewById(R.id.recent);
-        recent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Collections.sort(itemList, ListItem.listItemComparatorAZ);
-                listItemAdapter.notifyDataSetChanged();
-            }
+        recent.setOnClickListener(view -> {
+            Collections.sort(itemList, ListItem.listItemComparatorAZ);
+            listItemAdapter.notifyDataSetChanged();
         });
 
 
@@ -121,59 +109,41 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
         loadList();
     }
 
-    private void filter(String text) {
-        ArrayList<ListItem> filteredList = new ArrayList<>();
-
-        for (ListItem item : itemList) {
-            if (item.getPlateL().toLowerCase().contains(text.toLowerCase())) {
-                filteredList.add(item);
-            }
-        }
-
-        listItemAdapter.filterList(filteredList);
-    }
-
     private void loadList() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading list...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_TAXI_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                String  strVehicle = object.getString("vehicle");
-                                String strPlate = object.getString("body_plate");
-                                int strRatings = object.getInt("ratings");
+                            String  strVehicle = object.getString("vehicle");
+                            String strPlate = object.getString("body_plate");
+                            int strRatings = object.getInt("ratings");
 
-                                ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
-                                itemList.add(listItem);
-                            }
-
-                            listItemAdapter = new ListItemAdapterTaxi(itemList, ReportTaxiActivity.this);
-                            recyclerView.setAdapter(listItemAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
+                            ListItem listItem = new ListItem(strVehicle, strPlate, strRatings);
+                            itemList.add(listItem);
                         }
 
+                        listItemAdapter = new ListItemAdapterTaxi(itemList, ReportTaxiActivity.this);
+                        recyclerView.setAdapter(listItemAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(ReportTaxiActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReportTaxiActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
 
         Volley.newRequestQueue(this).add(stringRequest);
 

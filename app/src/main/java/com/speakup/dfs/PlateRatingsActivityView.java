@@ -74,41 +74,35 @@ public class PlateRatingsActivityView extends AppCompatActivity {
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.DEPRECATED_GET_OR_POST, URL_PLATE_LIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
+                response -> {
+                    progressDialog.dismiss();
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
 
-                                itemListPlate.add(new ListItemPlateReviews(
-                                        object.getString("username"),
-                                        object.getInt("ratings"),
-                                        object.getString("narrative"),
-                                        object.getString("created_at")
-                                ));
-                            }
-
-                            ListItemPlateReviewAdapter  listItemPlateReviewAdapter = new ListItemPlateReviewAdapter(PlateRatingsActivityView.this, itemListPlate);
-                            recyclerView2.setAdapter(listItemPlateReviewAdapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-
+                            itemListPlate.add(new ListItemPlateReviews(
+                                    object.getString("username"),
+                                    object.getInt("ratings"),
+                                    object.getString("narrative"),
+                                    object.getString("created_at")
+                            ));
                         }
 
+                        ListItemPlateReviewAdapter  listItemPlateReviewAdapter = new ListItemPlateReviewAdapter(PlateRatingsActivityView.this, itemListPlate);
+                        recyclerView2.setAdapter(listItemPlateReviewAdapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(PlateRatingsActivityView.this,error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        })
+
+                }, error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(PlateRatingsActivityView.this,error.getMessage(), Toast.LENGTH_SHORT).show();
+                })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

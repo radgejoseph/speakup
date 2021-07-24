@@ -94,49 +94,43 @@ public class ProfileFragment extends Fragment{
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
+                response -> {
+                    progressDialog.dismiss();
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("read");
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        JSONArray jsonArray = jsonObject.getJSONArray("read");
 
-                            if (success.equals("1")) {
+                        if (success.equals("1")) {
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String strName = object.getString("name").trim();
-                                    String strUsername = object.getString("username").trim();
-                                    String strMobile = object.getString("phone_number").trim();
-                                    String strEmail = object.getString("email").trim();
-                                    String strAddress = object.getString("address").trim();
-                                    String strStatus = object.getString("status").trim();
-                                    name.setText(strName);
-                                    username.setText(strUsername);
-                                    phone_number.setText(strMobile);
-                                    email.setText(strEmail);
-                                    address.setText(strAddress);
-                                    status.setText(strStatus);
+                                String strName = object.getString("name").trim();
+                                String strUsername = object.getString("username").trim();
+                                String strMobile = object.getString("phone_number").trim();
+                                String strEmail = object.getString("email").trim();
+                                String strAddress = object.getString("address").trim();
+                                String strStatus = object.getString("status").trim();
+                                name.setText(strName);
+                                username.setText(strUsername);
+                                phone_number.setText(strMobile);
+                                email.setText(strEmail);
+                                address.setText(strAddress);
+                                status.setText(strStatus);
 
-                                }
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                         progressDialog.dismiss();
                         Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
                     }
+                },
+                error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
                 })
         {
             @Override
@@ -225,11 +219,7 @@ public class ProfileFragment extends Fragment{
 
                             builder1.setPositiveButton(
                                     "OK",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            dialog.cancel();
-                                        }
-                                    });
+                                    (dialog, id) -> dialog.cancel());
 
                             AlertDialog alert11 = builder1.create();
                             alert11.show();
@@ -258,34 +248,28 @@ public class ProfileFragment extends Fragment{
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
+                response -> {
+                    progressDialog.dismiss();
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
 
-                            if (success.equals("1")) {
-                                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSessionEdit(name, username, phone_number, email, address, id);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            Toast.makeText(getActivity(), "Error!" + e.toString(), Toast.LENGTH_SHORT).show();
+                        if (success.equals("1")) {
+                            Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                            sessionManager.createSessionEdit(name, username, phone_number, email, address, id);
                         }
 
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                         progressDialog.dismiss();
-                        Toast.makeText(getActivity(), "Error!" + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Error!" + e.toString(), Toast.LENGTH_SHORT).show();
                     }
+
+                },
+                error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "Error!" + error.toString(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override
