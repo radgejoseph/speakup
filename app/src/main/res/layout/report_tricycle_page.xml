@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TRICYCLE"
+            android:text="@string/tricycle"
             android:layout_gravity="center"
             android:textAppearance="@style/ToolbarTitleTheme"/>
     </androidx.appcompat.widget.Toolbar>
@@ -36,10 +36,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search for Body/Plate Number"
+            android:text="@string/search_for_body_plate_number"
             android:textColor="#4CAF50"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -54,7 +53,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/search_box"
             android:gravity="center"
-            android:hint="Search"
+            android:hint="@string/search"
             android:imeOptions="actionDone"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +113,6 @@
             app:layout_constraintVertical_bias="0.0">
 
         <RelativeLayout
-            android:id="@+id/recyclerview_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -153,25 +151,24 @@
                     android:id="@+id/text_noplate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:paddingEnd="10dp"
                     android:textStyle="bold"
-                    android:text="No Plate Found" />
+                    android:text="@string/no_plate_found" />
                 <Button
                     android:id="@+id/button_colorum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:background="@drawable/custom_button_green"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:padding="5dp"
-                    android:text="Add Plate" />
+                    android:text="@string/add_plate" />
 
             </LinearLayout>
 
             <androidx.constraintlayout.widget.Group
-                android:id="@+id/group_noplatewithbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:constraint_referenced_ids="view_group,button_colorum,text_noplate" />

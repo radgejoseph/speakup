@@ -73,7 +73,6 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/postratecount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -88,7 +87,6 @@
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/taxicle"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"

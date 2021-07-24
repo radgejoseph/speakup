@@ -10,25 +10,16 @@
             <item
                 android:id="@+id/profile_menu"
                 android:icon="@drawable/ic_profile"
-                android:title="MY PROFILE" />
-<!--            <item-->
-<!--                android:id="@+id/notifications_menu"-->
-<!--                android:icon="@drawable/ic_notifications"-->
-<!--                android:title="@string/notifications" />-->
+                android:title="@string/my_profile" />
             <item
                 android:id="@+id/ratings_menu"
                 android:icon="@drawable/ic_ratings"
-                android:title="MY RATINGS" />
-<!--            <item-->
-<!--                android:id="@+id/commendation_menu"-->
-<!--                android:icon="@drawable/ic_baseline_mood_24"-->
-<!--                android:iconTint="@color/white"-->
-<!--                android:title="@string/commendation" />-->
+                android:title="@string/my_ratings" />
             <item
                 android:id="@+id/complaint_menu"
                 android:icon="@drawable/ic_baseline_mood_bad_24"
                 android:iconTint="@color/white"
-                android:title="MY COMPLAINTS" />
+                android:title="@string/my_complaints" />
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
                 android:title="@string/blank_space"

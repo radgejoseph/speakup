@@ -49,7 +49,6 @@
     android:paddingHorizontal="6dp">
 
     <TextView
-        android:id="@+id/postratecount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -107,18 +106,6 @@
             android:textSize="25sp"
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />
-
-<!--        <RatingBar-->
-<!--            android:id="@+id/ratingBar"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginEnd="5dp"-->
-<!--            android:numStars="5"-->
-<!--            android:progressTint="@color/buttonGreen"-->
-<!--            android:rating="0"-->
-<!--            android:stepSize="1.0"-->
-<!--            tools:ignore="MissingConstraints" />-->
 
         <TextView
             android:id="@+id/review"

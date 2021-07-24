@@ -17,28 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/pop_over"-->
-<!--        android:contentDescription="@string/todo" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="500dp"-->
-<!--            android:background="@drawable/text_box_layout"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--            -->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         <ImageView
             android:id="@+id/imageView"
@@ -48,7 +26,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_complete" />
+            app:srcCompat="@drawable/ic_complete"
+            android:contentDescription="@string/todo" />
 
         <Button
         android:id="@+id/ok_button"
@@ -84,7 +63,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Please check your Spam box if the email is not in the Inbox."
+            android:text="@string/please_check_your_spam_box_if_the_email_is_not_in_the_inbox"
             android:textColor="@color/logoutRed"
             android:textSize="18sp"
             android:textStyle="italic"

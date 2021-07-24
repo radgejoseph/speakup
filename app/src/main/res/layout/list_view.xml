@@ -74,7 +74,6 @@
                 tools:ignore="MissingConstraints" />
 
             <TextView
-                android:id="@+id/postratecount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -108,7 +107,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/created_at"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible" />

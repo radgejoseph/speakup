@@ -8,7 +8,6 @@
     android:orientation="vertical">
 
     <View
-        android:id="@+id/void_header"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:visibility="invisible"
@@ -117,38 +116,6 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textusername" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/textpassword"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:text="@string/password"-->
-<!--                android:textSize="15sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.494"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/username_text"-->
-<!--                tools:ignore="MissingConstraints" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/password_text"-->
-<!--                android:layout_width="280dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:background="@drawable/text_box_layout"-->
-<!--                android:ems="10"-->
-<!--                android:gravity="center"-->
-<!--                android:hint="**********"-->
-<!--                android:inputType="textPassword"-->
-<!--                android:paddingStart="15dp"-->
-<!--                android:paddingEnd="15dp"-->
-<!--                android:textSize="20sp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.494"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textpassword" />-->
 
             <TextView
                 android:id="@+id/textView2"

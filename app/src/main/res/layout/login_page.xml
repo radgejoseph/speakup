@@ -111,7 +111,6 @@
         app:layout_constraintVertical_bias="0.0">
 
         <RelativeLayout
-            android:id="@+id/recyclerview_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -159,7 +158,6 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.Group
-                android:id="@+id/group_noplatewithbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:constraint_referenced_ids="view_group,button_colorum,text_noplate" />

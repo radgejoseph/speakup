@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <color name="colorPrimary">#2699FB</color>
     <color name="colorPrimaryDark">#3F51B5</color>
     <color name="colorAccent">#2699FB</color>
     <color name="buttonGreen">#8BC97A</color>
     <color name="buttonBlue">#2699FB</color>
-    <color name="appBackground">#8BC97A</color>
     <color name="blueGreen" >#8BC97A</color>
     <color name="logoutRed" >#E91E63</color>
     <color name="white" >#FFFFFF</color>
-    <color name="layout_header" >#8BC97A</color>
     <color name="layout_subheader" >#C7FCDE</color>
     <color name="layout_jeep" >#DFEEFA</color>
     <color name="layout_taxicle" >#A9DBE8</color>
     <color name="layout_tricycle" >#74D0FF</color>
     <color name="layout_taxi" >#7FB6FD</color>
     <color name="dark_gray">#696969</color>
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#3F51B5</color>
     <color name="bluetext">#046EC8</color>
     <color name="graycolor">#E4E3E3</color>
     <color name="graytext">#b3b3b3</color>
