@@ -31,8 +31,8 @@ import papaya.in.sendmail.SendMail;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
-    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
-    private static String VERIFICATION = "https://bit.ly/3xBuSvk";
+    private static final String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
+    private static final String VERIFICATION = "https://bit.ly/3xBuSvk";
     private Button reg_button;
 
     @Override
@@ -128,7 +128,17 @@ public class RegisterActivity extends AppCompatActivity {
                 error -> {
                     progressDialog.dismiss();
                     reg_button.setVisibility(View.VISIBLE);
-                    Toast.makeText(RegisterActivity.this,"Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(RegisterActivity.this);
+                    builder1.setMessage("Register Error! " + error.toString());
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            (dialog, id) -> dialog.cancel());
+
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 })
         {
             @Override

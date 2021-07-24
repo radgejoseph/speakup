@@ -2,10 +2,10 @@ package com.speakup.dfs;
 
 public class ListItemPlateReviews {
 
-    private int ratings;
-    private String narrative;
-    private String username;
-    private String created_at;
+    private final int ratings;
+    private final String narrative;
+    private final String username;
+    private final String created_at;
 
 public ListItemPlateReviews(String username, int ratings, String narrative, String created_at) {
 

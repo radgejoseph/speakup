@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ListItemComplaintAdapter extends RecyclerView.Adapter<ListItemComplaintAdapter.ListItemViewHolder> {
 
-    private Context mCtx;
-    private List<ListItemComplaint> listItemComplaints;
+    private final Context mCtx;
+    private final List<ListItemComplaint> listItemComplaints;
 
     public ListItemComplaintAdapter(Context mCtx, List<ListItemComplaint> listItemComplaints) {
         this.mCtx = mCtx;

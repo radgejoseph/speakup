@@ -14,8 +14,8 @@ import java.util.List;
 public class ListItemAdapterTaxi extends RecyclerView.Adapter<ListItemAdapterTaxi.ListItemHoder> implements Filterable {
 
     private List<ListItem> itemList;
-    private List<ListItem> itemListFull;
-    private OnItemListener mOnItemListener;
+    private final List<ListItem> itemListFull;
+    private final OnItemListener mOnItemListener;
 
     public ListItemAdapterTaxi(List<ListItem> itemList, OnItemListener onItemListener) {
         this.itemList = itemList;
@@ -49,7 +49,7 @@ public class ListItemAdapterTaxi extends RecyclerView.Adapter<ListItemAdapterTax
         return itemFilter;
     }
 
-    private Filter itemFilter = new Filter() {
+    private final Filter itemFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ListItem> filteredList = new ArrayList<>();

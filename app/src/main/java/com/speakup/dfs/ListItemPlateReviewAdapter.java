@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ListItemPlateReviewAdapter extends RecyclerView.Adapter<ListItemPlateReviewAdapter.ListItemPlateViewHolder> {
 
-    private Context mCtx;
-    private List<ListItemPlateReviews> listItemPlateReviews;
+    private final Context mCtx;
+    private final List<ListItemPlateReviews> listItemPlateReviews;
 
     public ListItemPlateReviewAdapter(Context mCtx, List<ListItemPlateReviews> listItemPlateReviews) {
         this.mCtx = mCtx;

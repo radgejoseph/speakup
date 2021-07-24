@@ -6,9 +6,9 @@ import java.util.Comparator;
 
 public class ListItem implements Parcelable {
 
-    private String vehicle;
-    private String plate;
-    private int ratings;
+    private final String vehicle;
+    private final String plate;
+    private final int ratings;
 
     public ListItem(String vehicle, String plate , int ratings) {
         this.vehicle = vehicle;

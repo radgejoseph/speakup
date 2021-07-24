@@ -1,5 +1,6 @@
 package com.speakup.dfs;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,8 +37,8 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private static String URL_READ = "http://speakupadnu.000webhostapp.com/speakupmobile/read_detail.php";
-    private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/speakupmobile/edit_detail.php";
+    private static final String URL_READ = "http://speakupadnu.000webhostapp.com/speakupmobile/read_detail.php";
+    private static final String URL_EDIT = "http://speakupadnu.000webhostapp.com/speakupmobile/edit_detail.php";
     private TextView name, username, phone_number, email, address, status;
     private Menu action;
     String getId;
@@ -81,7 +82,7 @@ public class ProfileFragment extends Fragment{
         address.setFocusable(false);
 
         HashMap<String, String> user = sessionManager.getUserDetail();
-        getId = user.get(sessionManager.ID);
+        getId = user.get(SessionManager.ID);
 
 
         return  view;
@@ -125,12 +126,32 @@ public class ProfileFragment extends Fragment{
                     } catch (JSONException e) {
                         e.printStackTrace();
                         progressDialog.dismiss();
-                        Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                        builder1.setMessage("Error Reading Details.");
+                        builder1.setCancelable(true);
+
+                        builder1.setPositiveButton(
+                                "OK",
+                                (dialog, id) -> dialog.cancel());
+
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
+                        //Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> {
                     progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                    builder1.setMessage("Error Reading Details.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            (dialog, id) -> dialog.cancel());
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    //Toast.makeText(getActivity(), "Error Reading Details", Toast.LENGTH_SHORT).show();
                 })
         {
             @Override
@@ -166,13 +187,15 @@ public class ProfileFragment extends Fragment{
         action.findItem(R.id.save_profile).setVisible(false);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.edit_profile:
             name.setFocusableInTouchMode(true);
-            username.setFocusableInTouchMode(true);
+            username.setFocusableInTouchMode(false);
+            username.setTextColor(R.color.graytext);
             phone_number.setFocusableInTouchMode(true);
             email.setFocusableInTouchMode(true);
             address.setFocusableInTouchMode(true);
@@ -263,13 +286,35 @@ public class ProfileFragment extends Fragment{
                     } catch (JSONException e) {
                         e.printStackTrace();
                         progressDialog.dismiss();
-                        Toast.makeText(getActivity(), "Error!" + e.toString(), Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                        builder1.setMessage("Edit Error! " + response);
+                        builder1.setCancelable(true);
+
+                        builder1.setPositiveButton(
+                                "OK",
+                                (dialog, id1) -> dialog.cancel());
+
+
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
+                        //Toast.makeText(getActivity(), "Error!" + e.toString(), Toast.LENGTH_SHORT).show();
                     }
 
                 },
                 error -> {
                     progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "Error!" + error.toString(), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                    builder1.setMessage("Edit Error! " + error.toString());
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            (dialog, id1) -> dialog.cancel());
+
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    //Toast.makeText(getActivity(), "Error!" + error.toString(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override

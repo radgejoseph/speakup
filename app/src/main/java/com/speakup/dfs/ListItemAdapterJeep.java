@@ -14,8 +14,8 @@ import java.util.List;
 public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJeep.ListItemHoder> implements Filterable {
 
     private List<ListItem> itemList;
-    private List<ListItem> itemListFull;
-    private OnItemListener mOnItemListener;
+    private final List<ListItem> itemListFull;
+    private final OnItemListener mOnItemListener;
 
     public ListItemAdapterJeep(List<ListItem> itemList, OnItemListener onItemListener) {
         this.itemList = itemList;
@@ -49,7 +49,7 @@ public class ListItemAdapterJeep extends RecyclerView.Adapter<ListItemAdapterJee
         return itemFilter;
     }
 
-    private Filter itemFilter = new Filter() {
+    private final Filter itemFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ListItem> filteredList = new ArrayList<>();

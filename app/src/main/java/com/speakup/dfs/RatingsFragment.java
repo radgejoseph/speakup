@@ -53,7 +53,7 @@ public class RatingsFragment extends Fragment {
         loadList();
 
         HashMap<String, String> user = sessionManager.getUserDetail();
-        getId = user.get(sessionManager.ID);
+        getId = user.get(SessionManager.ID);
 
         return view;
     }

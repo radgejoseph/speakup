@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-    private static String URL_REVIEW = "http://speakupadnu.000webhostapp.com/speakupmobile/review.php";
+    private static final String URL_REVIEW = "http://speakupadnu.000webhostapp.com/speakupmobile/review.php";
 
     private TextView textPlate;
     private TextView textVehicle;
@@ -98,7 +98,7 @@ public class RateMeActivity extends AppCompatActivity {
         sessionManager.checkLogin();
 
         HashMap<String, String> user = sessionManager.getUserDetail();
-        getId = user.get(sessionManager.ID);
+        getId = user.get(SessionManager.ID);
 
         narrative = findViewById(R.id.review_box);
 

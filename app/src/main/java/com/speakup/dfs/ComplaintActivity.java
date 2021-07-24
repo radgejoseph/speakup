@@ -53,7 +53,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ComplaintActivity extends AppCompatActivity {
-    private static String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/speakupmobile/complaint.php";
+    private static final String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/speakupmobile/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
@@ -103,7 +103,7 @@ public class ComplaintActivity extends AppCompatActivity {
         sessionManager.checkLogin();
 
         HashMap<String, String> user = sessionManager.getUserDetail();
-        getId = user.get(sessionManager.ID);
+        getId = user.get(SessionManager.ID);
 
         askCameraPermission();
 
@@ -330,10 +330,7 @@ public class ComplaintActivity extends AppCompatActivity {
             {
                 mSelectedItems.add(items[which]);
             }
-            else if(mSelectedItems.contains(items[which]))
-            {
-                mSelectedItems.remove(items[which]);
-            }
+            else mSelectedItems.remove(items[which]);
         });
         builder.setPositiveButton("OK", (dialog, which) -> {
 

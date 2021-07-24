@@ -2,11 +2,11 @@ package com.speakup.dfs;
 
 public class ListItemReviews {
 
-    private String vehicle;
-    private String body_plate;
-    private int ratings;
-    private String narrative;
-    private String created_at;
+    private final String vehicle;
+    private final String body_plate;
+    private final int ratings;
+    private final String narrative;
+    private final String created_at;
 
     public ListItemReviews(String vehicle, String body_plate, int ratings, String narrative, String created_at) {
         this.vehicle = vehicle;

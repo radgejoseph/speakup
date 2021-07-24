@@ -2,13 +2,13 @@ package com.speakup.dfs;
 
 public class ListItemComplaint {
 
-    private String vehicle;
-    private String body_plate;
-    private String narrative;
-    private String date;
-    private String time;
-    private String image_name;
-    private String status;
+    private final String vehicle;
+    private final String body_plate;
+    private final String narrative;
+    private final String date;
+    private final String time;
+    private final String image_name;
+    private final String status;
 
     public ListItemComplaint(String vehicle, String body_plate, String narrative, String date, String time, String image_name, String status) {
         this.vehicle = vehicle;
