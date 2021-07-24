@@ -36,12 +36,8 @@ import java.util.Map;
 public class ProfileFragment extends Fragment{
 
     private static final String TAG = HomeActivity.class.getSimpleName();
-//    private static String URL_READ = "http://speakupadnu.000webhostapp.com/speakupmobile/read_detail.php";
-//    private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/speakupmobile/edit_detail.php";
     private static String URL_READ = "http://speakupadnu.000webhostapp.com/speakupmobile/read_detail.php";
     private static String URL_EDIT = "http://speakupadnu.000webhostapp.com/speakupmobile/edit_detail.php";
-
-//    private TextView name, username, password, phone_number, email, address, status;
     private TextView name, username, phone_number, email, address, status;
     private Menu action;
     String getId;
@@ -58,7 +54,6 @@ public class ProfileFragment extends Fragment{
 
         name = view.findViewById(R.id.fullname_text);
         username = view.findViewById(R.id.username_text);
-//        password = view.findViewById(R.id.password_text);
         phone_number = view.findViewById(R.id.phone_text);
         email = view.findViewById(R.id.email_text);
         address = view.findViewById(R.id.address_text);
@@ -69,7 +64,6 @@ public class ProfileFragment extends Fragment{
         name.setImeOptions(EditorInfo.IME_ACTION_DONE);
         name.setRawInputType(InputType.TYPE_CLASS_TEXT);
         username.setImeOptions(EditorInfo.IME_ACTION_DONE);
-//        password.setImeOptions(EditorInfo.IME_ACTION_DONE);
         username.setRawInputType(InputType.TYPE_CLASS_TEXT);
         email.setImeOptions(EditorInfo.IME_ACTION_DONE);
         email.setRawInputType(InputType.TYPE_CLASS_TEXT);
@@ -77,13 +71,11 @@ public class ProfileFragment extends Fragment{
 
         name.setFocusableInTouchMode(false);
         username.setFocusableInTouchMode(false);
-//        password.setFocusableInTouchMode(false);
         phone_number.setFocusableInTouchMode(false);
         email.setFocusableInTouchMode(false);
         address.setFocusableInTouchMode(false);
         name.setFocusable(false);
         username.setFocusable(false);
-//        password.setFocusable(false);
         phone_number.setFocusable(false);
         email.setFocusable(false);
         address.setFocusable(false);
@@ -187,7 +179,6 @@ public class ProfileFragment extends Fragment{
             case R.id.edit_profile:
             name.setFocusableInTouchMode(true);
             username.setFocusableInTouchMode(true);
-//            password.setFocusableInTouchMode(true);
             phone_number.setFocusableInTouchMode(true);
             email.setFocusableInTouchMode(true);
             address.setFocusableInTouchMode(true);
@@ -204,13 +195,10 @@ public class ProfileFragment extends Fragment{
 
                 String name_r = name.getText().toString().trim();
                 String username_r = username.getText().toString().trim();
-//                String password_r = password.getText().toString().trim();
                 String mobile_r = phone_number.getText().toString().trim();
                 String email_r = email.getText().toString().trim();
                 String address_r = address.getText().toString().trim();
 
-//                if (!name_r.isEmpty() && !username_r.isEmpty() && !password_r.isEmpty()
-//                        && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
                 if (!name_r.isEmpty() && !username_r.isEmpty() && !mobile_r.isEmpty() && !email_r.isEmpty() && !address_r.isEmpty()) {
 
                             SaveEditDetails();
@@ -220,13 +208,11 @@ public class ProfileFragment extends Fragment{
 
                             name.setFocusableInTouchMode(false);
                             username.setFocusableInTouchMode(false);
-//                            password.setFocusableInTouchMode(false);
                             phone_number.setFocusableInTouchMode(false);
                             email.setFocusableInTouchMode(false);
                             address.setFocusableInTouchMode(false);
                             name.setFocusable(false);
                             username.setFocusable(false);
-//                            password.setFocusable(false);
                             phone_number.setFocusable(false);
                             email.setFocusable(false);
                             address.setFocusable(false);
@@ -245,7 +231,6 @@ public class ProfileFragment extends Fragment{
                                         }
                                     });
 
-
                             AlertDialog alert11 = builder1.create();
                             alert11.show();
 
@@ -263,7 +248,6 @@ public class ProfileFragment extends Fragment{
     private void SaveEditDetails() {
         final String name = this.name.getText().toString().trim();
         final String username = this.username.getText().toString().trim();
-//        final String password = this.password.getText().toString().trim();
         final String phone_number = this.phone_number.getText().toString().trim();
         final String email = this.email.getText().toString().trim();
         final String address = this.address.getText().toString().trim();
@@ -285,7 +269,6 @@ public class ProfileFragment extends Fragment{
 
                             if (success.equals("1")) {
                                 Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-//                                sessionManager.createSessionEdit(name, username, password, phone_number, email, address, id);
                                 sessionManager.createSessionEdit(name, username, phone_number, email, address, id);
                             }
 
@@ -310,7 +293,6 @@ public class ProfileFragment extends Fragment{
                 Map<String, String> params = new HashMap<>();
                 params.put("name", name);
                 params.put("username", username);
-//                params.put("password", password);
                 params.put("phone_number", phone_number);
                 params.put("email", email);
                 params.put("address", address);

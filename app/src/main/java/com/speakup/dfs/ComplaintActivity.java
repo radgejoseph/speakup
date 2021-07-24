@@ -28,16 +28,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -46,11 +42,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.tabs.TabLayout;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -60,7 +53,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ComplaintActivity extends AppCompatActivity {
-
     private static String URL_COMPLAINT = "http://speakupadnu.000webhostapp.com/speakupmobile/complaint.php";
 
     public static final int CAMERA_PERM_CODE = 101;
@@ -80,7 +72,6 @@ public class ComplaintActivity extends AppCompatActivity {
     Bitmap bitmap;
     String encodeImageString;
     SessionManager sessionManager;
-
     private List<String> mSelectedItems;
     String plate, vehicle;
     Toolbar toolbar;
@@ -139,7 +130,6 @@ public class ComplaintActivity extends AppCompatActivity {
                     }
                 });
 
-
         androidx.appcompat.app.AlertDialog alert11 = builder1.create();
         alert11.show();
 
@@ -183,7 +173,6 @@ public class ComplaintActivity extends AppCompatActivity {
 
                     androidx.appcompat.app.AlertDialog alert11 = builder1.create();
                     alert11.show();
-//                    Toast.makeText(getActivity(),"Image and Complaint is Required!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -394,7 +383,6 @@ public class ComplaintActivity extends AppCompatActivity {
                 {
                     complaint_selection = complaint_selection+Item+", ";
                 }
-//                Toast.makeText(getActivity(),"Selected: "+complaint_selection,Toast.LENGTH_LONG).show();
                 checked_items.setText(complaint_selection);
             }
         });

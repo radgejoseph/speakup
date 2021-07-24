@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -40,10 +39,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.Calendar;
@@ -59,7 +56,6 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class CommendationFragment extends Fragment {
-//    private static String URL_COMMEND = "http://speakupadnu.000webhostapp.com/speakupmobile/commendation.php";
     private static String URL_COMMEND = "http://speakupadnu.000webhostapp.com/speakupmobile/commendation.php";
 
     public static final int CAMERA_PERM_CODE = 101;
@@ -155,7 +151,6 @@ public class CommendationFragment extends Fragment {
 
                 String narrative_r = narrative.getText().toString().trim();
 
-//                if (!narrative_r.isEmpty() && upload_image_view_gallery.getDrawable() == null){
                 if (upload_image_view_gallery.getDrawable() != null && !narrative_r.equals("")){
                     CommendationSubmit();
                 }
@@ -173,7 +168,6 @@ public class CommendationFragment extends Fragment {
                             });
                     androidx.appcompat.app.AlertDialog alert11 = builder1.create();
                     alert11.show();
-//                    Toast.makeText(getActivity(),"Image and Commendation is Required!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -335,7 +329,6 @@ public class CommendationFragment extends Fragment {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
-
 
     private void askCameraPermission() {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

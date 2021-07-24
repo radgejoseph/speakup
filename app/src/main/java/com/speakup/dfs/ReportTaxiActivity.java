@@ -15,9 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -32,14 +30,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class ReportTaxiActivity extends AppCompatActivity implements ListItemAdapterTaxi.OnItemListener {
-
     private static final String URL_TAXI_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/list_taxi.php";
 
     RecyclerView recyclerView;
     ListItemAdapterTaxi listItemAdapter;
     Toolbar toolbar;
     Button button_colorum;
-
     List<ListItem> itemList;
 
     @Override
@@ -93,8 +89,6 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorHtoL);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
-//                startActivity(intent);
             }
         });
 
@@ -104,8 +98,6 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorLtoH);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
-//                startActivity(intent);
             }
         });
 
@@ -115,8 +107,6 @@ public class ReportTaxiActivity extends AppCompatActivity implements ListItemAda
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorAZ);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(ReportTaxiActivity.this, ReportTaxiActivity.class);
-//                startActivity(intent);
             }
         });
 

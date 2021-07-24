@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -32,7 +31,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class ReportTricycleActivity extends AppCompatActivity implements ListItemAdapterTricycle.OnItemListener {
-
     private static final String URL_TRICYCLE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/list_tricycle.php";
 
     RecyclerView recyclerView;
@@ -40,7 +38,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
     Toolbar toolbar;
     Button button_colorum;
     private TextView textVehicle;
-
     List<ListItem> itemList;
 
     @Override
@@ -94,8 +91,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorHtoL);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
-//                startActivity(intent);
             }
         });
 
@@ -105,8 +100,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorLtoH);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
-//                startActivity(intent);
             }
         });
 
@@ -116,8 +109,6 @@ public class ReportTricycleActivity extends AppCompatActivity implements ListIte
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorAZ);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(ReportTricycleActivity.this, ReportTricycleActivity.class);
-//                startActivity(intent);
             }
         });
 

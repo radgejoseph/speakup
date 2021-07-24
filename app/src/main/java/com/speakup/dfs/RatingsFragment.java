@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -20,24 +18,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class RatingsFragment extends Fragment {
-
-//    private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_ratings.php";
     private static final String URL_MY_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/my_ratings.php";
 
     RecyclerView recyclerView;
     List<ListItemReviews> itemList;
-
     String getId;
     SessionManager sessionManager;
 

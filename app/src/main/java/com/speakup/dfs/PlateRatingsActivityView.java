@@ -4,16 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -21,29 +15,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PlateRatingsActivityView extends AppCompatActivity {
-
-    //    private static final String URL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/plate_reviews.php";
     private static final String URL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/plate_reviews.php";
 
     RecyclerView recyclerView2;
     List<ListItemPlateReviews> itemListPlate;
-
     private TextView textPlate;
     private TextView textVehicle;
     Toolbar toolbar;
-
     String body_plate;
 
     @Override
@@ -77,7 +64,6 @@ public class PlateRatingsActivityView extends AppCompatActivity {
 
         }
         loadList();
-//        Collections.sort(itemListPlate, ListItemPlateReviews.listItemComparatorDT);
 
         body_plate = this.textPlate.getText().toString().trim();
     }

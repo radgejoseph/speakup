@@ -2,7 +2,6 @@ package com.speakup.dfs;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.Comparator;
 
 public class ListItem implements Parcelable {

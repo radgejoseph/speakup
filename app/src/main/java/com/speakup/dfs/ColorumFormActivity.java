@@ -2,7 +2,6 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,15 +9,9 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -27,25 +20,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ColorumFormActivity extends AppCompatActivity {
-//    private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/speakupmobile/colorum.php";
     private static String URL_COLORUM = "http://speakupadnu.000webhostapp.com/speakupmobile/colorum.php";
 
     Toolbar toolbar;
     private TextView textPlate;
     private String selectedItemText;
     private TextView textVehicle;
-
     String getId;
     SessionManager sessionManager;
     Button submit_button;
@@ -97,35 +83,9 @@ public class ColorumFormActivity extends AppCompatActivity {
                             });
                     androidx.appcompat.app.AlertDialog alert11 = builder1.create();
                     alert11.show();
-//                    textPlate.setError("Plate and type is Required");
-//                    Toast.makeText(ColorumFormActivity.this,"Plate nad type is Required", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
-
-//        // Get reference of widgets from XML layout
-//        final Spinner textVehicle = (Spinner) findViewById(R.id.vehicle_type_holder);
-//
-//        // Initializing a String Array
-//        String[] choice = new String[]{ "select type","jeep","taxicle","tricycle","taxi" };
-//
-//        final List<String> choiceList = new ArrayList<>(Arrays.asList(choice));
-//
-//        // Initializing an ArrayAdapter
-//        final ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
-//                this,R.layout.spinner_item,choiceList){
-//            @Override
-//            public View getDropDownView(int position, View convertView,
-//                                        ViewGroup parent) {
-//                View view = super.getDropDownView(position, convertView, parent);
-//
-//                return view;
-//            }
-//        };
-//        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
-//        textVehicle.setAdapter(spinnerArrayAdapter);
-//
 
                 selectedItemText = textVehicle.getText().toString().trim();
                 if (selectedItemText.equals("tricycle"))
@@ -152,9 +112,7 @@ public class ColorumFormActivity extends AppCompatActivity {
                     textPlate.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
                     textPlate.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS | InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                 }
-
     }
-
 
     private void ColorumSubmit() {
         final ProgressDialog progressDialog = new ProgressDialog(ColorumFormActivity.this);
@@ -195,7 +153,6 @@ public class ColorumFormActivity extends AppCompatActivity {
                                     });
                             androidx.appcompat.app.AlertDialog alert11 = builder1.create();
                             alert11.show();
-//                            Toast.makeText(ColorumFormActivity.this,"Submit Error! Plate already exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

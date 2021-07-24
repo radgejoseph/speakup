@@ -2,7 +2,6 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +15,6 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -25,15 +23,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class RateMeActivity extends AppCompatActivity {
-//    private static String URL_REVIEW = "http://speakupadnu.000webhostapp.com/speakupmobile/review.php";
     private static String URL_REVIEW = "http://speakupadnu.000webhostapp.com/speakupmobile/review.php";
 
     private TextView textPlate;
@@ -60,7 +55,6 @@ public class RateMeActivity extends AppCompatActivity {
                 openComplaintActivity();
             }
         });
-
 
         ratingBar = findViewById(R.id.ratingBar);
         rateCountText = findViewById(R.id.ratecounttext);
@@ -145,7 +139,6 @@ public class RateMeActivity extends AppCompatActivity {
 
                     androidx.appcompat.app.AlertDialog alert11 = builder1.create();
                     alert11.show();
-                    //narrative.setError("Your Review and Rating is Required");
                 }
             }
         });
@@ -214,16 +207,6 @@ public class RateMeActivity extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
-
-
-//    public void openTabbedActivity() {
-//        String plate = textPlate.getText().toString();
-//        String vehicle = textVehicle.getText().toString();
-//        Intent intent = new Intent(RateMeActivity.this, TabbedActivity.class);
-//        intent.putExtra("selected_plate", plate);
-//        intent.putExtra("vehicle", vehicle);
-//        startActivity(intent);
-//    }
 
     public void openComplaintActivity() {
         String plate = textPlate.getText().toString();

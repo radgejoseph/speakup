@@ -1,7 +1,5 @@
 package com.speakup.dfs;
 
-import java.util.Comparator;
-
 public class ListItemPlateReviews {
 
     private int ratings;
@@ -33,10 +31,4 @@ public ListItemPlateReviews(String username, int ratings, String narrative, Stri
         return created_at;
     }
 
-//    public static Comparator<ListItemPlateReviews> listItemComparatorDT = new Comparator<ListItemPlateReviews>() {
-//        @Override
-//        public int compare(ListItemPlateReviews o1, ListItemPlateReviews o2) {
-//            return o1.getTimestampL().compareTo(o2.getTimestampL());
-//        }
-//    };
 }

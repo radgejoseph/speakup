@@ -4,12 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -18,7 +16,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
@@ -32,10 +29,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,11 +44,9 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private static String URL_LOGIN = "http://speakupadnu.000webhostapp.com/speakupmobile/login.php";
     private static final String URL_ALL_PLATE_LIST = "http://speakupadnu.000webhostapp.com/speakupmobile/vehicle_plate_list.php";
 
-
     RecyclerView recyclerView;
     ListItemPlateAdapter listItemAdapter;
     List<ListItem> itemList;
-
     SessionManager sessionManager;
 
     @Override
@@ -135,8 +128,6 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorHtoL);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivityHigh.class);
-//                startActivity(intent);
             }
         });
 
@@ -146,8 +137,6 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorLtoH);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivityLow.class);
-//                startActivity(intent);
             }
         });
 
@@ -157,12 +146,8 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
             public void onClick(View view) {
                 Collections.sort(itemList, ListItem.listItemComparatorAZ);
                 listItemAdapter.notifyDataSetChanged();
-//                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-//                startActivity(intent);
             }
         });
-
-
 
         itemList = new ArrayList<>();
 
@@ -178,8 +163,6 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
     private void Login(final String username, final String password) {
 
         progress.setVisibility(View.VISIBLE);
-//        l_button.setVisibility(View.GONE);
-//        tr_button.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
@@ -224,7 +207,6 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                                                 dialog.cancel();
                                             }
                                         });
-
 
                                 AlertDialog alert11 = builder1.create();
                                 alert11.show();
@@ -349,6 +331,5 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
         intent.putExtra("selected_plate", itemList.get(position));
         startActivity(intent);
     }
-
 
 }

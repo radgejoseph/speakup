@@ -2,7 +2,6 @@ package com.speakup.dfs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,13 +26,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-
 import papaya.in.sendmail.SendMail;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name, username, password, phone_number, email, address;
-//    private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
     private static String URL_REGIST = "http://speakupadnu.000webhostapp.com/speakupmobile/register.php";
     private static String VERIFICATION = "https://bit.ly/3xBuSvk";
     private Button reg_button;
@@ -124,10 +121,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(RegisterActivity.this,"Register Success!", Toast.LENGTH_SHORT).show();
                             }
-//                            else if (success.equals("0")) {
-//                                progressDialog.dismiss();
-//                                Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
-//                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -148,7 +141,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                             AlertDialog alert11 = builder1.create();
                             alert11.show();
-                            //Toast.makeText(RegisterActivity.this,"Register Error! " + response, Toast.LENGTH_SHORT).show();
                         }
                     }
                 },

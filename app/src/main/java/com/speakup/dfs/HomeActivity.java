@@ -33,7 +33,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
 
-
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
@@ -43,14 +42,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
 
-        //loading the default fragment
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container_fragment, new VehicleFragment());
         fragmentTransaction.commit();
 
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -69,13 +66,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             setTitle("MY PROFILE");
         }
-//        if (item.getItemId() == R.id.notifications_menu) {
-//            fragmentManager = getSupportFragmentManager();
-//            fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.container_fragment, new NotificationFragment());
-//            fragmentTransaction.commit();
-//            setTitle("NOTIFICATIONS");
-//        }
+
         if (item.getItemId() == R.id.ratings_menu) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
@@ -83,14 +74,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             setTitle("MY RATINGS");
         }
-
-//        if (item.getItemId() == R.id.commendation_menu) {
-//            fragmentManager = getSupportFragmentManager();
-//            fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.container_fragment, new CommendViewFragment());
-//            fragmentTransaction.commit();
-//            setTitle("MY COMMENDATIONS");
-//        }
 
         if (item.getItemId() == R.id.complaint_menu) {
             fragmentManager = getSupportFragmentManager();
