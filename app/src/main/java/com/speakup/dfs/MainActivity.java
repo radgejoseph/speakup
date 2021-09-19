@@ -187,14 +187,34 @@ public class MainActivity extends AppCompatActivity implements ListItemPlateAdap
                         progress.setVisibility(View.GONE);
                         l_button.setVisibility(View.VISIBLE);
                         tr_button.setVisibility(View.VISIBLE);
-                        Toast.makeText(MainActivity.this, "Error! 1", Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                        builder1.setMessage("Connection Error. Please Try Again.");
+                        builder1.setCancelable(true);
+
+                        builder1.setPositiveButton(
+                                "OK",
+                                (dialog, id) -> dialog.cancel());
+
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
+                        //Toast.makeText(MainActivity.this, "Connection Error. Please Try Again.", Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> {
                     progress.setVisibility(View.GONE);
                     l_button.setVisibility(View.VISIBLE);
                     tr_button.setVisibility(View.VISIBLE);
-                    Toast.makeText(MainActivity.this, "Error! 2", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(MainActivity.this);
+                    builder1.setMessage("Connection Error. Please Try Again.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "OK",
+                            (dialog, id) -> dialog.cancel());
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                    //Toast.makeText(MainActivity.this, "Connection Error. Please Try Again.", Toast.LENGTH_SHORT).show();
 
                 })
         {
