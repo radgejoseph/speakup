@@ -83,6 +83,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             setTitle("MY COMPLAINTS");
         }
+
+        if (item.getItemId() == R.id.faq_menu) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new TutorialFragment());
+            fragmentTransaction.commit();
+            setTitle("TUTORIALS");
+        }
+
+        if (item.getItemId() == R.id.about_menu) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new AboutFragment());
+            fragmentTransaction.commit();
+            setTitle("ABOUT US");
+        }
         else if (item.getItemId() == R.id.logout_menu) {
             sessionManager.logout();
         }

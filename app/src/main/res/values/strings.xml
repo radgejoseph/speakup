@@ -41,8 +41,10 @@
     <string name="how_was_your_trip">How was your trip?</string>
     <string name="complaints">Complaints?</string>
     <string name="please_check_your_spam_box_if_the_email_is_not_in_the_inbox">Please check your Spam box if the email is not in the Inbox.</string>
-
-    <string-array name="complaints">
+    <string name="tutorials">TUTORIALS</string>
+    <string name="about_us">ABOUT US</string>
+    <string name="aboutUStext">In a commuter\'s day-to-day experience with the Public Utility Vehicles (PUVs), problems with drivers and operators are inevitable. The proposed system aims to help commuters easily send their complaints and rate those who performed their job well. The system, with its organized and accurate gathered information on the other hand, helps the Public Safety Office (PSO) of Naga City, the local office or unit in charge of public safety and concern, easily manage the PUVs, their drivers, and operators. The system can only be used within the Local Government Unit of Naga City. Given that the proposed system gives importance to users\' experience and feedback, it will be of great for the city government to achieve its ultimate goal of having a people-centered community.</string>
+   <string-array name="complaints">
         <item>Others: </item>
         <item>Contracting Passenger</item>
         <item>Overcharging of Fare / Undercharging</item>

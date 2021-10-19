@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingClass"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_space"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/header_void"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/screenshot_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login/View Reviews and Register"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image1"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="Here you can click on any items(vehicle plate) listed and view the reviews on them. You can search and sort them alphabetically or by their average ratings. You can also Login or register through the button."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title1" />
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct1"
+                app:srcCompat="@drawable/screenshot_3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Home"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image2"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="Here you can click the different PUV's to view the next page that contains the plate number of each group of PUV. You can also access here the navigation menu by swiping right or by clicking the menu button (3 line) at the upper-left corner of the screen."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title2" />
+
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct2"
+                app:srcCompat="@drawable/screenshot_4"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Navigation Menu"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="By swiping right or by clicking the menu button (3 line) at the upper-left corner of the screen you will be presented with this menu."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title3" />
+
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct3"
+                app:srcCompat="@drawable/screenshot_5"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Profile"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image4"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="In My Profile you can view all your details and your account status. You can also edit your profile by clicking the pen button at the upper-right of the screen and once your done you can click again the save icon."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title4" />
+
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct4"
+                app:srcCompat="@drawable/screenshot_6"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Ratings and Complaints"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image5"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="In this page you will be presented with all the ratings you submitted and also your complaints and it's status."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title5" />
+
+            <ImageView
+                android:id="@+id/image6"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct5"
+                app:srcCompat="@drawable/screenshot_7"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="List of Plate Numbers"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image6"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="After clicking what PUV to rate, you will be presented with this clickable plate number list. You can search and sort them alphabetically or by their average ratings."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title6" />
+
+            <ImageView
+                android:id="@+id/image7"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct6"
+                app:srcCompat="@drawable/screenshot_8"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reviews on Plate Number"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image7"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="By selecting a plate number on the list, you will be presented with this list of reviews sorted from latest to oldest submitted by other users. You can rate your selected plate by clicking the PROCEED button"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title7" />
+
+            <ImageView
+                android:id="@+id/image8"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct7"
+                app:srcCompat="@drawable/screenshot_9"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Ratings to Selected Plate"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image8"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:text="You can rate and send your ratings here. You can click the Complaint button if you have Complaint to the selected PUV plate."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title8" />
+
+            <ImageView
+                android:id="@+id/image9"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instruct8"
+                app:srcCompat="@drawable/screenshot_10"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/title9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Complaint"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/image9"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/instruct9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="15dp"
+                android:layout_marginBottom="20dp"
+                android:text="Fill the form and send your complaint to the selected plate number. Providing image is important for the credibility of your complaint."
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title9" />
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

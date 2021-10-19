@@ -87,12 +87,13 @@ public class ComplaintViewFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                         progressDialog.dismiss();
+                        Toast.makeText(getActivity(),"Error!" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
 
                 }, error -> {
                     progressDialog.dismiss();
-                    Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Error!" +error.getMessage(), Toast.LENGTH_SHORT).show();
                 })
         {
             @Override

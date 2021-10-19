@@ -137,12 +137,12 @@ public class ComplaintActivity extends AppCompatActivity {
 
             String checked_items_r = checked_items.getText().toString().trim();
 
-            if (upload_image_view_gallery.getDrawable() != null && !checked_items_r.equals("")){
+            if (upload_image_view_gallery.getDrawable() != null && !checked_items_r.equals("") && date_picker.getText().toString().trim().length() > 0 && time_picker.getText().toString().trim().length() > 0){
                 ComplaintSubmit();
             }
             else {
                 androidx.appcompat.app.AlertDialog.Builder builder11 = new androidx.appcompat.app.AlertDialog.Builder(ComplaintActivity.this);
-                builder11.setMessage("Image and Complaint are Required!");
+                builder11.setMessage("Date, Time, Image and Complaint are Required!");
                 builder11.setCancelable(true);
 
                 builder11.setPositiveButton(

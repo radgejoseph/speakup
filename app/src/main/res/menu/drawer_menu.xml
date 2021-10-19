@@ -21,13 +21,13 @@
                 android:iconTint="@color/white"
                 android:title="@string/my_complaints" />
             <item
-                android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space"
-                android:enabled="false"/>
+                android:id="@+id/faq_menu"
+                android:icon="@drawable/ic_baseline_topic_24"
+                android:title="@string/tutorials" />
             <item
-                android:icon="@drawable/ic_baseline_minimize_24"
-                android:title="@string/blank_space"
-                android:enabled="false"/>
+                android:id="@+id/about_menu"
+                android:icon="@drawable/ic_baseline_contact_mail_24"
+                android:title="@string/about_us" />
             <item
                 android:icon="@drawable/ic_baseline_minimize_24"
                 android:title="@string/blank_space"
