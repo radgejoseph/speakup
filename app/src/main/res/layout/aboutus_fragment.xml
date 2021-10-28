@@ -88,14 +88,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:paddingBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="20dp"
                 android:text="App Developer: \n Radge Joseph F. San Joaquin"
                 android:textSize="20sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/about" />
+
+            <TextView
+                android:id="@+id/contacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:paddingHorizontal="15dp"
+                android:paddingBottom="40dp"
+                android:autoLink="email"
+                android:text="Diana Gee R. Delas Alas \n
+ghieianagee@gmail.com \n
+Bachelor of Science in Information Technology \n
+Ateneo de Naga University \n (December, 2021) \n \n
+
+Jane Kirstine T. Ferrer \n
+kirstinejayn@gmail.com \n
+Bachelor of Science in Information Technology \n
+Ateneo de Naga University \n (December, 2021) \n \n
+
+Radge Joseph F. San Joaquin \n
+radgejoseph.sanjoaquin@gmail.com \n
+Bachelor of Science in Information Technology \n
+Ateneo de Naga University \n (December, 2021)"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dev" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
