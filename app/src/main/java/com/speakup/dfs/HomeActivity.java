@@ -99,6 +99,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
             setTitle("ABOUT US");
         }
+
+        if (item.getItemId() == R.id.contact_menu) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment, new ContactFragment());
+            fragmentTransaction.commit();
+            setTitle("CONTACT US");
+        }
         else if (item.getItemId() == R.id.logout_menu) {
             sessionManager.logout();
         }
